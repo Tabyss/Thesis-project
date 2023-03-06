@@ -1,0 +1,78 @@
+.navbar {
+    padding: 20px 5%;
+  .nav {
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &-link {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      gap: 35px;
+      text-transform: uppercase;
+      color: var(--color-3);
+      font-weight: 400;
+      font-size: 14px;
+    }
+    &-main {
+      display: flex;
+      gap: 20px;
+      &-in {
+        font-size: 14px;
+        padding: 10px 30px;
+        border: 2px solid var(--color-3);
+        border-radius: 10px;
+        color: var(--color-3);
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+      &-up {
+        font-size: 14px;
+        padding: 10px 30px;
+        border-radius: 10px;
+        text-decoration: none;
+        text-transform: uppercase;
+        background-color: var(--color-2);
+        color: white;
+      }
+    }
+  }
+}
+.landing {
+  display: flex;
+  padding: 15vh 5%;
+  gap: 50px;
+  background: var(--gradient);
+  &-content {
+    display: flex;
+  }
+  &-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+    h1 {
+      display: block;
+      font-size: 3rem;
+      font-family: var(--font-1);
+    }
+    &-link {
+      display: flex;
+      margin: 5vh 0;
+      align-items: center;
+      gap: 20px;
+      button {
+        padding: 15px 20px;
+        border: none;
+        border-radius: 10px;
+        background-color: var(--color-1);
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      &-tema {
+      }
+    }
+  }
+}
