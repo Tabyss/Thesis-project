@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { BsArrowRight } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 import Content1 from "../../img/logo.png";
 import Content2 from "../../img/content-1.png";
-import { BsArrowRight } from "react-icons/bs";
 import "./landing.scss";
 
 function Navbar() {
@@ -37,9 +38,9 @@ function Navbar() {
             <li>customers</li>
           </div>
           <div className="nav-link-log">
-            <a href="" className="nav-link-log-in">
+            <NavLink to="/login" className="nav-link-log-in">
               Sign In
-            </a>
+            </NavLink>
             <a href="" className="nav-link-log-up">
               Sign Up
             </a>

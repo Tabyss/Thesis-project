@@ -1,0 +1,19 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // width: 40vw;
+    img{
+        object-fit: contain;
+    }
+    &-title{
+        display: flex;
+        justify-content: start;
+    }
+    &-value{
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0px 20px 40px rgba(126, 181, 166, 0.3);
+    }
+}
