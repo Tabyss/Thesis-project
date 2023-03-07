@@ -4,9 +4,9 @@ import Index from "./assets/components/Index";
 
 function App() {
   return (
-    <div>
+    <>
       <Index />
-    </div>
+    </>
   );
 }
 
