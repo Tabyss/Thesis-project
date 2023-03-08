@@ -3,34 +3,36 @@ import Content1 from "../../img/logo.png";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { ImGoogle3 } from "react-icons/im";
 import { FaFacebook } from "react-icons/fa";
-import "./login.scss";
+import "./signup.scss";
 import { NavLink } from "react-router-dom";
 
-function Login() {
+function Signup() {
   return (
-    <div className="login">
+    <div className="signup">
       <NavLink to="/">
         <img src={Content1} />
       </NavLink>
-      <div className="login-content">
-        <div className="login-content-title">
+      <div className="signup-content">
+        <div className="signup-content-title">
           <NavLink to="/" className="arrowback">
             <MdKeyboardArrowLeft />
           </NavLink>
-          <h1>Login</h1>
+          <h1>Signup</h1>
         </div>
-        <form className="login-content-value">
+        <form className="signup-content-value">
           <input type="text" placeholder="Username" />
+          <input type="email" placeholder="Email" />
           <input type="password" placeholder="Password" />
-          <div className="login-content-value-button">
+          <input type="text" defaultValue="+62" placeholder="Phone Number" />
+          <div className="signup-content-value-button">
             <ImGoogle3 />
             <FaFacebook />
-            <button>Login</button>
+            <button>Signup</button>
           </div>
         </form>
-        <div className="login-content-regis">
+        <div className="signup-content-regis">
           <p>
-            Don't have account? <NavLink to="../signup">Create an account.</NavLink>
+            Don't have account? <NavLink to="../login">Create an account.</NavLink>
           </p>
         </div>
       </div>
@@ -38,4 +40,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
