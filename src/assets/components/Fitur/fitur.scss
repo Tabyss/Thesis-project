@@ -1,13 +1,13 @@
 .fitur {
-    height: 640px;
+    padding: 15vh 5%;
     .container {
         margin: auto;
         max-width: 1440px;
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 15px;
+        padding-right: 15px;
     }
     &-header {
-        padding-top: 100px;
+        padding-top: 50px;
         .title {
             font-family: var(--font-1);
             font-size: 3rem;
@@ -17,16 +17,34 @@
     }
     &-list {
         display: flex;
-        gap: 15px;
+        .swiper {
+            padding-left: 20px;
+        }
+        // .swiper-slide-active .fitur-card {
+        //     background: var(--color-4);
+        //     display: grid;
+        //     place-items: center;
+        //     &-img {
+        //         background-color: #FFFFFF;
+        //         border-radius: 10px;
+        //         padding: 5px;
+        //         width: 80px;
+        //         height: 80px;
+        //     }
+        //     .fitur-name {
+        //         color: #FFFFFF;
+        //     }
+        // }
     }
     &-card {
-        width: 264px;
+        width: 90%;
         height: 242px;
         box-shadow: 0px 0px 8px rgba(173, 90, 25, 0.5);
         border-radius: 15px;
         padding-left: 10px;
         padding-right: 10px;
         margin-top: 70px;
+        margin-bottom: 100px;
         text-align: center;
     }
     &-card-img {
