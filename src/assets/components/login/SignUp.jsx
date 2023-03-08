@@ -32,7 +32,7 @@ function Signup() {
         </form>
         <div className="signup-content-regis">
           <p>
-            Don't have account? <NavLink to="../login">Create an account.</NavLink>
+          Have account? <NavLink to="../login">Log In.</NavLink>
           </p>
         </div>
       </div>

@@ -30,7 +30,7 @@
       display: flex;
       padding: 25px;
       flex-direction: column;
-      border-radius: 10px;
+      border-radius: 20px;
       gap: 10px;
       background-color: white;
       box-shadow: 0px 30px 60px rgba(126, 181, 166, 0.5);
@@ -39,7 +39,7 @@
         font-size: 1rem;
         font-family: var(--font-2);
         border: 2px solid var(--color-2);
-        border-radius: 10px;
+        border-radius: 15px;
         color: var(--color-2);
         background-color: none;
       }
@@ -54,7 +54,7 @@
         button {
           padding: 12px 25px;
           border: none;
-          border-radius: 10px;
+          border-radius: 15px;
           color: white;
           background-color: var(--color-4);
         }
