@@ -1,0 +1,103 @@
+.tema {
+    background: var(--color-5);
+    padding: 15vh 5%;
+    .container {
+        margin: auto;
+        max-width: 1440px;
+        padding-left: 15px;
+        padding-right: 15px; 
+    }
+    &-content {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+    }
+    &-phone {
+        position: relative;
+        width: 400px;
+        .swipe {
+            position: absolute;
+            bottom: 10%;
+            font-family: var(--font-2);
+            font-size: 0.8rem;
+            color: var(--color-3);
+            writing-mode: vertical-lr;
+            transform: rotate(-180deg);
+            img {
+                margin-top: 10px;
+                width: 10px;
+            }
+        }
+    }
+    &-phone-frame {
+        display: flex;
+        justify-content: center;
+        height: 618px;
+    }
+    &-screen-view img {
+        width: 276px;
+        display: none;
+        &.templateActive {
+            display: block;
+        }
+    }
+    &-screen-view {
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 276px;
+        height: 600px;
+        overflow-y: auto;
+        border-radius: 30px;
+        scrollbar-width: none;
+    }
+    &-screen-view::-webkit-scrollbar {
+        display: none;
+    }
+    &-main {
+        width: 70%;
+    }
+    &-title {
+        font-family: var(--font-1);
+        font-weight: 700;
+        font-size: 3rem;
+        color: var(--color-2);
+    }
+    &-body {
+        margin-left: 30px;
+        margin-top: 70px;
+        h4 {
+            font-family: var(--font-2);
+            font-size: 1rem;
+            color: var(--color-3);
+            margin-bottom: 40px;
+        }
+    }
+    &-choose {
+        display: flex;
+        gap: 10%;
+        margin-top: 20px;
+        border-radius: 10px;
+        width: 110px;
+        height: 200px;
+        .exampleActive {
+            border: 3px solid #DA8E04;
+            border-radius: 13px;
+        }
+        button {
+            border: none;
+            background: transparent;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        img {
+            width: 110px;
+            height: 194px;
+            border-radius: 10px;
+        }
+    }
+}
