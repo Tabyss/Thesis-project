@@ -1,27 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import { BsArrowRight } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 import Content1 from "../../img/logo.png";
 import Content2 from "../../img/content-1.png";
 import "./landing.scss";
 
 function Navbar() {
+  const [click, setClick] = useState(false);
+
+  const active = () => setClick(!click);
+
+  function fixed() {
+    let navbar = document.getElementById("navbar");
+    let sc = window.scrollY;
+    if (sc < 50) {
+      navbar.classList.remove("fixed");
+    } else {
+      navbar.classList.add("fixed");
+    }
+  }
+  window.addEventListener("scroll", fixed);
+
   return (
-    <div className="navbar">
+    <div id="navbar" className={click ? "navbar fixed" : "navbar"}>
       <div className="nav">
-        <div className="nav-link">
-          <li>
-            <img src={Content1} />
-          </li>
-          <li>fitur</li>
-          <li>tema</li>
-          <li>customers</li>
+        <img src={Content1} />
+        <div className="burger" onClick={active}>
+          <button className={click ? "burger active" : "burger"}>
+            <span></span>
+            <span></span>
+          </button>
         </div>
-        <div className="nav-main">
-          <a href="" className="nav-main-in">
-            Sign In
-          </a>
-          <a href="" className="nav-main-up">
-            Sign Up
-          </a>
+        <div className={click ? "nav-link active" : "nav-link"}>
+          <div className="nav-link-menu">
+            <li>fitur</li>
+            <li>tema</li>
+            <li>customers</li>
+          </div>
+          <div className="nav-link-log">
+            <NavLink to="/login" className="nav-link-log-in">
+              Sign In
+            </NavLink>
+            <a href="" className="nav-link-log-up">
+              Sign Up
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -33,9 +56,7 @@ function Landing() {
     <>
       <Navbar />
       <div className="landing">
-        <div className="landing-content">
-          <img src={Content2} />
-        </div>
+        <img src={Content2} />
         <div className="landing-main">
           <h1>Lorem Ipsum is simply dummy text.</h1>
           <p>
@@ -48,6 +69,7 @@ function Landing() {
             <button>contact us</button>
             <div className="landing-main-link-tema">
               <a>Coba Tema</a>
+              <BsArrowRight />
             </div>
           </div>
         </div>

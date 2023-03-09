@@ -1,24 +1,21 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import Footer from "./footer/Footer";
 import Landing from "./Landing/Landing";
 import Fitur from "./Fitur/Fitur";
 import Tema from "./Tema/Tema";
 import Review from "./Review/Review";
-
-function Link() {
-  return (
-    <></>
-  );
-}
+import Package from "./package/Package";
 
 function Index() {
   return (
-    <div>
+    <>
       <Landing />
       <Fitur />
       <Tema />
+      <Package />
       <Review />
-    </div>
+      <Footer />
+    </>
   );
 }
 
