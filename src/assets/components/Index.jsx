@@ -1,18 +1,15 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import Footer from "./footer/Footer";
 import Landing from "./Landing/Landing";
-
-function Link() {
-  return (
-    <></>
-  );
-}
+import Package from "./package/Package";
 
 function Index() {
   return (
-    <div>
+    <>
       <Landing />
-    </div>
+      <Package />
+      <Footer />
+    </>
   );
 }
 
