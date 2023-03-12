@@ -3,10 +3,10 @@ import "./fitur.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import 'swiper/css';
-import domainIcon from "../../img/domain-icon.svg"
-import backsoundIcon from "../../img/backsound.svg"
-import navIcon from "../../img/gps.svg"
-import giftIcon from "../../img/gift.svg"
+import { BsMusicNoteBeamed, BsGiftFill } from "react-icons/bs";
+import { MdAutoAwesome } from "react-icons/md";
+import { FaMapMarkerAlt } from "react-icons/fa";
+
 
 function Fitur() {
     return (
@@ -31,7 +31,7 @@ function Fitur() {
                         <SwiperSlide>
                             <div className="fitur-card">
                                 <div className="fitur-card-img">
-                                    <img src={domainIcon} alt="" className="fitur-icon" />
+                                    <MdAutoAwesome className="icons" />
                                 </div>
                                 <div className="fitur-name">Custom Domain</div>
                             </div>
@@ -39,7 +39,7 @@ function Fitur() {
                         <SwiperSlide>
                             <div className="fitur-card">
                                 <div className="fitur-card-img">
-                                    <img src={backsoundIcon} alt="" className="fitur-icon" />
+                                    <BsMusicNoteBeamed className="icons" />
                                 </div>
                                 <div className="fitur-name">Backsound</div>
                             </div>
@@ -47,7 +47,7 @@ function Fitur() {
                         <SwiperSlide>
                             <div className="fitur-card">
                                 <div className="fitur-card-img">
-                                    <img src={domainIcon} alt="" className="fitur-icon" />
+                                    <MdAutoAwesome className="icons" />
                                 </div>
                                 <div className="fitur-name">Ucapan & Do'a</div>
                             </div>
@@ -55,7 +55,7 @@ function Fitur() {
                         <SwiperSlide>
                             <div className="fitur-card">
                                 <div className="fitur-card-img">
-                                    <img src={navIcon} alt="" className="fitur-icon" />
+                                    <FaMapMarkerAlt className="icons" />
                                 </div>
                                 <div className="fitur-name">Navigasi Lokasi</div>
                             </div>
@@ -63,7 +63,61 @@ function Fitur() {
                         <SwiperSlide>
                             <div className="fitur-card">
                                 <div className="fitur-card-img">
-                                    <img src={giftIcon} alt="" className="fitur-icon" />
+                                    <BsGiftFill className="icons" />
+                                </div>
+                                <div className="fitur-name">Amplop Online</div>
+                            </div>
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
+                <div className="fitur-list small">
+                    <Swiper
+                        modules={[Autoplay]}
+                        autoplay={true}
+                        loop={true}
+                        centeredSlides={false}
+                        slidesPerView={1.3}
+                        spaceBetween={30}
+                        speed={1000}
+                        onSlideChange={() => console.log('slide change')}
+                        onSwiper={(swiper) => console.log(swiper)}
+                    >
+                        <SwiperSlide>
+                            <div className="fitur-card">
+                                <div className="fitur-card-img">
+                                    <MdAutoAwesome className="icons" />
+                                </div>
+                                <div className="fitur-name">Custom Domain</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="fitur-card">
+                                <div className="fitur-card-img">
+                                    <BsMusicNoteBeamed className="icons" />
+                                </div>
+                                <div className="fitur-name">Backsound</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="fitur-card">
+                                <div className="fitur-card-img">
+                                    <MdAutoAwesome className="icons" />
+                                </div>
+                                <div className="fitur-name">Ucapan & Do'a</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="fitur-card">
+                                <div className="fitur-card-img">
+                                    <FaMapMarkerAlt className="icons" />
+                                </div>
+                                <div className="fitur-name">Navigasi Lokasi</div>
+                            </div>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <div className="fitur-card">
+                                <div className="fitur-card-img">
+                                    <BsGiftFill className="icons" />
                                 </div>
                                 <div className="fitur-name">Amplop Online</div>
                             </div>

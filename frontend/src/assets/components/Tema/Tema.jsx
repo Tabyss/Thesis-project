@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./tema.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import 'swiper/css';
 import phoneframe from "../../img/phone.png";
 import template1 from "../../img/Template-1.png";
 import template2 from "../../img/Template-2.png";
@@ -24,6 +26,7 @@ function Tema() {
         <div className="tema">
             <div className="container">
                 <div className="tema-content">
+                    <h1 className="tema-title small">PILIH TEMA</h1>
                     <div className="tema-phone">
                         <div className="swipe">SWIPE UP <img src={arrowup} /></div>
                         <div className="tema-phone-frame">
@@ -38,7 +41,7 @@ function Tema() {
                         </div>
                     </div>
                     <div className="tema-main">
-                        <div className="tema-title">PILIH TEMA</div>
+                        <h1 className="tema-title">PILIH TEMA</h1>
                         <div className="tema-body">
                             <h4>Klik Tema Untuk Mencoba</h4>
                             <div className="tema-choose">
@@ -47,6 +50,21 @@ function Tema() {
                                 <button className={activeIndex === 2 ? 'exampleActive' : ''} onClick={() => handleClick(2)}><img src={example3} className="example" /></button>
                                 <button className={activeIndex === 3 ? 'exampleActive' : ''} onClick={() => handleClick(3)}><img src={example4} className="example" /></button>
                                 <button className={activeIndex === 4 ? 'exampleActive' : ''} onClick={() => handleClick(4)}><img src={example5} className="example" /></button>
+                            </div>
+                            <div className="tema-choose small">
+                                <Swiper
+                                    slidesPerView={2.3}
+                                    spaceBetween={10}
+                                    speed={1000}
+                                    onSlideChange={() => console.log('slide change')}
+                                    onSwiper={(swiper) => console.log(swiper)}
+                                >
+                                    <SwiperSlide><button className={activeIndex === 0 ? 'exampleActive' : ''} onClick={() => handleClick(0)}><img src={example1} className="example" /></button></SwiperSlide>
+                                    <SwiperSlide><button className={activeIndex === 1 ? 'exampleActive' : ''} onClick={() => handleClick(1)}><img src={example2} className="example" /></button></SwiperSlide>
+                                    <SwiperSlide><button className={activeIndex === 2 ? 'exampleActive' : ''} onClick={() => handleClick(2)}><img src={example3} className="example" /></button></SwiperSlide>
+                                    <SwiperSlide><button className={activeIndex === 3 ? 'exampleActive' : ''} onClick={() => handleClick(3)}><img src={example4} className="example" /></button></SwiperSlide>
+                                    <SwiperSlide><button className={activeIndex === 4 ? 'exampleActive' : ''} onClick={() => handleClick(4)}><img src={example5} className="example" /></button></SwiperSlide>
+                                </Swiper>
                             </div>
                         </div>
                     </div>
