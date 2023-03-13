@@ -23,9 +23,21 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
       No_Telp: DataTypes.INTEGER,
-      Password: DataTypes.STRING,
+      Password:{
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate:{
+            notEmpty: true,
+        }
+    },
       Foto_Profile: DataTypes.STRING,
-      Role: DataTypes.STRING,
+      Role:{
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate:{
+            notEmpty: true,
+        }
+    }
     },
     {
       sequelize,
