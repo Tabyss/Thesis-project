@@ -12,13 +12,23 @@
         display: flex;
         justify-content: center;
         gap: 50px;
+        @media screen and (max-width: 760px) {
+            display: block;
+        }
     }
     &-phone {
         position: relative;
-        width: 400px;
+        display: flex;
+        justify-content: center;
+        width: 40%;
+        max-width: 350px;
+        @media screen and (max-width: 760px) {
+            width: 100%;
+        }
         .swipe {
             position: absolute;
             bottom: 10%;
+            left: 0%;
             font-family: var(--font-2);
             font-size: 0.8rem;
             color: var(--color-3);
@@ -34,6 +44,11 @@
         display: flex;
         justify-content: center;
         height: 618px;
+        img {
+            @media screen and (max-width: 760px) {
+                width: 270px;
+            }
+        }
     }
     &-screen-view img {
         width: 276px;
@@ -53,21 +68,36 @@
         overflow-y: auto;
         border-radius: 30px;
         scrollbar-width: none;
+        @media screen and (max-width: 760px) {
+            width: 244px;
+        }
     }
     &-screen-view::-webkit-scrollbar {
         display: none;
     }
     &-main {
-        width: 70%;
+        width: 60%;
+        @media screen and (max-width: 760px) {
+            width: 100%;
+        }
     }
     &-title {
         font-family: var(--font-1);
         font-weight: 700;
-        font-size: 3rem;
         color: var(--color-2);
+        @media screen and (max-width: 760px) {
+            display: none;
+        }
+        &.small {
+            display: none;
+            @media screen and (max-width: 760px) {
+                display: block;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+        }
     }
     &-body {
-        margin-left: 30px;
         margin-top: 70px;
         h4 {
             font-family: var(--font-2);
@@ -83,12 +113,16 @@
         border-radius: 10px;
         width: 110px;
         height: 200px;
+        @media screen and (max-width: 760px) {
+            display: none;
+        }
         .exampleActive {
             border: 3px solid #DA8E04;
             border-radius: 13px;
         }
         button {
-            border: none;
+            border: 3px solid transparent;
+            border-radius: 13px;
             background: transparent;
         }
         button:hover {
@@ -98,6 +132,13 @@
             width: 110px;
             height: 194px;
             border-radius: 10px;
+        }
+        &.small {
+            width: 100%;
+            display: none;
+            @media screen and (max-width: 760px) {
+                display: flex;
+            }
         }
     }
 }

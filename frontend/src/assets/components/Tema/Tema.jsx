@@ -54,7 +54,7 @@ function Tema() {
                             <div className="tema-choose small">
                                 <Swiper
                                     slidesPerView={2.3}
-                                    spaceBetween={10}
+                                    spaceBetween={5}
                                     speed={1000}
                                     onSlideChange={() => console.log('slide change')}
                                     onSwiper={(swiper) => console.log(swiper)}
