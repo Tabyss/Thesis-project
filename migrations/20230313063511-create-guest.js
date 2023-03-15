@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Guests', {
-      id: {
+      ID_Tamu: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Data_Pria', {
-      id: {
+      ID_Pria: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

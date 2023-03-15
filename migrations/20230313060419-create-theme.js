@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Themes', {
-      id: {
+      ID_Tema: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,

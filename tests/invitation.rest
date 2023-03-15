@@ -1,0 +1,33 @@
+POST http://localhost:5000/invite
+Content-Type: application/json
+
+{
+    "Nama_Pria" : "maha",
+    "Nama_Wanita" : "nia",
+    "Tgl_Nikah" : "20 jan 2012",
+    "ID_User" : "742611"
+}
+
+###
+// get all users
+
+GET http://localhost:5000/invite
+
+###
+// update user
+PATCH http://localhost:5000/user/62
+Content-Type: application/json
+
+{
+    "Nama_User": "laisd",
+    "Email": "admn@gmail.com",
+    "No_Telp": "981237236124",
+    "Password": "12345",
+    "confPassword": "12345",
+    "Role": "admin"
+}
+
+
+###
+//delete user
+DELETE http://localhost:5000/invite/5
