@@ -5,7 +5,12 @@ Content-Type: application/json
     "Nama_Pria" : "maha",
     "Nama_Wanita" : "nia",
     "Tgl_Nikah" : "20 jan 2012",
-    "ID_User" : "742611"
+    "Theme": [{
+    "Theme_Undangan": "Theme_Undangan",
+    "Font_Primary": "Font_Primary",
+    "Font_Secondary": "Font_Secondary",
+    "Backsound": "Backsound"
+}]
 }
 
 ###
@@ -30,4 +35,4 @@ Content-Type: application/json
 
 ###
 //delete user
-DELETE http://localhost:5000/invite/5
+DELETE http://localhost:5000/invite/1

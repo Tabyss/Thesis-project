@@ -12,7 +12,7 @@ const Login = async (req, res) => {
   if (!user) return res.status(404).json({ msg: "User not found" });
   const match = await argon2.verify(user.Password, req.body.Password);
   if (!match) return res.status(400).json({ msg: " Wrong Pass" });
-//   req.session.id = user.ID_User;
+  req.session.ID_User = user.ID_User;
   const ID_User = user.ID_User;
   const Nama_User = user.Nama_User;
   const Email = user.Email;

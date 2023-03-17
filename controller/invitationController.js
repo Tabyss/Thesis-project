@@ -1,14 +1,13 @@
 const model = require("../models/index");
 const argon2 = require("argon2");
 
-const { Invitation, User } = model;
+const { Invitation, Theme } = model;
 
 const getInvitation = async (req, res) => {
   try {
     const response = await Invitation.findAll({
       attributes: [
         "ID_Undangan",
-        "ID_Tema",
         "Nama_Pria",
         "Nama_Wanita",
         "Tgl_Nikah",
@@ -17,10 +16,13 @@ const getInvitation = async (req, res) => {
         "ID_Acara",
         "ID_Tamu",
         "ID_User",
+        
       ],
       include: [
         {
-          model: User,
+          model: Theme,
+          attributes: ["Theme_Undangan"],
+          as: "Tema",
         },
       ],
     });
@@ -58,16 +60,12 @@ const getInvitationById = async (req, res) => {
 };
 
 const createInvitation = async (req, res) => {
-  const {
-    Nama_Pria,
-    Nama_Wanita,
-    Tgl_Nikah,
-  } = req.body;
+  const { Nama_Pria, Nama_Wanita, Tgl_Nikah } = req.body;
   try {
     await Invitation.create({
-      Nama_Pria : Nama_Pria,
-      Nama_Wanita : Nama_Wanita,
-      Tgl_Nikah:Tgl_Nikah,
+      Nama_Pria: Nama_Pria,
+      Nama_Wanita: Nama_Wanita,
+      Tgl_Nikah: Tgl_Nikah,
     });
     res.status(201).json({ msg: "register done" });
   } catch (error) {

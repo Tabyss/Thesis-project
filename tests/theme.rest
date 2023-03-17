@@ -1,0 +1,9 @@
+POST http://localhost:5000/theme
+Content-Type: application/json
+
+{
+    "Theme_Undangan": "Theme_Undangan",
+    "Font_Primary": "Font_Primary",
+    "Font_Secondary": "Font_Secondary",
+    "Backsound": "Backsound"
+}

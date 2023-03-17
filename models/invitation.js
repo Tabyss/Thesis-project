@@ -9,7 +9,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.User, { foreignKey: "ID_User" });
+      // Invitation.belongsTo(models.User, {
+      //   as: "User",
+      //   foreignKey: "ID_Undangan",
+      // });
+      Invitation.hasOne(models.Theme,{
+        as: "Tema",
+        foreignKey:"ID_Tema"
+      })
     }
   }
   Invitation.init(
@@ -20,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
       },
       ID_Tema: {
-        type: DataTypes.UUID,
+        type: DataTypes.STRING,
       },
       Nama_Pria: {
         type: DataTypes.STRING,
