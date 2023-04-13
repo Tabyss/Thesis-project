@@ -1,19 +1,19 @@
-const express = require('express')
-const {
+import express from "express";
+
+import {
   getInvitation,
   getInvitationById,
   createInvitation,
-  updateUsers,
+  updateInvitation,
   deleteInvitation,
-} = require("../controller/invitationController");
+} from "../controllers/invitationController.js";
 
 const router = express.Router();
 
+router.get("/invite", getInvitation);
+router.get("/invite/:id", getInvitationById);
+router.post("/invite", createInvitation);
+router.patch("/invite/:id", updateInvitation);
+router.delete("/invite/:id", deleteInvitation);
 
-router.get("/", getInvitation);
-router.get("/:id", getInvitationById);
-router.post("/", createInvitation);
-// router.patch("/:id", updateUsers);
-router.delete("/:id", deleteInvitation);
-
-module.exports = router
+export default router;

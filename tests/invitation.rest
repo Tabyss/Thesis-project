@@ -2,34 +2,32 @@ POST http://localhost:5000/invite
 Content-Type: application/json
 
 {
-    "Nama_Pria" : "maha",
-    "Nama_Wanita" : "nia",
-    "Tgl_Nikah" : "20 jan 2012",
-    "Theme": [{
-    "Theme_Undangan": "Theme_Undangan",
-    "Font_Primary": "Font_Primary",
-    "Font_Secondary": "Font_Secondary",
-    "Backsound": "Backsound"
-}]
+    "name_pria": "kamu",
+    "name_wanita": "aku",
+    "tgl_nikah": "20-04-2002"
 }
+
 
 ###
 // get all users
 
 GET http://localhost:5000/invite
 
+
+###
+// get users
+
+GET http://localhost:5000/invite/2
+
 ###
 // update user
-PATCH http://localhost:5000/user/62
+PATCH http://localhost:5000/invite/1
 Content-Type: application/json
 
 {
-    "Nama_User": "laisd",
-    "Email": "admn@gmail.com",
-    "No_Telp": "981237236124",
-    "Password": "12345",
-    "confPassword": "12345",
-    "Role": "admin"
+    "name_pria": "aku",
+    "name_wanita": "kamu",
+    "tgl_nikah": "20-04-2002"
 }
 
 

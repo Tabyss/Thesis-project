@@ -1,0 +1,36 @@
+###
+GET http://localhost:5000/tamu
+
+
+###
+GET http://localhost:5000/tamu/1
+
+
+###
+POST  http://localhost:5000/tamu
+Content-Type: application/json
+
+{
+    "name": "biru",
+    "no_telp": 98217419821,
+    "alamat": "Pujokusuman",
+    "qrcode": "938113",
+    "status": true,
+    "id_undangan": 2
+}
+
+
+###
+PATCH http://localhost:5000/tamu/0aa5a829-7a91-475d-9430-2f836f468881
+Content-Type: application/json
+
+{
+    "name": "masuk lah",
+    "no_telp": 98217419821,
+    "alamat": "Pujokusuman",
+    "qrcode": "938113",
+    "status": false
+}
+
+###
+DELETE  http://localhost:5000/tamu/49ce1713-d2bc-4124-bca8-f37fc0ca2d23
