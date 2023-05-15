@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
-import Content1 from "../../img/logo.png";
-import Content2 from "../../img/content-1.png";
+import Content1 from "../../../img/logo.png";
+import Content2 from "../../../img/content-1.png";
 import "./landing.scss";
 
 function Navbar() {

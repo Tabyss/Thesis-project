@@ -3,7 +3,7 @@ import "./review.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import 'swiper/css';
-import Profile from "../../img/profile.png"
+import Profile from "../../../img/profile.png"
 
 function Review() {
     return (

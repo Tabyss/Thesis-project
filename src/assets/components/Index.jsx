@@ -1,10 +1,11 @@
 import React from "react";
-import Footer from "./footer/Footer";
-import Landing from "./Landing/Landing";
-import Fitur from "./Fitur/Fitur";
-import Tema from "./Tema/Tema";
-import Review from "./Review/Review";
-import Package from "./package/Package";
+import Landing from "./Layout/Landing/Landing";
+import Fitur from "./Layout/Fitur/Fitur";
+import Tema from "./Layout/Tema/Tema";
+import Package from "./Layout/Package/Package";
+import Review from "./Layout/Review/Review";
+import Footer from "./Layout/Footer/Footer";
+
 
 function Index() {
   return (

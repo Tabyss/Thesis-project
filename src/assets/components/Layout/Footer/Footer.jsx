@@ -1,6 +1,6 @@
 import React from "react";
 import "./footer.scss";
-import Content1 from "../../img/logo.png";
+import Content1 from "../../../img/logo.png";
 import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 
 function Footer() {
