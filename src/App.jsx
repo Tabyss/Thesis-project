@@ -2,15 +2,17 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Index from "./assets/components/Index";
-import Login from "./assets/components/login/login";
-import SignUp from "./assets/components/login/SignUp";
+import SignIn from "./assets/components/Middle/SignIn";
+import SignUp from "./assets/components/middle/SignUp";
+import Dashboard from "./assets/components/BackUI/Elements/Dashborad"
 
 function Link() {
   return (
     <Routes>
       <Route path="/" element={<Index />} />
-      <Route path="login" element={<Login />} />
-      <Route path="signup" element={<SignUp />} />
+      <Route path="Sign-In" element={<SignIn />} />
+      <Route path="Sign-Up" element={<SignUp />} />
+      <Route path="Dashboard" element={<Dashboard />} />
     </Routes>
   );
 }

@@ -38,12 +38,12 @@ function Navbar() {
             <li>customers</li>
           </div>
           <div className="nav-link-log">
-            <NavLink to="/login" className="nav-link-log-in">
+            <NavLink to="/Sign-In" className="nav-link-log-in">
               Sign In
             </NavLink>
-            <a href="" className="nav-link-log-up">
-              Sign Up
-            </a>
+            <NavLink to="/Sign-Up" className="nav-link-log-up">
+              Sign In
+            </NavLink>
           </div>
         </div>
       </div>

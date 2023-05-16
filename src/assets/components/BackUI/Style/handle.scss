@@ -1,0 +1,21 @@
+@mixin input($color, $range) {
+  padding: $range ($range + 4);
+  margin: $range 0;
+  border: 1px solid var($color);
+  border-radius: ($range + 5px);
+  color: var($color);
+  font-size: 1em;
+  &:focus {
+    outline: 2px solid var(--c-4);
+  }
+  &::placeholder {
+    opacity: 0.5;
+    color: var($color);
+  }
+}
+
+@mixin card($range, $border) {
+  padding: $range;
+  border-radius: $border;
+  box-shadow: 0px 20px 40px rgba(126, 181, 166, 0.3);
+}
