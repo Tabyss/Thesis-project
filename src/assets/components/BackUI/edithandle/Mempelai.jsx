@@ -14,81 +14,81 @@ function Mempelai() {
               <p>JPG, GIF or PNG. Max size of 800K</p>
             </div>
           </div>
-          <div className="mempelai-form-pria">
+          <div className="mempelai-form-keluarga">
             <h2>mempelai pria</h2>
-            <div className="mempelai-form-pria-upload">
+            <div className="mempelai-form-keluarga-upload">
               <h3>upload foto pria</h3>
               <p>JPG, GIF or PNG. Max size of 800K</p>
             </div>
-            <div className="mempelai-form-pria-data">
-              <div className="mempelai-form-pria-data-pribadi">
+            <div className="mempelai-form-keluarga-data">
+              <div className="mempelai-form-keluarga-data-pribadi">
                 <p>Nama panggilan pria</p>
                 <input type="text" placeholder="Hanan" />
               </div>
-              <div className="mempelai-form-pria-data-pribadi">
+              <div className="mempelai-form-keluarga-data-pribadi">
                 <p>Nama lengkap pria</p>
                 <input type="text" placeholder="Hanan Ataki S.Kom" />
               </div>
-              <div className="mempelai-form-pria-data-pribadi">
+              <div className="mempelai-form-keluarga-data-pribadi">
                 <p>Nama Ayah</p>
                 <input type="text" placeholder="Bambang Rusdi" />
               </div>
-              <div className="mempelai-form-pria-data-pribadi">
+              <div className="mempelai-form-keluarga-data-pribadi">
                 <p>Nama Ibu</p>
                 <input type="text" placeholder="Yuni Ningsih" />
               </div>
             </div>
-            <div className="mempelai-form-pria-sosmed">
+            <div className="mempelai-form-keluarga-sosmed">
               <p>Sosial Media</p>
-              <div className="mempelai-form-pria-sosmed-link">
+              <div className="mempelai-form-keluarga-sosmed-link">
                 <BsFacebook className="icon" />
                 <input type="url" />
               </div>
-              <div className="mempelai-form-pria-sosmed-link">
+              <div className="mempelai-form-keluarga-sosmed-link">
                 <BsInstagram className="icon" />
                 <input type="url" />
               </div>
-              <div className="mempelai-form-pria-sosmed-link">
+              <div className="mempelai-form-keluarga-sosmed-link">
                 <BsTwitter className="icon" />
                 <input type="url" />
               </div>
             </div>
           </div>
-          <div className="mempelai-form-wanita">
+          <div className="mempelai-form-keluarga">
             <h2>mempelai wanita</h2>
-            <div className="mempelai-form-wanita-upload">
+            <div className="mempelai-form-keluarga-upload">
               <h3>upload foto wanita</h3>
               <p>JPG, GIF or PNG. Max size of 800K</p>
             </div>
-            <div className="mempelai-form-wanita-data">
-              <div className="mempelai-form-wanita-data-pribadi">
+            <div className="mempelai-form-keluarga-data">
+              <div className="mempelai-form-keluarga-data-pribadi">
                 <p>Nama panggilan wanita</p>
                 <input type="text" placeholder="Hanan" />
               </div>
-              <div className="mempelai-form-wanita-data-pribadi">
+              <div className="mempelai-form-keluarga-data-pribadi">
                 <p>Nama lengkap wanita</p>
                 <input type="text" placeholder="Hanan Ataki S.Kom" />
               </div>
-              <div className="mempelai-form-wanita-data-pribadi">
+              <div className="mempelai-form-keluarga-data-pribadi">
                 <p>Nama Ayah</p>
                 <input type="text" placeholder="Bambang Rusdi" />
               </div>
-              <div className="mempelai-form-wanita-data-pribadi">
+              <div className="mempelai-form-keluarga-data-pribadi">
                 <p>Nama Ibu</p>
                 <input type="text" placeholder="Yuni Ningsih" />
               </div>
             </div>
-            <div className="mempelai-form-wanita-sosmed">
+            <div className="mempelai-form-keluarga-sosmed">
               <p>Sosial Media</p>
-              <div className="mempelai-form-wanita-sosmed-link">
+              <div className="mempelai-form-keluarga-sosmed-link">
                 <BsFacebook className="icon" />
                 <input type="url" />
               </div>
-              <div className="mempelai-form-wanita-sosmed-link">
+              <div className="mempelai-form-keluarga-sosmed-link">
                 <BsInstagram className="icon" />
                 <input type="url" />
               </div>
-              <div className="mempelai-form-wanita-sosmed-link">
+              <div className="mempelai-form-keluarga-sosmed-link">
                 <BsTwitter className="icon" />
                 <input type="url" />
               </div>

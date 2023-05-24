@@ -1,87 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
+import { tawaran } from "../../../../PaketHarga";
 
-const Package = [
+const Payline = [
   {
     id: 1,
-    name: "Bronze",
-    prize: 300000,
-    discount: 60,
-    feature: [
-      {
-        item: "Unlimited Acara",
-      },
-      {
-        item: "Amplop Digital",
-      },
-      {
-        item: "Unlimited Ucapan",
-      },
-      {
-        item: "Share Whatsapp",
-      },
-      {
-        item: "Add To Calender",
-      },
-      {
-        item: "Pilihan Template",
-      },
-    ],
+    path: "Tambah Paket",
   },
   {
     id: 2,
-    name: "Bronze",
-    prize: 300000,
-    discount: 60,
-    feature: [
-      {
-        item: "Unlimited Acara",
-      },
-      {
-        item: "Amplop Digital",
-      },
-      {
-        item: "Unlimited Ucapan",
-      },
-      {
-        item: "Share Whatsapp",
-      },
-      {
-        item: "Add To Calender",
-      },
-      {
-        item: "Pilihan Template",
-      },
-    ],
+    path: "Pembayaran",
   },
   {
-    id: 2,
-    name: "Bronze",
-    prize: 300000,
-    discount: 60,
-    feature: [
-      {
-        item: "Unlimited Acara",
-      },
-      {
-        item: "Amplop Digital",
-      },
-      {
-        item: "Unlimited Ucapan",
-      },
-      {
-        item: "Share Whatsapp",
-      },
-      {
-        item: "Add To Calender",
-      },
-      {
-        item: "Pilihan Template",
-      },
-    ],
+    id: 3,
+    path: "Selesai",
   },
 ];
 
 function CreateUndangan() {
+  const [getId, setGetId] = useState("1");
+  const handleLine = (e) => {
+    setGetId(e.target.id);
+    console.log(getId);
+  };
   return (
     <div className="create">
       <div className="create-contain">
@@ -89,7 +29,7 @@ function CreateUndangan() {
           <h1>1. pilih paket undangan</h1>
           <h5>silahkan pilih paket sesuai fitur yang ada</h5>
           <div className="create-contain-card">
-            {Package.map((pack, i) => (
+            {tawaran.map((pack, i) => (
               <div className="create-contain-card-option" key={i}>
                 <input
                   className="radio-button"
@@ -98,15 +38,15 @@ function CreateUndangan() {
                   value={pack.id}
                 />
                 <div className="radio-value">
-                  <h2>{pack.name}</h2>
-                  <div className="disc">
-                    <p>Rp {pack.prize}</p>
-                    <h4>Diskon {pack.discount}%</h4>
+                  <h2>{pack.title}</h2>
+                  <div className="radio-disc">
+                    <p>Rp {pack.awal}</p>
+                    <h4>Diskon {pack.disc}</h4>
                   </div>
-                  <h3>Rp. {pack.prize - pack.prize / pack.discount}</h3>
-                  <div className="fitur">
-                    {pack.feature.map((fitur) => (
-                      <li>{fitur.item}</li>
+                  <h3>{pack.akhir}</h3>
+                  <div className="radio-fitur">
+                    {pack.fitur?.map((fitur) => (
+                      <li>{fitur}</li>
                     ))}
                   </div>
                 </div>
@@ -146,45 +86,43 @@ function CreateUndangan() {
         </form>
       </div>
       <div className="create-payment">
-        <div className="create-payment-timeline">
-          <div className="create-payment-timeline-dot">
-            <p>Tambah Paket</p>
-            <div className="create-payment-timeline-dot-btn">
-              <span></span>
-            </div>
-          </div>
-          <div className="create-payment-timeline-dot">
-            <p>Pembayaran</p>
-            <div className="create-payment-timeline-dot-btn">
-              <span></span>
-            </div>
-          </div>
-          <div className="create-payment-timeline-dot">
-            <p>Selesai</p>
-            <div className="create-payment-timeline-dot-btn">
-              <span></span>
-            </div>
-          </div>
-          <span className="line"></span>
+        <div className="create-payment-item">
+          <ul className="create-payment-item-btn">
+            {Payline.map((line, index) => (
+              <li
+                key={line.id}
+                onClick={handleLine}
+                id={line.id}
+                className={getId == line.id ? "active" : null}
+              >
+                <p onClick={handleLine} id={line.id}>
+                  {index + 1}
+                </p>
+                {line.path}
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="create-payment-pay">
-          <p>Paket Bronze</p>
-          <p>Rp 200000</p>
+          <div className="create-payment-pay-item">
+            <p>Paket Bronze</p>
+            <p>Rp 200000</p>
+          </div>
+          <div className="create-payment-pay-item">
+            <p>discount</p>
+            <p>Rp 200000</p>
+          </div>
+          <span className="create-payment-pay-line"></span>
+          <div className="create-payment-pay-total">
+            <p>Total</p>
+            <h2>Rp 123039</h2>
+          </div>
+          <div className="create-payment-pay-kode">
+            <p>Kode Referral</p>
+            <input type="text" className="inputan" placeholder="913813029" />
+          </div>
+          <button className="create-payment-pay-button">Buat Undangan</button>
         </div>
-        <div className="create-payment-pay">
-          <p>Paket Bronze</p>
-          <p>Rp 200000</p>
-        </div>
-        <span className="create-payment-line"></span>
-        <div className="create-payment-total">
-          <p>Total</p>
-          <h2>Rp 123039</h2>
-        </div>
-        <div className="create-payment-kode">
-          <p>Kode Referral</p>
-          <input type="text" className="inputan" placeholder="913813029" />
-        </div>
-        <button className="create-payment-button">Lanjutkan</button>
       </div>
     </div>
   );

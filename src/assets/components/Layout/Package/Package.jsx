@@ -1,6 +1,6 @@
 import React from "react";
 import "./package.scss";
-import { tawaran } from "./list";
+import { tawaran } from "../../../../PaketHarga";
 import { BsCheckLg } from "react-icons/bs";
 
 function Package() {

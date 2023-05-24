@@ -4,7 +4,8 @@ import "./App.scss";
 import Index from "./assets/components/Index";
 import SignIn from "./assets/components/Middle/SignIn";
 import SignUp from "./assets/components/middle/SignUp";
-import Dashboard from "./assets/components/BackUI/Elements/Dashborad"
+import Dashboard from "./assets/components/BackUI/Elements/Dashborad";
+import Inlink from "./assets/components/BackUI/Inlink";
 
 function Link() {
   return (
@@ -21,6 +22,7 @@ function App() {
   return (
     <>
       <Link />
+      <Inlink />
     </>
   );
 }

@@ -4,6 +4,9 @@ import { BsPlusCircle } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import "../Style/App.scss";
+import { useNavigate, Link } from "react-router-dom";
+
+// const navigate = useNavigate()
 
 function Dashborad() {
   return (
@@ -25,9 +28,9 @@ function Dashborad() {
         </div>
         <p>10 juni 2020</p>
       </div>
-      <div className="dash-plus">
+      <Link to={"/create"} className="dash-plus">
         <BsPlusCircle color="#7eb5a6" />
-      </div>
+      </Link>
       <p className="dash-info">
         Diharapkan untuk membayar sebelum berakhir masa aktif. Apabila ingin
         memperpanjang masa aktif hubungi Admin.

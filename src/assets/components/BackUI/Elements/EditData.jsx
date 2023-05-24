@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Tema from "./edithandle/tema";
-import Mempelai from "./edithandle/Mempelai";
-import Acara from "./edithandle/Acara";
+import Tema from "../edithandle/tema";
+import Mempelai from "../edithandle/Mempelai";
+import Acara from "../edithandle/Acara";
 
 const timeline = [
   {
@@ -26,11 +26,10 @@ const timeline = [
   },
 ];
 function EditData() {
-  const [open, setOpen] = useState(false);
   const [getId, setGetId] = useState("1");
   const handleLine = (e) => {
     setGetId(e.target.id);
-    console.log(getId)
+    console.log(getId);
   };
 
   return (
@@ -43,8 +42,11 @@ function EditData() {
                 key={line.id}
                 onClick={handleLine}
                 id={line.id}
+                className={getId == line.id ? "active" : null}
               >
-                <p className={getId == line.id ? "active" : null}>{index + 1}</p>
+                <p onClick={handleLine} id={line.id}>
+                  {index + 1}
+                </p>
                 {line.dot}
               </li>
             ))}
