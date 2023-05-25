@@ -828,19 +828,19 @@
     h1 {
       font-size: 1.4em;
     }
-    h2{
+    h2 {
       font-size: 1.2em;
     }
-    &-form{
-      &-keluarga{
-        &-data{
+    &-form {
+      &-keluarga {
+        &-data {
           margin: 0;
           grid-template-columns: none;
-          &-pribadi{
+          &-pribadi {
             margin: 5px 0;
           }
         }
-        &-sosmed{
+        &-sosmed {
           margin: 0;
         }
       }
@@ -886,6 +886,14 @@
           box-shadow: 0px 5px 10px rgba(126, 181, 166, 0.3);
           border: 1px solid var(--color-1);
           border-radius: 15px;
+          .delete {
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            color: var(--color-6);
+            background-color: var(--color-1);
+            border: none;
+          }
           td {
             text-align: center;
             color: var(--color-2);
@@ -938,6 +946,133 @@
               }
             }
           }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 1.4em;
+    }
+    &-contain {
+      &res {
+        overflow: hidden;
+        overflow-x: scroll;
+      }
+      &-table {
+      }
+      &-crud {
+        &-button {
+          .tambah-acara {
+            margin: 0;
+            padding: 15px;
+            &-form {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.insight {
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  gap: 30px;
+  &-menu {
+    @include card(40px, 15px);
+    h1 {
+      margin-bottom: 20px;
+      font-family: var(--font-1);
+      font-size: 1.6rem;
+      color: var(--color-2);
+    }
+    &-main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      &-card {
+        display: flex;
+        flex-direction: column;
+        width: 32%;
+        padding: 10px;
+        border-radius: 10px;
+        gap: 10px;
+        cursor: pointer;
+        .value {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-family: var(--font-1);
+          h2 {
+            font-size: 2em;
+          }
+        }
+        a {
+          display: flex;
+          width: 100%;
+          justify-content: end;
+          font-size: 0.8em;
+        }
+
+        &:nth-child(odd) {
+          background-color: var(--color-4);
+          color: var(--color-6);
+          .value {
+            color: var(--color-2);
+          }
+        }
+        &:nth-child(even) {
+          background-color: var(--color-5);
+          color: var(--color-2);
+          .value {
+            color: var(--color-4);
+          }
+        }
+      }
+    }
+  }
+  &-add{
+    display: flex;
+    gap: 20px;
+    &-scan{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 100px;
+      font-size: 2em;
+      border-radius: 15px;
+      background-color: var(--color-4);
+      cursor: pointer;
+    }
+    &-done{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      border-radius: 15px;
+      @include card(30px, 15px);
+      button{
+        width: 100%;
+        border: none;
+        border-radius: 10px;
+        background-color: var(--color-1);
+        color: var(--color-6);
+        cursor: pointer;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    &-menu {
+      h1 {
+        font-size: 1.4em;
+      }
+      &-main {
+        &-card {
+          width: 100%;
         }
       }
     }

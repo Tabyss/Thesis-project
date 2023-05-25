@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Tema from "../edithandle/tema";
 import Mempelai from "../edithandle/Mempelai";
 import Acara from "../edithandle/Acara";
+import Insight from "../edithandle/Insight";
 
 const timeline = [
   {
@@ -22,7 +23,7 @@ const timeline = [
   {
     id: 4,
     dot: "Insight",
-    direct: "oy",
+    direct: <Insight/>,
   },
 ];
 function EditData() {

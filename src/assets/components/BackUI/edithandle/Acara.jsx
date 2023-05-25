@@ -46,34 +46,36 @@ function Acara() {
     <div className="acara">
       <div className="acara-contain">
         <h1>acara</h1>
-        <table className="acara-contain-table">
-          <thead className="acara-contain-table-head">
-            <tr className="row">
-              <th>Acara</th>
-              <th>Waktu</th>
-              <th>Tempat</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody className="acara-contain-table-body">
-            <tr className="row">
-              <td>akad</td>
-              <td>16.00</td>
-              <td>jalan in aja dulu</td>
-              <td>
-                <button>delete</button>
-              </td>
-            </tr>
-            <tr className="row">
-              <td>akad</td>
-              <td>16.00</td>
-              <td>jalan in aja dulu</td>
-              <td>
-                <button>delete</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div className="acara-containres">
+          <table className="acara-contain-table">
+            <thead className="acara-contain-table-head">
+              <tr className="row">
+                <th>Acara</th>
+                <th>Waktu</th>
+                <th>Tempat</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody className="acara-contain-table-body">
+              <tr className="row">
+                <td>akad</td>
+                <td>16.00</td>
+                <td>jalan in aja dulu</td>
+                <td>
+                  <button className="delete">delete</button>
+                </td>
+              </tr>
+              <tr className="row">
+                <td>akad</td>
+                <td>16.00</td>
+                <td>jalan in aja dulu</td>
+                <td>
+                  <button className="delete">delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div className="acara-contain-crud">
           <div className="acara-contain-crud-button">
             <button
