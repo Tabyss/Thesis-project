@@ -1,0 +1,36 @@
+POST http://localhost:5000/invite
+Content-Type: application/json
+
+{
+    "name_pria": "kamu",
+    "name_wanita": "aku",
+    "tgl_nikah": "20-04-2002"
+}
+
+
+###
+// get all users
+
+GET http://localhost:5000/invite
+
+
+###
+// get users
+
+GET http://localhost:5000/invite/1
+
+###
+// update user
+PATCH http://localhost:5000/invite/1
+Content-Type: application/json
+
+{
+    "name_pria": "aku",
+    "name_wanita": "kamu",
+    "tgl_nikah": "20-04-2002"
+}
+
+
+###
+//delete user
+DELETE http://localhost:5000/invite/1

@@ -1,25 +1,20 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
-import Index from "./assets/components/Index";
-import Login from "./assets/components/login/login";
-import SignUp from "./assets/components/login/SignUp";
-
-function Link() {
-  return (
-    <Routes>
-      <Route path="/" element={<Index />} />
-      <Route path="login" element={<Login />} />
-      <Route path="signup" element={<SignUp />} />
-    </Routes>
-  );
-}
+import TamuList from "./assets/components/TamuList";
+import ScanTamu from "./assets/components/ScanTamu";
+import Undangan from "./assets/components/Undangan";
 
 function App() {
   return (
-    <>
-      <Link />
-    </>
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TamuList />} />
+          <Route path="/scan" element={<ScanTamu />} />
+          <Route path="/tamu/:id/:id_tamu" element={<Undangan />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

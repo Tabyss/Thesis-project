@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Invitation {
+  id          Int     @id @default(autoincrement())
+  name_pria   String
+  name_wanita String
+  tgl_nikah   String
+  tamu        Guest[]
+  theme       Theme[]
+}
+
+model Guest {
+  id_tamu     String      @id @default(uuid())
+  name        String
+  no_telp     Int
+  alamat      String
+  qrcode      String
+  status      Boolean     @default(false)
+  w_hadir     DateTime    @default(now())
+  id_undangan Int?
+  invite      Invitation? @relation(fields: [id_undangan], references: [id])
+  updateAt    DateTime    @updatedAt
+}
+
+model Theme {
+  id_theme        Int     @id @default(autoincrement())
+  font_primary    String
+  font_secondary  String
+  backsound       String
+  id_undangan     Int?
+  invite          Invitation? @relation(fields: [id_undangan], references: [id])
+}
+

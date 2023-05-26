@@ -1,0 +1,54 @@
+POST http://localhost:5000/user
+Content-Type: application/json
+
+{
+    "Nama_User": "kiya",
+    "Email": "admn@gmail.com",
+    "No_Telp": "981237236124",
+    "Password": "123456789",
+    "confPassword": "123456789",
+    "Role": "admin"
+}
+
+###
+// add user
+POST http://localhost:5000/user
+Content-Type: application/json
+
+{
+    "Nama_User": "user",
+    "Email": "user@gmail.com",
+    "No_Telp": "981237236124",
+    "Password": "12345",
+    "confPassword": "12345",
+    "Role": "user"
+}
+
+###
+// get all users
+
+GET http://localhost:5000/user
+
+###
+// get user
+
+GET http://localhost:5000/user/742611
+
+###
+// update user
+PATCH http://localhost:5000/user/742610
+Content-Type: application/json
+
+{
+    "Nama_User": "laisd",
+    "Email": "admn@gmail.com",
+    "No_Telp": "981237236124",
+    "Password": "12345",
+    "confPassword": "12345",
+    "Role": "admin"
+}
+
+
+###
+//delete user
+DELETE http://localhost:5000/user/1
