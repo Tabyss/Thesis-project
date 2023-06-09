@@ -16,6 +16,9 @@ model Invitation {
   name_wanita String
   tgl_nikah   String
   tamu        Guest[]
+  acara       Event[]
+  pasangan    Couple[]
+  tema        Theme[]
 }
 
 model Guest {
@@ -31,4 +34,66 @@ model Guest {
   updateAt    DateTime    @updatedAt
 }
 
+model Theme {
+  id_tema         Int     @id @default(autoincrement())
+  tema_undangan   String
+  font_primary    String 
+  font_secondary  String
+  backsound       String
+  id_undangan     Int?
+  invite          Invitation? @relation(fields: [id_undangan], references: [id])
+}
 
+model Event {
+  id_acara      Int     @id @default(autoincrement())
+  nama_acara    String
+  tgl_acara     String
+  jam_mulai     String
+  jam_selesai   String
+  id_undangan   Int?
+  invite        Invitation? @relation(fields: [id_undangan], references: [id])
+}
+
+model Couple {
+  id_pasangan   Int     @id @default(autoincrement())
+  foto_cover    String
+  kutipan       String
+  id_undangan   Int?
+  invite        Invitation? @relation(fields: [id_undangan], references: [id])
+  data_pria     DataPria[]
+  data_wanita   DataWanita[]
+  gallery       Gallery[]
+}
+
+model DataPria {
+  id_pria         Int     @id @default(autoincrement())
+  nama_lengkap    String
+  nama_panggilan  String
+  nama_ayah       String
+  nama_ibu        String
+  instagram       String
+  twitter         String
+  foto_pria       String
+  id_pasangan     Int?
+  couple          Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
+}
+
+model DataWanita {
+  id_wanita       Int     @id @default(autoincrement())
+  nama_lengkap    String
+  nama_panggilan  String
+  nama_ayah       String
+  nama_ibu        String
+  instagram       String
+  twitter         String
+  foto_wanita     String
+  id_pasangan     Int?
+  couple          Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
+}
+
+model Gallery {
+  id_gallery    Int     @id @default(autoincrement())
+  foto          String
+  id_pasangan   Int?
+  couple        Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
+}

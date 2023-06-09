@@ -14,10 +14,13 @@ export const getInvitationById = async (req, res) => {
   try {
     const invite = await prisma.invitation.findUnique({
       where: {
-        id: Number(req.params.id), //-> pakai 'number' soalnya idnya integer
+        id: Number(req.params.id),
       },
       include: {
         tamu: true,
+        acara: true,
+        pasangan: true,
+        tema: true
       },
     });
     res.status(200).json(invite);

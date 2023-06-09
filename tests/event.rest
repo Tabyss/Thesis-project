@@ -1,0 +1,32 @@
+GET http://localhost:5000/event
+
+###
+GET http://localhost:5000/event/1
+
+###
+POST http://localhost:5000/event
+Content-Type: application/json
+
+{
+    "nama_acara" : "abc",
+    "tgl_acara" : "22",
+    "jam_mulai" : "10",
+    "jam_selesai" : "12",
+    "id_undangan": 1
+}
+
+###
+PATCH http://localhost:5000/event/1
+Content-Type: application/json
+
+{
+    "nama_acara" : "abc",
+    "tgl_acara" : "22",
+    "jam_mulai" : "10",
+    "jam_selesai" : "12",
+    "id_undangan": "id_undangan",
+    "id_undangan": 2
+}
+
+###
+DELETE  http://localhost:5000/event/1

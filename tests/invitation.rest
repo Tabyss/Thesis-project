@@ -17,7 +17,7 @@ GET http://localhost:5000/invite
 ###
 // get users
 
-GET http://localhost:5000/invite/2
+GET http://localhost:5000/invite/1
 
 ###
 // update user
