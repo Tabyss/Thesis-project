@@ -1,7 +1,6 @@
 ###
 GET http://localhost:5000/tamu
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4NzAwMDg5MSwiZXhwIjoxNjg3MDAwOTA2fQ.04ZLaS9BWW1UjuWOr1Snj9BroiBe6LwpcmgBpkiOay8
 ###
 GET http://localhost:5000/tamu/1
 

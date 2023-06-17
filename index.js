@@ -1,7 +1,9 @@
 import express from "express";
-import cors from "cors";
+import cors from "cors"; // Agar API dapat diakses dari luar domain
 import dotenv from "dotenv";
-import path from "path";
+import cookieParser from "cookie-parser";
+import AuthRoute from "./routes/authRoute.js";
+import UserRoute from "./routes/userRoute.js";
 import GuestRoute from "./routes/GuestRoute.js";
 import InvitationRoute from "./routes/InvitationRoute.js";
 import EventRoute from "./routes/eventRoute.js";
@@ -14,8 +16,11 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ credentials:true, origin:'http://localhost:5173' })); // credential s= agar client mengirim credentials, origin = domain yang diizinkkan untuk mengakses API (React+Vite)
+app.use(cookieParser());
 app.use(express.json()); //-> agar menerima data dalam bentuk JSON
+app.use(AuthRoute);
+app.use(UserRoute);
 app.use(GuestRoute);
 app.use(InvitationRoute);
 app.use(EventRoute);

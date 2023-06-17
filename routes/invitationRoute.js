@@ -7,13 +7,14 @@ import {
   updateInvitation,
   deleteInvitation,
 } from "../controllers/invitationController.js";
+import { authMiddleware, adminMiddleware } from '../middleware/AuthUser.js';
 
 const router = express.Router();
 
-router.get("/invite", getInvitation);
-router.get("/invite/:id", getInvitationById);
-router.post("/invite", createInvitation);
-router.patch("/invite/:id", updateInvitation);
-router.delete("/invite/:id", deleteInvitation);
+router.get("/invite", authMiddleware, adminMiddleware, getInvitation);
+router.get("/invite/:id", authMiddleware, adminMiddleware, getInvitationById);
+router.post("/invite", authMiddleware, adminMiddleware, createInvitation);
+router.patch("/invite/:id", authMiddleware, adminMiddleware, updateInvitation);
+router.delete("/invite/:id", authMiddleware, adminMiddleware, deleteInvitation);
 
 export default router;

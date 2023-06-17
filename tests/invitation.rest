@@ -1,3 +1,14 @@
+// get all users
+
+GET http://localhost:5000/invite
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4NjkxNDczMiwiZXhwIjoxNjg3MDAxMTMyfQ.GSf9jKGBkejQX3zv-RgNiqvhvOjNxjj1Wlt7wZBpLW8
+
+###
+// get users
+
+GET http://localhost:5000/invite/1
+
+###
 POST http://localhost:5000/invite
 Content-Type: application/json
 
@@ -6,18 +17,6 @@ Content-Type: application/json
     "name_wanita": "aku",
     "tgl_nikah": "20-04-2002"
 }
-
-
-###
-// get all users
-
-GET http://localhost:5000/invite
-
-
-###
-// get users
-
-GET http://localhost:5000/invite/1
 
 ###
 // update user
