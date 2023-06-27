@@ -1,113 +1,93 @@
-const model = require("../models/index");
-const argon2 = require("argon2");
+import { PrismaClient } from "@prisma/client";
+import argon2 from "argon2";
 
-const { User } = model;
+const prisma = new PrismaClient();
 
-const getUsers = async (req, res) => {
+export const getUser = async (req, res) => {
   try {
-    const response = await User.findAll({
-      attributes: ["ID_User", "Nama_User", "Email", "No_Telp", "Role"],
-    });
-    res.status(200).json(response);
+    const user = await prisma.user.findMany();
+    res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 };
 
-const getUsersById = async (req, res) => {
+export const getUserById = async (req, res) => {
   try {
-    const response = await User.findOne({
-      attributes: ["ID_User", "Nama_User", "Email", "No_Telp", "Role"],
-      where: { ID_User: req.param.id },
-    });
-    res.status(200).json(response);
-  } catch (error) {
-    res.status(500).json({ msg: error.message });
-  }
-};
-
-const createUsers = async (req, res) => {
-  const { Nama_User, Email, No_Telp, Password, confPassword, Role } = req.body;
-  if (Password !== confPassword)
-    return res.status(400).json({ msg: "Password can't use" });
-
-  const hashPassword = await argon2.hash(Password);
-  try {
-    await User.create({
-      Nama_User: Nama_User,
-      Email: Email,
-      No_Telp: No_Telp,
-      Password: hashPassword,
-      Role: Role,
-    });
-    res.status(201).json({ msg: "register done" });
-  } catch (error) {
-    res.status(400).json({ msg: error.message });
-  }
-};
-
-const updateUsers = async (req, res) => {
-  const user = await User.findOne({
-    where: {
-      ID_User: req.params.id,
-    },
-  });
-  if (!user) return res.status(404).json({ msg: "User not Found" });
-  const { Nama_User, Email, No_Telp, Password, confPassword, Role } = req.body;
-  let hashPassword;
-  if (Password === "" || Password === null) {
-    hashPassword = user.Password;
-  } else {
-    hashPassword = await argon2.hash(Password);
-  }
-
-  if (Password !== confPassword)
-    return res.status(400).json({ msg: "Password and confirm" });
-  try {
-    await user.update(
-      {
-        Nama_User: Nama_User,
-        Email: Email,
-        No_Telp: No_Telp,
-        Password: hashPassword,
-        Role: Role,
-      },
-      {
-        where: {
-          ID_User: user.id,
-        },
-      }
-    );
-    res.status(200).json({ msg: "update done" });
-  } catch (error) {
-    res.status(400).json({ msg: error.message });
-  }
-};
-
-const deleteUsers = async (req, res) => {
-  const user = await User.findOne({
-    where: {
-      ID_User: req.params.id,
-    },
-  });
-
-  if (!user) return res.status(400).json({ msg: "user not found" });
-  try {
-    await User.destroy({
+    const user = await prisma.user.findUnique({
       where: {
-        ID_User: user.ID_User,
+        id: Number(req.params.id),
       },
     });
-    res.status(200).json({ msg: "delete done" });
+    res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({ msg: error.message });
+    res.status(500).json({ msg: error.message })
   }
-};
+}
 
-module.exports = {
-  getUsers,
-  getUsersById,
-  createUsers,
-  updateUsers,
-  deleteUsers,
+export const createUser = async (req, res) => {
+  try {
+    const { username, email, password, no_telp, role } = req.body;
+
+    // Jika tidak ada nilai role yang dikirim, set default sebagai "user"
+    const userRole = role || "user";
+
+    // Hash password menggunakan Argon2
+    const passwordHash = await argon2.hash(password);
+
+    // Simpan data pengguna ke database
+    const user = await prisma.user.create({
+      data: {
+        username,
+        email,
+        password: passwordHash,
+        no_telp,
+        role: userRole,
+      },
+    });
+
+    res.status(201).json({ message: "Registrasi Berhasil", user });
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+}
+
+export const updateUser = async (req, res) => {
+  try {
+    const { username, email, password, no_telp, role } = req.body;
+    
+    // Jika tidak ada nilai role yang dikirim, set default sebagai "user"
+    const userRole = role || "user";
+
+    // Hash password menggunakan Argon2
+    const passwordHash = await argon2.hash(password);
+    const user = await prisma.user.update({
+      where: {
+        id: Number(req.params.id),
+      },
+      data: {
+        username,
+        email,
+        password: passwordHash,
+        no_telp,
+        role: userRole,
+      },
+    });
+    res.status(201).json({message: "User Berhasil Diupdate", user});
+  } catch (error) {
+    res.status(500).json({message: "Terjadi Kesalahan Saat Mengupdate User", error})
+  }
+}
+
+export const deleteUser = async (req, res) => {
+  try {
+    const user = await prisma.user.delete({
+      where: {
+        id: Number(req.params.id),
+      },
+    });
+    res.status(201).json({message: "User Berhasil Dihapus" ,user });
+  } catch (error) {
+    res.status(500).json({ message: "Terjadi Kesalahan Saat Menghapus User", error });
+  }
 };

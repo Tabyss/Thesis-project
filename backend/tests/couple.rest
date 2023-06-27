@@ -1,0 +1,27 @@
+GET http://localhost:5000/couple
+
+###
+GET http://localhost:5000/couple/1
+
+###
+POST http://localhost:5000/couple
+Content-Type: application/json
+
+{
+    "foto_cover": "abcdef",
+    "kutipan": "abc",
+    "id_undangan": 1
+}
+
+###
+PATCH http://localhost:5000/couple/1
+Content-Type: application/json
+
+{
+    "foto_cover": "abcd",
+    "kutipan": "abcefg",
+    "id_undangan": 2
+}
+
+###
+DELETE  http://localhost:5000/couple/1

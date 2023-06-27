@@ -1,21 +1,28 @@
 ### 
+//login admin
+
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "admin"
+}
+### 
 //login user
 
 POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "Email": "admn@gmail.com",
-    "Password": "123456789"
+    "email": "user@gmail.com",
+    "password": "user"
 }
 
 ###
-// get users
-
-GET http://localhost:5000/me
-
-
-###
-// gelogout all users
+//logout
 
 DELETE  http://localhost:5000/logout
+
+###
+GET http://localhost:5000/token

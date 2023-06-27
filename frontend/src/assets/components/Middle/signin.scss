@@ -1,0 +1,70 @@
+.signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  img {
+    margin: 0 0 40px;
+    object-fit: contain;
+  }
+  &-content {
+    display: flex;
+    margin-top: 10vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &-title {
+      display: flex;
+      margin: 20px 0;
+      width: 100%;
+      color: var(--color-2);
+      font-family: var(--font-1);
+      justify-content: start;
+      align-items: center;
+      .arrowback{
+        font-size: 1.5rem;
+        color: var(--color-2);
+      }
+    }
+    &-value {
+      display: flex;
+      padding: 25px;
+      flex-direction: column;
+      border-radius: 15px;
+      gap: 10px;
+      background-color: white;
+      box-shadow: 0px 30px 60px rgba(126, 181, 166, 0.5);
+      input {
+        padding: 12px 70px 12px 12px;
+        font-size: 1rem;
+        font-family: var(--font-2);
+        border: 2px solid var(--color-2);
+        border-radius: 15px;
+        color: var(--color-2);
+        background-color: none;
+      }
+      &-button {
+        display: flex;
+        margin-top: 10px;
+        justify-content: end;
+        align-items: center;
+        gap: 10px;
+        font-size: 2rem;
+        color: var(--color-4);
+        button {
+          padding: 12px 25px;
+          border: none;
+          border-radius: 10px;
+          color: white;
+          background-color: var(--color-4);
+        }
+      }
+    }
+    &-regis{
+      margin: 1vh;
+      p {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
