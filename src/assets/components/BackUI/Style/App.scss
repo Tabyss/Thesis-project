@@ -36,7 +36,12 @@
           padding: 10px;
           color: white;
           border-radius: 20px;
-          background-color: var(--color-2);
+          &:nth-child(odd){
+            background-color: var(--color-2);
+          }
+          &:nth-child(even){
+            background-color: var(--color-4);
+          }
         }
       }
       &:hover {
@@ -60,6 +65,13 @@
         padding: 0 10px;
         color: var(--color-4);
         border: 1px solid var(--color-4);
+        border-radius: 10px;
+      }
+      & .inactive {
+        display: flex;
+        padding: 0 10px;
+        color: var(--color-1);
+        border: 1px solid var(--color-1);
         border-radius: 10px;
       }
     }

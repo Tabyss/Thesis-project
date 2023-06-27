@@ -3,31 +3,37 @@ import pp from "../../../img/pp-1.png";
 import { BsPlusCircle } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
-import "../Style/App.scss";
 import { useNavigate, Link } from "react-router-dom";
+import { Undangan } from "../../../sample";
+import "../Style/App.scss";
 
 // const navigate = useNavigate()
 
 function Dashborad() {
   return (
     <div className="dash">
-      <div className="dash-card">
-        <div
-          className="dash-card-tumb"
-          // style={{ backgroundImage: "url(" + pp + ")" }}
-        >
-          <div className="dash-card-tumb-icon">
-            <MdEdit className="tumb-icon" />
-            <FaRegEye className="tumb-icon" />
+      {Undangan.map((invite) => (
+        <div className="dash-card" key={invite.id}>
+          <div className="dash-card-tumb">
+            <div className="dash-card-tumb-icon">
+              <Link to="/Create:id">
+                <MdEdit className="tumb-icon" />
+              </Link>
+              <FaRegEye className="tumb-icon" />
+            </div>
+            <img src={pp} />
           </div>
-          <img src={pp} />
+          <div className="dash-card-title">
+            <h2>
+              {invite.nama_pria} - {invite.nama_wanita}
+            </h2>
+            <p className={invite.status ? "active" : "inactive"}>
+              {invite.status ? "active" : "inactive"}
+            </p>
+          </div>
+          <p>{invite.tgl_nikah}</p>
         </div>
-        <div className="dash-card-title">
-          <h2>Adam - Hawa</h2>
-          <p className="active">active</p>
-        </div>
-        <p>10 juni 2020</p>
-      </div>
+      ))}
       <Link to={"/create"} className="dash-plus">
         <BsPlusCircle color="#7eb5a6" />
       </Link>
