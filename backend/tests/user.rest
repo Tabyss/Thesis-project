@@ -1,28 +1,33 @@
+POST http://localhost:5000/user
+Content-Type: application/json
+
+{
+    "Nama_User": "kiya",
+    "Email": "admn@gmail.com",
+    "No_Telp": "981237236124",
+    "Password": "123456789",
+    "confPassword": "123456789",
+    "Role": "admin"
+}
+
+###
+// add user
+POST http://localhost:5000/user
+Content-Type: application/json
+
+{
+    "Nama_User": "user",
+    "Email": "user@gmail.com",
+    "No_Telp": "981237236124",
+    "Password": "12345",
+    "confPassword": "12345",
+    "Role": "user"
+}
+
+###
 // get all users
-GET http://localhost:5000/user/1
 
-###
-POST http://localhost:5000/user
-Content-Type: application/json
-
-{
-    "username": "admin",
-    "email": "admin@gmail.com",
-    "password": "admin",
-    "no_telp": "234567",
-    "role": "admin"
-}
-
-###
-POST http://localhost:5000/user
-Content-Type: application/json
-
-{
-    "username": "user",
-    "email": "user@gmail.com",
-    "password": "user",
-    "no_telp": "234567"
-}
+GET http://localhost:5000/user
 
 ###
 // get user

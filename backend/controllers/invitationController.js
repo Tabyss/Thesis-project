@@ -14,13 +14,10 @@ export const getInvitationById = async (req, res) => {
   try {
     const invite = await prisma.invitation.findUnique({
       where: {
-        id: Number(req.params.id),
+        id: Number(req.params.id), //-> pakai 'number' soalnya idnya integer
       },
       include: {
         tamu: true,
-        acara: true,
-        pasangan: true,
-        tema: true
       },
     });
     res.status(200).json(invite);
@@ -28,30 +25,23 @@ export const getInvitationById = async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 };
-
 export const createInvitation = async (req, res) => {
-  const { nama_pria, nama_wanita, tgl_nikah, url_undangan } = req.body;
-  // const userId = req.user.id; // Mendapatkan ID pengguna dari informasi pengguna yang masuk
-  
+  const { name_pria, name_wanita, tgl_nikah } = req.body;
   try {
     const invite = await prisma.invitation.create({
       data: {
-        nama_pria: nama_pria,
-        nama_wanita: nama_wanita,
+        name_pria: name_pria,
+        name_wanita: name_wanita,
         tgl_nikah: tgl_nikah,
-        url_undangan: url_undangan,
-        // user: { connect: { id: userId } }, // Menghubungkan Invitation dengan pengguna berdasarkan ID pengguna
       },
     });
-    
     res.status(201).json(invite);
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
 };
-
 export const updateInvitation = async (req, res) => {
-  const { name_pria, name_wanita, tgl_nikah, url } = req.body;
+  const { name_pria, name_wanita, tgl_nikah } = req.body;
   try {
     const invite = await prisma.invitation.update({
       where: {
@@ -61,7 +51,6 @@ export const updateInvitation = async (req, res) => {
         name_pria: name_pria,
         name_wanita: name_wanita,
         tgl_nikah: tgl_nikah,
-        url: url,
       },
     });
     res.status(201).json(invite);

@@ -7,7 +7,6 @@ import {
   updateInvitation,
   deleteInvitation,
 } from "../controllers/invitationController.js";
-// import { authMiddleware } from '../middleware/AuthUser.js';
 
 const router = express.Router();
 

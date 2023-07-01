@@ -24,15 +24,15 @@ export const getGuestById = async (req, res) => {
   }
 };
 export const createGuest = async (req, res) => {
-  const { nama_tamu, no_telp, alamat, qrcode, id_undangan } = req.body;
+  const { name, no_telp, alamat, qrcode, id_undangan } = req.body;
   try {
     const guest = await prisma.guest.create({
       data: {
-        nama_tamu: nama_tamu,
+        name: name,
         no_telp: no_telp,
         alamat: alamat,
         qrcode: qrcode,
-        id_undangan: id_undangan
+        // id_undangan: id_undangan
       },
     });
     res.status(201).json(guest);
@@ -41,19 +41,18 @@ export const createGuest = async (req, res) => {
   }
 };
 export const updateGuest = async (req, res) => {
-  const { nama_tamu, no_telp, alamat, qrcode, status, id_undangan } = req.body;
+  const { name, no_telp, alamat, qrcode, status } = req.body;
   try {
     const guest = await prisma.guest.update({
       where: {
         id_tamu: req.params.id,
       },
       data: {
-        nama_tamu: nama_tamu,
+        name: name,
         no_telp: no_telp,
         alamat: alamat,
         qrcode: qrcode,
         status: status,
-        id_undangan: id_undangan
       },
     });
     res.status(201).json(guest);
@@ -73,6 +72,7 @@ export const deleteGuest = async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 };
+
 
 export const getGuestByIdTamu = async (req, res) => {
   const { id, id_tamu } = req.params;

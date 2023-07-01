@@ -10,110 +10,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id            Int     @id @default(autoincrement())
-  username      String
-  email         String  @unique
-  no_telp       String
-  password      String
-  foto_profile  String?
-  role          String
-  refresh_token String?
-  invite        Invitation[]
-}
-
 model Invitation {
-  id            Int     @id @default(autoincrement())
-  nama_pria     String
-  nama_wanita   String
-  tgl_nikah     String
-  url_undangan  String
-  id_user       Int?
-  user          User?   @relation(fields: [id_user], references: [id])
-  tamu          Guest[]
-  acara         Event[]
-  pasangan      Couple[]
-  tema          Theme[]
+  id          Int     @id @default(autoincrement())
+  name_pria   String
+  name_wanita String
+  tgl_nikah   String
+  tamu        Guest[]
+  theme       Theme[]
 }
 
 model Guest {
   id_tamu     String      @id @default(uuid())
-  nama_tamu   String
-  alamat      String
-  status      Boolean     @default(false)
+  name        String
   no_telp     Int
-  qrcode      String?
+  alamat      String
+  qrcode      String
+  status      Boolean     @default(false)
   w_hadir     DateTime    @default(now())
-  updateAt    DateTime    @updatedAt
   id_undangan Int?
   invite      Invitation? @relation(fields: [id_undangan], references: [id])
+  updateAt    DateTime    @updatedAt
 }
 
 model Theme {
-  id_tema         Int     @id @default(autoincrement())
-  tema_undangan   String
-  font_primary    String 
+  id_theme        Int     @id @default(autoincrement())
+  font_primary    String
   font_secondary  String
   backsound       String
   id_undangan     Int?
   invite          Invitation? @relation(fields: [id_undangan], references: [id])
 }
 
-model Event {
-  id_acara      Int     @id @default(autoincrement())
-  nama_acara    String
-  tgl_acara     String
-  jam_mulai     String
-  jam_selesai   String
-  alamat        String
-  link_maps     String
-  id_undangan   Int?
-  invite        Invitation? @relation(fields: [id_undangan], references: [id])
-}
-
-model Couple {
-  id_pasangan   Int     @id @default(autoincrement())
-  foto_cover    String
-  judul_kutipan String
-  isi_kutipan String
-  id_undangan   Int?
-  invite        Invitation? @relation(fields: [id_undangan], references: [id])
-  data_pria     Data_Pria[]
-  data_wanita   Data_Wanita[]
-  gallery       Gallery[]
-}
-
-model Data_Pria {
-  id_pria         Int     @id @default(autoincrement())
-  nama_lengkap    String
-  nama_panggilan  String
-  nama_ayah       String
-  nama_ibu        String
-  instagram       String?
-  facebook        String?
-  twitter         String?
-  foto_pria       String
-  id_pasangan     Int?
-  couple          Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
-}
-
-model Data_Wanita {
-  id_wanita       Int     @id @default(autoincrement())
-  nama_lengkap    String
-  nama_panggilan  String
-  nama_ayah       String
-  nama_ibu        String
-  instagram       String?
-  facebook        String?
-  twitter         String?
-  foto_wanita     String
-  id_pasangan     Int?
-  couple          Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
-}
-
-model Gallery {
-  id_gallery    Int     @id @default(autoincrement())
-  foto          String
-  id_pasangan   Int?
-  couple        Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
-}

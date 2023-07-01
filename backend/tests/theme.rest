@@ -1,31 +1,9 @@
-GET http://localhost:5000/theme
-
-###
-GET http://localhost:5000/theme/1
-
-###
 POST http://localhost:5000/theme
 Content-Type: application/json
 
 {
-    "tema_undangan": "abcdef",
-    "font_primary": "abcde",
-    "font_secondary": "abcd",
-    "backsound": "abc",
-    "id_undangan": 2
+    "Theme_Undangan": "Theme_Undangan",
+    "Font_Primary": "Font_Primary",
+    "Font_Secondary": "Font_Secondary",
+    "Backsound": "Backsound"
 }
-
-###
-PATCH http://localhost:5000/theme/2
-Content-Type: application/json
-
-{
-    "tema_Undangan": "Tema_Undangan",
-    "font_Primary": "Font_Primary",
-    "font_Secondary": "Font_Secondary",
-    "backsound": "Backsound",
-    "id_undangan": 2
-}
-
-###
-DELETE http://localhost:5000/theme/1
