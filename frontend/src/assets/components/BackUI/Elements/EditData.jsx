@@ -27,11 +27,17 @@ const timeline = [
   },
 ];
 function EditData() {
-  const [getId, setGetId] = useState("1");
+  const [getId, setGetId] = useState(1);
   const handleLine = (e) => {
     setGetId(e.target.id);
-    // console.log(getId);
+    console.log(getId);
   };
+
+  const handleNext = () => {
+    const id = getId;
+    setGetId(id + 1);
+    console.log(getId);
+  }
 
   return (
     <div className="edit">
@@ -60,6 +66,7 @@ function EditData() {
             <div>{getId === `${line.id}` && <div>{line.direct}</div>}</div>
           </div>
         ))}
+         <button className="mempelai-next-button" onClick={handleNext} type="submit">Next</button>
       </div>
     </div>
   );
