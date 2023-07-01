@@ -1,23 +1,23 @@
-const express = require('express')
-const {
-  getUsers,
-  getUsersById,
-  createUsers,
-  updateUsers,
-  deleteUsers,
-} = require("../controller/userController");
+import express from "express";
 
-const {
-  AdminOnly
-} = require("../middleware/AuthUser")
+import {
+  getUser,
+  getUserById,
+  createUser,
+  updateUser,
+  deleteUser,
+} from "../controllers/userController.js";
+
+// const {
+//   AdminOnly
+// } = require("../middleware/AuthUser")
 
 const router = express.Router();
 
+router.get("/user", getUser);
+router.get("/user/:id", getUserById);
+router.post("/user", createUser);
+router.patch("/user/:id", updateUser);
+router.delete("/user/:id", deleteUser);
 
-router.get("/", getUsers, AdminOnly);
-router.get("/:id", getUsersById, AdminOnly);
-router.post("/", createUsers, AdminOnly);
-router.patch("/:id", updateUsers, AdminOnly);
-router.delete("/:id", deleteUsers, AdminOnly);
-
-module.exports = router
+export default router;

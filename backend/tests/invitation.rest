@@ -1,23 +1,22 @@
-POST http://localhost:5000/invite
-Content-Type: application/json
-
-{
-    "name_pria": "kamu",
-    "name_wanita": "aku",
-    "tgl_nikah": "20-04-2002"
-}
-
-
-###
 // get all users
 
 GET http://localhost:5000/invite
-
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjg3ODU0MDE1LCJleHAiOjE2ODc4NTQwMzB9.vJCYZY_WIaYGUJW2WcCOf5Q5TAhBfuNkMKjvSdCz_Og
 ###
 // get users
 
 GET http://localhost:5000/invite/1
+
+###
+POST http://localhost:5000/invite
+Content-Type: application/json
+
+{
+    "nama_pria": "kamu",
+    "nama_wanita": "aku",
+    "tgl_nikah": "20-04-2002",
+    "url_undangan": "abc"
+}
 
 ###
 // update user
