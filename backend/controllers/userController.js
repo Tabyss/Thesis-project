@@ -18,6 +18,9 @@ export const getUserById = async (req, res) => {
       where: {
         id: Number(req.params.id),
       },
+      include: {
+        invitation: true,
+      },
     });
     res.status(200).json(user);
   } catch (error) {
