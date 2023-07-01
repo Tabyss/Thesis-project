@@ -24,10 +24,11 @@ export const getGuestById = async (req, res) => {
   }
 };
 export const createGuest = async (req, res) => {
-  const { nama_tamu, no_telp, alamat, qrcode, id_undangan } = req.body;
+  const { id_tamu, nama_tamu, no_telp, alamat, qrcode, id_undangan } = req.body;
   try {
     const guest = await prisma.guest.create({
       data: {
+        id_tamu: id_tamu,
         nama_tamu: nama_tamu,
         no_telp: no_telp,
         alamat: alamat,

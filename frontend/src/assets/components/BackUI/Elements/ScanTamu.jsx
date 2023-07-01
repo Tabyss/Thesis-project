@@ -4,6 +4,8 @@ import "../../../../Index.scss";
 import useSWR, { useSWRConfig } from "swr";
 import { QrReader } from "react-qr-reader";
 import { GetHour } from "../Handler/DateConvert";
+import TamuValid from "../Handler/TamuValid";
+import {BiRefresh} from "react-icons/bi"
 
 function DaftarTamu() {
   const [click, setClick] = useState(false);
@@ -35,16 +37,14 @@ function DaftarTamu() {
               {tamu.status ? (
                 <tr key={tamu.id} className="table-body-contain">
                   <td>{index + 1}</td>
-                  <td>{tamu.name}</td>
+                  <td>{tamu.nama_tamu}</td>
                   <td>{tamu.no_telp}</td>
                   <td>
                     <p className={tamu.status ? "hadir" : "tidak-hadir"}>
                       {tamu.status ? "Hadir" : "Tidak Hadir"}
                     </p>
                   </td>
-                  <td className="gap">
-                    {GetHour(tamu.updateAt, "full")}
-                  </td>
+                  <td className="gap">{GetHour(tamu.updateAt, "full")}</td>
                 </tr>
               ) : null}
             </tbody>
@@ -58,90 +58,75 @@ function DaftarTamu() {
 function ScanTamu() {
   const [id, setId] = useState("");
   const [status, setStatus] = useState(false);
-  const [guest, setGuest] = useState('');
-  const [popupType, setPopupType] = useState(null);
-
-  const fetchGuest = async (id) => {
-    try {
-      const response = await axios.get(`http://localhost:5000/tamu/${id}`);
-      setGuest(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
+  const [showPopup, setShowPopup] = useState(false);
+  const [getId, setGetId] = useState({});
   const handleRefresh = () => {
     window.location.reload();
   };
 
   const editTamu = async () => {
+    // e.preventDefault();
     if (id !== "") {
+      // console.log(id);
       setStatus(true);
       await axios.patch(`http://localhost:5000/tamu/${id}`, {
         status: status,
       });
+    } else {
+      null;
     }
   };
 
-  useEffect(() => {
-    editTamu();
-    fetchGuest(id);
-  }, []);
+  const getGuest = async () => {
+    if (status) {
+      try {
+        const guest = await axios.get(`http://localhost:5000/tamu/${id}`, {});
+        setGetId(guest.data);
+      } catch (error) {}
+    } else {
+      null;
+    }
+  };
+  console.log(getId);
+  useEffect(
+    () => {
+      editTamu();
+      if (showPopup) {
+        const timer = setTimeout(() => {
+          setShowPopup(false);
+          getGuest();
+        }, 3000); // Ganti nilai 3000 dengan durasi yang diinginkan dalam milidetik (misalnya 3000 untuk 3 detik)
+        return () => clearTimeout(timer);
+      }
+    },
+    [editTamu],
+    [showPopup]
+  );
 
   function getValue(result, error) {
     if (!!result) {
-      const scannedId = result?.text;
-      const isDataExists = data.some((tamu) => tamu.id === scannedId);
-
-      if (isDataExists) {
-        setId(scannedId);
-        setPopupType("success");
-      } else {
-        setPopupType("invalid");
-      }
+      setId(result?.text);
+      setShowPopup(true);
+      console.log(result?.text);
     }
   }
-
-  useEffect(() => {
-    if (popupType === "success") {
-      const timer = setTimeout(() => {
-        setPopupType(null);
-      }, 3000);
-      return () => clearTimeout(timer);
-    } else if (popupType === "invalid") {
-      const timer = setTimeout(() => {
-        setPopupType(null);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [popupType]);
-
-  const renderPopup = () => {
-    switch (popupType) {
-      case "success":
-        return <div className="popup">QR code berhasil discan!</div>;
-      case "invalid":
-        return <div className="popup">Data QR code tidak ditemukan.</div>;
-      case "alreadyPresent":
-        return <div className="popup">Anda telah melakukan presensi dengan QR code ini.</div>;
-      default:
-        return null;
-    }
-  };
 
   return (
     <div className="scan">
       <div className="scan-qr">
-        <QrReader onResult={getValue} style={{ width: "100%" }} />
+        {showPopup && <TamuValid status={getId.status} name={getId.nama_tamu} />}
+        <QrReader
+          className="scan-qr-han"
+          onResult={getValue}
+          style={{ width: "50%" }}
+        />
+        <button className="scan-qr-fresh" onClick={handleRefresh}><BiRefresh/></button>
       </div>
       <div className="scan-daftar">
         <DaftarTamu />
-        <button onClick={handleRefresh}>Refresh</button>
       </div>
-      {renderPopup()}
     </div>
   );
 }
-
 
 export default ScanTamu;
