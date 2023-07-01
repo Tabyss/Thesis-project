@@ -13,8 +13,8 @@ const router = express.Router();
 
 router.get("/couple", getCouple);
 router.get("/couple/:id", getCoupleById);
-router.post("/couple", upload.single('image'), createCouple);
-router.patch("/couple/:id", upload.single('image'), updateCouple);
+router.post("/couple", upload.single('foto_cover'), createCouple);
+router.patch("/couple/:id", upload.single('foto_cover'), updateCouple);
 router.delete("/couple/:id", deleteCouple);
 
 export default router;

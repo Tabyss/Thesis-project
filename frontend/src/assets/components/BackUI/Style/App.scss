@@ -91,265 +91,267 @@
 }
 
 .create {
-  display: flex;
-  justify-content: space-between;
-  grid-template-columns: auto auto;
-  flex-wrap: wrap;
   padding: 3%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20%;
   &-contain {
-    @include card(40px, 15px);
-    & h1 {
-      color: var(--color-2);
-      text-transform: uppercase;
-      font-family: var(--font-1);
-    }
-    & h5 {
-      color: var(--color-3);
-      font-weight: 600;
-      margin-left: 35px;
-    }
-
-    &-card {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 40px 40px;
-      gap: 10px;
-
-      &-option {
-        position: relative;
-        width: 15rem;
-
-        .radio-button {
-          opacity: 0;
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%;
-          margin: 0;
-          cursor: pointer;
-        }
-
-        .radio-value {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          padding: 16px;
-          border-radius: 15px;
-          border: 1px solid var(--color-4);
-        }
-
-        .radio-button:checked + .radio-value {
-          // padding: 20px 22px;
-          outline: var(--color-4) solid 3px;
-        }
-
-        h2 {
-          margin-bottom: 10px;
-          font-size: 1.8rem;
-          font-family: var(--font-1);
-          color: var(--color-3);
-        }
-
-        .radio-disc {
-          display: flex;
-          width: 100%;
-          justify-content: space-between;
-
-          p {
-            text-decoration: line-through;
-            font-weight: 100;
-            font-size: 14px;
-          }
-
-          h4 {
-            padding: 0 5px;
-            border-radius: 10px;
-            color: var(--color-1);
-            border: 1px solid var(--color-1);
-            font-weight: 200;
-            font-size: 14px;
-          }
-        }
-
-        h3 {
-          font-size: 2rem;
-          color: var(--color-2);
-          font-family: var(--font-1);
-        }
-
-        .radio-fitur {
-          display: flex;
-          flex-direction: column;
-          margin: 20px 0 0;
-          gap: 10px;
-        }
-      }
-    }
-
-    &-url {
-      margin: 40px 40px 80px;
-      h4 {
-        color: var(--color-3);
-        font-weight: 600;
-        font-size: 16px;
-      }
-      .inputan {
-        width: 450px;
-        @include input(--color-4, 10px);
-      }
-    }
-
-    &-mempelai {
-      margin: 40px 40px 80px;
-      display: grid;
-      grid-template-columns: auto auto;
-      column-gap: 20px;
-      h4 {
-        color: var(--color-3);
-        font-weight: 600;
-        font-size: 16px;
-      }
-      .inputan {
-        width: 100%;
-        padding: 10px 15px;
-        margin: 10px 0;
-        color: var(--color-4);
-        border: 1px solid var(--color-4);
-        border-radius: 15px;
-        font-size: 1em;
-        &:focus {
-          outline: var(--color-4) solid 2px;
-        }
-        &::placeholder {
-          color: var(--color-4);
-        }
-      }
-    }
-  }
-
-  &-payment {
-    width: 20vw;
-    padding: 40px 10px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    &-item {
-      display: flex;
-      &-btn {
+    gap: 5vw;
+    &-form {
+      @include card(40px, 15px);
+      & h1 {
+        color: var(--color-2);
+        text-transform: uppercase;
+        font-family: var(--font-1);
+      }
+      & h5 {
+        color: var(--color-3);
+        font-weight: 600;
+        margin-left: 35px;
+      }
+      &-card {
         display: flex;
-        justify-content: center;
-        width: 100%;
-        li {
+        flex-wrap: wrap;
+        margin: 40px 40px;
+        gap: 10px;
+
+        &-option {
           position: relative;
-          text-align: center;
-          list-style-type: none;
-          color: var(--color-5);
-          text-transform: uppercase;
-          font-size: 0.8em;
-          width: 8vw;
-          float: left;
-          cursor: pointer;
-          p {
-            display: block;
-            width: 30px;
-            line-height: 20px;
-            font-size: 1em;
-            color: var(--color-5);
-            background: var(--color-6);
-            border-radius: 20px;
-            padding: 5px;
-            margin: 0 auto 5px auto;
-            border: 1px solid var(--color-5);
-            outline: 5px solid var(--color-6);
-          }
-          &::after {
-            content: "";
-            width: 100%;
-            height: 2px;
-            background: var(--color-5);
+          width: 15rem;
+
+          .radio-button {
+            opacity: 0;
             position: absolute;
-            left: -50%;
-            top: 14px;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            cursor: pointer;
           }
-          &:nth-child(1)::after {
-            content: none;
+
+          .radio-value {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 16px;
+            border-radius: 15px;
+            border: 1px solid var(--color-4);
           }
-          &.active {
-            color: var(--color-4);
+
+          .radio-button:checked + .radio-value {
+            // padding: 20px 22px;
+            outline: var(--color-4) solid 3px;
+          }
+
+          h2 {
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            font-family: var(--font-1);
+            color: var(--color-3);
+          }
+
+          .radio-disc {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+
             p {
-              color: var(--color-6);
-              background-color: var(--color-4);
-              border: 1px solid var(--color-6);
+              text-decoration: line-through;
+              font-weight: 100;
+              font-size: 14px;
             }
-            &:nth-child(2) {
-              &::after {
-                background: var(--color-4);
-              }
+
+            h4 {
+              padding: 0 5px;
+              border-radius: 10px;
+              color: var(--color-1);
+              border: 1px solid var(--color-1);
+              font-weight: 200;
+              font-size: 14px;
             }
-            &:nth-child(3) {
-              &::after {
-                width: 200%;
-                left: -150%;
-                background: var(--color-4);
-              }
-            }
-            &:nth-child(4) {
-              &::after {
-                width: 300%;
-                left: -250%;
-                background: var(--color-4);
-              }
-            }
+          }
+
+          h3 {
+            font-size: 2rem;
+            color: var(--color-2);
+            font-family: var(--font-1);
+          }
+
+          .radio-fitur {
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0 0;
+            gap: 10px;
           }
         }
       }
-    }
-    &-pay {
-      width: 100%;
-      &-item {
-        width: 100%;
-        display: flex;
-        margin: 6px 0;
-        font-weight: 400;
-        justify-content: space-between;
-      }
-      &-line {
-        width: 100%;
-        height: 1px;
-        margin: 6px 0;
-        background-color: #5a3c22;
-      }
-      &-total {
-        margin: 10px 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        h2 {
+
+      &-url {
+        margin: 40px 40px 80px;
+        h4 {
+          color: var(--color-3);
           font-weight: 600;
+          font-size: 16px;
         }
-      }
-      &-kode {
-        margin: 10px 0;
-        width: 100%;
         .inputan {
-          width: 100%;
+          width: 450px;
           @include input(--color-4, 10px);
         }
       }
-      &-button {
-        width: 100%;
-        margin: 4px 0;
-        padding: 8px 20px;
+
+      &-mempelai {
+        margin: 40px 40px 80px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        border: none;
-        border-radius: 10px;
-        background-color: var(--color-1);
-        color: white;
+        flex-direction: column;
+        column-gap: 20px;
+        h4 {
+          color: var(--color-3);
+          font-weight: 600;
+          font-size: 16px;
+        }
+        .inputan {
+          width: 100%;
+          padding: 10px 15px;
+          margin: 10px 0 20px;
+          color: var(--color-4);
+          border: 1px solid var(--color-4);
+          border-radius: 15px;
+          font-size: 1em;
+          &:focus {
+            outline: var(--color-4) solid 2px;
+          }
+          &::placeholder {
+            color: var(--color-4);
+          }
+        }
+      }
+    }
+    &-payment {
+      width: 20vw;
+      padding: 40px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      &-item {
+        display: flex;
+        &-btn {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          li {
+            position: relative;
+            text-align: center;
+            list-style-type: none;
+            color: var(--color-5);
+            text-transform: uppercase;
+            font-size: 0.8em;
+            width: 8vw;
+            float: left;
+            cursor: pointer;
+            p {
+              display: block;
+              width: 30px;
+              line-height: 20px;
+              font-size: 1em;
+              color: var(--color-5);
+              background: var(--color-6);
+              border-radius: 20px;
+              padding: 5px;
+              margin: 0 auto 5px auto;
+              border: 1px solid var(--color-5);
+              outline: 5px solid var(--color-6);
+            }
+            &::after {
+              content: "";
+              width: 100%;
+              height: 2px;
+              background: var(--color-5);
+              position: absolute;
+              left: -50%;
+              top: 14px;
+              z-index: -1;
+            }
+            &:nth-child(1)::after {
+              content: none;
+            }
+            &.active {
+              color: var(--color-4);
+              p {
+                color: var(--color-6);
+                background-color: var(--color-4);
+                border: 1px solid var(--color-6);
+              }
+              &:nth-child(2) {
+                &::after {
+                  background: var(--color-4);
+                }
+              }
+              &:nth-child(3) {
+                &::after {
+                  width: 200%;
+                  left: -150%;
+                  background: var(--color-4);
+                }
+              }
+              &:nth-child(4) {
+                &::after {
+                  width: 300%;
+                  left: -250%;
+                  background: var(--color-4);
+                }
+              }
+            }
+          }
+        }
+      }
+      &-pay {
+        width: 100%;
+        &-item {
+          width: 100%;
+          display: flex;
+          margin: 6px 0;
+          font-weight: 400;
+          justify-content: space-between;
+        }
+        &-line {
+          width: 100%;
+          height: 1px;
+          margin: 6px 0;
+          background-color: #5a3c22;
+        }
+        &-total {
+          margin: 10px 0;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          h2 {
+            font-weight: 600;
+          }
+        }
+        &-kode {
+          margin: 10px 0;
+          width: 100%;
+          .inputan {
+            width: 100%;
+            @include input(--color-4, 10px);
+          }
+        }
+        &-button {
+          width: 100%;
+          margin: 4px 0;
+          padding: 8px 20px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: none;
+          border-radius: 10px;
+          background-color: var(--color-1);
+          color: white;
+        }
       }
     }
   }
@@ -584,20 +586,42 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 100%;
+        height: 120px;
         margin: 30px 0;
-        padding: 5% 15%;
+        // padding: 5% 15%;
         border: 2px dashed var(--color-4);
         border-radius: 10px;
-        h3 {
-          font-weight: 600;
-          font-size: 1.4rem;
-          text-transform: capitalize;
-          color: var(--color-4);
+        cursor: pointer;
+        &-bg {
+          position: absolute;
+          h3 {
+            font-weight: 600;
+            font-size: 1.4rem;
+            text-transform: capitalize;
+            color: var(--color-4);
+          }
+          p {
+            font-size: 0.8rem;
+            font-weight: 100;
+            color: var(--color-4);
+          }
         }
-        p {
-          font-size: 0.8rem;
-          font-weight: 100;
-          color: var(--color-4);
+      }
+      input {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        opacity: 0;
+      }
+      &-preview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .preview-image {
+          width: 100%;
+          max-height: 250px;
+          object-fit: cover;
         }
       }
     }
@@ -609,24 +633,46 @@
         color: var(--color-2);
       }
       &-upload {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 100%;
+        height: 120px;
         margin: 30px 0;
-        padding: 5% 15%;
+        // padding: 5% 15%;
         border: 2px dashed var(--color-4);
         border-radius: 10px;
-        h3 {
-          font-weight: 600;
-          font-size: 1.4rem;
-          text-transform: capitalize;
-          color: var(--color-4);
+        &-bg {
+          position: absolute;
+          h3 {
+            font-weight: 600;
+            font-size: 1.4rem;
+            text-transform: capitalize;
+            color: var(--color-4);
+          }
+          p {
+            font-size: 0.8rem;
+            font-weight: 100;
+            color: var(--color-4);
+          }
         }
-        p {
-          font-size: 0.8rem;
-          font-weight: 100;
-          color: var(--color-4);
+        input {
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+          opacity: 0;
+        }
+      }
+      &-preview {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .preview-image {
+          width: 100%;
+          max-height: 250px;
+          object-fit: cover;
         }
       }
       &-data {
@@ -725,24 +771,46 @@
         color: var(--color-2);
       }
       &-upload {
-        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 30px;
-        padding: 10vh;
+        justify-content: center;
+        width: 100%;
+        height: 120px;
+        margin: 30px 0;
+        // padding: 5% 15%;
         border: 2px dashed var(--color-4);
         border-radius: 10px;
-        h3 {
-          font-weight: 600;
-          font-size: 1.4rem;
-          text-transform: capitalize;
-          color: var(--color-4);
+        cursor: pointer;
+        &-bg {
+          position: absolute;
+          h3 {
+            font-weight: 600;
+            font-size: 1.4rem;
+            text-transform: capitalize;
+            color: var(--color-4);
+          }
+          p {
+            font-size: 0.8rem;
+            font-weight: 100;
+            color: var(--color-4);
+          }
         }
-        p {
-          font-size: 0.8rem;
-          font-weight: 100;
-          color: var(--color-4);
+        input {
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+          opacity: 0;
+        }
+        &-preview {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .preview-image {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+          }
         }
       }
       &-list {
@@ -1035,10 +1103,10 @@
       }
     }
   }
-  &-add{
+  &-add {
     display: flex;
     gap: 20px;
-    &-scan{
+    &-scan {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1049,13 +1117,13 @@
       background-color: var(--color-4);
       cursor: pointer;
     }
-    &-done{
+    &-done {
       width: 100%;
       display: flex;
       justify-content: center;
       border-radius: 15px;
       @include card(30px, 15px);
-      button{
+      button {
         width: 100%;
         border: none;
         border-radius: 10px;

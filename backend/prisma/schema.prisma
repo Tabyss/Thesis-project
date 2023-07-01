@@ -74,7 +74,8 @@ model Event {
 model Couple {
   id_pasangan   Int     @id @default(autoincrement())
   foto_cover    String
-  kutipan       String
+  judul_kutipan String
+  isi_kutipan String
   id_undangan   Int?
   invite        Invitation? @relation(fields: [id_undangan], references: [id])
   data_pria     Data_Pria[]

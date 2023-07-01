@@ -13,6 +13,7 @@ Content-Type: application/json
     "nama_ayah": "nama_ayah",
     "nama_ibu": "nama_ibu",
     "instagram": "instagram",
+    "facebook": "facebook",
     "twitter": "twitter",
     "foto_pria": "foto_pria",
     "id_pasangan": 1
@@ -28,6 +29,7 @@ Content-Type: application/json
     "nama_ayah": "nama_ayah",
     "nama_ibu": "nama_ibu",
     "instagram": "instagram",
+    "facebook": "facebook",
     "twitter": "twitter",
     "foto_pria": "foto_pria",
     "id_pasangan": 1

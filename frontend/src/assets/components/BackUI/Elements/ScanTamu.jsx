@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../../../../App.scss";
+import "../../../../Index.scss";
 import useSWR, { useSWRConfig } from "swr";
 import { QrReader } from "react-qr-reader";
 import { GetHour } from "../Handler/DateConvert";

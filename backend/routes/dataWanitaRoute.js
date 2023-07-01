@@ -13,8 +13,8 @@ const router = express.Router();
 
 router.get("/datawanita", getDataWanita);
 router.get("/datawanita/:id", getDataWanitaById);
-router.post("/datawanita", upload.single('image'), createDataWanita);
-router.patch("/datawanita/:id", upload.single('image'), updateDataWanita);
+router.post("/datawanita", upload.single('foto_wanita'), createDataWanita);
+router.patch("/datawanita/:id", upload.single('foto_wanita'), updateDataWanita);
 router.delete("/datawanita/:id", deleteDataWanita);
 
 export default router;

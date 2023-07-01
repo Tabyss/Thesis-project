@@ -38,7 +38,7 @@ export const upload = multer({
 
 export const getDataPria = async (req, res) => {
     try {
-        const dataPria = await prisma.dataPria.findMany();
+        const dataPria = await prisma.data_Pria.findMany();
         res.status(200).json(dataPria);
     } catch (error) {
         res.status(500).json({ msg: error.message });
@@ -47,7 +47,7 @@ export const getDataPria = async (req, res) => {
 
 export const getDataPriaById = async (req, res) => {
     try {
-        const dataPria = await prisma.dataPria.findUnique({
+        const dataPria = await prisma.data_Pria.findUnique({
             where: {
                 id_pria: Number(req.params.id),
             },
@@ -67,7 +67,7 @@ export const createDataPria = async (req, res) => {
     }
 
     try {
-        const dataPria = await prisma.dataPria.create({
+        const dataPria = await prisma.data_Pria.create({
             data: {
                 nama_lengkap: nama_lengkap,
                 nama_panggilan: nama_panggilan,
@@ -97,7 +97,7 @@ export const updateDataPria = async (req, res) => {
         }
 
         // Mencari data dari database
-        const dataPria = await prisma.dataPria.findUnique({
+        const dataPria = await prisma.data_Pria.findUnique({
             where: {
                 id_pria: Number(req.params.id),
             },
@@ -110,7 +110,7 @@ export const updateDataPria = async (req, res) => {
             fs.unlinkSync(filepath);
         }
 
-        const updatedDataPria = await prisma.dataPria.update({
+        const updatedDataPria = await prisma.data_Pria.update({
             where: {
                 id_pria: Number(req.params.id),
             },
@@ -134,7 +134,7 @@ export const updateDataPria = async (req, res) => {
 
 export const deleteDataPria = async (req, res) => {
     try {
-        const dataPria = await prisma.dataPria.delete({
+        const dataPria = await prisma.data_Pria.delete({
             where: {
                 id_pria: Number(req.params.id),
             },

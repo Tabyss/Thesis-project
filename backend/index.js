@@ -16,7 +16,7 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({ credentials:true, origin:'http://localhost:5173' })); // credential s= agar client mengirim credentials, origin = domain yang diizinkkan untuk mengakses API (React+Vite)
+app.use(cors({ credentials:true, origin:'http://localhost:5173' })); // credentials= agar client mengirim credentials, origin = domain yang diizinkkan untuk mengakses API (React+Vite)
 app.use(cookieParser());
 app.use(express.json()); //-> agar menerima data dalam bentuk JSON
 app.use(AuthRoute);

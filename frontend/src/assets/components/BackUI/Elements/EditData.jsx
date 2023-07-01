@@ -30,7 +30,7 @@ function EditData() {
   const [getId, setGetId] = useState("1");
   const handleLine = (e) => {
     setGetId(e.target.id);
-    console.log(getId);
+    // console.log(getId);
   };
 
   return (

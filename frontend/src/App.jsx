@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import "./App.scss";
+import "./Index.scss";
 import Index from "./assets/components/Index";
 import SignIn from "./assets/components/Middle/SignIn";
 import SignUp from "./assets/components/middle/SignUp";
