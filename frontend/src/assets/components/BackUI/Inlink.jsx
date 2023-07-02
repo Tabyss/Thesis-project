@@ -11,7 +11,7 @@ function Inlink() {
       <Route path="/Create" element={<CreateUndangan/>}/>
       <Route path="/Edit/:id_undangan" element={<EditData/>}/>
       <Route path="/Tamu/:id_undangan" element={<TamuList/>}/>
-      <Route path="/scan/:id" element={<ScanTamu/>}/>
+      <Route path="/scan/:id_undangan" element={<ScanTamu/>}/>
     </Routes>
   )
 }

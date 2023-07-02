@@ -69,7 +69,7 @@ function TamuList() {
   const [click, setClick] = useState(false);
   const [idtamu, setIdTamu] = useState("")
   const [undangan, setUndangan] = useState("");
-  const { id } = useParams();
+  const { id_undangan } = useParams();
 
   const fetch = async () => {
     const response = await axios.get("http://localhost:5000/tamu");
@@ -96,7 +96,7 @@ function TamuList() {
         <button onClick={handleAdd} className="add">
           <BsPlus />
         </button>
-        <Link to={(`/scan/${data[0].id_undangan}`)} className="scanner">
+        <Link to={`/scan/${id_undangan}`} className="scanner">
           <BsQrCodeScan />
         </Link>
       </div>
