@@ -9,9 +9,9 @@ function Inlink() {
   return (
     <Routes>
       <Route path="/Create" element={<CreateUndangan/>}/>
-      <Route path="/Edit" element={<EditData/>}/>
-      <Route path="/Tamu" element={<TamuList/>}/>
-      <Route path="/scan" element={<ScanTamu/>}/>
+      <Route path="/Edit/:id_undangan" element={<EditData/>}/>
+      <Route path="/Tamu/:id_undangan" element={<TamuList/>}/>
+      <Route path="/scan/:id" element={<ScanTamu/>}/>
     </Routes>
   )
 }

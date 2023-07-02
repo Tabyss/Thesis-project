@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BsInstagram, BsTwitter, BsFacebook } from "react-icons/bs";
 import axios from "axios";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 
 const Mempelai = () => {
   const [previewCover, setPreviewCover] = useState("");
@@ -12,7 +12,8 @@ const Mempelai = () => {
   const [fotoPria, setFotoPria] = useState("");
   const [fotoWanita, setFotoWanita] = useState("");
   const [fotoGallery, setFotoGallery] = useState("");
-  const [kutipan, setKutipan] = useState("");
+  const [judulKutipan, setJudulKutipan] = useState("");
+  const [isiKutipan, setIsiKutipan] = useState("");
   const [namaLengkapPria, setNamaLengkapPria] = useState("");
   const [namaLengkapWanita, setNamaLengkapWanita] = useState("");
   const [namaPanggilanPria, setNamaPanggilanPria] = useState("");
@@ -29,6 +30,14 @@ const Mempelai = () => {
   const [twitterWanita, setTwitterWanita] = useState("");
   const navigate = useNavigate();
   const [msg, setMsg] = useState("");
+  const { id_undangan,id_pasangan } = useParams();
+  const [idUndangan, setIdUndangan] = useState("");
+  const [idPasangan, setIdPasangan] = useState("");
+
+  useEffect(() => {
+    setIdUndangan(id_undangan);
+    setIdPasangan(id_undangan);
+  }, [id_undangan]);
 
   const handleCoverChange = (e) => {
     const image = e.target.files[0];
@@ -40,7 +49,7 @@ const Mempelai = () => {
     const image = e.target.files[0];
     setFotoPria(image);
     setPreviewPria(URL.createObjectURL(image));
-    console.log(image);
+    // console.log(image);
   }
 
   const handleWanitaChange = (e) => {
@@ -74,7 +83,10 @@ const Mempelai = () => {
 
       // Tambahkan data file ke FormData
       formDataCover.append('foto_cover', fotoCover);
-      formDataCover.append('kutipan', kutipan);
+      formDataCover.append('judul_kutipan', judulKutipan);
+      formDataCover.append('isi_kutipan', isiKutipan);
+      formDataCover.append('id_undangan', idUndangan);
+      formDataCover.append('id_pasangan', idPasangan);
       formDataPria.append('nama_lengkap', namaLengkapPria);
       formDataPria.append('nama_panggilan', namaPanggilanPria);
       formDataPria.append('nama_ayah', namaAyahPria);
@@ -94,22 +106,24 @@ const Mempelai = () => {
       formDataGallery.append('foto_gallery', fotoGallery);
 
       try {
-        await axios.post('http://localhost:5000/couple', formDataCover, {
+        await axios.post(`http://localhost:5000/couple`, formDataCover, {
           headers: {
             "Content-Type": "multipart/form-data"
-          }
+          },
+            
         });
-        await axios.post('http://localhost:5000/datapria', formDataPria, {
+        await axios.post(`http://localhost:5000/datapria`, formDataPria, {
           headers: {
             "Content-Type": "multipart/form-data"
-          }
+          },
         });
-        await axios.post('http://localhost:5000/datawanita', formDataWanita, {
+        await axios.post(`http://localhost:5000/datawanita`, formDataWanita, {
           headers: {
             "Content-Type": "multipart/form-data"
-          }
+          },
         });
-        navigate("/create");
+        alert("Berhasil");
+        // navigate("/create");
       } catch (error) {
         if (error.response) {
           console.log(error.response.data);
@@ -248,8 +262,8 @@ const Mempelai = () => {
         <div className="mempelai-kutipan">
           <h1>kutipan</h1>
           <div className="mempelai-kutipan-main">
-            <input type="text" required value={kutipan} onChange={(e) => setKutipan(e.target.value)} />
-            <textarea></textarea>
+            <input type="text" required value={judulKutipan} onChange={(e) => setJudulKutipan(e.target.value)} />
+            <textarea value={isiKutipan} onChange={(e) => setIsiKutipan(e.target.value)} ></textarea>
           </div>
         </div>
         <div className="mempelai-gallery">
@@ -291,3 +305,4 @@ const Mempelai = () => {
 }
 
 export default Mempelai;
+

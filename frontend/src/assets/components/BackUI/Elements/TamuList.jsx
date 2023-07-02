@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 import { BsPlus, BsQrCodeScan } from "react-icons/bs";
 import QRCode from "qrcode.react";
 import HashGenerator from "../Handler/HashGenerator";
 
-function AddTamu(tamu) {
-  const [idtamu, setIdtamu] = useState(tamu.tamu)
+function AddTamu({ tamu }) {
   const [name, setName] = useState("");
   const [telp, setTelp] = useState("");
   const [alamat, setAlamat] = useState("");
@@ -16,15 +16,15 @@ function AddTamu(tamu) {
   const addTamu = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:5000/tamu", {
-      id_tamu: idtamu,
+      id_tamu: tamu,
       nama_tamu: name,
       no_telp: parseInt(telp),
       alamat: alamat,
-      qrcode: idtamu, // sementara id_tamu saja sebelum id_undangan + id_tamu
+      qrcode: tamu, // sementara id_tamu saja sebelum id_undangan + id_tamu
     });
     form.reset();
   };
-  
+
   return (
     <>
       <form id="form" onSubmit={addTamu} className="form">
@@ -68,6 +68,8 @@ function TamuList() {
   const { mutate } = useSWRConfig();
   const [click, setClick] = useState(false);
   const [idtamu, setIdTamu] = useState("")
+  const [undangan, setUndangan] = useState("");
+  const { id } = useParams();
 
   const fetch = async () => {
     const response = await axios.get("http://localhost:5000/tamu");
@@ -94,13 +96,13 @@ function TamuList() {
         <button onClick={handleAdd} className="add">
           <BsPlus />
         </button>
-        <Link to="/scan" className="scanner">
+        <Link to={(`/scan/${data[0].id_undangan}`)} className="scanner">
           <BsQrCodeScan />
         </Link>
       </div>
-      <div className="view-tamu-add">{click ? <AddTamu tamu={idtamu}/> : null}</div>
+      {click && <AddTamu tamu={idtamu} />}
       <div className="view-tamu-table">
-        <table className="table">
+      <table className="table">
           <thead className="table-head">
             <tr className="table-head-contain">
               <th>No</th>
@@ -128,7 +130,7 @@ function TamuList() {
                     {tamu.status ? "Hadir" : "Tidak Hadir"}
                   </p>
                 </td>
-                <td className="gap">{tamu.j_hadir}</td>
+                <td className="gap">{tamu.status ? tamu.w_hadir : null}</td>
                 <td>
                   <button
                     onClick={() => {

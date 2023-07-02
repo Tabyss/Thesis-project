@@ -33,7 +33,7 @@ export const createEvent = async (req, res) => {
                 tgl_acara : tgl_acara,
                 jam_mulai : jam_mulai,
                 jam_selesai : jam_selesai,
-                id_undangan: id_undangan
+                invite: { connect: { id: id_undangan } },
             },
         });
         res.status(201).json(event);

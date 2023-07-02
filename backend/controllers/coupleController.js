@@ -64,7 +64,7 @@ export const getCoupleById = async (req, res) => {
 }
 
 export const createCouple = async (req, res) => {
-    const { foto_cover, kutipan, id_undangan } = req.body;
+    const { foto_cover, judul_kutipan, isi_kutipan, id_undangan } = req.body;
 
     // Mengecek apakah ada file yang diunggah
     if (!req.file || req.file.length === 0) {
@@ -75,8 +75,9 @@ export const createCouple = async (req, res) => {
         const couple = await prisma.couple.create({
             data: {
                 foto_cover: `images/${req.file.filename}`,
-                kutipan: kutipan,
-                id_undangan: id_undangan,
+                judul_kutipan: judul_kutipan,
+                isi_kutipan: isi_kutipan,
+                invite: { connect: { id: id_undangan } },
             },
         });
         res.status(201).json(couple);
@@ -86,7 +87,7 @@ export const createCouple = async (req, res) => {
 }
 
 export const updateCouple = async (req, res) => {
-    const { foto_cover, kutipan, id_undangan } = req.body;
+    const { foto_cover, judul_kutipan, isi_kutipan, id_undangan } = req.body;
     try {
         const newImage = req.file;
 
@@ -108,7 +109,8 @@ export const updateCouple = async (req, res) => {
             },
             data: {
                 foto_cover: `images/${req.file.filename}`,
-                kutipan: kutipan,
+                judul_kutipan: judul_kutipan,
+                isi_kutipan: isi_kutipan,
                 id_undangan: id_undangan,
             },
         });

@@ -23,7 +23,7 @@ model User {
 }
 
 model Invitation {
-  id            Int     @id @default(autoincrement())
+  id            String    @id @default(uuid())
   nama_pria     String
   nama_wanita   String
   tgl_nikah     String
@@ -45,7 +45,7 @@ model Guest {
   qrcode      String?
   w_hadir     DateTime    @default(now())
   updateAt    DateTime    @updatedAt
-  id_undangan Int?
+  id_undangan String?
   invite      Invitation? @relation(fields: [id_undangan], references: [id])
 }
 
@@ -55,7 +55,7 @@ model Theme {
   font_primary    String 
   font_secondary  String
   backsound       String
-  id_undangan     Int?
+  id_undangan     String?
   invite          Invitation? @relation(fields: [id_undangan], references: [id])
 }
 
@@ -67,16 +67,16 @@ model Event {
   jam_selesai   String
   alamat        String
   link_maps     String
-  id_undangan   Int?
+  id_undangan   String?
   invite        Invitation? @relation(fields: [id_undangan], references: [id])
 }
 
 model Couple {
-  id_pasangan   Int     @id @default(autoincrement())
+  id_pasangan   String     @id @default(uuid())
   foto_cover    String
   judul_kutipan String
-  isi_kutipan String
-  id_undangan   Int?
+  isi_kutipan   String
+  id_undangan   String?
   invite        Invitation? @relation(fields: [id_undangan], references: [id])
   data_pria     Data_Pria[]
   data_wanita   Data_Wanita[]
@@ -93,7 +93,7 @@ model Data_Pria {
   facebook        String?
   twitter         String?
   foto_pria       String
-  id_pasangan     Int?
+  id_pasangan     String?
   couple          Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
 }
 
@@ -107,13 +107,13 @@ model Data_Wanita {
   facebook        String?
   twitter         String?
   foto_wanita     String
-  id_pasangan     Int?
+  id_pasangan     String?
   couple          Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
 }
 
 model Gallery {
   id_gallery    Int     @id @default(autoincrement())
   foto          String
-  id_pasangan   Int?
+  id_pasangan   String?
   couple        Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
 }

@@ -51,17 +51,17 @@ export const createInvitation = async (req, res) => {
 };
 
 export const updateInvitation = async (req, res) => {
-  const { name_pria, name_wanita, tgl_nikah, url } = req.body;
+  const { nama_pria, nama_wanita, tgl_nikah, url_undangan } = req.body;
   try {
     const invite = await prisma.invitation.update({
       where: {
         id: Number(req.params.id),
       },
       data: {
-        name_pria: name_pria,
-        name_wanita: name_wanita,
+        nama_pria: nama_pria,
+        nama_wanita: nama_wanita,
         tgl_nikah: tgl_nikah,
-        url: url,
+        url_undangan: url_undangan,
       },
     });
     res.status(201).json(invite);
@@ -81,3 +81,4 @@ export const deleteInvitation = async (req, res) => {
     res.status(500).json({ msg: error.message });
   }
 };
+

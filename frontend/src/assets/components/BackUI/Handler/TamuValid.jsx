@@ -39,7 +39,14 @@ function TamuValid({ status, name }) {
     );
   }
 
-  return status ?  <Already /> : <Done />;
+  // Menambahkan kondisi untuk menangani situasi ketika data salah atau tidak termasuk
+  if (status === true) {
+    return <Already />;
+  } else if (status === false) {
+    return <Done />;
+  } else {
+    return <Wrong />;
+  }
 }
 
 export default TamuValid;

@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import AuthRoute from "./routes/authRoute.js";
 import UserRoute from "./routes/userRoute.js";
 import GuestRoute from "./routes/GuestRoute.js";
-import InvitationRoute from "./routes/InvitationRoute.js";
+import InvitationRoute from "./routes/invitationRoute.js";
 import EventRoute from "./routes/eventRoute.js";
 import CoupleRoute from "./routes/coupleRoute.js";
 import DataPriaRoute from "./routes/dataPriaRoute.js";

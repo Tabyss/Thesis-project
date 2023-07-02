@@ -33,7 +33,7 @@ export const createGuest = async (req, res) => {
         no_telp: no_telp,
         alamat: alamat,
         qrcode: qrcode,
-        id_undangan: id_undangan
+        invite: { connect: { id: id_undangan } },
       },
     });
     res.status(201).json(guest);
