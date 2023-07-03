@@ -770,6 +770,9 @@
         font-size: 1.4rem;
         color: var(--color-2);
       }
+      form {
+        width: 100%;
+      }
       &-upload {
         display: flex;
         flex-direction: column;
@@ -817,7 +820,7 @@
         display: flex;
         width: 100%;
         flex-direction: column;
-        gap: 20px;
+        gap: 10px;
         &-action {
           display: flex;
           justify-content: space-between;
@@ -828,6 +831,10 @@
           border-radius: 15px;
           h4 {
             font-weight: 400;
+          }
+          & img {
+            max-width: 300px;
+            max-width: 100px;
           }
           &-btn {
             display: flex;

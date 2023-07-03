@@ -67,10 +67,12 @@ export const createGallery = async (req, res) => {
     }
 
     try {
+        const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
+
         const gallery = await prisma.gallery.create({
             data: {
                 // foto: req.file.filename,
-                foto: `images/${req.file.filename}`,
+                foto: imageUrl,
                 id_pasangan: id_pasangan,
             },
         });
@@ -105,12 +107,15 @@ export const updateGallery = async (req, res) => {
             fs.unlinkSync(filepath);
         }
 
+        const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
+
         const updatedGallery = await prisma.gallery.update({
+
             where: {
                 id_gallery: Number(req.params.id),
             },
             data: {
-                foto: `images/${req.file.filename}`,
+                foto: imageUrl,
                 id_pasangan: id_pasangan
             },
         });
@@ -128,6 +133,7 @@ export const deleteGallery = async (req, res) => {
             },
         });
         const filepath = `./public/${gallery.foto}`;
+        console.log('Filepath:', filepath);
         fs.unlinkSync(filepath);
 
         res.status(201).json({ message: 'Gallery deleted successfully' });
