@@ -7,11 +7,11 @@ import { BsPlus, BsQrCodeScan } from "react-icons/bs";
 import QRCode from "qrcode.react";
 import HashGenerator from "../Handler/HashGenerator";
 
-function AddTamu({ tamu }) {
+function AddTamu({ tamu, invite }) {
   const [name, setName] = useState("");
   const [telp, setTelp] = useState("");
   const [alamat, setAlamat] = useState("");
-  const [qrcode, setQrcode] = useState("");
+  const [qrcode, setQrcode] = useState(`${invite}-${tamu}`);
 
   const addTamu = async (e) => {
     e.preventDefault();
@@ -20,10 +20,12 @@ function AddTamu({ tamu }) {
       nama_tamu: name,
       no_telp: parseInt(telp),
       alamat: alamat,
-      qrcode: tamu, // sementara id_tamu saja sebelum id_undangan + id_tamu
+      qrcode: qrcode, // id_undangan + id_tamu
+      id_undangan: invite,
     });
     form.reset();
   };
+  console.log(invite)
 
   return (
     <>
@@ -72,7 +74,7 @@ function TamuList() {
   const { id_undangan } = useParams();
 
   const fetch = async () => {
-    const response = await axios.get("http://localhost:5000/tamu");
+    const response = await axios.get(`http://localhost:5000/guest/${id_undangan}`);
     return response.data;
   };
 
@@ -86,9 +88,8 @@ function TamuList() {
 
   const handleAdd = () => {
     setClick(!click);
-    setIdTamu(HashGenerator(20))
+    setIdTamu(HashGenerator(15))
   };
-  console.log(idtamu)
 
   return (
     <div className="view-tamu">
@@ -100,7 +101,7 @@ function TamuList() {
           <BsQrCodeScan />
         </Link>
       </div>
-      {click && <AddTamu tamu={idtamu} />}
+      {click && <AddTamu tamu={idtamu} invite={id_undangan} />}
       <div className="view-tamu-table">
       <table className="table">
           <thead className="table-head">
@@ -123,7 +124,7 @@ function TamuList() {
                 <td>{tamu.no_telp}</td>
                 <td>{tamu.alamat}</td>
                 <td>
-                  <QRCode value={tamu.id_tamu} />
+                  <QRCode value={tamu.qrcode} />
                 </td>
                 <td>
                   <p className={tamu.status ? "hadir" : "tidak-hadir"}>

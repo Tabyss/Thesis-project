@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "../../../../Index.scss";
 import useSWR, { useSWRConfig } from "swr";
 import { QrReader } from "react-qr-reader";
 import { GetHour } from "../Handler/DateConvert";
-import TamuValid from "../Handler/TamuValid";
-import {BiRefresh} from "react-icons/bi"
+import { BiRefresh,BiFullscreen,BiExitFullscreen } from "react-icons/bi";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import TamuValid, { Wrong } from "../Handler/TamuValid";
+// import "../../../../Index.scss";
+import "../Style/Scan.scss";
 
 function DaftarTamu() {
   const [click, setClick] = useState(false);
+  const { id_undangan } = useParams();
 
   const fetch = async () => {
-    const response = await axios.get("http://localhost:5000/tamu");
+    const response = await axios.get(
+      `http://localhost:5000/guest/${id_undangan}`
+    );
     return response.data;
   };
 
@@ -19,9 +24,8 @@ function DaftarTamu() {
   if (!data) return <h2>Loading...</h2>;
 
   return (
-    <div className="view-tamu">
-      <div className="view-tamu-add">{click ? <AddTamu /> : null}</div>
-      <div className="view-tamu-table">
+    <div className="scan-daftar">
+      <div className="scan-daftar-table">
         <table className="table">
           <thead className="table-head">
             <tr className="table-head-contain">
@@ -59,15 +63,17 @@ function ScanTamu() {
   const [id, setId] = useState("");
   const [status, setStatus] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [wrongPopup, setWrongPopup] = useState(false);
   const [getId, setGetId] = useState({});
+  const { id_undangan } = useParams();
+  const [active, setActive] = useState(false)
+
   const handleRefresh = () => {
     window.location.reload();
   };
 
   const editTamu = async () => {
-    // e.preventDefault();
     if (id !== "") {
-      // console.log(id);
       setStatus(true);
       await axios.patch(`http://localhost:5000/tamu/${id}`, {
         status: status,
@@ -80,21 +86,25 @@ function ScanTamu() {
   const getGuest = async () => {
     if (status) {
       try {
-        const guest = await axios.get(`http://localhost:5000/tamu/${id}`, {});
+        const guest = await axios.get(
+          `http://localhost:5000/guest/${id_undangan}`,
+          {}
+        );
         setGetId(guest.data);
       } catch (error) {}
     } else {
       null;
     }
   };
-  console.log(getId);
   useEffect(
     () => {
       editTamu();
       if (showPopup) {
         const timer = setTimeout(() => {
           setShowPopup(false);
+          setWrongPopup(false);
           getGuest();
+          setId("");
         }, 3000); // Ganti nilai 3000 dengan durasi yang diinginkan dalam milidetik (misalnya 3000 untuk 3 detik)
         return () => clearTimeout(timer);
       }
@@ -105,25 +115,58 @@ function ScanTamu() {
 
   function getValue(result, error) {
     if (!!result) {
-      setId(result?.text);
-      setShowPopup(true);
+      setShowPopup(!false);
+      //validasi tamu
+      if (result?.text.substring(0, id_undangan.length) === id_undangan) {
+        let length = id_undangan.length;
+        let Idtamu = result?.text.substring(length + 1);
+        setId(Idtamu);
+      } else {
+        setWrongPopup(!false);
+      }
       console.log(result?.text);
     }
   }
 
+  function enterFullscreen(e) {
+    if (element.requestFullscreen) {
+      element.requestFullscreen(); // Standard syntax
+    } else if (element.mozRequestFullScreen) {
+      element.mozRequestFullScreen(); // Firefox
+    } else if (element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen(); // Chrome, Safari, and Opera
+    } else if (element.msRequestFullscreen) {
+      element.msRequestFullscreen(); // Internet Explorer/Edge
+    }
+  }
+
   return (
-    <div className="scan">
-      <div className="scan-qr">
-        {showPopup && <TamuValid status={getId.status} name={getId.nama_tamu} />}
-        <QrReader
-          className="scan-qr-han"
-          onResult={getValue}
-          style={{ width: "50%" }}
-        />
-        <button className="scan-qr-fresh" onClick={handleRefresh}><BiRefresh/></button>
-      </div>
-      <div className="scan-daftar">
-        <DaftarTamu />
+    <div id="scan" className="theme-2">
+      <div className="scan">
+        <div className="scan-qr">
+          <h1>Daftar Hadir</h1>
+          {showPopup ? (
+            wrongPopup ? (
+              <Wrong />
+            ) : (
+              <TamuValid status={getId.status} name={getId.nama_tamu} />
+            )
+          ) : null}
+          <QrReader
+            className="scan-qr-han"
+            onResult={getValue}
+            style={{ width: "50%" }}
+          />
+        </div>
+        <div className="scan-daftar">
+          <div className="scan-daftar-button">
+            <button className="fresh" onClick={handleRefresh}>
+              <BiRefresh />
+            </button>
+            <button className="full" onClick={()=> setActive(!active)}>{active ? <BiExitFullscreen/> : <BiFullscreen/>}</button>
+          </div>
+          <DaftarTamu />
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import pp from "../../../img/pp-1.png";
-import { BsPlusCircle } from "react-icons/bs";
+import { BsPlusCircle, BsFillBarChartFill } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import "../Style/App.scss";
@@ -44,6 +44,8 @@ function Dashboard() {
     }
   }
 
+  console.log(invite)
+
   useEffect(() => {
     refreshToken();
     fetchInvite();
@@ -55,8 +57,9 @@ function Dashboard() {
         <div key={inviteItem.id} className="dash-card">
           <div className="dash-card-tumb">
             <div className="dash-card-tumb-icon">
-              <Link to={`/edit/${inviteItem.id}`}><MdEdit className="tumb-icon" /></Link>
+              <Link to={`/edit/1/${inviteItem.id}`}><MdEdit className="tumb-icon" /></Link>
               <Link to={`/tamu/${inviteItem.id}`}><FaRegEye className="tumb-icon" /></Link>
+              <Link to={`/edit/${inviteItem.id}/4`}><BsFillBarChartFill className="tumb-icon" /></Link>
             </div>
             <img src={pp} alt="Profile Picture" />
           </div>

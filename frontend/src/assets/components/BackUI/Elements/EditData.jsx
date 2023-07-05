@@ -3,6 +3,7 @@ import Tema from "../edithandle/tema";
 import Mempelai from "../edithandle/Mempelai";
 import Acara from "../edithandle/Acara";
 import Insight from "../edithandle/Insight";
+import { Link, useParams } from "react-router-dom";
 
 const timeline = [
   {
@@ -23,21 +24,23 @@ const timeline = [
   {
     id: 4,
     dot: "Insight",
-    direct: <Insight/>,
+    direct: <Insight />,
   },
 ];
-function EditData() {
-  const [getId, setGetId] = useState(1);
+function EditData(id) {
+  const [getId, setGetId] = useState(id);
+  const [active, setActive] = useState(false);
+  const { id_undangan } = useParams();
+
   const handleLine = (e) => {
     setGetId(e.target.id);
+    setActive(true);
     console.log(getId);
   };
 
   const handleNext = () => {
-    const id = getId;
-    setGetId(id + 1);
-    console.log(getId);
-  }
+    setGetId(parseInt(getId) + 1);
+  };
 
   return (
     <div className="edit">
@@ -47,26 +50,20 @@ function EditData() {
             {timeline.map((line, index) => (
               <li
                 key={line.id}
-                onClick={handleLine}
                 id={line.id}
                 className={getId == line.id ? "active" : null}
               >
-                <p onClick={handleLine} id={line.id}>
-                  {index + 1}
-                </p>
-                {line.dot}
+                <Link
+                  to={`/edit/${line.id}/${id_undangan}`}
+                  onClick={handleLine}
+                >
+                  <p id={line.id}>{index + 1}</p>
+                  {line.dot}
+                </Link>
               </li>
             ))}
           </ul>
         </div>
-      </div>
-      <div className="edit-contain">
-        {timeline.map((line, index) => (
-          <div key={line.id} className="edit-contain-form">
-            <div>{getId === `${line.id}` && <div>{line.direct}</div>}</div>
-          </div>
-        ))}
-         <button className="mempelai-next-button" onClick={handleNext} type="submit">Next</button>
       </div>
     </div>
   );

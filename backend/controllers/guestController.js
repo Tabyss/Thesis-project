@@ -54,7 +54,6 @@ export const updateGuest = async (req, res) => {
         alamat: alamat,
         qrcode: qrcode,
         status: status,
-        id_undangan: id_undangan
       },
     });
     res.status(201).json(guest);
@@ -101,4 +100,20 @@ export const getGuestByIdTamu = async (req, res) => {
     console.log(error);
     res.status(500).json({ error: 'Terjadi kesalahan server' });
   }
+};
+
+export const getGuestByIdUndangan = async (req, res) => {
+  const { id_undangan } = req.params;
+
+  try {
+    const guests = await prisma.guest.findMany({
+      where: {
+        id_undangan: id_undangan,
+      },
+    });
+
+    res.status(200).json(guests);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
 };

@@ -24,7 +24,7 @@ function CreateUndangan() {
   const [namaWanita, setNamaWanita] = useState("");
   const [tglNikah, setTglNikah] = useState("");
   const [url, setUrl] = useState("");
-  const [harga, setHarga] = useState("0");
+  const [harga, setHarga] = useState(0);
   const [disc, setDisc] = useState(20000);
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();

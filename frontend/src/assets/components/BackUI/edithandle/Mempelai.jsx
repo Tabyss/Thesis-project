@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsInstagram, BsTwitter, BsFacebook } from "react-icons/bs";
 import axios from "axios";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+import EditData from "../Elements/EditData";
 
 const Mempelai = () => {
   const [previewCover, setPreviewCover] = useState("");
@@ -14,6 +15,7 @@ const Mempelai = () => {
   const [fotoGallery, setFotoGallery] = useState("");
   const [judulKutipan, setJudulKutipan] = useState("");
   const [isiKutipan, setIsiKutipan] = useState("");
+  const [kutipan, setKutipan] = useState({})
   const [namaLengkapPria, setNamaLengkapPria] = useState("");
   const [namaLengkapWanita, setNamaLengkapWanita] = useState("");
   const [namaPanggilanPria, setNamaPanggilanPria] = useState("");
@@ -136,6 +138,7 @@ const Mempelai = () => {
 
   return (
     <div className="mempelai">
+    <EditData id={2}/>
       <form onSubmit={Create}>
         <div className="mempelai-form">
           <h1>Data Pasangan</h1>
