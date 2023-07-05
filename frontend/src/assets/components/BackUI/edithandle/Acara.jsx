@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import EditData from "../Elements/EditData";
 
@@ -21,11 +22,38 @@ function PopUp() {
 
   const handleSubmit = (e) => {
     console.log(formAcara);
+=======
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+function PopUp() {
+
+  const [namaAcara, setNamaAcara] = useState("");
+  const [tglAcara, setTglAcara] = useState("");
+  const [jamMulai, setJamMulai] = useState("");
+  const [jamSelesai, setJamSelesai] = useState("");
+  const [alamat, setAlamat] = useState("");
+  const [linkMaps, setLinkMaps] = useState("");
+
+  const Event = async (e) => {
+    e.preventDefault();
+    await axios.post("http://localhost:5000/event", {
+      nama_acara: namaAcara,
+      tgl_acara: tglAcara,
+      jam_mulai: jamMulai,
+      jam_selesai: jamSelesai,
+      alamat: alamat,
+      link_maps: linkMaps,
+    });
+    alert("Data Berhasil Ditambah");
+    window.location.reload();
+>>>>>>> 83e91cb2c39c9889bde69e59c56ba96ffa4e619b
   };
 
   return (
     <div className="tambah-acara">
       <h1>Tambah Acara</h1>
+<<<<<<< HEAD
       <form className="tambah-acara-form" onSubmit={handleSubmit}>
         <div className="tambah-acara-form-input">
           <p>Nama Acara</p>
@@ -46,10 +74,21 @@ function PopUp() {
             placeholder="12/12/2012"
             value={formAcara.tanggal}
           />
+=======
+      <form className="tambah-acara-form" onSubmit={Event}>
+        <div className="tambah-acara-form-input">
+          <p>Nama Acara</p>
+          <input type="text" placeholder="Akad Nikah" value={namaAcara} onChange={(e) => setNamaAcara(e.target.value)} />
+        </div>
+        <div className="tambah-acara-form-input">
+          <p>Tanggal Acara</p>
+          <input type="date" placeholder="12/12/2012" value={tglAcara} onChange={(e) => setTglAcara(e.target.value)} />
+>>>>>>> 83e91cb2c39c9889bde69e59c56ba96ffa4e619b
         </div>
         <div className="tambah-acara-form-grup">
           <div className="tambah-acara-form-input">
             <p>Mulai Acara</p>
+<<<<<<< HEAD
             <input
               type="text"
               name="mulai"
@@ -67,10 +106,18 @@ function PopUp() {
               placeholder="12.00 WIB"
               value={formAcara.selesai}
             />
+=======
+            <input type="text" placeholder="09.00 WIB" value={jamMulai} onChange={(e) => setJamMulai(e.target.value)} />
+          </div>
+          <div className="tambah-acara-form-input">
+            <p>Selesai Acara</p>
+            <input type="text" placeholder="12.00 WIB" value={jamSelesai} onChange={(e) => setJamSelesai(e.target.value)} />
+>>>>>>> 83e91cb2c39c9889bde69e59c56ba96ffa4e619b
           </div>
         </div>
         <div className="tambah-acara-form-input">
           <p>Alamat Acara</p>
+<<<<<<< HEAD
           <input
             type="text"
             name="Alamat"
@@ -88,6 +135,13 @@ function PopUp() {
             placeholder="https://maps/"
             value={formAcara.link}
           />
+=======
+          <input type="text" placeholder="Jl. terus aja lah" value={alamat} onChange={(e) => setAlamat(e.target.value)} />
+        </div>
+        <div className="tambah-acara-form-input">
+          <p>Link Acara</p>
+          <input type="text" placeholder="https://maps/" value={linkMaps} onChange={(e) => setLinkMaps(e.target.value)} />
+>>>>>>> 83e91cb2c39c9889bde69e59c56ba96ffa4e619b
         </div>
         <div className="tambah-acara-form-submit">
           <input type="submit" value="tambah" />
@@ -99,6 +153,27 @@ function PopUp() {
 
 function Acara() {
   const [active, setActive] = useState(false);
+  const [acara, setAcara] = useState([]);
+
+  const getEvent = async () => {
+    const response = await axios.get("http://localhost:5000/event");
+    setAcara(response.data);
+  }
+
+  const deleteAcara = async (id_acara) => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/event/${id_acara}`);
+      return response.data;
+    } catch (error) {
+      console.log(error.message);
+    }
+    alert("Data Berhasil Dihapus");
+    window.location.reload();
+  }
+
+  useEffect(() => {
+    getEvent();
+  }, [])
 
   return (
     <div className="acara">
@@ -116,6 +191,7 @@ function Acara() {
               </tr>
             </thead>
             <tbody className="acara-contain-table-body">
+<<<<<<< HEAD
               <tr className="row">
                 <td>akad</td>
                 <td>16.00</td>
@@ -125,6 +201,20 @@ function Acara() {
                   <button className="delete">delete</button>
                 </td>
               </tr>
+=======
+              {acara.map((acara) => (
+                <>
+                  <tr className="row" key={acara.id_acara}>
+                    <td>{acara.nama_acara}</td>
+                    <td>{acara.tgl_acara}</td>
+                    <td>{acara.alamat}</td>
+                    <td>
+                      <button className="delete" onClick={() => deleteAcara(acara.id_acara)}>delete</button>
+                    </td>
+                  </tr>
+                </>
+              ))}
+>>>>>>> 83e91cb2c39c9889bde69e59c56ba96ffa4e619b
             </tbody>
           </table>
         </div>

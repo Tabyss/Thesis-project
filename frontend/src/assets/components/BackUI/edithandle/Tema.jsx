@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiPlay, BiPause } from "react-icons/bi";
+<<<<<<< HEAD
 import Theme1 from "../../../theme/1/img/view-1.png";
 import Theme2 from "../../../theme/2/img/view-2.png";
 import EditData from "../Elements/EditData";
@@ -45,18 +46,63 @@ function Tema() {
 
   const handleToggleSound = () => {
     setPlay(!play); // Mengubah status pemutaran saat tombol diklik
+=======
+import axios from "axios";
 
-    // Lakukan logika pemutaran backsound di sini
-    const audioElement = document.getElementById("backsound");
+function Tema() {
+  const [activeTrack, setActiveTrack] = useState(null);
 
+  const handleSubmit = async () => {
+    const TemaUndangan = document.getElementById("temaUndangan").value;
+    const PrimaryFont = document.getElementById("fontPrimary").value;
+    const SecondaryFont = document.getElementById("fontSecondary").value;
+    const Backsound = document.getElementById("backsounds").value;
+>>>>>>> 83e91cb2c39c9889bde69e59c56ba96ffa4e619b
+
+    try {
+      const response = await axios.post("http://localhost:5000/theme", {
+        tema_undangan: TemaUndangan,
+        font_primary: PrimaryFont,
+        font_secondary: SecondaryFont,
+        backsound: Backsound,
+      });
+      console.log("Tema berhasil disimpan:", response.data);
+    } catch (error) {
+      console.error("Gagal menyimpan tema:", error);
+    }
+  };
+
+<<<<<<< HEAD
     if (!play) {
       audioElement.play();
     } else {
       audioElement.pause();
+=======
+  useEffect(() => {
+    const audioElements = document.querySelectorAll("audio");
+    audioElements.forEach((audioElement) => {
+      if (activeTrack === audioElement.id) {
+        audioElement.play();
+        console.log(`Memutar backsound: ${activeTrack}`);
+      } else {
+        audioElement.pause();
+        audioElement.currentTime = 0;
+        console.log(`Jeda backsound: ${audioElement.id}`);
+      }
+    });
+  }, [activeTrack]);
+
+  const handleToggleSound = (track) => {
+    if (activeTrack === track) {
+      setActiveTrack(null);
+    } else {
+      setActiveTrack(track);
+>>>>>>> 83e91cb2c39c9889bde69e59c56ba96ffa4e619b
     }
   };
 
   return (
+<<<<<<< HEAD
     <>
       <form className="theme">
         <EditData id={1} />
@@ -152,6 +198,90 @@ function Tema() {
         </div>
       </form>
     </>
+=======
+    <div className="theme">
+      <div className="theme-contain">
+        <div className="theme-contain-option">
+          <h1>pilih theme</h1>
+          <div className="temacontain-option-item"></div>
+            <div className="theme-contain-font-input-choose">
+              <select className="" id="temaUndangan">
+                <option>Tema 1</option>
+                <option>Tema 2</option>
+                <option>Tema 3</option>
+              </select>
+            </div>
+        </div>
+        <div className="theme-contain-font">
+          <h1>pilih font</h1>
+          <div className="theme-contain-font-input">
+            <div className="theme-contain-font-input-choose">
+              <select className="" id="fontPrimary">
+                <option>font 1</option>
+                <option>font 2</option>
+                <option>font 3</option>
+              </select>
+              <h2>heading 1</h2>
+            </div>
+          </div>
+          <div className="theme-contain-font-input">
+            <p>main font</p>
+            <div className="theme-contain-font-input-choose">
+              <select className="" id="fontSecondary">
+                <option>font 1</option>
+                <option>font 2</option>
+                <option>font 3</option>
+              </select>
+              <h2>paragraph 1</h2>
+            </div>
+          </div>
+        </div>
+        <div className="theme-contain-sound">
+          <h1>Pilih backsound</h1>
+          <div className="theme-contain-sound-list" id="backsounds">
+            <button
+              onClick={() => handleToggleSound("track1")}
+              id="track1"
+              value="track 1"
+              className={`theme-contain-sound-list-button ${
+                activeTrack === "track1" ? "disable" : ""
+              }`}
+            >
+              track 1 {activeTrack === "track1" ? <BiPause /> : <BiPlay />}
+            </button>
+            <button
+              onClick={() => handleToggleSound("track2")}
+              id="track2"
+              value="track 2"
+              className={`theme-contain-sound-list-button ${
+                activeTrack === "track2" ? "disable" : ""
+              }`}
+            >
+              track 2 {activeTrack === "track2" ? <BiPause /> : <BiPlay />}
+            </button>
+            <button
+              onClick={() => handleToggleSound("track3")}
+              id="track3"
+              value="track 3"
+              className={`theme-contain-sound-list-button ${
+                activeTrack === "track3" ? "disable" : ""
+              }`}
+            >
+              track 3 {activeTrack === "track3" ? <BiPause /> : <BiPlay />}
+            </button>
+          </div>
+          <audio id="track1" src="/StillGotTime.mp3" />
+          <audio id="track2" src="/SomeOtherTrack.mp3" />
+          <audio id="track3" src="/AnotherTrack.mp3" />
+        </div>
+      </div>
+      <div className="theme-submit">
+        <button className="theme-submit-btn" onClick={handleSubmit}>
+          next
+        </button>
+      </div>
+    </div>
+>>>>>>> 83e91cb2c39c9889bde69e59c56ba96ffa4e619b
   );
 }
 

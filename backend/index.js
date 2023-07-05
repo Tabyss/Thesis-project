@@ -29,7 +29,8 @@ app.use(DataPriaRoute);
 app.use(DataWanitaRoute);
 app.use(GalleryRoute);
 app.use(ThemeRoute);
-app.use('/images', express.static('public/images'));
+app.use(express.static("public"));
+
 
 app.listen(process.env.APP_PORT, () => {
   console.log("Server Running...", process.env.APP_PORT);

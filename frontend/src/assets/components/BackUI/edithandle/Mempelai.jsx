@@ -5,6 +5,7 @@ import { NavLink, useNavigate, useParams } from "react-router-dom";
 import EditData from "../Elements/EditData";
 
 const Mempelai = () => {
+  const [gallery, setGallery] = useState([]);
   const [previewCover, setPreviewCover] = useState("");
   const [previewPria, setPreviewPria] = useState("");
   const [previewWanita, setPreviewWanita] = useState("");
@@ -32,13 +33,12 @@ const Mempelai = () => {
   const [twitterWanita, setTwitterWanita] = useState("");
   const navigate = useNavigate();
   const [msg, setMsg] = useState("");
-  const { id_undangan,id_pasangan } = useParams();
+  const { id_undangan } = useParams();
   const [idUndangan, setIdUndangan] = useState("");
   const [idPasangan, setIdPasangan] = useState("");
 
   useEffect(() => {
     setIdUndangan(id_undangan);
-    setIdPasangan(id_undangan);
   }, [id_undangan]);
 
   const handleCoverChange = (e) => {
@@ -66,7 +66,7 @@ const Mempelai = () => {
     setPreviewGallery(URL.createObjectURL(image));
   }
 
-  const Create = async (e) => {
+  const CreateCouple = async (e) => {
     e.preventDefault();
 
     if (!fotoCover) {
@@ -112,7 +112,7 @@ const Mempelai = () => {
           headers: {
             "Content-Type": "multipart/form-data"
           },
-            
+
         });
         await axios.post(`http://localhost:5000/datapria`, formDataPria, {
           headers: {
@@ -135,11 +135,65 @@ const Mempelai = () => {
       }
     }
   }
+  const CreateGallery = async (e) => {
+    // e.preventDefault();
+
+    if (!fotoGallery) {
+      alert("Silahkan Upload Foto Gallery Terlebih Dahulu");
+    } else {
+      const formDataGallery = new FormData();
+
+      // Tambahkan data file ke FormData
+      formDataGallery.append('foto_gallery', fotoGallery);
+
+      try {
+        await axios.post('http://localhost:5000/gallery', formDataGallery, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        });
+      } catch (error) {
+        if (error.response) {
+          console.log(error.response.data);
+          setMsg(error.response.data.msg);
+          console.log(error.message)
+        }
+      }
+      alert("Berhasil Menambah Foto Gallery")
+    }
+  }
+
+  const fetchGallery = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/gallery`);
+      setGallery(response.data);
+      // console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteGallery = async (id_gallery) => {
+    try {
+      await axios.delete(`http://localhost:5000/gallery/${id_gallery}`);
+      fetchGallery();
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchGallery();
+  }, []);
 
   return (
     <div className="mempelai">
+<<<<<<< HEAD
     <EditData id={2}/>
       <form onSubmit={Create}>
+=======
+      <form onSubmit={CreateCouple}>
+>>>>>>> 83e91cb2c39c9889bde69e59c56ba96ffa4e619b
         <div className="mempelai-form">
           <h1>Data Pasangan</h1>
           <div className="mempelai-form-cover">
@@ -269,10 +323,15 @@ const Mempelai = () => {
             <textarea value={isiKutipan} onChange={(e) => setIsiKutipan(e.target.value)} ></textarea>
           </div>
         </div>
-        <div className="mempelai-gallery">
-          <h1>Gallery Pasangan</h1>
-          <div className="mempelai-gallery-main">
-            <h2>foto pasangan</h2>
+        <div className="mempelai-next">
+          <button className="mempelai-next-button" type="submit">Save</button>
+        </div>
+      </form >
+      <div className="mempelai-gallery">
+        <h1>Gallery Pasangan</h1>
+        <div className="mempelai-gallery-main">
+          <h2>foto pasangan</h2>
+          <form onSubmit={CreateGallery}>
             <div className="mempelai-gallery-main-upload">
               <div className="mempelai-gallery-main-upload-bg">
                 <h3>upload foto Gallery</h3>
@@ -287,23 +346,30 @@ const Mempelai = () => {
                 </div>
               )}
             </div>
-            <div className="mempelai-gallery-main-list">
+            <div className="mempelai-next">
+              <button className="mempelai-next-button" type="submit">Save</button>
+            </div>
+          </form>
+          <div className="mempelai-gallery-main-list">
+            {gallery.map((data, index) => (
               <div className="mempelai-gallery-main-list-action">
-                <p>1</p>
-                <h4>gambar 1.jpg</h4>
+                  <p>{index + 1}</p>
+                <div key={data.id_gallery} className="table-body-contain">
+                  <img src={data.foto} alt="" className="table-body-contain-img" />
+                </div>
                 <div className="mempelai-gallery-main-list-action-btn">
-                  <button className="edit">Ganti</button>
-                  <button className="delete">Hapus</button>
+                  {/* <button className="edit">Ganti</button> */}
+                  <button className="delete" onClick={() => deleteGallery(data.id_gallery)}>Hapus</button>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-        <div className="mempelai-next">
-          <button className="mempelai-next-button" type="submit">Next</button>
-        </div>
-      </form>
-    </div>
+      </div>
+      {/* <div className="mempelai-next">
+        <button className="mempelai-next-button" type="submit">Next</button>
+      </div> */}
+    </div >
   );
 }
 
