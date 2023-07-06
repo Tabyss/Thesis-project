@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import Tema from "../edithandle/tema";
+import React, { useState, useEffect } from "react";
+import Tema from "../edithandle/Tema";
 import Mempelai from "../edithandle/Mempelai";
 import Acara from "../edithandle/Acara";
 import Insight from "../edithandle/Insight";
 import { Link, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getMe } from "../Handler/authSlicer";
 
 const timeline = [
   {
@@ -31,6 +34,19 @@ function EditData(id) {
   const [getId, setGetId] = useState(id);
   const [active, setActive] = useState(false);
   const { id_undangan } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError } = useSelector((state => state.auth));
+
+  useEffect(() => {
+    dispatch(getMe());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if(isError){
+      navigate("/");
+    }
+  }, [isError, navigate]);
 
   const handleLine = (e) => {
     setGetId(e.target.id);

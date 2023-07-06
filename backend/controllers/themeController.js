@@ -74,3 +74,19 @@ export const updateTheme = async (req, res) => {
       res.status(500).json({ msg: error.message });
     }
   };
+
+  export const getThemeByIdUndangan = async (req, res) => {
+    const { id_undangan } = req.params;
+
+    try {
+        const theme = await prisma.theme.findFirst({
+            where: {
+                id_undangan: id_undangan,
+            },
+        });
+
+        res.status(200).json(theme);
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+};

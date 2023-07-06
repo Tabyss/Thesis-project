@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import Content1 from "../../img/logo.png";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { ImGoogle3 } from "react-icons/im";
 import { FaFacebook } from "react-icons/fa";
 import "./signup.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [noTelp, setNoTelp] = useState('');
+  const navigate = useNavigate();
+  const [msg, setMsg] = useState('');
+
+  const Register = async(e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:5000/user',{
+        username: username,
+        email: email,
+        password: password,
+        no_telp: noTelp
+      });
+      navigate("/Sign-In");
+    } catch (error) {
+      if(error.response) {
+        // console.log(error.response.data);
+        setMsg(error.response.data.msg);
+      }
+    }
+  }
+
   return (
     <div className="signup">
       <NavLink to="/">
@@ -19,11 +45,12 @@ function SignUp() {
           </NavLink>
           <h1>Signup</h1>
         </div>
-        <form className="signup-content-value">
-          <input type="text" placeholder="Username" />
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-          <input type="text" defaultValue="+62" placeholder="Phone Number" />
+        <form onSubmit={ Register } className="signup-content-value">
+          <p>{msg}</p>
+          <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="text" placeholder="Phone Number" value={noTelp} onChange={(e) => setNoTelp(e.target.value)} />
           <div className="signup-content-value-button">
             <ImGoogle3 />
             <FaFacebook />

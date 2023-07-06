@@ -6,6 +6,8 @@ import useSWR, { useSWRConfig } from "swr";
 import { BsPlus, BsQrCodeScan } from "react-icons/bs";
 import QRCode from "qrcode.react";
 import HashGenerator from "../Handler/HashGenerator";
+import { useDispatch, useSelector } from "react-redux";
+import { getMe } from "../Handler/authSlicer";
 
 function AddTamu({ tamu, invite }) {
   const [name, setName] = useState("");
@@ -25,7 +27,7 @@ function AddTamu({ tamu, invite }) {
     });
     form.reset();
   };
-  console.log(invite)
+  console.log(invite);
 
   return (
     <>
@@ -72,6 +74,19 @@ function TamuList() {
   const [idtamu, setIdTamu] = useState("")
   const [undangan, setUndangan] = useState("");
   const { id_undangan } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError } = useSelector((state => state.auth));
+
+  useEffect(() => {
+    dispatch(getMe());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      navigate("/");
+    }
+  }, [isError, navigate]);
 
   const fetch = async () => {
     const response = await axios.get(`http://localhost:5000/guest/${id_undangan}`);

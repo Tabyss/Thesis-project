@@ -29,8 +29,8 @@ const fileFilter = (req, file, cb) => {
 };
 
 export const upload = multer({
-    storage, 
-    fileFilter, 
+    storage,
+    fileFilter,
     limits: {
         fileSize: 8 * 1024 * 1024, // 8 MB
     },
@@ -59,7 +59,7 @@ export const getDataWanitaById = async (req, res) => {
 }
 
 export const createDataWanita = async (req, res) => {
-    const { nama_lengkap, nama_panggilan, nama_ayah, nama_ibu, instagram, twitter, facebook, id_pasangan } = req.body;
+    const { nama_lengkap, nama_panggilan, nama_ayah, nama_ibu, instagram, twitter, facebook, id_undangan } = req.body;
 
     // Mengecek apakah ada file yang diunggah
     if (!req.file || req.file.length === 0) {
@@ -67,6 +67,7 @@ export const createDataWanita = async (req, res) => {
     }
 
     try {
+        const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
         const dataWanita = await prisma.data_Wanita.create({
             data: {
                 nama_lengkap: nama_lengkap,
@@ -77,7 +78,8 @@ export const createDataWanita = async (req, res) => {
                 facebook: facebook,
                 twitter: twitter,
                 foto_wanita: `images/${req.file.filename}`,
-                id_pasangan: id_pasangan,
+                url_foto: imageUrl,
+                invite: { connect: { id: id_undangan } },
             },
         });
         res.status(201).json(dataWanita);
@@ -87,7 +89,7 @@ export const createDataWanita = async (req, res) => {
 }
 
 export const updateDataWanita = async (req, res) => {
-    const { nama_lengkap, nama_panggilan, nama_ayah, nama_ibu, instagram, twitter, facebook, id_pasangan } = req.body;
+    const { nama_lengkap, nama_panggilan, nama_ayah, nama_ibu, instagram, twitter, facebook } = req.body;
     try {
         const newImage = req.file;
 
@@ -110,6 +112,7 @@ export const updateDataWanita = async (req, res) => {
             fs.unlinkSync(filepath);
         }
 
+        const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
         const updatedDataWanita = await prisma.data_Wanita.update({
             where: {
                 id_wanita: Number(req.params.id),
@@ -123,7 +126,7 @@ export const updateDataWanita = async (req, res) => {
                 facebook: facebook,
                 twitter: twitter,
                 foto_wanita: `images/${req.file.filename}`,
-                id_pasangan: id_pasangan,
+                url_foto: imageUrl,
             },
         });
         res.status(201).json(updatedDataWanita);
@@ -143,6 +146,22 @@ export const deleteDataWanita = async (req, res) => {
         fs.unlinkSync(filepath);
 
         res.status(201).json(dataWanita);
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+export const getDataWanitaByIdUndangan = async (req, res) => {
+    const { id_undangan } = req.params;
+
+    try {
+        const dataWanita = await prisma.data_Wanita.findFirst({
+            where: {
+                id_undangan: id_undangan,
+            },
+        });
+
+        res.status(200).json(dataWanita);
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }

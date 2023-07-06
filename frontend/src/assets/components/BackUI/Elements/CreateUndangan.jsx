@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { tawaran } from "../../../../PaketHarga";
+import { useDispatch, useSelector } from "react-redux";
+import { getMe } from "../Handler/authSlicer";
+import HashGenerator from "../Handler/HashGenerator";
 
 const Payline = [
   {
@@ -27,7 +30,19 @@ function CreateUndangan() {
   const [harga, setHarga] = useState(0);
   const [disc, setDisc] = useState(20000);
   const [msg, setMsg] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user, isError } = useSelector((state => state.auth));
+
+  useEffect(() => {
+    dispatch(getMe());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      navigate("/");
+    }
+  }, [isError, navigate]);
 
   const handleLine = (e) => {
     setGetId(e.target.id);
@@ -41,13 +56,16 @@ function CreateUndangan() {
   const Create = async (e) => {
     e.preventDefault();
     try {
+      const id = HashGenerator(5);
       await axios.post("http://localhost:5000/invite", {
+        id,
         nama_pria: namaPria,
         nama_wanita: namaWanita,
         tgl_nikah: tglNikah,
         url_undangan: url,
+        id_user: user.id
       });
-      navigate("/dashboard");
+      navigate(`/dashboard/${user.id}`);
     } catch (error) {
       if (error.response) {
         // console.log(error.response.data.msg);
@@ -59,6 +77,7 @@ function CreateUndangan() {
   return (
     <div className="create">
       <form onSubmit={Create} className="create-contain">
+        <p>{msg}</p>
         <div className="create-contain-form">
           <h1>1. pilih paket undangan</h1>
           <h5>silahkan pilih paket sesuai fitur yang ada</h5>
@@ -99,6 +118,7 @@ function CreateUndangan() {
               placeholder="www.kartunikah.com/hanan-ataki"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
+              required
             />
           </div>
           <h1>3. Data Mempelai</h1>
@@ -112,6 +132,7 @@ function CreateUndangan() {
                 placeholder="Hanan"
                 value={namaPria}
                 onChange={(e) => setNamaPria(e.target.value)}
+                required
               />
             </div>
             <div className="data-undangan">
@@ -122,6 +143,7 @@ function CreateUndangan() {
                 placeholder="Hanan"
                 value={namaWanita}
                 onChange={(e) => setNamaWanita(e.target.value)}
+                required
               />
             </div>
             <div className="data-undangan">
@@ -132,6 +154,7 @@ function CreateUndangan() {
                 placeholder="Hanan"
                 value={tglNikah}
                 onChange={(e) => setTglNikah(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -166,7 +189,7 @@ function CreateUndangan() {
             <span className="create-contain-payment-pay-line"></span>
             <div className="create-contain-payment-pay-total">
               <p>Total</p>
-              <h2>Rp {harga-disc}</h2>
+              <h2>Rp {harga - disc}</h2>
             </div>
             <button className="create-contain-payment-pay-button">
               Buat Undangan

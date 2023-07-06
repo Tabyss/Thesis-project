@@ -4,9 +4,10 @@ import "./Index.scss";
 import Index from "./assets/components/Index";
 import SignIn from "./assets/components/Middle/SignIn";
 import SignUp from "./assets/components/middle/SignUp";
-import Dashboard from "./assets/components/BackUI/Elements/Dashborad";
+import Dashboard from "./assets/components/BackUI/Elements/Dashboard";
 import Inlink from "./assets/components/BackUI/Inlink";
-import Register from "./assets/components/Middle/Register";
+import Undangan from "./assets/components/Template/Undangan";
+// import Register from "./assets/components/Middle/Register";
 
 function Link() {
   return (
@@ -14,8 +15,8 @@ function Link() {
       <Route path="/" element={<Index />} />
       <Route path="Sign-In" element={<SignIn />} />
       <Route path="Sign-Up" element={<SignUp />} />
-      <Route path="register" element={<Register />} />
-      <Route path="Dashboard" element={<Dashboard />} />
+      {/* <Route path="register" element={<Register />} /> */}
+      <Route path="Dashboard/:id_user" element={<Dashboard />} />
     </Routes>
   );
 }
@@ -25,6 +26,7 @@ function App() {
     <>
       <Link />
       <Inlink />
+      <Undangan />
     </>
   );
 }

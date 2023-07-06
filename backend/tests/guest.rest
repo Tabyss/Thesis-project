@@ -15,7 +15,7 @@ Content-Type: application/json
     "alamat": "Pujokusuman",
     "qrcode": "938113",
     "status": false,
-    "id_undangan": 1
+    "id_undangan": "1"
 }
 
 

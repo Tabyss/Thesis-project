@@ -8,16 +8,14 @@ import {
   deleteUser,
 } from "../controllers/userController.js";
 
-// const {
-//   AdminOnly
-// } = require("../middleware/AuthUser")
+import { verifyUser, adminOnly } from "../middleware/AuthUser.js";
 
 const router = express.Router();
 
-router.get("/user", getUser);
-router.get("/user/:id", getUserById);
+router.get("/user", verifyUser, adminOnly, getUser);
+router.get("/user/:id", verifyUser, getUserById);
 router.post("/user", createUser);
-router.patch("/user/:id", updateUser);
-router.delete("/user/:id", deleteUser);
+router.patch("/user/:id", verifyUser, updateUser);
+router.delete("/user/:id", verifyUser, deleteUser);
 
 export default router;

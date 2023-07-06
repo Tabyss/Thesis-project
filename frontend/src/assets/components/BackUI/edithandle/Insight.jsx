@@ -1,12 +1,27 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BsQrCodeScan } from "react-icons/bs";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getMe } from "../Handler/authSlicer";
 import EditData from "../Elements/EditData";
 
 function Insight() {
   const [invite, setInvite] = useState([]);
   const { id_undangan } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, isError } = useSelector((state => state.auth));
+
+  useEffect(() => {
+    dispatch(getMe());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      navigate("/");
+    }
+  }, [isError, navigate]);
 
   const fetchInvite = async () => {
     const response = await axios.get(
@@ -41,7 +56,7 @@ function Insight() {
           <BsQrCodeScan />
         </Link>
         <div className="insight-add-done">
-          <Link className="button" to="/dashboard">
+          <Link className="button" to={`/dashboard/${user.id}`}>
             Done
           </Link>
         </div>

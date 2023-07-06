@@ -59,7 +59,7 @@ export const getGalleryById = async (req, res) => {
 }
 
 export const createGallery = async (req, res) => {
-    const { foto, id_pasangan } = req.body;
+    const { foto, id_undangan } = req.body;
 
     // Mengecek apakah ada file yang diunggah
     if (!req.file || req.file.length === 0) {
@@ -68,12 +68,11 @@ export const createGallery = async (req, res) => {
 
     try {
         const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
-
         const gallery = await prisma.gallery.create({
             data: {
-                // foto: req.file.filename,
-                foto: imageUrl,
-                id_pasangan: id_pasangan,
+                foto: `images/${req.file.filename}`,
+                url_foto: imageUrl,
+                invite: { connect: { id: id_undangan } },
             },
         });
         res.status(201).json(gallery);
@@ -108,14 +107,14 @@ export const updateGallery = async (req, res) => {
         }
 
         const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
-
         const updatedGallery = await prisma.gallery.update({
 
             where: {
                 id_gallery: Number(req.params.id),
             },
             data: {
-                foto: imageUrl,
+                foto: `images/${req.file.filename}`,
+                url_foto: imageUrl,
                 id_pasangan: id_pasangan
             },
         });
@@ -133,10 +132,25 @@ export const deleteGallery = async (req, res) => {
             },
         });
         const filepath = `./public/${gallery.foto}`;
-        console.log('Filepath:', filepath);
         fs.unlinkSync(filepath);
 
         res.status(201).json({ message: 'Gallery deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+export const getGalleryByIdUndangan = async (req, res) => {
+    const { id_undangan } = req.params;
+
+    try {
+        const gallery = await prisma.gallery.findMany({
+            where: {
+                id_undangan: id_undangan,
+            },
+        });
+
+        res.status(200).json(gallery);
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }

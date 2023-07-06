@@ -3,15 +3,30 @@ import useSWR, { useSWRConfig } from "swr";
 import { QrReader } from "react-qr-reader";
 import { GetHour } from "../Handler/DateConvert";
 import { BiRefresh,BiFullscreen,BiExitFullscreen } from "react-icons/bi";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import TamuValid, { Wrong } from "../Handler/TamuValid";
+import { useDispatch, useSelector } from "react-redux";
+import { getMe } from "../Handler/authSlicer";
 // import "../../../../Index.scss";
 import "../Style/Scan.scss";
 
 function DaftarTamu() {
   const [click, setClick] = useState(false);
   const { id_undangan } = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError } = useSelector((state => state.auth));
+
+  useEffect(() => {
+    dispatch(getMe());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (isError) {
+      navigate("/");
+    }
+  }, [isError, navigate]);
 
   const fetch = async () => {
     const response = await axios.get(

@@ -4,6 +4,7 @@ import {
     upload,
     getDataWanita,
     getDataWanitaById,
+    getDataWanitaByIdUndangan,
     createDataWanita,
     updateDataWanita,
     deleteDataWanita
@@ -13,6 +14,7 @@ const router = express.Router();
 
 router.get("/datawanita", getDataWanita);
 router.get("/datawanita/:id", getDataWanitaById);
+router.get("/wanita/:id_undangan", getDataWanitaByIdUndangan);
 router.post("/datawanita", upload.single('foto_wanita'), createDataWanita);
 router.patch("/datawanita/:id", upload.single('foto_wanita'), updateDataWanita);
 router.delete("/datawanita/:id", deleteDataWanita);
