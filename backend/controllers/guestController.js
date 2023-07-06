@@ -75,32 +75,48 @@ export const deleteGuest = async (req, res) => {
 };
 
 export const getGuestByIdTamu = async (req, res) => {
-  const { id, id_tamu } = req.params;
-
   try {
-    // Mencari data undangan berdasarkan id
-    const undangan = await prisma.invitation.findUnique({
-      where: { id: Number(id) },
-      include: { tamu: true },
+    const { nama_tamu, alamat, no_telp, id_undangan } = req.body;
+    const id_tamu = uuid(); // Generate unique ID for guest
+
+    // Get the url_undangan from the Invitation model
+    const invitation = await prisma.invitation.findUnique({
+      where: {
+        id: id_undangan
+      },
+      select: {
+        url_undangan: true
+      }
     });
 
-    if (!undangan) {
-      return res.status(404).json({ error: 'Undangan tidak ditemukan' });
+    if (!invitation) {
+      return res.status(404).json({ error: "Invitation not found" });
     }
 
-    // Mencari objek tamu berdasarkan id_tamu di dalam undangan
-    const tamu = undangan.tamu.find((item) => item.id_tamu === id_tamu);
+    const { url_undangan } = invitation;
 
-    if (!tamu) {
-      return res.status(404).json({ error: 'Tamu tidak ditemukan' });
-    }
+    // Construct the link_undangan value
+    const link_undangan = `${req.protocol}://${req.get("host")}/${url_undangan}/${id_tamu}`;
 
-    res.json(tamu);
+    // Create the guest record with the link_undangan value
+    const guest = await prisma.guest.create({
+      data: {
+        id_tamu,
+        nama_tamu,
+        alamat,
+        no_telp,
+        link_undangan,
+        // qrcode: "-", // Set the qrcode value
+        id_undangan
+      }
+    });
+
+    res.status(200).json({ guest });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: 'Terjadi kesalahan server' });
+    res.status(500).json({ error: "Failed to create guest" });
   }
 };
+
 
 export const getGuestByIdUndangan = async (req, res) => {
   const { id_undangan } = req.params;
@@ -114,6 +130,6 @@ export const getGuestByIdUndangan = async (req, res) => {
 
     res.status(200).json(guests);
   } catch (error) {
-    res.status(500).json({ msg: error.message });
-  }
+    res.status(500).json({ msg: error.message });
+  }
 };

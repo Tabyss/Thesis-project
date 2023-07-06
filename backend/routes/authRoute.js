@@ -1,11 +1,10 @@
 import express from 'express';
-import { login, logout } from '../controllers/authController.js';
-import { refreshToken } from '../controllers/refreshToken.js';
+import { Login, Logout, Me } from '../controllers/authController.js';
 
 const router = express.Router();
 
-router.post('/login', login);
-router.get('/token', refreshToken);
-router.delete('/logout', logout);
+router.post('/login', Login);
+router.get('/me', Me);
+router.delete('/logout', Logout);
 
 export default router;

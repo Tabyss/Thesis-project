@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { BsInstagram, BsTwitter, BsFacebook } from "react-icons/bs";
 import axios from "axios";
+import useSWR, { useSWRConfig } from "swr";
 import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getMe } from "../Handler/authSlicer";
 import EditData from "../Elements/EditData";
 
 const Mempelai = () => {
-  const [gallery, setGallery] = useState([]);
+  const { mutate } = useSWRConfig();
   const [previewCover, setPreviewCover] = useState("");
   const [previewPria, setPreviewPria] = useState("");
   const [previewWanita, setPreviewWanita] = useState("");
@@ -16,7 +19,6 @@ const Mempelai = () => {
   const [fotoGallery, setFotoGallery] = useState("");
   const [judulKutipan, setJudulKutipan] = useState("");
   const [isiKutipan, setIsiKutipan] = useState("");
-  const [kutipan, setKutipan] = useState({})
   const [namaLengkapPria, setNamaLengkapPria] = useState("");
   const [namaLengkapWanita, setNamaLengkapWanita] = useState("");
   const [namaPanggilanPria, setNamaPanggilanPria] = useState("");
@@ -31,11 +33,22 @@ const Mempelai = () => {
   const [facebookWanita, setFacebookWanita] = useState("");
   const [twitterPria, setTwitterPria] = useState("");
   const [twitterWanita, setTwitterWanita] = useState("");
-  const navigate = useNavigate();
   const [msg, setMsg] = useState("");
   const { id_undangan } = useParams();
   const [idUndangan, setIdUndangan] = useState("");
-  const [idPasangan, setIdPasangan] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError } = useSelector((state => state.auth));
+
+  useEffect(() => {
+    dispatch(getMe());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if(isError){
+      navigate("/");
+    }
+  }, [isError, navigate]);
 
   useEffect(() => {
     setIdUndangan(id_undangan);
@@ -88,7 +101,6 @@ const Mempelai = () => {
       formDataCover.append('judul_kutipan', judulKutipan);
       formDataCover.append('isi_kutipan', isiKutipan);
       formDataCover.append('id_undangan', idUndangan);
-      formDataCover.append('id_pasangan', idPasangan);
       formDataPria.append('nama_lengkap', namaLengkapPria);
       formDataPria.append('nama_panggilan', namaPanggilanPria);
       formDataPria.append('nama_ayah', namaAyahPria);
@@ -97,6 +109,7 @@ const Mempelai = () => {
       formDataPria.append('facebook', facebookPria);
       formDataPria.append('twitter', twitterPria);
       formDataPria.append('foto_pria', fotoPria);
+      formDataPria.append('id_undangan', idUndangan);
       formDataWanita.append('nama_lengkap', namaLengkapWanita);
       formDataWanita.append('nama_panggilan', namaPanggilanWanita);
       formDataWanita.append('nama_ayah', namaAyahWanita);
@@ -105,7 +118,9 @@ const Mempelai = () => {
       formDataWanita.append('facebook', facebookWanita);
       formDataWanita.append('twitter', twitterWanita);
       formDataWanita.append('foto_wanita', fotoWanita);
+      formDataWanita.append('id_undangan', idUndangan);
       formDataGallery.append('foto_gallery', fotoGallery);
+      formDataGallery.append('id_undangan', idUndangan);
 
       try {
         await axios.post(`http://localhost:5000/couple`, formDataCover, {
@@ -124,19 +139,17 @@ const Mempelai = () => {
             "Content-Type": "multipart/form-data"
           },
         });
-        alert("Berhasil");
-        // navigate("/create");
+        alert("Data Berhasil Ditambah");
       } catch (error) {
         if (error.response) {
           console.log(error.response.data);
           setMsg(error.response.data.msg);
-          console.log(error.message)
         }
       }
     }
   }
   const CreateGallery = async (e) => {
-    // e.preventDefault();
+    e.preventDefault();
 
     if (!fotoGallery) {
       alert("Silahkan Upload Foto Gallery Terlebih Dahulu");
@@ -159,27 +172,21 @@ const Mempelai = () => {
           console.log(error.message)
         }
       }
-      alert("Berhasil Menambah Foto Gallery")
+      setFotoGallery(null);
+      setPreviewGallery(null);
     }
   }
 
   const fetchGallery = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/gallery`);
-      setGallery(response.data);
-      // console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await axios.get("http://localhost:5000/gallery");
+    return response.data;
   };
 
+  const { data } = useSWR("gallery", fetchGallery, { refreshInterval: 100 });
+
   const deleteGallery = async (id_gallery) => {
-    try {
-      await axios.delete(`http://localhost:5000/gallery/${id_gallery}`);
-      fetchGallery();
-    } catch (error) {
-      console.log(error.message);
-    }
+    await axios.delete(`http://localhost:5000/gallery/${id_gallery}`);
+    mutate("gallery");
   };
 
   useEffect(() => {
@@ -188,12 +195,12 @@ const Mempelai = () => {
 
   return (
     <div className="mempelai">
-<<<<<<< HEAD
-    <EditData id={2}/>
-      <form onSubmit={Create}>
-=======
+      <EditData id={2}/>
       <form onSubmit={CreateCouple}>
+<<<<<<< HEAD
 >>>>>>> 83e91cb (Connect Backend to Frontend)
+=======
+>>>>>>> bb43b2c (add login middleware, connect frontend)
         <div className="mempelai-form">
           <h1>Data Pasangan</h1>
           <div className="mempelai-form-cover">
@@ -351,14 +358,14 @@ const Mempelai = () => {
             </div>
           </form>
           <div className="mempelai-gallery-main-list">
-            {gallery.map((data, index) => (
+            {data && data.map((data, index) => (
               <div className="mempelai-gallery-main-list-action">
                   <p>{index + 1}</p>
                 <div key={data.id_gallery} className="table-body-contain">
-                  <img src={data.foto} alt="" className="table-body-contain-img" />
+                  <img src={data.url_foto} alt="" className="table-body-contain-img" />
                 </div>
                 <div className="mempelai-gallery-main-list-action-btn">
-                  {/* <button className="edit">Ganti</button> */}
+                  <button className="edit">Ganti</button>
                   <button className="delete" onClick={() => deleteGallery(data.id_gallery)}>Hapus</button>
                 </div>
               </div>
@@ -366,9 +373,9 @@ const Mempelai = () => {
           </div>
         </div>
       </div>
-      {/* <div className="mempelai-next">
+      <div className="mempelai-next">
         <button className="mempelai-next-button" type="submit">Next</button>
-      </div> */}
+      </div>
     </div >
   );
 }
