@@ -54,7 +54,7 @@ function ThemeOne() {
 
   return (
     <>
-     <audio ref={audioRef} id="track1" src="/track1.mp3" autoPlay loop onLoad={playAudio} />
+     <audio ref={audioRef} id="track1" src={`/${theme.backsound}.mp3`} autoPlay loop onLoad={playAudio} />
       {pop ? (
         <Modal toggleModal={toggleModal} invite={invite} guest={guest} theme={theme} />
       ) : (

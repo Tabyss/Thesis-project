@@ -68,11 +68,16 @@ function AddTamu({ tamu, invite }) {
   );
 }
 
+
+
 function TamuList() {
   const { mutate } = useSWRConfig();
   const [click, setClick] = useState(false);
   const [idtamu, setIdTamu] = useState("")
   const [undangan, setUndangan] = useState("");
+  const [invite, setInvite] = useState("");
+  const [theme, setTheme] = useState("");
+  const [ id, setId ] = useState("");
   const { id_undangan } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -90,6 +95,7 @@ function TamuList() {
 
   const fetch = async () => {
     const response = await axios.get(`http://localhost:5000/guest/${id_undangan}`);
+    setId(response.data[0].id_undangan);
     return response.data;
   };
 
@@ -106,8 +112,17 @@ function TamuList() {
     setIdTamu(HashGenerator(15))
   };
 
+  useEffect(() => {
+    const fetchInvite = async (id) => {
+      const response = await axios.get(`http://localhost:5000/invite/${id}`);
+      setInvite(response.data);
+    }
+
+    fetchInvite(id);
+  }, [id]);
+
   return (
-    <div className="view-tamu">
+    <div className={`view-tamu ${theme.tema_undangan}`}>
       <div className="view-tamu-menu">
         <button onClick={handleAdd} className="add">
           <BsPlus />
@@ -118,7 +133,7 @@ function TamuList() {
       </div>
       {click && <AddTamu tamu={idtamu} invite={id_undangan} />}
       <div className="view-tamu-table">
-      <table className="table">
+        <table className="table">
           <thead className="table-head">
             <tr className="table-head-contain">
               <th>No</th>
@@ -139,7 +154,12 @@ function TamuList() {
                 <td>{tamu.no_telp}</td>
                 <td>{tamu.alamat}</td>
                 <td>
-                  <QRCode value={tamu.qrcode} />
+                  <Link to={`/invitation/${invite.url_undangan}/${tamu.id_tamu}`}>
+                    <button className="view">View</button>
+                  </Link>
+                  <Link to={`/print/${invite.url_undangan}/${tamu.id_tamu}`}>
+                    <button className="download">Download</button>
+                  </Link>
                 </td>
                 <td>
                   <p className={tamu.status ? "hadir" : "tidak-hadir"}>

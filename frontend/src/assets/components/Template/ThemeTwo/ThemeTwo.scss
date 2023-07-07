@@ -1,18 +1,23 @@
 .font-1 {
   font-family: var(--font-1) !important;
 }
+
 .font-2 {
   font-family: var(--font-2) !important;
 }
+
 .font-3 {
   font-family: var(--font-3) !important;
 }
+
 .font-4 {
   font-family: var(--font-4) !important;
 }
+
 .font-5 {
   font-family: var(--font-5) !important;
 }
+
 .modal-2 {
   top: 0;
   left: 0;
@@ -28,6 +33,7 @@
   // background-size: cover;
   overflow: hidden;
   z-index: 100;
+
   .bg-image {
     position: absolute;
     top: 0%;
@@ -37,11 +43,13 @@
     object-fit: cover;
     object-position: top;
     z-index: -9;
+
     img {
       width: 100vw;
       height: 100vh;
     }
   }
+
   &::before {
     content: "";
     width: 100vw;
@@ -51,6 +59,7 @@
     z-index: -1;
     background-color: var(--theme-1-1);
   }
+
   &-judul {
     padding: 20px 0;
     color: var(--theme-1-2);
@@ -58,6 +67,7 @@
     text-transform: uppercase;
     z-index: 1;
   }
+
   h3 {
     font-size: 1.2rem;
     font-weight: 400;
@@ -65,12 +75,14 @@
     color: var(--theme-1-2);
     z-index: 1;
   }
+
   &-nama {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 20vh 10vh 0;
     gap: 10px;
+
     h1 {
       font-family: var(--font-5);
       font-weight: 200;
@@ -79,6 +91,7 @@
       z-index: 1;
     }
   }
+
   &-tamu {
     width: 100%;
     display: flex;
@@ -86,12 +99,14 @@
     align-items: center;
     padding: 10vh 0;
     z-index: 1;
+
     h2 {
       padding: 20px 0;
       color: var(--theme-1-2);
       font-size: 1.6rem;
       text-transform: uppercase;
     }
+
     h3 {
       font-size: 1.2rem;
       font-weight: 300;
@@ -99,6 +114,7 @@
       color: var(--theme-1-2);
     }
   }
+
   button {
     width: 100%;
     padding: 10px 14px;
@@ -117,6 +133,7 @@
   background-repeat: no-repeat;
   background-position: top;
   background-size: contain;
+
   &::before {
     content: "";
     top: 0;
@@ -127,28 +144,33 @@
     background: linear-gradient(180deg, rgba(26, 60, 64, 0) 0%, #1a3c40 100%);
     z-index: 0;
   }
+
   &-1 {
     position: relative;
     // padding: 25px 5vw;
     // margin: 5% 15vw;
     display: flex;
     justify-content: center;
+
     .bg-image {
       position: absolute;
       top: 0%;
       object-fit: cover;
       object-position: center;
       z-index: -9;
+
       img {
         width: 100vw;
         height: 100vh;
       }
     }
+
     .nikah {
       display: flex;
       flex-direction: column;
       justify-content: center;
       z-index: 1;
+
       .judul {
         font-size: 1rem;
         font-weight: 400;
@@ -156,6 +178,7 @@
         color: var(--theme-1-1);
         text-align: center;
       }
+
       h3 {
         font-size: 1rem;
         font-weight: 400;
@@ -163,6 +186,7 @@
         color: var(--theme-1-2);
         text-align: center;
       }
+
       &-nama {
         display: flex;
         flex-wrap: wrap;
@@ -170,6 +194,7 @@
         gap: 10px;
         justify-content: center;
         z-index: 1;
+
         h1 {
           font-family: var(--font-5);
           font-weight: 200;
@@ -179,6 +204,7 @@
       }
     }
   }
+
   &-2 {
     display: flex;
     justify-content: center;
@@ -186,11 +212,12 @@
     background-color: var(--theme-1-2);
     z-index: 1;
     border-radius: 20px;
+
     .mempelai {
-        
       .judul {
         padding: 40px 60px;
         margin-bottom: 10vh;
+
         h2 {
           padding: 20px 0 0;
           text-align: center;
@@ -207,29 +234,35 @@
         color: var(--theme-1-1);
         text-align: center;
       }
+
       &-nama {
         display: flex;
         flex-wrap: wrap;
         width: 100vw;
         justify-content: start;
+
         .foto {
           z-index: 1;
           background-color: var(--theme-1-1);
-          &:nth-child(1){
-              padding: 2% 2% 2% 5%;
-            }
-            &:nth-child(2){
-              padding: 2% 5% 2% 1%;
+
+          &:nth-child(1) {
+            padding: 2% 2% 2% 5%;
+          }
+
+          &:nth-child(2) {
+            padding: 2% 5% 2% 1%;
 
           }
         }
-        .info{
-            margin: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: start;
-            width: fit-content;
+
+        .info {
+          margin: 20px;
+          display: flex; 
+          flex-direction: column;
+          align-items: start;
+          width: fit-content;
         }
+
         h3 {
           font-size: 1rem;
           font-weight: 200;
@@ -237,6 +270,7 @@
           color: var(--theme-1-1);
           text-align: center;
         }
+
         h1 {
           font-family: var(--font-5);
           font-weight: 200;
@@ -244,6 +278,7 @@
           color: var(--theme-1-1);
           text-align: center;
         }
+
         .social {
           display: flex;
           justify-content: center;
@@ -255,23 +290,28 @@
       }
     }
   }
+
   &-3 {
     .kutipan {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 20px;
+
       &::before {
         content: url(./img/assets-9.png);
       }
+
       &::after {
         content: url(./img/assets-10.png);
       }
+
       p {
         text-align: center;
         font-family: var(--font-1);
         color: var(--theme-2-1);
       }
+
       h3 {
         text-align: center;
         font-family: var(--font-1);
@@ -279,10 +319,12 @@
       }
     }
   }
+
   &-4 {
     display: flex;
     justify-content: center;
     margin: 20vh 0;
+
     .agenda {
       .judul {
         padding: 40px 60px;
@@ -292,6 +334,7 @@
         background-repeat: no-repeat;
         background-position: center;
         object-fit: fill;
+
         h2 {
           padding: 20px 0 0;
           text-align: center;
@@ -299,11 +342,13 @@
           color: var(--theme-2-1);
         }
       }
+
       &-nama {
         margin: 40px;
         display: flex;
         flex-direction: column;
         align-items: center;
+
         h3 {
           width: 50vw;
           font-size: 1rem;
@@ -312,6 +357,7 @@
           color: var(--theme-2-1);
           text-align: center;
         }
+
         h1 {
           font-family: var(--font-4);
           font-weight: 200;
@@ -319,6 +365,7 @@
           color: var(--theme-2-1);
           text-align: center;
         }
+
         a {
           display: flex;
           justify-content: center;
@@ -334,24 +381,29 @@
       }
     }
   }
+
   &-5 {
     .kutipan {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 20px;
+
       &::before {
         content: url(./img/assets-11.png);
       }
+
       &::after {
         content: url(./img/assets-12.png);
       }
+
       h2 {
         color: var(--theme-2-1);
         font-size: 2rem;
         font-family: var(--font-1);
         text-transform: uppercase;
       }
+
       h3 {
         text-align: center;
         font-family: var(--font-1);
@@ -359,10 +411,12 @@
       }
     }
   }
+
   &-6 {
     display: flex;
     justify-content: center;
     margin: 20vh 0;
+
     .gallery {
       .judul {
         padding: 40px 60px;
@@ -372,6 +426,7 @@
         background-repeat: no-repeat;
         background-position: center;
         object-fit: fill;
+
         h2 {
           padding: 20px 0 0;
           text-align: center;
@@ -379,20 +434,24 @@
           color: var(--theme-2-1);
         }
       }
+
       &-nama {
         margin: 40px;
         display: flex;
         flex-direction: column;
         align-items: center;
       }
+
       &-content {
         display: flex;
         flex-direction: row;
+
         &-nama {
           margin: 10px;
           display: flex;
           flex-direction: column;
           align-items: center;
+
           img {
             max-width: 300px;
           }
@@ -400,17 +459,20 @@
       }
     }
   }
+
   &-7 {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 30vh 0;
+
     h3 {
       margin: 30px;
       text-align: center;
       font-family: var(--font-1);
       color: var(--theme-2-1);
     }
+
     button {
       width: 200px;
       margin: 30px;
@@ -421,4 +483,17 @@
       border: none;
     }
   }
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    &-6 {
+      .gallery-content-nama {
+        img {
+          max-width: 150px;
+        }
+      }
+    }
+  }
+
 }
