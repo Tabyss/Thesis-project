@@ -76,7 +76,7 @@ function Theme1() {
             <h3 className={`font-${theme.font_secondary}`}>{invite.tgl_nikah}</h3>
           </div>
           <div className="qrcode">
-            <h3>Scan Me</h3>
+            <h3 className={`font-${theme.font_secondary}`}>Scan Me</h3>
             <QRCode value={guest.qrcode} />
           </div>
         </div>
@@ -98,7 +98,7 @@ function Theme1() {
               <h1 className={`font-${theme.font_primary}`}>{dataWanita.nama_lengkap}</h1>
               <h3 className={`font-${theme.font_secondary}`}>putri dari</h3>
               <h3 className={`font-${theme.font_secondary}`}>{dataWanita.nama_ayah}</h3>
-              <h3 className={`font-${theme.font_secondary}`}>{dataWanita.nama_ibu}</h3>
+              <h3 className={`font-${theme.font_secondary}`}>&{dataWanita.nama_ibu}</h3>
             </div>
             <div className="kutipan">
               <p className={`font-${theme.font_secondary}`}>“{couple.isi_kutipan}”</p>

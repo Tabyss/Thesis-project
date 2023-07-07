@@ -1,8 +1,22 @@
+button.print {
+  position: absolute;
+  bottom: -70%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 20px;
+  color: white;
+  background-color: var(--theme-2-1);
+  border: 0;
+  border-radius: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .main-print1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url(../../assets/img/1/bg-1.png);
+  background-image: url(../img/1/bg-1.png);
   background-repeat: repeat-y;
   background-size: 100%;
   &-1 {
@@ -19,14 +33,14 @@
       justify-content: center;
       border: 3px solid var(--theme-2-1);
       &::before {
-        content: url(../../assets/img/1/assets-4.png);
+        content: url(../img/1/assets-4.png);
         position: absolute;
         top: -50px;
         right: 50%;
         z-index: 0;
       }
       &::after {
-        content: url(../../assets/img/1/assets-5.png);
+        content: url(../img/1/assets-5.png);
         position: absolute;
         bottom: 0;
         left: -100px;

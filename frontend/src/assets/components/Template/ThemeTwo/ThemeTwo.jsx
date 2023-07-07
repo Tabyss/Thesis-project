@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import QRCode from "qrcode.react";
@@ -19,6 +19,7 @@ function ThemeTwo() {
   const [pop, setPop] = useState(true);
   const { id_tamu, url_undangan } = useParams();
   const [couple, setCouple] = useState("");
+  const audioRef = useRef(null);
 
   const fetchGuest = async (id_tamu) => {
     const response = await axios.get(`http://localhost:5000/tamu/${id_tamu}`);
@@ -46,8 +47,15 @@ function ThemeTwo() {
     fetchGuest(id_tamu);
     fetchTheme(idUndangan);
     fetchCouple(idUndangan);
+    fetchTheme(idUndangan);
     fetchInvite(url_undangan);
   }, [id_tamu, idUndangan, url_undangan]);
+
+  const playAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
+  };
 
   const toggleModal = () => {
     setPop(!pop);
@@ -55,6 +63,7 @@ function ThemeTwo() {
 
   return (
     <>
+     <audio ref={audioRef} id="track1" src={`/${theme.backsound}.mp3`} autoPlay loop onLoad={playAudio} />
       {pop ? (
         <Modal toggleModal={toggleModal} invite={invite} guest={guest} theme={theme} couple={couple} />
       ) : (
