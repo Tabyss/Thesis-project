@@ -40,6 +40,33 @@ const Mempelai = () => {
   const navigate = useNavigate();
   const { isError } = useSelector((state => state.auth));
 
+  const [formCover, setFormCover] = useState("")
+  const [formDataPria, setFormDataPria] = useState({
+    foto_pria: "",
+    nama_pria: "",
+    nama_panjang_pria: "",
+    nama_bapak_pria: "",
+    nama_ibu_pria: "",
+    instagram: "",
+    facebook: "",
+    twitter: "",
+  })
+  const [formDataWanita, setFormDataWanita] = useState({
+    foto_wanita: "",
+    nama_wanita: "",
+    nama_panjang_wanita: "",
+    nama_bapak_wanita: "",
+    nama_ibu_wanita: "",
+    instagram: "",
+    facebook: "",
+    twitter: "",
+  })
+  const [formKutipan,setFormKutipan] = useState({
+    judul:"",
+    Kutipan:"",
+  })
+  const [formGallery,setFormGallery] = useState({})
+
   useEffect(() => {
     dispatch(getMe());
   }, [dispatch]);

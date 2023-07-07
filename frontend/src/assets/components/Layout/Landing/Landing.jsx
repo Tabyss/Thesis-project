@@ -5,7 +5,7 @@ import Content1 from "../../../img/logo.png";
 import Content2 from "../../../img/content-1.png";
 import "./landing.scss";
 
-function Navbar() {
+export function Navbar() {
   const [click, setClick] = useState(false);
 
   const active = () => setClick(!click);
@@ -41,7 +41,7 @@ function Navbar() {
             <NavLink to="/Sign-In" className="nav-link-log-in">
               Sign In
             </NavLink>
-            <NavLink to="/register" className="nav-link-log-up">
+            <NavLink to="/sign-up" className="nav-link-log-up">
               Sign Up
             </NavLink>
           </div>

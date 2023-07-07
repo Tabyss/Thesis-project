@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useSWR, { useSWRConfig } from "swr";
 import { QrReader } from "react-qr-reader";
 import { GetHour } from "../Handler/DateConvert";
-import { BiRefresh,BiFullscreen,BiExitFullscreen } from "react-icons/bi";
+import { BiRefresh, BiFullscreen, BiExitFullscreen } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import TamuValid, { Wrong } from "../Handler/TamuValid";
@@ -16,7 +16,7 @@ function DaftarTamu() {
   const { id_undangan } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isError } = useSelector((state => state.auth));
+  const { isError } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getMe());
@@ -79,9 +79,12 @@ function ScanTamu() {
   const [status, setStatus] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [wrongPopup, setWrongPopup] = useState(false);
+  const [theme, setTheme] = useState("");
   const [getId, setGetId] = useState({});
   const { id_undangan } = useParams();
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
 
   const handleRefresh = () => {
     window.location.reload();
@@ -97,6 +100,20 @@ function ScanTamu() {
       null;
     }
   };
+
+  useEffect(() => {
+    const handleGet = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/tema/${id_undangan}`
+        );
+        return setTheme(response.data.tema_undangan);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleGet();
+  }, [id_undangan]);
 
   const getGuest = async () => {
     if (status) {
@@ -143,20 +160,46 @@ function ScanTamu() {
     }
   }
 
-  function enterFullscreen(e) {
-    if (element.requestFullscreen) {
-      element.requestFullscreen(); // Standard syntax
-    } else if (element.mozRequestFullScreen) {
-      element.mozRequestFullScreen(); // Firefox
-    } else if (element.webkitRequestFullscreen) {
-      element.webkitRequestFullscreen(); // Chrome, Safari, and Opera
-    } else if (element.msRequestFullscreen) {
-      element.msRequestFullscreen(); // Internet Explorer/Edge
+
+  const toggleFullscreen = () => {
+    if (!isFullscreen) {
+      enterFullscreen();
+    } else {
+      exitFullscreen();
     }
-  }
+  };
+
+  const enterFullscreen = () => {
+    const element = document.getElementById('scan-qr');
+    if (element) {
+      if (element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if (element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if (element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if (element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+    setIsFullscreen(true);
+  };
+
+  const exitFullscreen = () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+    setIsFullscreen(false);
+  };
 
   return (
-    <div id="scan" className="theme-2">
+    <div id="scan" className={`theme-${theme}`}>
       <div className="scan">
         <div className="scan-qr">
           <h1>Daftar Hadir</h1>
@@ -178,7 +221,9 @@ function ScanTamu() {
             <button className="fresh" onClick={handleRefresh}>
               <BiRefresh />
             </button>
-            <button className="full" onClick={()=> setActive(!active)}>{active ? <BiExitFullscreen/> : <BiFullscreen/>}</button>
+            <button className="full" onClick={toggleFullscreen}>
+              {active ? <BiExitFullscreen /> : <BiFullscreen />}
+            </button>
           </div>
           <DaftarTamu />
         </div>

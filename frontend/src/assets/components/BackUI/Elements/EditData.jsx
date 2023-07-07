@@ -38,6 +38,12 @@ function EditData(id) {
   const navigate = useNavigate();
   const { isError } = useSelector((state => state.auth));
 
+  const handleLine = (e) => {
+    setGetId(e.target.id);
+    setActive(true);
+    console.log(getId);
+  };
+
   useEffect(() => {
     dispatch(getMe());
   }, [dispatch]);
@@ -47,12 +53,6 @@ function EditData(id) {
       navigate("/");
     }
   }, [isError, navigate]);
-
-  const handleLine = (e) => {
-    setGetId(e.target.id);
-    setActive(true);
-    console.log(getId);
-  };
 
   const handleNext = () => {
     setGetId(parseInt(getId) + 1);
@@ -67,13 +67,14 @@ function EditData(id) {
               <li
                 key={line.id}
                 id={line.id}
+                onClick={handleLine}
                 className={getId == line.id ? "active" : null}
               >
                 <Link
                   to={`/edit/${line.id}/${id_undangan}`}
                   onClick={handleLine}
                 >
-                  <p id={line.id}>{index + 1}</p>
+                  <p id={line.id} onClick={handleLine}>{index + 1}</p>
                   {line.dot}
                 </Link>
               </li>
