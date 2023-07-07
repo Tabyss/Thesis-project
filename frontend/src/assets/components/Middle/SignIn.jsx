@@ -48,8 +48,6 @@ function SignIn() {
             <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <div className="signin-content-value-button">
-              <ImGoogle3 />
-              <FaFacebook />
               <button type="submit">
                 {isLoading ? "Loading..." : "Login"}</button>
             </div>

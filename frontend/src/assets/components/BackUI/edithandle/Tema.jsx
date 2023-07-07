@@ -9,18 +9,20 @@ import { getMe } from "../Handler/authSlicer";
 import EditData from "../Elements/EditData";
 
 function Tema() {
-  const [activeTrack, setActiveTrack] = useState(null);
+  const { isError } = useSelector((state) => state.auth);
+  const { id_undangan } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isError } = useSelector((state => state.auth));
-  const { id_undangan } = useParams();
+
   const [idUndangan, setIdUndangan] = useState("");
-  const [temaUndangan, setTemaUndangan] = useState("");
+  const [idtema, setIdTema] = useState("");
+  const [activeTrack, setActiveTrack] = useState(null);
   const [formTheme, setFormTheme] = useState({
     tema: "",
     font_1: "1",
     font_2: "1",
-  })
+    sound: "",
+  });
 
   useEffect(() => {
     dispatch(getMe());
@@ -32,35 +34,58 @@ function Tema() {
     }
   }, [isError, navigate]);
 
-  useEffect(() => {
-    setIdUndangan(id_undangan);
-  }, [id_undangan]);
-
   const handleChange = (e) => {
     let data = { ...formTheme };
     data[e.target.name] = e.target.value;
     setFormTheme(data);
     console.log(formTheme);
   };
+  useEffect(() => {
+    const handleGet = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/tema/${id_undangan}`
+        );
+        setIdUndangan(response.data.id_undangan);
+        setIdTema(response.data.id_tema)
+        return setFormTheme({
+          tema: response.data.tema_undangan,
+          font_1: response.data.font_primary,
+          font_2: response.data.font_secondary,
+          sound: response.data.backsound,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    handleGet();
+  }, [id_undangan]);
 
   const handleSubmit = async () => {
-    const TemaUndangan = formTheme.tema.toString();
-    const PrimaryFont = formTheme.font_1;
-    const SecondaryFont = formTheme.font_2;
-    const Backsound = activeTrack;
-
-    try {
-      const response = await axios.post("http://localhost:5000/theme", {
-        tema_undangan: TemaUndangan,
-        font_primary: PrimaryFont,
-        font_secondary: SecondaryFont,
-        backsound: Backsound,
-        id_undangan: idUndangan
-      });
-      console.log("Tema berhasil disimpan:", response.data);
-      navigate(`/edit/2/${id_undangan}`);
-    } catch (error) {
-      console.error("Gagal menyimpan tema:", error);
+    if (idUndangan === id_undangan) {
+      try {
+        const response = await axios.patch(`http://localhost:5000/theme/${idtema}`, {
+          tema_undangan: formTheme.tema,
+          font_primary: formTheme.font_1,
+          font_secondary: formTheme.font_2,
+          backsound: activeTrack,
+          id_undangan: idUndangan,
+        });
+        navigate(`/edit/2/${id_undangan}`);
+        return response.data;
+      } catch (error) {}
+    } else {
+      try {
+        const response = await axios.post("http://localhost:5000/theme", {
+          tema_undangan: formTheme.tema,
+          font_primary: formTheme.font_1,
+          font_secondary: formTheme.font_2,
+          backsound: activeTrack,
+          id_undangan: idUndangan,
+        });
+        navigate(`/edit/2/${id_undangan}`);
+        return response.data
+      } catch (error) {}
     }
   };
 
@@ -165,8 +190,10 @@ function Tema() {
               onClick={() => handleToggleSound("track1")}
               id="track1"
               value="/StillGotTime.mp3"
-              className={`theme-contain-sound-list-button ${activeTrack === "track1" ? "disable" : ""
-                }`}
+              onChange={handleChange}
+              className={`theme-contain-sound-list-button ${
+                activeTrack === "track1" ? "disable" : ""
+              }`}
             >
               track 1 {activeTrack === "track1" ? <BiPause /> : <BiPlay />}
             </button>
@@ -174,8 +201,10 @@ function Tema() {
               onClick={() => handleToggleSound("track2")}
               id="track2"
               value="track2"
-              className={`theme-contain-sound-list-button ${activeTrack === "track2" ? "disable" : ""
-                }`}
+              onChange={handleChange}
+              className={`theme-contain-sound-list-button ${
+                activeTrack === "track2" ? "disable" : ""
+              }`}
             >
               track 2 {activeTrack === "track2" ? <BiPause /> : <BiPlay />}
             </button>
@@ -183,8 +212,10 @@ function Tema() {
               onClick={() => handleToggleSound("track3")}
               id="track3"
               value="track3"
-              className={`theme-contain-sound-list-button ${activeTrack === "track3" ? "disable" : ""
-                }`}
+              onChange={handleChange}
+              className={`theme-contain-sound-list-button ${
+                activeTrack === "track3" ? "disable" : ""
+              }`}
             >
               track 3 {activeTrack === "track3" ? <BiPause /> : <BiPlay />}
             </button>

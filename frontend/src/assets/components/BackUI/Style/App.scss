@@ -3,7 +3,7 @@
 .dash {
   display: flex;
   flex-wrap: wrap;
-  padding: 2%;
+  padding: 20vh 2% 2%;
   height: 100vh;
   gap: 25px;
   &-card {
@@ -36,10 +36,24 @@
         font-size: 40px;
         gap: 20px;
         .tumb-icon {
-          padding: 10px;
-          color: white;
-          border-radius: 20px;
-          background-color: var(--color-2);
+          &-1 {
+            padding: 10px;
+            color: var(--color-4);
+            border-radius: 20px;
+            background-color: var(--color-6);
+          }
+          &-2 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-4);
+            border-radius: 20px;
+          }
+          &-3 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-2);
+            border-radius: 20px;
+          }
         }
       }
       &:hover {
@@ -94,11 +108,11 @@
 }
 
 .create {
-  padding: 3%;
+  padding: 20vh 2% 2%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 20%;
+  gap: 15%;
   &-contain {
     display: flex;
     gap: 5vw;
