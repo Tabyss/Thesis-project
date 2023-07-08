@@ -64,12 +64,6 @@ function ThemeOne() {
             <Main2 idUndangan={idUndangan} theme={theme} />
             <Main3 idUndangan={idUndangan} theme={theme} />
             <Main4 idUndangan={idUndangan} theme={theme} />
-            <div className="main-5">
-              <div className="kutipan">
-                <h3 className={`font-${theme.font_secondary}`}>menuju akad nikah</h3>
-                <h2 className={`font-${theme.font_secondary}`}>00.00.00.00</h2>
-              </div>
-            </div>
             <Main6 idUndangan={idUndangan} theme={theme} />
             <div className="main-a-7">
               <h3 className={`font-${theme.font_secondary}`}>Scan Me</h3>

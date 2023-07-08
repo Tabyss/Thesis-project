@@ -22,12 +22,12 @@ function Main2({ idUndangan, theme }) {
     }, [idUndangan]);
 
     return (
-        <div className="main-2">
+        <div className="main-b-2">
             <div className="mempelai">
                 <div className="judul">
                     <h2 className={`font-${theme.font_primary}`}>Mempelai</h2>
                 </div>
-                <div className="mempelai-nama">
+                <div className="mempelai-nama-pria">
                     <div className="foto">
                         <img src={dataPria.url_foto} />
                     </div>
@@ -45,7 +45,7 @@ function Main2({ idUndangan, theme }) {
                     </div>
                 </div>
                 <h1 className={`and font-${theme.font_primary}`}>&</h1>
-                <div className="mempelai-nama">
+                <div className="mempelai-nama-wanita">
                     <div className="foto">
                         <img src={dataWanita.url_foto} />
                     </div>

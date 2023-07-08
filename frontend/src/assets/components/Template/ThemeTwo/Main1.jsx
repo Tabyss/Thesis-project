@@ -2,10 +2,7 @@ import React from "react";
 
 function Main1({ invite, theme, couple }) {
     return (
-        <div className="main-1">
-            <div className="bg-image">
-                <img src={couple.url_foto} />
-            </div>
+        <div className="main-b-1">
             <div className="nikah">
                 <h3 className={`judul font-${theme.font_secondary}`}>Undangan pernikahan</h3>
                 <div className="nikah-nama">

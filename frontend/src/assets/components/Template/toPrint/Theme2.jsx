@@ -65,7 +65,7 @@ function Theme1() {
     return (
         <>
             <div className="main-print2">
-                <div className="main-print2-1">
+                <div className="main-print2-1" style={{ backgroundImage: `url(${couple.url_foto})` }}>
                     <div className="nikah">
                         <div className="bg-linear"></div>
                         <h3 className={`font-${theme.font_secondary}`}>Undangan pernikahan</h3>

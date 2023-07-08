@@ -13,7 +13,7 @@ function Main6({ idUndangan, theme }) {
         fetchGallery(idUndangan);
     }, [idUndangan])
     return (
-        <div className="main-6">
+        <div className="main-b-6">
             <div className="gallery">
                 <div className="judul">
                     <h2 className={`font-${theme.font_primary}`}>gallery</h2>

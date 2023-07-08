@@ -11,7 +11,7 @@ function Main3({ idUndangan, theme }) {
         fetchCouple();
     }, [idUndangan])
     return (
-        <div className="main-3">
+        <div className="main-b-3">
             <div className="kutipan">
                 <p className={`font-${theme.font_secondary}`}>“{couple.isi_kutipan}”</p>
                 <h3 className={`font-${theme.font_secondary}`}>{couple.judul_kutipan}</h3>

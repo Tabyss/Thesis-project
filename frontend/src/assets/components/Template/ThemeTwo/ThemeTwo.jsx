@@ -68,19 +68,13 @@ function ThemeTwo() {
         <Modal toggleModal={toggleModal} invite={invite} guest={guest} theme={theme} couple={couple} />
       ) : (
         <>
-          <div className="main">
+          <div className="main-b" style={{ backgroundImage: `url(${couple.url_foto})` }}>
             <Main1 invite={invite} theme={theme} couple={couple} />
             <Main2 idUndangan={idUndangan} theme={theme} />
             <Main3 idUndangan={idUndangan} theme={theme} />
             <Main4 idUndangan={idUndangan} theme={theme} />
-            <div className="main-5">
-              <div className="kutipan">
-                <h3 className={`font-${theme.font_secondary}`}>menuju akad nikah</h3>
-                <h2 className={`font-${theme.font_secondary}`}>00.00.00.00</h2>
-              </div>
-            </div>
             <Main6 idUndangan={idUndangan} theme={theme} />
-            <div className="main-7">
+            <div className="main-b-7">
               <h3 className={`font-${theme.font_secondary}`}>Scan Me</h3>
               <QRCode value={guest.qrcode} />
             </div>

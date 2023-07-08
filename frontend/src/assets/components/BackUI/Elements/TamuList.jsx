@@ -68,20 +68,18 @@ function AddTamu({ tamu, invite }) {
   );
 }
 
-
-
 function TamuList() {
   const { mutate } = useSWRConfig();
   const [click, setClick] = useState(false);
-  const [idtamu, setIdTamu] = useState("")
+  const [idtamu, setIdTamu] = useState("");
   const [undangan, setUndangan] = useState("");
   const [invite, setInvite] = useState("");
   const [theme, setTheme] = useState("");
-  const [ id, setId ] = useState("");
+  const [id, setId] = useState("");
   const { id_undangan } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isError } = useSelector((state => state.auth));
+  const { isError } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getMe());
@@ -92,6 +90,15 @@ function TamuList() {
       navigate("/");
     }
   }, [isError, navigate]);
+
+  useEffect(() => {
+    const fetchInvite = async (id) => {
+      const response = await axios.get(`http://localhost:5000/invite/${id}`);
+      setInvite(response.data);
+    };
+
+    fetchInvite(id);
+  }, [id]);
 
   const fetch = async () => {
     const response = await axios.get(`http://localhost:5000/guest/${id_undangan}`);
@@ -109,17 +116,8 @@ function TamuList() {
 
   const handleAdd = () => {
     setClick(!click);
-    setIdTamu(HashGenerator(15))
+    setIdTamu(HashGenerator(15));
   };
-
-  useEffect(() => {
-    const fetchInvite = async (id) => {
-      const response = await axios.get(`http://localhost:5000/invite/${id}`);
-      setInvite(response.data);
-    }
-
-    fetchInvite(id);
-  }, [id]);
 
   return (
     <div className={`view-tamu ${theme.tema_undangan}`}>
@@ -147,38 +145,43 @@ function TamuList() {
             </tr>
           </thead>
           <tbody className="table-body">
-            {data.map((tamu, index) => (
-              <tr key={tamu.id} className="table-body-contain">
-                <td>{index + 1}</td>
-                <td>{tamu.nama_tamu}</td>
-                <td>{tamu.no_telp}</td>
-                <td>{tamu.alamat}</td>
-                <td>
-                  <Link to={`/invitation/${invite.url_undangan}/${tamu.id_tamu}`}>
-                    <button className="view">View</button>
-                  </Link>
-                  <Link to={`/print/${invite.url_undangan}/${tamu.id_tamu}`}>
-                    <button className="download">Download</button>
-                  </Link>
-                </td>
-                <td>
-                  <p className={tamu.status ? "hadir" : "tidak-hadir"}>
-                    {tamu.status ? "Hadir" : "Tidak Hadir"}
-                  </p>
-                </td>
-                <td className="gap">{tamu.status ? tamu.w_hadir : null}</td>
-                <td>
-                  <button
-                    onClick={() => {
-                      deleteTamu(tamu.id_tamu);
-                    }}
-                    className="delete"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {data.map((tamu, index) => {
+              const urlUndangan = `/invitation/${invite.url_undangan}/${tamu.id_tamu}`;
+              const urlPrint = `/print/${invite.url_undangan}/${tamu.id_tamu}`;
+
+              return (
+                <tr key={tamu.id} className="table-body-contain">
+                  <td>{index + 1}</td>
+                  <td>{tamu.nama_tamu}</td>
+                  <td>{tamu.no_telp}</td>
+                  <td>{tamu.alamat}</td>
+                  <td>
+                    <Link to={urlUndangan}>
+                      <button className="view">View</button>
+                    </Link>
+                    <Link to={urlPrint}>
+                      <button className="download">Download</button>
+                    </Link>
+                  </td>
+                  <td>
+                    <p className={tamu.status ? "hadir" : "tidak-hadir"}>
+                      {tamu.status ? "Hadir" : "Tidak Hadir"}
+                    </p>
+                  </td>
+                  <td className="gap">{tamu.status ? tamu.w_hadir : null}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        deleteTamu(tamu.id_tamu);
+                      }}
+                      className="delete"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
