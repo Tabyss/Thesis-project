@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Content1 from "../../../img/logo.png";
 import Content2 from "../../../img/content-1.png";
 import "./landing.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { LogOut, reset } from "../../BackUI/Handler/authSlicer";
 
 export function Navbar() {
   const [click, setClick] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state => state.auth));
+
+  const logout = () => {
+    dispatch(LogOut());
+    dispatch(reset());
+    navigate("/");
+}
+
+    // if (!user) {
+    //     return null; // atau tampilkan pesan loading
+    // }
 
   const active = () => setClick(!click);
 
@@ -37,14 +52,20 @@ export function Navbar() {
             <li>tema</li>
             <li>customers</li>
           </div>
-          <div className="nav-link-log">
-            <NavLink to="/Sign-In" className="nav-link-log-in">
-              Sign In
-            </NavLink>
-            <NavLink to="/sign-up" className="nav-link-log-up">
-              Sign Up
-            </NavLink>
-          </div>
+          {user ? (
+            <div className="nav-link-log">
+              <li onClick={logout} className="nav-link-log-out">Log Out</li>
+            </div>
+          ) : (
+            <div className="nav-link-log">
+              <NavLink to="/Sign-In" className="nav-link-log-in">
+                Sign In
+              </NavLink>
+              <NavLink to="/register" className="nav-link-log-up">
+                Sign Up
+              </NavLink>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -13,7 +13,7 @@ function Main4({ idUndangan, theme }) {
         fetchEvent(idUndangan);
     }, [idUndangan])
     return (
-        <div className="main-4">
+        <div className="main-b-4">
             <div className="agenda">
                 <div className="judul">
                     <h2 className={`font-${theme.font_primary}`}>Agenda</h2>

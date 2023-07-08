@@ -28,15 +28,6 @@ function Dashboard() {
     }
   }, [isError, navigate]);
 
-  const Logout = async () => {
-    try {
-      await axios.delete("http://localhost:5000/logout");
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     const fetchInvite = async () => {
       try {

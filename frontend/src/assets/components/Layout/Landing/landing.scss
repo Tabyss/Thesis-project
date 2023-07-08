@@ -22,6 +22,10 @@
         color: var(--color-3);
         font-weight: 400;
         font-size: 14px;
+        cursor: pointer;
+        a {
+          text-decoration: none;
+        }
       }
       &-log {
         display: flex;
@@ -43,6 +47,17 @@
           text-transform: uppercase;
           background-color: var(--color-2);
           color: white;
+        }
+        &-out{
+          font-size: 14px;
+          padding: 10px 30px;
+          border-radius: 10px;
+          list-style: none;
+          text-decoration: none;
+          text-transform: uppercase;
+          background-color: var(--color-1);
+          color: white;
+          cursor: pointer;
         }
       }
     }
