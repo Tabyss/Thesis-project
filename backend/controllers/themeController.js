@@ -54,7 +54,7 @@ export const updateTheme = async (req, res) => {
                 font_primary: font_primary,
                 font_secondary: font_secondary,
                 backsound: backsound,
-                id_undangan: id_undangan,
+                invite: { connect: { id: id_undangan } },
             },
         });
       res.status(201).json(theme);

@@ -16,8 +16,6 @@ model User {
   email         String  @unique
   no_telp       String
   password      String
-  foto_profile  String?
-  url_foto      String?
   role          String
   invite        Invitation[]
 }
@@ -45,7 +43,6 @@ model Guest {
   alamat          String
   status          Boolean     @default(false)
   no_telp         Int
-  link_undangan   String?
   qrcode          String
   w_hadir         DateTime    @default(now())
   updateAt        DateTime    @updatedAt
