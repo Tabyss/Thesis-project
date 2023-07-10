@@ -41,7 +41,7 @@ function HandleTheme() {
 
   return (
     <div>
-      {theme === "1" ? <ThemeOne /> : <ThemeTwo />}
+      {theme === "1" ? <ThemeTwo /> : <ThemeOne />}
     </div>
   );
 }

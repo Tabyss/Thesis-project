@@ -41,7 +41,7 @@ function HandlePrintTheme() {
 
   return (
     <div>
-      {theme === "1" ? <HandlePrint /> : <HandlePrint2 />}
+      {theme === "1" ? <HandlePrint2 /> : <HandlePrint />}
     </div>
   );
 }

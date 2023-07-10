@@ -115,8 +115,6 @@ function PopUp({ idAcara }) {
     }
   };
 
-  console.log(id);
-
   return (
     <div className="tambah-acara">
       <h1>Tambah Acara</h1>
@@ -251,6 +249,7 @@ function Acara() {
   const [id, setId] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id_undangan } = useParams();
   const { isError } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -264,7 +263,7 @@ function Acara() {
   }, [isError, navigate]);
 
   const getEvent = async () => {
-    const response = await axios.get("http://localhost:5000/event");
+    const response = await axios.get(`http://localhost:5000/acara/${id_undangan}`);
     return response.data;
   };
 
@@ -273,7 +272,7 @@ function Acara() {
     setActive(true);
   };
 
-  const { data } = useSWR("event", getEvent, { refreshInterval: 100 });
+  const { data } = useSWR("acara", getEvent, { refreshInterval: 100 });
 
   const deleteAcara = async (id_acara) => {
     try {

@@ -15,8 +15,9 @@ function Tema() {
   const navigate = useNavigate();
 
   const [idUndangan, setIdUndangan] = useState("");
-  const [idtema, setIdTema] = useState("");
+  const [idTema, setIdTema] = useState("");
   const [activeTrack, setActiveTrack] = useState(null);
+  const [buttonClicked, setButtonClicked] = useState(false);
   const [formTheme, setFormTheme] = useState({
     tema: "",
     font_1: "1",
@@ -41,19 +42,25 @@ function Tema() {
     console.log(formTheme);
   };
   useEffect(() => {
+    setIdUndangan(id_undangan);
+  }, [id_undangan]);
+
+  useEffect(() => {
     const handleGet = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/tema/${id_undangan}`
-        );
-        setIdUndangan(response.data.id_undangan);
-        setIdTema(response.data.id_tema)
-        return setFormTheme({
-          tema: response.data.tema_undangan,
-          font_1: response.data.font_primary,
-          font_2: response.data.font_secondary,
-          sound: response.data.backsound,
-        });
+        const response = await axios.get(`http://localhost:5000/tema/${id_undangan}`);
+        const data = response.data;
+        if (data != null) {
+          setIdTema(response.data.id_tema)
+          return setFormTheme({
+            tema: response.data.tema_undangan,
+            font_1: response.data.font_primary,
+            font_2: response.data.font_secondary,
+            sound: response.data.backsound,
+          });
+        } else {
+          setIdTema(null);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -62,6 +69,7 @@ function Tema() {
   }, [id_undangan]);
 
   const handleSubmit = async () => {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     const TemaUndangan = document.getElementById("temaUndangan").value;
@@ -90,8 +98,11 @@ function Tema() {
       console.error("Gagal menyimpan tema:", error);
 =======
     if (idUndangan === id_undangan) {
+=======
+    if (idTema != null) {
+>>>>>>> bbeccfe (Fix tema, database)
       try {
-        const response = await axios.patch(`http://localhost:5000/theme/${idtema}`, {
+        const response = await axios.patch(`http://localhost:5000/theme/${idTema}`, {
           tema_undangan: formTheme.tema,
           font_primary: formTheme.font_1,
           font_secondary: formTheme.font_2,
@@ -100,7 +111,7 @@ function Tema() {
         });
         navigate(`/edit/2/${id_undangan}`);
         return response.data;
-      } catch (error) {}
+      } catch (error) { }
     } else {
       try {
         const response = await axios.post("http://localhost:5000/theme", {
@@ -112,10 +123,20 @@ function Tema() {
         });
         navigate(`/edit/2/${id_undangan}`);
         return response.data
+<<<<<<< HEAD
       } catch (error) {}
 >>>>>>> 8005205 (fix bug)
+=======
+      } catch (error) { }
+>>>>>>> bbeccfe (Fix tema, database)
     }
-  };
+  
+    if (!buttonClicked) {
+      // Tampilkan pesan kesalahan karena tidak ada tombol yang diklik
+      alert("Harap Pilih Backsound");
+      return;
+    }
+  };  
 
   useEffect(() => {
     const audioElements = document.querySelectorAll("audio");
@@ -141,6 +162,7 @@ function Tema() {
 =======
 >>>>>>> bb43b2c (add login middleware, connect frontend)
     }
+    setButtonClicked(true);
   };
 
   return (
@@ -223,9 +245,8 @@ function Tema() {
               id="track1"
               value="/StillGotTime.mp3"
               onChange={handleChange}
-              className={`theme-contain-sound-list-button ${
-                activeTrack === "track1" ? "disable" : ""
-              }`}
+              className={`theme-contain-sound-list-button ${activeTrack === "track1" ? "disable" : ""
+                }`}
             >
               track 1 {activeTrack === "track1" ? <BiPause /> : <BiPlay />}
             </button>
@@ -234,9 +255,8 @@ function Tema() {
               id="track2"
               value="track2"
               onChange={handleChange}
-              className={`theme-contain-sound-list-button ${
-                activeTrack === "track2" ? "disable" : ""
-              }`}
+              className={`theme-contain-sound-list-button ${activeTrack === "track2" ? "disable" : ""
+                }`}
             >
               track 2 {activeTrack === "track2" ? <BiPause /> : <BiPlay />}
             </button>
@@ -245,9 +265,8 @@ function Tema() {
               id="track3"
               value="track3"
               onChange={handleChange}
-              className={`theme-contain-sound-list-button ${
-                activeTrack === "track3" ? "disable" : ""
-              }`}
+              className={`theme-contain-sound-list-button ${activeTrack === "track3" ? "disable" : ""
+                }`}
             >
               track 3 {activeTrack === "track3" ? <BiPause /> : <BiPlay />}
             </button>
