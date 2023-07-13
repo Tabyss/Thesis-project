@@ -32,7 +32,7 @@ function Dashboard() {
     const fetchInvite = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/undangan/${userId}`
+          `http://localhost:5000/invite`
         );
         setInvite(response.data);
       } catch (error) {
