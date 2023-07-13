@@ -3,8 +3,8 @@
 .dash {
   display: flex;
   flex-wrap: wrap;
-  padding: 20vh 2% 2%;
   height: 100vh;
+  padding: 80px 5% 30px;
   gap: 25px;
   &-card {
     @include card(20px, 15px);
@@ -52,12 +52,6 @@
             padding: 10px;
             color: white;
             background-color: var(--color-2);
-            border-radius: 20px;
-          }
-          &-4 {
-            padding: 10px;
-            color: white;
-            background-color: var(--color-1);
             border-radius: 20px;
           }
         }
@@ -117,10 +111,11 @@
 }
 
 .create {
-  padding: 20vh 1% 2%;
+  padding: 20vh 2% 2%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 15%;
   &-contain {
     display: flex;
     gap: 5vw;
@@ -255,6 +250,7 @@
           display: flex;
           justify-content: center;
           width: 100%;
+          cursor: pointer;
           li {
             position: relative;
             text-align: center;
@@ -410,6 +406,7 @@
       width: 100%;
       &-btn {
         display: flex;
+        cursor: pointer;
         justify-content: center;
         li {
           position: relative;
@@ -505,6 +502,7 @@
         color: white;
         border: none;
         border-radius: 15px;
+        cursor: pointer;
       }
     }
   }
@@ -517,8 +515,6 @@
           li {
             font-size: 0.8em;
             width: 20vw;
-            p {
-            }
           }
         }
       }
@@ -636,6 +632,7 @@
           border: 1px solid var(--color-4);
           border-radius: 15px;
           color: var(--color-4);
+          cursor: pointer;
           .play {
             font-size: 2em;
             padding: 2px 2px 0 2px;
@@ -1169,8 +1166,6 @@
         overflow: hidden;
         overflow-x: scroll;
       }
-      &-table {
-      }
       &-crud {
         &-button {
           .tambah-acara {
@@ -1298,7 +1293,6 @@
 }
 
 .view-tamu {
-  padding-top: 5%;
   &-menu {
     display: flex;
     gap: 10px;
@@ -1392,7 +1386,7 @@
               &.hadir {
                 color: var(--color-4);
                 border: 1px solid var(--color-4);
-                border-radius: 15px;
+                border-radius: 15px;  
               }
               &.tidak-hadir {
                 color: #da8e04;
@@ -1406,22 +1400,6 @@
               background-color: #da8e04;
               border: 0;
               border-radius: 10px;
-            }
-          }
-          .undangan{
-            .view{
-              padding: 4px 8px;
-              border-radius: 10px 0 0 10px;
-              border: 1px solid var(--color-1);
-              background-color: var(--color-6);
-              color: var(--color-1);
-            }
-            .download{
-              padding: 4px 8px;
-              border-radius: 0 10px 10px 0;
-              border: 1px solid var(--color-1);
-              background-color: var(--color-1);
-              color: var(--color-6);
             }
           }
         }
