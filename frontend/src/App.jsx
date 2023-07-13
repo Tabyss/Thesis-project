@@ -14,7 +14,7 @@ function Link() {
       <Route path="/" element={<Index />} />
       <Route path="Sign-In" element={<SignIn />} />
       <Route path="Sign-Up" element={<SignUp />} />
-      <Route path="Dashboard/:id_user" element={<Dashboard />} />
+      <Route path="Dashboard" element={<Dashboard />} />
     </Routes>
   );
 }

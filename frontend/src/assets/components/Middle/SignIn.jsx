@@ -20,7 +20,7 @@ function SignIn() {
 
   useEffect(() => {
     if(user || isSuccess){
-      navigate(`/dashboard/${user.id}`);
+      navigate(`/dashboard`);
     }
     dispatch(reset());
   }, [user, isSuccess, dispatch, navigate]);
