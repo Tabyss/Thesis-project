@@ -77,7 +77,7 @@ function DaftarTamu() {
 function ScanTamu() {
   const [id, setId] = useState("");
   const [status, setStatus] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(true);
   const [wrongPopup, setWrongPopup] = useState(false);
   const [theme, setTheme] = useState("");
   const [getId, setGetId] = useState({});
@@ -137,7 +137,7 @@ function ScanTamu() {
           setWrongPopup(false);
           getGuest();
           setId("");
-        }, 3000); // Ganti nilai 3000 dengan durasi yang diinginkan dalam milidetik (misalnya 3000 untuk 3 detik)
+        }, 30000); // Ganti nilai 3000 dengan durasi yang diinginkan dalam milidetik (misalnya 3000 untuk 3 detik)
         return () => clearTimeout(timer);
       }
     },

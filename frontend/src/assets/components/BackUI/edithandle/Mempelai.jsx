@@ -24,7 +24,10 @@ const Mempelai = () => {
   const [isiKutipan, setIsiKutipan] = useState("");
 
   //pria
+<<<<<<< HEAD
   const [idPria, setIdPria] = useState("");
+=======
+>>>>>>> 8547a02 (add handle update)
   const [fotoPria, setFotoPria] = useState("");
   const [namaLengkapPria, setNamaLengkapPria] = useState("");
   const [namaPanggilanPria, setNamaPanggilanPria] = useState("");
@@ -35,7 +38,10 @@ const Mempelai = () => {
   const [twitterPria, setTwitterPria] = useState("");
 
   //wanita
+<<<<<<< HEAD
   const [idWanita, setIdWanita] = useState("");
+=======
+>>>>>>> 8547a02 (add handle update)
   const [fotoWanita, setFotoWanita] = useState("");
   const [namaLengkapWanita, setNamaLengkapWanita] = useState("");
   const [namaPanggilanWanita, setNamaPanggilanWanita] = useState("");
@@ -75,7 +81,10 @@ const Mempelai = () => {
         const response = await axios.get(
           `http://localhost:5000/pria/${id_undangan}`
         );
+<<<<<<< HEAD
         setIdPria(response.data.id_pria);
+=======
+>>>>>>> 8547a02 (add handle update)
         setNamaLengkapPria(response.data.nama_lengkap);
         setNamaPanggilanPria(response.data.nama_panggilan);
         setNamaAyahPria(response.data.nama_ayah);
@@ -83,8 +92,11 @@ const Mempelai = () => {
         setInstagramPria(response.data.instagram);
         setFacebookPria(response.data.facebook);
         setTwitterPria(response.data.twitter);
+<<<<<<< HEAD
         setFotoPria(response.data.foto_pria);
         setPreviewPria(response.data.url_foto);
+=======
+>>>>>>> 8547a02 (add handle update)
       } catch (error) {
         console.log(error);
       }
@@ -94,7 +106,10 @@ const Mempelai = () => {
         const response = await axios.get(
           `http://localhost:5000/wanita/${id_undangan}`
         );
+<<<<<<< HEAD
         setIdWanita(response.data.id_wanita);
+=======
+>>>>>>> 8547a02 (add handle update)
         setNamaLengkapWanita(response.data.nama_lengkap);
         setNamaPanggilanWanita(response.data.nama_panggilan);
         setNamaAyahWanita(response.data.nama_ayah);
@@ -102,8 +117,11 @@ const Mempelai = () => {
         setInstagramWanita(response.data.instagram);
         setFacebookWanita(response.data.facebook);
         setTwitterWanita(response.data.twitter);
+<<<<<<< HEAD
         setFotoWanita(response.data.foto_wanita);
         setPreviewWanita(response.data.url_foto);
+=======
+>>>>>>> 8547a02 (add handle update)
       } catch (error) {
         console.log(error);
       }
@@ -116,8 +134,11 @@ const Mempelai = () => {
         setIdCouple(response.data.id_pasangan)
         setJudulKutipan(response.data.judul_kutipan);
         setIsiKutipan(response.data.isi_kutipan);
+<<<<<<< HEAD
         setFotoCover(response.data.foto_cover);
         setPreviewCover(response.data.url_foto);
+=======
+>>>>>>> 8547a02 (add handle update)
       } catch (error) {
         console.log(error);
       }
@@ -128,7 +149,11 @@ const Mempelai = () => {
     handleGetKutipan();
   }, [id_undangan]);
   
+<<<<<<< HEAD
   // console.log(idCouple)
+=======
+  console.log(idCouple)
+>>>>>>> 8547a02 (add handle update)
   const handleCoverChange = (e) => {
     const image = e.target.files[0];
     setFotoCover(image);
@@ -213,12 +238,20 @@ const Mempelai = () => {
               "Content-Type": "multipart/form-data",
             },
           });
+<<<<<<< HEAD
           await axios.patch(`http://localhost:5000/datapria/${idPria}`, formDataPria, {
+=======
+          await axios.patch(`http://localhost:5000/pria/${id_undangan}`, formDataPria, {
+>>>>>>> 8547a02 (add handle update)
             headers: {
               "Content-Type": "multipart/form-data",
             },
           });
+<<<<<<< HEAD
           await axios.patch(`http://localhost:5000/datawanita/${idWanita}`, formDataWanita, {
+=======
+          await axios.patch(`http://localhost:5000/wanita/${id_undangan}`, formDataWanita, {
+>>>>>>> 8547a02 (add handle update)
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -248,7 +281,10 @@ const Mempelai = () => {
             },
           });
           alert("Data Berhasil Ditambah");
+<<<<<<< HEAD
           navigate(`/edit/2${id_undangan}`);
+=======
+>>>>>>> 8547a02 (add handle update)
         } catch (error) {
           if (error.response) {
             console.log(error.response.data);
@@ -600,4 +636,8 @@ const Mempelai = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Mempelai;
+=======
+export default Mempelai;
+>>>>>>> 8547a02 (add handle update)

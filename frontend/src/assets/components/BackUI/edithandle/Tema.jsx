@@ -212,15 +212,17 @@ function Tema() {
                 value={formTheme.font_1}
                 onChange={handleChange}
               >
-                <option value="1">font 1</option>
-                <option value="2">font 2</option>
-                <option value="3">font 3</option>
+                <option value="1">Cinzel</option>
+                <option value="2">Lato</option>
+                <option value="3">Playfair Display</option>
+                <option value="4">Water Brush</option>
+                <option value="5">Allura</option>
               </select>
               <h2 className={`font-${formTheme.font_1}`}>heading 1</h2>
             </div>
           </div>
           <div className="theme-contain-font-input">
-            <p>main font</p>
+            <p>secondary font</p>
             <div className="theme-contain-font-input-choose">
               <select
                 className=""
@@ -229,9 +231,11 @@ function Tema() {
                 value={formTheme.font_2}
                 onChange={handleChange}
               >
-                <option value="1">font 1</option>
-                <option value="2">font 2</option>
-                <option value="3">font 3</option>
+                <option value="1">Cinzel</option>
+                <option value="2">Lato</option>
+                <option value="3">Playfair Display</option>
+                <option value="4">Water Brush</option>
+                <option value="5">Allura</option>
               </select>
               <h2 className={`font-${formTheme.font_2}`}>paragraph 1</h2>
             </div>

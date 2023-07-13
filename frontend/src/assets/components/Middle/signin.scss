@@ -4,7 +4,8 @@
   align-items: center;
   height: 100vh;
   img {
-    margin: 0 0 40px;
+    margin: 40px;
+    height: 60px;
     object-fit: contain;
   }
   &-content {
@@ -15,14 +16,16 @@
     justify-content: center;
     &-title {
       display: flex;
-      margin: 20px 0;
+      margin: 5px 0;
       width: 100%;
       color: var(--color-2);
       font-family: var(--font-1);
       justify-content: start;
       align-items: center;
       .arrowback{
-        font-size: 1.5rem;
+        margin-left: -3vw;
+        padding: 10px 10px 0 0;
+        font-size: 2rem;
         color: var(--color-2);
       }
     }
@@ -61,9 +64,13 @@
       }
     }
     &-regis{
-      margin: 1vh;
+      margin: 2vh;
       p {
         font-size: 0.8rem;
+        a{
+          text-decoration: none;
+          color: var(--color-3);
+        }
       }
     }
   }

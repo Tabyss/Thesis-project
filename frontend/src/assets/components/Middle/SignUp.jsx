@@ -72,7 +72,7 @@ function SignUp() {
             onChange={(e) => setNoTelp(e.target.value)}
           />
           <div className="signup-content-value-button">
-            <button>Signup</button>
+            <button>Sign Up</button>
           </div>
         </form>
         <div className="signup-content-regis">

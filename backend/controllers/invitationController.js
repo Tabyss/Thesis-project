@@ -91,7 +91,7 @@ export const deleteInvitation = async (req, res) => {
   try {
     const invite = await prisma.invitation.delete({
       where: {
-        id: Number(req.params.id),
+        id: req.params.id,
       },
     });
     res.status(201).json(invite);

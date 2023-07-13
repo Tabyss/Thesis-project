@@ -66,7 +66,7 @@ function CreateUndangan() {
         url_undangan: url,
         id_user: user.id,
       });
-      navigate(`/dashboard/${user.id}`);
+      navigate(`/dashboard`);
     } catch (error) {
       if (error.response) {
         // console.log(error.response.data.msg);
@@ -83,7 +83,7 @@ function CreateUndangan() {
           <p>{msg}</p>
           <div className="create-contain-form">
             <h1>1. pilih paket undangan</h1>
-            <h5>silahkan pilih paket sesuai fitur yang ada</h5>
+            <h5>Silahkan pilih paket sesuai fitur yang ada</h5>
             <div className="create-contain-form-card">
               {tawaran.map((pack, i) => (
                 <div className="create-contain-form-card-option" key={i}>
@@ -163,7 +163,7 @@ function CreateUndangan() {
             </div>
           </div>
           <div className="create-contain-payment">
-            <div className="create-contain-payment-item">
+            {/* <div className="create-contain-payment-item">
               <ul className="create-contain-payment-item-btn">
                 {Payline.map((line, index) => (
                   <li
@@ -179,7 +179,7 @@ function CreateUndangan() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
             <div className="create-contain-payment-pay">
               <div className="create-contain-payment-pay-item">
                 <p>Paket Bronze</p>

@@ -66,8 +66,11 @@ function PopUp({ idAcara }) {
     let data = { ...formAcara };
     data[e.target.name] = e.target.value;
     setFormAcara(data);
+<<<<<<< HEAD
     console.log(formAcara);
 >>>>>>> 8005205 (fix bug)
+=======
+>>>>>>> 8547a02 (add handle update)
   };
 
   const handleSubmit = async (e) => {
