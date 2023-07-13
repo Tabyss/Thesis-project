@@ -48,7 +48,6 @@ function PopUp({ idAcara }) {
     let data = { ...formAcara };
     data[e.target.name] = e.target.value;
     setFormAcara(data);
-    console.log(formAcara);
   };
 
   const handleSubmit = async (e) => {

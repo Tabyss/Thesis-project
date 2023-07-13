@@ -1,13 +1,16 @@
 import { Routes, Route} from "react-router-dom"
+
 import CreateUndangan from "./Elements/CreateUndangan"
 import EditData from "./Elements/EditData"
 import TamuList from "./Elements/TamuList"
 import ScanTamu from "./Elements/ScanTamu"
-import "./Style/App.scss"
-import Tema from "./edithandle/Tema"
+
 import Mempelai from "./edithandle/Mempelai"
 import Insight from "./edithandle/Insight"
 import Acara from "./edithandle/Acara"
+import Tema from "./edithandle/Tema"
+
+import "./Style/App.scss"
 
 function Inlink() {
   return (

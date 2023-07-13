@@ -9,6 +9,11 @@
     align-items: center;
     gap: 30px;
     overflow: hidden;
+    &-logo{
+      height: 50px;
+      margin: 0 10px;
+      
+    }
     &-link {
       width: 100%;
       display: flex;

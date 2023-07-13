@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import pp from "../../../img/pp-1.png";
 import { BsPlusCircle, BsFillBarChartFill } from "react-icons/bs";
-import { MdEdit } from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import "../Style/App.scss";
 import { useNavigate, Link, useParams } from "react-router-dom";
@@ -32,7 +32,7 @@ function Dashboard() {
     const fetchInvite = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/undangan/${userId}`
+          `http://localhost:5000/invite`
         );
         setInvite(response.data);
       } catch (error) {
@@ -42,6 +42,17 @@ function Dashboard() {
 
     fetchInvite();
   }, [userId]);
+
+  // const handleDelete = async (id) => {
+  //   try {
+  //     const response = await axios.delete(
+  //       `http://localhost:5000/event/${id_acara}`
+  //     );
+  //     return response.data;
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
 
   return (
     <>
@@ -59,6 +70,9 @@ function Dashboard() {
                 </Link>
                 <Link to={`/edit/4/${inviteItem.id}`}>
                   <BsFillBarChartFill className="tumb-icon-3" />
+                </Link>
+                <Link to={`/edit/4/${inviteItem.id}`}>
+                  <MdDelete className="tumb-icon-4" />
                 </Link>
               </div>
               <img src={pp} alt="Profile Picture" />

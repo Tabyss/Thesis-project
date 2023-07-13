@@ -30,7 +30,7 @@ const timeline = [
     direct: <Insight />,
   },
 ];
-function EditData(id) {
+function EditData({id}) {
   const [getId, setGetId] = useState(id);
   const [active, setActive] = useState(false);
   const { id_undangan } = useParams();
