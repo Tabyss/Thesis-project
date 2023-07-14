@@ -93,11 +93,6 @@ export const getGuestByIdTamu = async (req, res) => {
       return res.status(404).json({ error: "Invitation not found" });
     }
 
-    const { url_undangan } = invitation;
-
-    // Construct the link_undangan value
-    const link_undangan = `${req.protocol}://${req.get("host")}/${url_undangan}/${id_tamu}`;
-
     // Create the guest record with the link_undangan value
     const guest = await prisma.guest.create({
       data: {
@@ -105,8 +100,6 @@ export const getGuestByIdTamu = async (req, res) => {
         nama_tamu,
         alamat,
         no_telp,
-        link_undangan,
-        // qrcode: "-", // Set the qrcode value
         id_undangan
       }
     });

@@ -103,7 +103,7 @@ export const updateCouple = async (req, res) => {
         // Mencari data dari database
         const couple = await prisma.couple.findUnique({
             where: {
-                id_pasangan: Number(req.params.id), //-> pakai 'number' soalnya idnya integer
+                id_pasangan: req.params.id,
             },
         });
 
@@ -116,13 +116,14 @@ export const updateCouple = async (req, res) => {
 
         const updatedCouple = await prisma.couple.update({
             where: {
-                id_pasangan: Number(req.params.id), //-> pakai 'number' soalnya idnya integer
+                id_pasangan: req.params.id,
             },
             data: {
                 foto_cover: `images/${req.file.filename}`,
                 url_foto: imageUrl,
-                kutipan: kutipan,
-                id_undangan: id_undangan,
+                judul_kutipan: judul_kutipan,
+                isi_kutipan: isi_kutipan,
+                invite: { connect: { id: id_undangan } },
             },
         });
 
