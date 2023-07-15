@@ -106,8 +106,8 @@ function TamuList() {
     return response.data;
   };
 
-  const { data } = useSWR("tamu", fetch, { refreshInterval: 100 });
-  if (!data) return <h2>Loading...</h2>;
+  const { data } = useSWR("guest", fetch, { refreshInterval: 100 });
+  // if (!data) return <h2>Loading...</h2>;
 
   const deleteTamu = async (tamuId) => {
     await axios.delete(`http://localhost:5000/tamu/${tamuId}`);
@@ -145,7 +145,7 @@ function TamuList() {
             </tr>
           </thead>
           <tbody className="table-body">
-            {data.map((tamu, index) => {
+            {data && data.map((tamu, index) => {
               const urlUndangan = `/invitation/${invite.url_undangan}/${tamu.id_tamu}`;
               const urlPrint = `/print/${invite.url_undangan}/${tamu.id_tamu}`;
 
