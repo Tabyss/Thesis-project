@@ -32,7 +32,7 @@ export const upload = multer({
     storage, 
     fileFilter, 
     limits: {
-        fileSize: 8 * 1024 * 1024, // 8 MB
+        fileSize: 10 * 1024 * 1024, // 10 MB
     },
 });
 
@@ -80,7 +80,7 @@ export const createCouple = async (req, res) => {
                 url_foto: imageUrl,
                 judul_kutipan: judul_kutipan,
                 isi_kutipan: isi_kutipan,
-                invite: { connect: { id: id_undangan } },
+                id_undangan: id_undangan,
             },
         });
         res.status(201).json(couple);

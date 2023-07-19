@@ -27,7 +27,7 @@ model Invitation {
   tgl_nikah     String
   url_undangan  String
   id_user       Int?
-  user          User?   @relation(fields: [id_user], references: [id])
+  user          User?   @relation(fields: [id_user], references: [id], onDelete: SetNull)
   tamu          Guest[]
   acara         Event[]
   pasangan      Couple[]
@@ -47,7 +47,7 @@ model Guest {
   w_hadir         DateTime    @default(now())
   updateAt        DateTime    @updatedAt
   id_undangan     String?
-  invite          Invitation? @relation(fields: [id_undangan], references: [id])
+  invite          Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Theme {
@@ -57,7 +57,7 @@ model Theme {
   font_secondary  String
   backsound       String
   id_undangan     String?
-  invite          Invitation? @relation(fields: [id_undangan], references: [id])
+  invite          Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Event {
@@ -69,7 +69,7 @@ model Event {
   alamat        String
   link_maps     String
   id_undangan   String?
-  invite        Invitation? @relation(fields: [id_undangan], references: [id])
+  invite        Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Couple {
@@ -79,7 +79,7 @@ model Couple {
   judul_kutipan String
   isi_kutipan   String
   id_undangan   String?
-  invite        Invitation? @relation(fields: [id_undangan], references: [id])
+  invite        Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Data_Pria {
@@ -94,7 +94,7 @@ model Data_Pria {
   foto_pria       String
   url_foto        String
   id_undangan     String?
-  invite          Invitation? @relation(fields: [id_undangan], references: [id])
+  invite          Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Data_Wanita {
@@ -109,7 +109,7 @@ model Data_Wanita {
   foto_wanita     String
   url_foto        String
   id_undangan     String?
-  invite          Invitation? @relation(fields: [id_undangan], references: [id])
+  invite          Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Gallery {
@@ -117,5 +117,5 @@ model Gallery {
   foto          String
   url_foto      String
   id_undangan   String?
-  invite        Invitation? @relation(fields: [id_undangan], references: [id])
+  invite        Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }

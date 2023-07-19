@@ -3,7 +3,8 @@ import useSWR, { useSWRConfig } from "swr";
 import { QrReader } from "react-qr-reader";
 import { GetHour } from "../Handler/DateConvert";
 import { BiRefresh, BiFullscreen, BiExitFullscreen } from "react-icons/bi";
-import { useNavigate, useParams } from "react-router-dom";
+import { BsArrowLeft } from "react-icons/bs";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import TamuValid, { Wrong } from "../Handler/TamuValid";
 import { useDispatch, useSelector } from "react-redux";
@@ -82,8 +83,7 @@ function ScanTamu() {
   const [theme, setTheme] = useState("");
   const [getId, setGetId] = useState({});
   const { id_undangan } = useParams();
-  const [active, setActive] = useState(false);
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
 
   const handleRefresh = () => {
@@ -119,15 +119,16 @@ function ScanTamu() {
     if (status) {
       try {
         const guest = await axios.get(
-          `http://localhost:5000/guest/${id_undangan}`,
+          `http://localhost:5000/tamu/${id}`,
           {}
         );
         setGetId(guest.data);
-      } catch (error) {}
+      } catch (error) { }
     } else {
       null;
     }
   };
+  
   useEffect(
     () => {
       editTamu();
@@ -156,53 +157,40 @@ function ScanTamu() {
       } else {
         setWrongPopup(!false);
       }
-      console.log(result?.text);
     }
   }
 
-
-  const toggleFullscreen = () => {
-    if (!isFullscreen) {
-      enterFullscreen();
-    } else {
-      exitFullscreen();
-    }
+  const handleVideoLoaded = () => {
+    setIsVideoLoaded(true);
   };
 
-  const enterFullscreen = () => {
-    const element = document.getElementById('scan-qr');
-    if (element) {
-      if (element.requestFullscreen) {
-        element.requestFullscreen();
-      } else if (element.mozRequestFullScreen) {
-        element.mozRequestFullScreen();
-      } else if (element.webkitRequestFullscreen) {
-        element.webkitRequestFullscreen();
-      } else if (element.msRequestFullscreen) {
-        element.msRequestFullscreen();
+  const handleVideoError = (event) => {
+    console.error('Error while loading the video:', event.target.error);
+  };
+  
+  useEffect(() => {
+    if (isVideoLoaded) {
+      const videoElement = document.getElementById("scan-qr-video");
+      if (videoElement && videoElement.readyState >= 3) {
+        try {
+          videoElement.play();
+        } catch (error) {
+          console.error("Error while trying to play the video:", error);
+        }
       }
     }
-    setIsFullscreen(true);
-  };
-
-  const exitFullscreen = () => {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
-    setIsFullscreen(false);
-  };
+  }, [isVideoLoaded]);
 
   return (
     <div id="scan" className={`theme-${theme}`}>
       <div className="scan">
         <div className="scan-qr">
-          <h1>Daftar Hadir</h1>
+          <div className="scan-qr-judul">
+            <Link to={`/tamu/${id_undangan}`} className="back">
+              <BsArrowLeft />
+            </Link>
+            <h1>Daftar Hadir</h1>
+          </div>
           {showPopup ? (
             wrongPopup ? (
               <Wrong />
@@ -213,6 +201,8 @@ function ScanTamu() {
           <QrReader
             className="scan-qr-han"
             onResult={getValue}
+            onError={handleVideoError}
+            onLoadedData={handleVideoLoaded}
             style={{ width: "50%" }}
           />
         </div>
@@ -220,9 +210,6 @@ function ScanTamu() {
           <div className="scan-daftar-button">
             <button className="fresh" onClick={handleRefresh}>
               <BiRefresh />
-            </button>
-            <button className="full" onClick={toggleFullscreen}>
-              {active ? <BiExitFullscreen /> : <BiFullscreen />}
             </button>
           </div>
           <DaftarTamu />

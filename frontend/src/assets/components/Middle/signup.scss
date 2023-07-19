@@ -4,8 +4,13 @@
   align-items: center;
   height: 100vh;
   img {
+<<<<<<< HEAD
     margin: 40px;
     height: 60px;
+=======
+    margin: 40px 0 0;
+    width: 200px;
+>>>>>>> 2dbbf24 (Fixing)
     object-fit: contain;
   }
   &-content {
@@ -60,6 +65,7 @@
           border-radius: 15px;
           color: white;
           background-color: var(--color-4);
+          cursor: pointer;
         }
       }
     }

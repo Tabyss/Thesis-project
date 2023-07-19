@@ -10,7 +10,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 function Fitur() {
     return (
-        <div className="fitur">
+        <div className="fitur" id="fitur">
             <div className="container">
                 <div className="fitur-header">
                     <h1 className="title">FITUR</h1>

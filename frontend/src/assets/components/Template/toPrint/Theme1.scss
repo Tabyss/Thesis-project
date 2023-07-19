@@ -1,6 +1,7 @@
 button.print {
   position: absolute;
-  bottom: -70%;
+  z-index: 9;
+  bottom: -10%;
   left: 50%;
   transform: translateX(-50%);
   padding: 15px 20px;
@@ -20,22 +21,24 @@ button.print {
   background-repeat: repeat-y;
   background-size: 100%;
   &-1 {
+    position: relative;
     display: grid;
     grid-template-columns: 50% 50%;
     width: 100%;
+    min-height: 100vh;
     .nikah {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 25px 5vw;
-      margin: 5% 5vw;
+      padding: 50px 5vw;
+      margin: 15% 5vw;
       display: flex;
       justify-content: center;
       border: 3px solid var(--theme-2-1);
       &::before {
         content: url(../img/1/assets-4.png);
         position: absolute;
-        top: -50px;
+        top: -30px;
         right: 50%;
         z-index: 0;
       }
@@ -47,20 +50,20 @@ button.print {
         z-index: 0;
       }
       h3 {
-        font-size: 1rem;
-        font-weight: 200;
+        font-size: 2rem;
+        font-weight: 400;
         font-family: var(--font-1);
         color: var(--theme-2-1);
         text-align: center;
       }
       &-nama {
         width: auto;
-        margin: 10vh 0;
+        margin: 8vh 0;
         flex-direction: column;
         align-items: center;
         h1 {
           font-family: var(--font-4);
-          font-weight: 200;
+          font-weight: 400;
           font-size: 4rem;
           color: var(--theme-2-1);
           &:nth-child(1) {
@@ -82,7 +85,7 @@ button.print {
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: 30vh 0;
+      margin: 20vh 0;
       h3 {
         margin: 30px;
         text-align: center;
@@ -101,25 +104,27 @@ button.print {
     }
   }
   &-2 {
+    position: relative;
+    min-height: 100vh;
     display: grid;
     grid-template-columns: 50% 50%;
-    margin: 5vh 0;
     &::before {
       content: url(../img/1/assets-14.png);
       position: absolute;
-      top: 100%;
+      top: 0;
       left: 0;
     }
     &::after {
       content: url(../img/1/assets-13.png);
       position: absolute;
-      bottom: -100%;
+      bottom: 0;
       left: 40%;
     }
     .mempelai {
+      margin: 5vh 0;
       .judul {
         padding: 20px 20px;
-        margin: 40px 0;
+        margin: 20px 0;
         background: url(../img/1/assets-8.png);
         background-size: contain;
         background-repeat: no-repeat;
@@ -189,12 +194,13 @@ button.print {
     }
 
     .agenda {
+        margin: 5vh 0;
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        // gap: 20px;
       .judul {
         padding: 20px 20px;
-        margin: 40px 0;
+        margin: 30px 0;
         background: url(../img/1/assets-8.png);
         background-size: contain;
         background-repeat: no-repeat;
@@ -213,7 +219,7 @@ button.print {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin: 50px;
+        margin: 20px;
         h3 {
           font-size: 0.8rem;
           font-weight: 200;

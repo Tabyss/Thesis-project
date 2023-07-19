@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useSWR from "swr";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMe } from "../Handler/authSlicer";
 import EditData from "../Elements/EditData";
@@ -74,24 +74,7 @@ function PopUp({ idAcara }) {
   };
 
   const handleSubmit = async (e) => {
-    // const fetchEvent = async () => {
-    //   const response = await axios.get(
-    //     `http://localhost:5000/event/${id_undangan}`
-    //   );
-    //   return response.data;
-    // };
     e.preventDefault();
-
-    // await axios.post("http://localhost:5000/event", {
-    //   nama_acara: formAcara.nama,
-    //   tgl_acara: formAcara.tanggal,
-    //   jam_mulai: formAcara.mulai,
-    //   jam_selesai: formAcara.selesai,
-    //   alamat: formAcara.alamat,
-    //   link_maps: formAcara.link,
-    //   id_undangan: idUndangan,
-    // });
-    // alert("Data Berhasil Ditambah");
 
     if (idAcara !== "") {
       await axios.patch(`http://localhost:5000/event/${idAcara}`, {
@@ -116,6 +99,14 @@ function PopUp({ idAcara }) {
       });
       alert("Data Berhasil Ditambah");
     }
+    setFormAcara({
+      nama: "",
+      tanggal: "",
+      mulai: "",
+      selesai: "",
+      alamat: "",
+      link: "",
+    });
   };
 
   return (
@@ -282,6 +273,7 @@ function Acara() {
       const response = await axios.delete(
         `http://localhost:5000/event/${id_acara}`
       );
+      alert("Data Berhasil Dihapus");
       return response.data;
     } catch (error) {
       console.log(error.message);
@@ -358,6 +350,11 @@ function Acara() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="acara-next">
+        <Link to={`/edit/4/${id_undangan}`} className="mempelai-next-button">
+          Next
+        </Link>
       </div>
     </div>
   );

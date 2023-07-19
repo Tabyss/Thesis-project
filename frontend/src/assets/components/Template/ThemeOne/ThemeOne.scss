@@ -44,7 +44,7 @@
   }
   h3 {
     font-size: 1.2rem;
-    font-weight: 200;
+    font-weight: 400;
     font-family: var(--font-1);
     color: var(--theme-2-1);
   }
@@ -56,12 +56,13 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 10vh 10vh 0;
-    width: 50vw;
+    // margin: 10vh 10vh 0;
+    height: 50vh;
+    width: 80vw;
     h1 {
       font-family: var(--font-4);
-      font-weight: 200;
-      font-size: 4rem;
+      font-weight: 400;
+      font-size: 3rem;
       color: var(--theme-2-1);
       &:nth-child(1) {
         display: flex;
@@ -82,44 +83,50 @@
       top: 15%;
       left: 10vw;
     }
+    @media screen and (min-width : 760px) {
+      width: 50vw;
+    }
   }
   &-tamu {
     width: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-    padding: 10vh 0;
+    text-align: end;
+    padding: 3vh 0;
     z-index: 1;
     h2 {
       padding: 20px 0;
       color: var(--theme-2-1);
       font-size: 1.6rem;
       text-transform: uppercase;
+      font-weight: 700;
     }
   }
   button {
     padding: 10px 14px;
     background-color: var(--theme-2-1);
-    color: var(--color-4);
+    color: var(--color-5);
     font-family: var(--font-1);
-    border: none;
+    border: none; 
+    cursor: pointer;
   }
 }
 
 .main-a {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-image: url(../img/1/bg-1.png);
   background-repeat: no-repeat;
+  overflow: hidden;
   background-size: cover;
   &-1 {
-    padding: 25px 5vw;
-    margin: 10% 15vw;
+    padding: 50px 5vw;
+    margin: 15vh 15vw;
     display: flex;
     justify-content: center;
     border: 3px solid var(--theme-2-1);
     &::before {
+      overflow: hidden;
       content: url(../img/1/assets-4.png);
       position: absolute;
       top: -50px;
@@ -139,19 +146,20 @@
       justify-content: center;
       h3 {
         font-size: 1rem;
-        font-weight: 200;
         font-family: var(--font-1);
         color: var(--theme-2-1);
         text-align: center;
+        font-weight: 400;
+        text-transform: uppercase;
       }
       &-nama {
         width: auto;
-        margin: 10vh 0;
+        margin: 7vh 0;
         flex-direction: column;
         align-items: center;
         h1 {
           font-family: var(--font-4);
-          font-weight: 200;
+          font-weight: 400;
           font-size: 4rem;
           color: var(--theme-2-1);
           &:nth-child(1) {
@@ -173,8 +181,8 @@
   &-2 {
     display: flex;
     justify-content: center;
-    margin: 20vh 0;
-    .mempelai {
+    // margin: 20vh 0;
+    .pasangan {
       .judul {
         padding: 40px 60px;
         margin-bottom: 10vh;
@@ -193,7 +201,7 @@
       .and {
         margin: 5vh;
         text-align: center;
-        font-weight: 200;
+        font-weight: 400;
         font-size: 4rem;
         font-family: var(--font-4);
         color: var(--theme-2-1);
@@ -202,14 +210,14 @@
       &-nama {
         h3 {
           font-size: 1rem;
-          font-weight: 200;
+          font-weight: 400;
           font-family: var(--font-1);
           color: var(--theme-2-1);
           text-align: center;
         }
         h1 {
           font-family: var(--font-4);
-          font-weight: 200;
+          font-weight: 400;
           font-size: 4rem;
           color: var(--theme-2-1);
           text-align: center;
@@ -218,9 +226,12 @@
           display: flex;
           justify-content: center;
           margin: 10px;
-          color: var(--theme-2-1);
           gap: 10px;
           font-size: 1.4rem;
+          a {
+            text-decoration: none;
+            color: var(--theme-2-1);
+          }
         }
       }
     }
@@ -252,7 +263,7 @@
   &-4 {
     display: flex;
     justify-content: center;
-    margin: 20vh 0;
+    // margin: 20vh 0;
     .agenda {
       .judul {
         padding: 40px 60px;
@@ -277,26 +288,28 @@
         h3 {
           width: 50vw;
           font-size: 1rem;
-          font-weight: 200;
+          font-weight: 400;
           font-family: var(--font-1);
           color: var(--theme-2-1);
           text-align: center;
         }
         h1 {
           font-family: var(--font-4);
-          font-weight: 200;
+          font-weight: 400;
           font-size: 4rem;
           color: var(--theme-2-1);
           text-align: center;
         }
-        button {
+        a {
           width: 200px;
           margin: 10px;
           padding: 10px 14px;
+          text-align: center;
           background-color: var(--theme-2-1);
-          color: var(--color-4);
+          color: var(--color-5);
           font-family: var(--font-1);
           border: none;
+          text-decoration: none;
         }
       }
     }
@@ -329,11 +342,10 @@
   &-6 {
     display: flex;
     justify-content: center;
-    margin: 20vh 0;
+    // margin: 20vh 0;
     .gallery {
       .judul {
         padding: 40px 60px;
-        margin-bottom: 10vh;
         background: url(../img/assets-8.png);
         background-size: contain;
         background-repeat: no-repeat;
@@ -349,14 +361,25 @@
       &-content {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         &-nama {
           margin: 10px;
           display: flex;
+          flex-wrap: wrap;
           flex-direction: column;
           align-items: center;
           img {
-            max-width: 300px;
-            max-height: 300px;
+            max-width: 250px;
+            max-height: 250px;
+          }
+          @media screen and (min-width: 640px) {
+            img {
+              max-width: 300px;
+              height: 200px;
+              object-fit: contain;
+              object-position: center;
+            }
           }
         }
       }
@@ -366,7 +389,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 30vh 0;
+    margin: 10vh 0 30vh 0;
     h3 {
       margin: 30px;
       text-align: center;
@@ -374,7 +397,7 @@
       color: var(--theme-2-1);
     }
     button {
-      width: 200px;
+      width: 400px;
       margin: 30px;
       padding: 10px 14px;
       background-color: var(--theme-2-1);

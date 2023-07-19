@@ -21,7 +21,10 @@
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.13.0",
     "react-to-print": "^2.14.13",
+<<<<<<< HEAD
     "redux": "^4.2.1",
+=======
+>>>>>>> 2dbbf24 (Fixing)
     "sass": "^1.58.3",
     "swiper": "^9.1.0",
     "swr": "^2.1.5"

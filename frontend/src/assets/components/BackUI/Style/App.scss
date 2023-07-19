@@ -24,6 +24,8 @@
       img {
         position: absolute;
         border-radius: 20px;
+        width: 270px;
+        height: 280px;
         z-index: 0;
       }
       &-icon {
@@ -36,6 +38,7 @@
         font-size: 40px;
         gap: 20px;
         .tumb-icon {
+<<<<<<< HEAD
 <<<<<<< HEAD
           padding: 10px;
           color: white;
@@ -67,6 +70,39 @@
             border-radius: 20px;
           }
 >>>>>>> 8547a02 (add handle update)
+=======
+          &-1 {
+            padding: 10px;
+            color: var(--color-4);
+            border-radius: 20px;
+            background-color: var(--color-6);
+          }
+          &-2 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-4);
+            border-radius: 20px;
+          }
+          &-3 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-2);
+            border-radius: 20px;
+          }
+          &-4 {
+            font-size: 40px;
+            padding: 10px;
+            color: white;
+          }
+        }
+        button {
+          border: none;
+          border-radius: 20px;
+          background-color: var(--color-1);
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+>>>>>>> 2dbbf24 (Fixing)
         }
       }
       &:hover {
@@ -77,6 +113,10 @@
           opacity: 1;
         }
       }
+    }
+    &-keterangan {
+      display: flex;
+      justify-content: space-between;
     }
     &-title {
       display: flex;
@@ -116,14 +156,19 @@
     font-size: 0.8em;
     display: flex;
     align-items: end;
+    @media screen and (max-width: 760px) {
+      text-align: center;
+      padding: 0% 10% 20%;
+    }
   }
   @media screen and (max-width: 760px) {
     justify-content: center;
-    padding: 5%;
+    padding: 20% 0;
   }
 }
 
 .create {
+<<<<<<< HEAD
 <<<<<<< HEAD
   padding: 3%;
   display: flex;
@@ -136,9 +181,19 @@
   justify-content: center;
   flex-wrap: wrap;
 >>>>>>> 8547a02 (add handle update)
+=======
+  padding: 5vh 2% 2%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15%;
+>>>>>>> 2dbbf24 (Fixing)
   &-contain {
     display: flex;
     gap: 5vw;
+    @media screen and (max-width: 950px) {
+      display: block;
+    }
     &-form {
       @include card(30px, 15px);
       & h1 {
@@ -154,8 +209,9 @@
       }
       &-card {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
-        margin: 40px 40px;
+        margin: 40px 0px;
         gap: 10px;
 
         &-option {
@@ -201,7 +257,7 @@
 
             p {
               text-decoration: line-through;
-              font-weight: 100;
+              font-weight: 400;
               font-size: 14px;
             }
 
@@ -210,7 +266,7 @@
               border-radius: 10px;
               color: var(--color-1);
               border: 1px solid var(--color-1);
-              font-weight: 200;
+              font-weight: 400;
               font-size: 14px;
             }
           }
@@ -228,6 +284,9 @@
             gap: 10px;
           }
         }
+        @media screen and (min-width: 768px) {
+          flex-wrap: nowrap;
+        }
       }
 
       &-url {
@@ -238,14 +297,26 @@
           font-size: 16px;
         }
         .inputan {
+<<<<<<< HEAD
           width: 450px;
           @include input(--color-3, 10px);
+=======
+          width: 60%;
+          @include input(--color-3, 10px);
+          @media screen and (max-width: 768px) {
+            width: 100%;
+          }
+>>>>>>> 2dbbf24 (Fixing)
         }
       }
 
       &-mempelai {
         margin: 40px 40px 80px;
         display: flex;
+<<<<<<< HEAD
+=======
+        flex-wrap: wrap;
+>>>>>>> 2dbbf24 (Fixing)
         column-gap: 20px;
         h4 {
           color: var(--color-2);
@@ -254,6 +325,10 @@
         }
         .inputan {
           @include input(--color-3, 10px);
+<<<<<<< HEAD
+=======
+          width: 100%;
+>>>>>>> 2dbbf24 (Fixing)
         }
       }
     }
@@ -380,7 +455,12 @@
           border-radius: 10px;
           background-color: var(--color-1);
           color: white;
+          cursor: pointer;
         }
+      }
+      @media screen and (max-width: 950px) {
+        width: 100%;
+        padding: 0 30px;
       }
     }
   }
@@ -389,7 +469,7 @@
       width: 100vw;
       @include card(10px, 15px);
       h1 {
-        font-size: 1.4em;
+        font-size: 1.2em;
       }
       &-url {
         .inputan {
@@ -593,6 +673,14 @@
             // padding: 20px 22px;
             outline: var(--color-4) solid 3px;
           }
+          @media screen and (max-width: 692px) {
+            display: flex;
+            justify-content: center;
+          }
+        }
+        @media screen and (max-width: 692px) {
+          display: flex;
+          justify-content: center;
         }
       }
     }
@@ -635,6 +723,14 @@
             &-3 {
               text-transform: uppercase;
               font-family: var(--font-3);
+            }
+            &-4 {
+              text-transform: uppercase;
+              font-family: var(--font-4);
+            }
+            &-5 {
+              text-transform: uppercase;
+              font-family: var(--font-5);
             }
           }
         }
@@ -689,6 +785,8 @@
 }
 
 .mempelai {
+  position: relative;
+  width: 100vw;
   padding: 3%;
   &-form {
     @include card(40px, 15px);
@@ -711,6 +809,8 @@
         position: relative;
         justify-content: space-between;
         margin: 30px 0 0;
+<<<<<<< HEAD
+=======
         width: 100%;
         gap: 50px;
         cursor: pointer;
@@ -731,7 +831,7 @@
           }
           p {
             font-size: 0.8rem;
-            font-weight: 100;
+            font-weight: 400;
             color: var(--color-4);
           }
         }
@@ -744,6 +844,80 @@
           height: 100%;
           opacity: 0;
           cursor: pointer;
+        }
+        &-preview {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .preview-image {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+          }
+        }
+        @media screen and (max-width: 530px) {
+          display: block;
+          input {
+            width: 100%;
+            height: 120px;
+          }
+          &-preview {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+    &-keluarga {
+      margin: 50px 20px;
+      h2 {
+        font-family: var(--font-1);
+        font-size: 1.4rem;
+        color: var(--color-2);
+      }
+      &-upload {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        margin: 30px 0 0;
+>>>>>>> 2dbbf24 (Fixing)
+        width: 100%;
+        gap: 50px;
+        cursor: pointer;
+        &-bg {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 120px;
+          width: 100%;
+          border-radius: 10px;
+<<<<<<< HEAD
+=======
+          gap: 5px;
+>>>>>>> 2dbbf24 (Fixing)
+          border: 2px dashed var(--color-4);
+          h3 {
+            font-weight: 600;
+            font-size: 1.4rem;
+            text-transform: capitalize;
+            color: var(--color-4);
+          }
+          p {
+            font-size: .9rem;
+            font-weight: 400;
+            color: var(--color-4);
+          }
+        }
+        input {
+          position: absolute;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          cursor: pointer;
+<<<<<<< HEAD
         }
         &-preview {
           display: flex;
@@ -803,6 +977,9 @@
           opacity: 0;
           cursor: pointer;
         }
+=======
+        }
+>>>>>>> 2dbbf24 (Fixing)
         &-preview {
           display: flex;
           justify-content: center;
@@ -812,6 +989,19 @@
             max-height: 150px;
             object-fit: cover;
           }
+<<<<<<< HEAD
+=======
+        }
+        @media screen and (max-width: 530px) {
+          display: block;
+          input {
+            width: 100%;
+            height: 120px;
+          }
+          &-preview {
+            margin-top: 30px;
+          }
+>>>>>>> 2dbbf24 (Fixing)
         }
       }
       &-data {
@@ -890,7 +1080,7 @@
     }
   }
   &-gallery {
-    margin: 50px 0;
+    margin: 50px 0 200px;
     padding: 40px;
     box-shadow: 0px 20px 40px rgba(126, 181, 166, 0.3);
     border-radius: 15px;
@@ -1023,11 +1213,8 @@
       }
     }
   }
-  &-next {
-    margin: 50px 0;
-    padding: 40px;
-    box-shadow: 0px 20px 40px rgba(126, 181, 166, 0.3);
-    border-radius: 15px;
+  &-save {
+    padding: 50px 0;
     &-button {
       width: 100%;
       padding: 10px 0;
@@ -1036,6 +1223,29 @@
       border-radius: 15px;
       color: white;
       font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+  &-next {
+    position: absolute;
+    bottom: 0%;
+    width: 94%;
+    margin: 50px 0;
+    padding: 30px;
+    box-shadow: 0px 20px 40px rgba(126, 181, 166, 0.3);
+    border-radius: 15px;
+    &-button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      background-color: var(--color-4);
+      border: none;
+      border-radius: 15px;
+      color: white;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
     }
   }
   @media screen and (max-width: 768px) {
@@ -1077,6 +1287,7 @@
       margin: 20px 0;
       border-collapse: separate;
       border-spacing: 0 10px;
+      overflow-y: auto;
       &-head {
         background-color: var(--c-5);
         border: 0;
@@ -1111,6 +1322,7 @@
               color: var(--color-6);
               background-color: var(--color-1);
               border: none;
+              cursor: pointer;
             }
             .edit {
               padding: 10px 20px;
@@ -1119,6 +1331,7 @@
               color: var(--color-4);
               border: 1px solid var(--color-4);
               background: none;
+              cursor: pointer;
             }
           }
           td {
@@ -1139,6 +1352,7 @@
           border: none;
           border-radius: 10px;
           color: white;
+          cursor: pointer;
         }
         .tambah-acara {
           margin: 30px;
@@ -1170,6 +1384,7 @@
               input {
                 @include input(--color-6, 10px);
                 background-color: var(--color-4);
+                cursor: pointer;
               }
             }
           }
@@ -1199,6 +1414,24 @@
       }
     }
   }
+  &-next {
+    margin: 50px 0;
+    padding: 40px;
+    box-shadow: 0px 20px 40px rgba(126, 181, 166, 0.3);
+    border-radius: 15px;
+    &-button {
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      background-color: var(--color-4);
+      border: none;
+      border-radius: 15px;
+      color: white;
+      font-size: 1rem;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
 }
 
 .insight {
@@ -1219,32 +1452,12 @@
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 20px;
-      &-card {
+      a {
         display: flex;
         flex-direction: column;
-        width: 32%;
-        padding: 10px;
+        width: 30%;
+        text-decoration: none;
         border-radius: 10px;
-        gap: 10px;
-        cursor: pointer;
-        .value {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          font-family: var(--font-1);
-          h2 {
-            font-size: 2em;
-          }
-        }
-        a {
-          display: flex;
-          text-decoration: none;
-          color: var(--color-6);
-          width: 100%;
-          justify-content: end;
-          font-size: 0.8em;
-        }
-
         &:nth-child(odd) {
           background-color: var(--color-4);
           color: var(--color-6);
@@ -1258,6 +1471,32 @@
           .value {
             color: var(--color-4);
           }
+        }
+        @media screen and (max-width:720px) {
+          width: 100%;
+        }
+      }
+      &-card {
+        padding: 10px;
+        gap: 10px;
+        cursor: pointer;
+        .value {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-family: var(--font-1);
+          h2 {
+            font-size: 2em;
+          }
+        }
+        h4 {
+          display: flex;
+          text-decoration: none;
+          color: var(--color-6);
+          width: 100%;
+          justify-content: end;
+          font-size: 0.8em;
+          font-weight: 400;
         }
       }
     }
@@ -1314,24 +1553,91 @@
 
 .view-tamu {
 <<<<<<< HEAD
+<<<<<<< HEAD
   width: 100vw;
   height: 100vh;
 =======
   padding-top: 5%;
 >>>>>>> 8547a02 (add handle update)
+=======
+  height: 100vh;
+  &.theme-1 {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--theme-1-2);
+      &::before {
+        content: "";
+        position: absolute;
+        width: 20vw;
+        height: 6vh;
+        top: 0;
+        right: 0;
+        background-color: var(--theme-1-1);
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        width: 20vw;
+        height: 6vh;
+        bottom: 0;
+        left: 0;
+        background-color: var(--theme-1-1);
+     }
+  }
+  &.theme-2 {
+    overflow: hidden;
+    background: url(../../../theme/2/img/back.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    &::before {
+      content: url(../../../theme/2/img/Frame-1.png);
+      position: absolute;
+      width: 20vw;
+      height: 6vh;
+      top: -200px;
+      right: -50px;
+      z-index: 0;
+    }
+    &::after {
+      content: url(../../../theme/2/img/Frame-2.png);
+      position: absolute;
+      width: 20vw;
+      height: 6vh;
+      bottom: 100px;
+      left: -100px;
+      z-index: 0;
+    }
+  }
+>>>>>>> 2dbbf24 (Fixing)
   &-menu {
     display: flex;
     gap: 10px;
     margin: 20px;
+    align-items: center;
+    .back {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      color: var(--theme-1-1);
+      padding: 10px;
+      border: 0;
+      border-radius: 10px;
+    }
     .add {
+      display: flex;
+      align-items: center;
       font-size: 20px;
       color: white;
       padding: 10px;
       background-color: var(--color-4);
       border: 0;
       border-radius: 10px;
+      cursor: pointer;
     }
     .scanner {
+      display: flex;
+      align-items: center;
       font-size: 20px;
       color: white;
       padding: 10px;
@@ -1346,6 +1652,7 @@
   }
   .form {
     display: flex;
+    align-items: end;
     font-size: 14px;
     padding: 20px;
     border-radius: 10px;
@@ -1365,22 +1672,34 @@
       }
     }
     .submit {
-      padding: 10px;
+      padding: 0 10px;
       height: 32px;
       color: white;
       background-color: var(--color-4);
       border: 0;
       border-radius: 10px;
+      margin-bottom: 7px;
+      cursor: pointer;
     }
   }
   &-table {
-    margin: 20px;
+    margin: 20px 20px 6vh 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    border: 2px solid var(--color-4);
+    border-radius: 25px;
+    background-color: white;
+    padding: 15px;
+    .copy-success{
+      text-align: center;
+      font-family: var(--font-1);
+      font-size: 1rem;
+      font-weight: 400;
+      padding: 5px;
+    }
     .table {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid;
-      border-radius: 10px;
       border-spacing: 0;
+      width: 100%;
       font-size: 14px;
       &-head {
         background-color: var(--color-4);
@@ -1426,25 +1745,27 @@
               background-color: #da8e04;
               border: 0;
               border-radius: 10px;
-            }
-            button.view {
-              margin: 0 5px;
-              padding: 5px 8px;
-              color: #da8e04;
-              border: 0;
-              border-radius: 10px;
-              border: 1px solid #da8e04;
-              background-color: white;
               cursor: pointer;
             }
-            button.download {
-              margin: 0 5px;
+            button {
               padding: 5px 8px;
-              color: white;
               border: 0;
               border-radius: 10px;
+              margin:  0 3px;
+              cursor: pointer;
+              &.view {
+                color: #da8e04;
+                background-color: white;
+                border: #da8e04 1px solid;
+              }
+              &.download {
               background-color: #da8e04;
-              cursor: pointer;
+              color: white;
+              }
+              &.copy {
+              background-color: #707ee9;
+              color: white;
+              }
             }
           }
           .undangan{

@@ -15,11 +15,15 @@ export const Login = async (req, res) => {
       } 
     });
     if (!user) {
-      return res.status(404).json({ message: 'User Tidak Ditemukan' });
+      return res.status(404).json({ msg: 'Email/Password Tidak Ditemukan' });
     }
 
     const passwordMatch = await argon2.verify(user.password, req.body.password);
+<<<<<<< HEAD
     if (!passwordMatch) return res.status(400).json({msg: "Wrong Username/Password"});
+=======
+    if (!passwordMatch) return res.status(400).json({msg: "Email/Password Tidak Ditemukan"});
+>>>>>>> 2dbbf24 (Fixing)
     req.session.userId = user.id;
     const id = user.id;
     const username = user.username;

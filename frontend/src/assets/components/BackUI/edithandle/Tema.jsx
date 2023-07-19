@@ -111,7 +111,9 @@ function Tema() {
         });
         navigate(`/edit/2/${id_undangan}`);
         return response.data;
-      } catch (error) { }
+      } catch (error) {
+        console.log(error)
+      }
     } else {
       try {
         const response = await axios.post("http://localhost:5000/theme", {
@@ -124,15 +126,19 @@ function Tema() {
         navigate(`/edit/2/${id_undangan}`);
         return response.data
 <<<<<<< HEAD
+<<<<<<< HEAD
       } catch (error) {}
 >>>>>>> 8005205 (fix bug)
 =======
       } catch (error) { }
 >>>>>>> bbeccfe (Fix tema, database)
+=======
+      } catch (error) {
+        console.log(error)
+      }
+>>>>>>> 2dbbf24 (Fixing)
     }
-  
     if (!buttonClicked) {
-      // Tampilkan pesan kesalahan karena tidak ada tombol yang diklik
       alert("Harap Pilih Backsound");
       return;
     }
@@ -203,7 +209,7 @@ function Tema() {
         <div className="theme-contain-font">
           <h1>pilih font</h1>
           <div className="theme-contain-font-input">
-            <p>main font</p>
+            <p>Main Font</p>
             <div className="theme-contain-font-input-choose">
               <select
                 className=""
@@ -222,7 +228,11 @@ function Tema() {
             </div>
           </div>
           <div className="theme-contain-font-input">
+<<<<<<< HEAD
             <p>secondary font</p>
+=======
+            <p>Secondary Font</p>
+>>>>>>> 2dbbf24 (Fixing)
             <div className="theme-contain-font-input-choose">
               <select
                 className=""

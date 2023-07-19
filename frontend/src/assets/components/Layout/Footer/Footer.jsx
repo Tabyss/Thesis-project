@@ -5,14 +5,13 @@ import { BsInstagram, BsWhatsapp } from "react-icons/bs";
 
 function Footer() {
   return (
-    <div className="footer">
+    <div className="footer" id="footer">
       <img src={Content1} />
       <p>hubungi kami</p>
       <div className="footer-sosmed">
-        <BsWhatsapp />
-        <BsInstagram />
+        <a href="https://wa.me/6285819853560"><BsWhatsapp /></a>
+        <a href="https://www.instagram.com/bntngfrd"><BsInstagram /></a>
       </div>
-      <i>Copyright @ 2023 Kartu Nikah</i>
     </div>
   );
 }

@@ -23,18 +23,18 @@ function Main2({ idUndangan, theme }) {
 
     return (
         <div className="main-b-2">
-            <div className="mempelai">
+            <div className="pasangan">
                 <div className="judul">
                     <h2 className={`font-${theme.font_primary}`}>Mempelai</h2>
                 </div>
-                <div className="mempelai-nama-pria">
+                <div className="pasangan-nama-pria">
                     <div className="foto">
                         <img src={dataPria.url_foto} />
                     </div>
                     <div className="info">
                         <h3 className={`font-${theme.font_secondary}`}>Mempelai Pria</h3>
                         <h1 className={`font-${theme.font_primary}`}>{dataPria.nama_lengkap}</h1>
-                        <h3 className={`font-${theme.font_secondary}`}>putra dari</h3>
+                        <h3 className={`font-${theme.font_secondary}`}>Putra dari</h3>
                         <h3 className={`font-${theme.font_secondary}`}>{dataPria.nama_ayah}</h3>
                         <h3 className={`font-${theme.font_secondary}`}>{dataPria.nama_ibu}</h3>
                         <div className="social">
@@ -45,14 +45,14 @@ function Main2({ idUndangan, theme }) {
                     </div>
                 </div>
                 <h1 className={`and font-${theme.font_primary}`}>&</h1>
-                <div className="mempelai-nama-wanita">
-                    <div className="foto">
+                <div className="pasangan-nama-wanita">
+                    <div className="foto small">
                         <img src={dataWanita.url_foto} />
                     </div>
                     <div className="info">
                         <h3 className={`font-${theme.font_secondary}`}>Mempelai Wanita</h3>
                         <h1 className={`font-${theme.font_primary}`}>{dataWanita.nama_lengkap}</h1>
-                        <h3 className={`font-${theme.font_secondary}`}>putri dari</h3>
+                        <h3 className={`font-${theme.font_secondary}`}>Putri dari</h3>
                         <h3 className={`font-${theme.font_secondary}`}>{dataWanita.nama_ayah}</h3>
                         <h3 className={`font-${theme.font_secondary}`}>{dataWanita.nama_ibu}</h3>
                         <div className="social">
@@ -60,6 +60,9 @@ function Main2({ idUndangan, theme }) {
                             <Link to={dataWanita.instagram}><BsInstagram /></Link>
                             <Link to={dataWanita.twitter}><BsTwitter /></Link>
                         </div>
+                    </div>
+                    <div className="foto big">
+                        <img src={dataWanita.url_foto} />
                     </div>
                 </div>
             </div>
