@@ -68,7 +68,7 @@ function ThemeTwo() {
         <Modal toggleModal={toggleModal} invite={invite} guest={guest} theme={theme} couple={couple} />
       ) : (
         <>
-          <div className="main-b" style={{ backgroundImage: `url(${couple.url_foto})` }}>
+          <div className="main-b">
             <Main1 invite={invite} theme={theme} couple={couple} />
             <Main2 idUndangan={idUndangan} theme={theme} />
             <Main3 idUndangan={idUndangan} theme={theme} />

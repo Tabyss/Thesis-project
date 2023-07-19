@@ -5,7 +5,7 @@ import { BsCheckLg } from "react-icons/bs";
 
 function Package() {
   return (
-    <div className="package">
+    <div className="package" id="package">
       <div className="package-title">
         <h1>pilih paket</h1>
       </div>

@@ -35,6 +35,16 @@ export const createUser = async (req, res) => {
     // Jika tidak ada nilai role yang dikirim, set default sebagai "user"
     const userRole = role || "user";
 
+    // Cek apakah email sudah terdaftar di database
+    const checkEmail = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    // Jika email sudah terdaftar, kirimkan respons bahwa email sudah digunakan
+    if (checkEmail) {
+      return res.status(400).json({ msg: "Email sudah digunakan." });
+    }
+
     // Hash password menggunakan Argon2
     const passwordHash = await argon2.hash(password);
 
@@ -49,7 +59,7 @@ export const createUser = async (req, res) => {
       },
     });
 
-    res.status(201).json({ message: "Registrasi Berhasil", user });
+    res.status(201).json({ msg: "Registrasi Berhasil", user });
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
@@ -77,9 +87,9 @@ export const updateUser = async (req, res) => {
         role: userRole,
       },
     });
-    res.status(201).json({ message: "User Berhasil Diupdate", updateUser });
+    res.status(201).json({ msg: "User Berhasil Diupdate", updateUser });
   } catch (error) {
-    res.status(500).json({ message: "Terjadi Kesalahan Saat Mengupdate User", error })
+    res.status(500).json({ msg: "Terjadi Kesalahan Saat Mengupdate User", error })
   }
 }
 
@@ -91,8 +101,8 @@ export const deleteUser = async (req, res) => {
       },
     });
 
-    res.status(201).json({ message: "User Berhasil Dihapus", user });
+    res.status(201).json({ msg: "User Berhasil Dihapus", user });
   } catch (error) {
-    res.status(500).json({ message: "Terjadi Kesalahan Saat Menghapus User", error });
+    res.status(500).json({ msg: "Terjadi Kesalahan Saat Menghapus User", error });
   }
 };

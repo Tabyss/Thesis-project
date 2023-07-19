@@ -2,7 +2,8 @@ import React from "react";
 
 function Main1({ invite, theme, couple }) {
     return (
-        <div className="main-b-1">
+        <div className="main-b-1"  style={{ backgroundImage: `url(${couple.url_foto})` }}>
+            <div className="main-b-1-bg"></div>
             <div className="nikah">
                 <h3 className={`judul font-${theme.font_secondary}`}>Undangan pernikahan</h3>
                 <div className="nikah-nama">

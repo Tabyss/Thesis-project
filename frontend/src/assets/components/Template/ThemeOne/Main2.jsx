@@ -23,16 +23,16 @@ function Main2({ idUndangan, theme }) {
 
     return (
         <div className="main-a-2">
-            <div className="mempelai">
+            <div className="pasangan">
                 <div className="judul">
                     <h2 className={`font-${theme.font_primary}`}>Mempelai</h2>
                 </div>
-                <div className="mempelai-nama">
+                <div className="pasangan-nama">
                     <h3 className={`font-${theme.font_secondary}`}>Mempelai Pria</h3>
                     <h1 className={`font-${theme.font_primary}`}>{dataPria.nama_lengkap}</h1>
-                    <h3 className={`font-${theme.font_secondary}`}>putra dari</h3>
+                    <h3 className={`font-${theme.font_secondary}`}>Putra dari</h3>
                     <h3 className={`font-${theme.font_secondary}`}>{dataPria.nama_ayah}</h3>
-                    <h3 className={`font-${theme.font_secondary}`}>&{dataPria.nama_ibu}</h3>
+                    <h3 className={`font-${theme.font_secondary}`}>& {dataPria.nama_ibu}</h3>
                     <div className="social">
                         <Link to={dataPria.facebook}><BsFacebook /></Link>
                         <Link to={dataPria.instagram}><BsInstagram /></Link>
@@ -40,10 +40,10 @@ function Main2({ idUndangan, theme }) {
                     </div>
                 </div>
                 <h1 className={`and font-${theme.font_primary}`}>&</h1>
-                <div className="mempelai-nama">
+                <div className="pasangan-nama">
                     <h3 className={`font-${theme.font_secondary}`}>Mempelai Wanita</h3>
                     <h1 className={`font-${theme.font_primary}`}>{dataWanita.nama_lengkap}</h1>
-                    <h3 className={`font-${theme.font_secondary}`}>putri dari</h3>
+                    <h3 className={`font-${theme.font_secondary}`}>Putri dari</h3>
                     <h3 className={`font-${theme.font_secondary}`}>{dataWanita.nama_ayah}</h3>
                     <h3 className={`font-${theme.font_secondary}`}>& {dataWanita.nama_ibu}</h3>
                     <div className="social">

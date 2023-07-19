@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { NavLink, useNavigate } from "react-router-dom";
 import Content1 from "../../../img/logo.png";
@@ -17,24 +17,29 @@ export function Navbar() {
     dispatch(LogOut());
     dispatch(reset());
     navigate("/");
-}
+  }
 
-    // if (!user) {
-    //     return null; // atau tampilkan pesan loading
-    // }
+  // if (!user) {
+  //     return null; // atau tampilkan pesan loading
+  // }
 
   const active = () => setClick(!click);
 
-  function fixed() {
-    let navbar = document.getElementById("navbar");
-    let sc = window.scrollY;
-    if (sc < 50) {
-      navbar.classList.remove("fixed");
-    } else {
-      navbar.classList.add("fixed");
+  useEffect(() => {
+    function fixed() {
+      let navbar = document.getElementById("navbar");
+      let sc = window.scrollY;
+      if (sc < 50) {
+        navbar.classList.remove("fixed");
+      } else {
+        navbar.classList.add("fixed");
+      }
     }
-  }
-  window.addEventListener("scroll", fixed);
+    document.addEventListener("scroll", fixed);
+    return () => {
+      document.removeEventListener("scroll", fixed);
+    };
+  }, []);
 
   return (
     <div id="navbar" className={click ? "navbar fixed" : "navbar"}>
@@ -47,24 +52,32 @@ export function Navbar() {
           </button>
         </div>
         <div className={click ? "nav-link active" : "nav-link"}>
-          <div className="nav-link-menu">
-            <li>fitur</li>
-            <li>tema</li>
-            <li>customers</li>
-          </div>
           {user ? (
+            <>
+            <div className="nav-link-menu">
+            </div>
             <div className="nav-link-log">
               <li onClick={logout} className="nav-link-log-out">Log Out</li>
             </div>
+          </>
           ) : (
-            <div className="nav-link-log">
-              <NavLink to="/Sign-In" className="nav-link-log-in">
-                Sign In
-              </NavLink>
-              <NavLink to="/sign-up" className="nav-link-log-up">
-                Sign Up
-              </NavLink>
-            </div>
+            <>
+              <div className="nav-link-menu">
+                <li><a href="#landing">home</a></li>
+                <li><a href="#fitur">fitur</a></li>
+                <li><a href="#tema">tema</a></li>
+                <li><a href="#package">paket</a></li>
+                <li><a href="#review">customers</a></li>
+              </div>
+              <div className="nav-link-log">
+                <NavLink to="/Sign-In" className="nav-link-log-in">
+                  Sign In
+                </NavLink>
+                <NavLink to="/sign-up" className="nav-link-log-up">
+                  Sign Up
+                </NavLink>
+              </div>  
+            </>
           )}
         </div>
       </div>
@@ -76,7 +89,7 @@ function Landing() {
   return (
     <>
       <Navbar />
-      <div className="landing">
+      <div className="landing" id="landing">
         <img src={Content2} />
         <div className="landing-main">
           <h1>Lorem Ipsum is simply dummy text.</h1>
@@ -87,9 +100,9 @@ function Landing() {
             and scrambled it to make a type specimen book.
           </p>
           <div className="landing-main-link">
-            <button>contact us</button>
+            <a href="#footer" className="button">contact us</a>
             <div className="landing-main-link-tema">
-              <a>Coba Tema</a>
+              <a href="#tema">Coba Tema</a>
               <BsArrowRight />
             </div>
           </div>

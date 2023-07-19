@@ -9,6 +9,9 @@
     align-items: center;
     gap: 30px;
     overflow: hidden;
+    img {
+      width: 150px;
+    }
     &-link {
       width: 100%;
       display: flex;
@@ -25,6 +28,7 @@
         cursor: pointer;
         a {
           text-decoration: none;
+          color: var(--color-3);
         }
       }
       &-log {
@@ -98,7 +102,7 @@
       margin: 3vh 0;
       align-items: center;
       gap: 40px;
-      button {
+      .button {
         padding: 12px 24px;
         border: none;
         border-radius: 10px;
@@ -107,6 +111,7 @@
         font-size: 0.8rem;
         font-weight: 400;
         text-transform: uppercase;
+        text-decoration: none;
       }
       &-tema {
         display: flex;
@@ -114,7 +119,10 @@
         gap: 10px;
         font-size: 1rem;
         text-transform: uppercase;
-        color: var(--color-2);
+        a {
+          color: var(--color-2);
+          text-decoration: none;
+        }
       }
     }
   }

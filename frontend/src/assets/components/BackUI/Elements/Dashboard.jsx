@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import pp from "../../../img/pp-1.png";
+// import pp from "../../../img/pp-1.png";
 import { BsPlusCircle, BsFillBarChartFill } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
 import "../Style/App.scss";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,9 +13,10 @@ import { Navbar } from "../../Layout/Landing/Landing";
 
 function Dashboard() {
   const [invite, setInvite] = useState([]);
+  const [couple, setCouple] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isError } = useSelector((state) => state.auth);
+  const { isError, user } = useSelector((state) => state.auth);
   const { id_user } = useParams();
   const userId = parseInt(id_user);
 
@@ -31,23 +33,57 @@ function Dashboard() {
   useEffect(() => {
     const fetchInvite = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/invite`
-        );
-        setInvite(response.data);
+        if (user && user.role === "admin") {
+          const response = await axios.get(`http://localhost:5000/invite`);
+          setInvite(response.data);
+          console.log(response.data);
+        } else {
+          const response = await axios.get(
+            `http://localhost:5000/undangan/${userId}`
+          );
+          setInvite(response.data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    const fetchCouple = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/couple`);
+        setCouple(response.data);
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchInvite();
-  }, [userId]);
+    fetchCouple();
+  }, [userId, dispatch, isError, navigate, user]);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/invite/${id}`);
+      window.location.reload();
+      alert("Data Berhasil dihapus");
+      return response.data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  const inviteData = invite.map((inviteItem) => {
+    const coupleItem = couple.find((item) => item.id_undangan === inviteItem.id);
+    return {
+      ...inviteItem,
+      url_foto: coupleItem ? coupleItem.url_foto : "", // Jika coupleItem tidak ditemukan, set url_foto menjadi string kosong
+    };
+  });
 
   return (
     <>
       <Navbar />
       <div className="dash">
-        {invite.map((inviteItem) => (
+        {inviteData.map((inviteItem) => (
           <div key={inviteItem.id} className="dash-card">
             <div className="dash-card-tumb">
               <div className="dash-card-tumb-icon">
@@ -60,16 +96,23 @@ function Dashboard() {
                 <Link to={`/edit/4/${inviteItem.id}`}>
                   <BsFillBarChartFill className="tumb-icon-3" />
                 </Link>
+                {user && user.role === "admin" && (
+                  // Menampilkan tombol Delete hanya jika user adalah admin
+                  <button onClick={() => handleDelete(inviteItem.id)}>
+                    <AiFillDelete className="tumb-icon-4" />
+                  </button>
+                )}
               </div>
-              <img src={pp} alt="Profile Picture" />
+              <img src={inviteItem.url_foto} />
             </div>
             <div className="dash-card-title">
               <h2>
                 {inviteItem.nama_pria} - {inviteItem.nama_wanita}
               </h2>
-              <p className="active">active</p>
             </div>
-            <p>{inviteItem.tgl_nikah}</p>
+            <div className="dash-card-keterangan">
+              <p>{inviteItem.tgl_nikah}</p>
+            </div>
           </div>
         ))}
         <Link to={"/create"} className="dash-plus">

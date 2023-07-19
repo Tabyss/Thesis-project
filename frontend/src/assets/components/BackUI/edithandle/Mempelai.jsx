@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BsInstagram, BsTwitter, BsFacebook } from "react-icons/bs";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMe } from "../Handler/authSlicer";
 import useSWR, { useSWRConfig } from "swr";
@@ -30,9 +30,9 @@ const Mempelai = () => {
   const [namaPanggilanPria, setNamaPanggilanPria] = useState("");
   const [namaAyahPria, setNamaAyahPria] = useState("");
   const [namaIbuPria, setNamaIbuPria] = useState("");
-  const [instagramPria, setInstagramPria] = useState("");
-  const [facebookPria, setFacebookPria] = useState("");
-  const [twitterPria, setTwitterPria] = useState("");
+  const [instagramPria, setInstagramPria] = useState("https://www.instagram.com/");
+  const [facebookPria, setFacebookPria] = useState("https://www.facebook.com/");
+  const [twitterPria, setTwitterPria] = useState("https://twitter.com/");
 
   //wanita
   const [idWanita, setIdWanita] = useState("");
@@ -41,9 +41,9 @@ const Mempelai = () => {
   const [namaPanggilanWanita, setNamaPanggilanWanita] = useState("");
   const [namaAyahWanita, setNamaAyahWanita] = useState("");
   const [namaIbuWanita, setNamaIbuWanita] = useState("");
-  const [instagramWanita, setInstagramWanita] = useState("");
-  const [facebookWanita, setFacebookWanita] = useState("");
-  const [twitterWanita, setTwitterWanita] = useState("");
+  const [instagramWanita, setInstagramWanita] = useState("https://www.instagram.com/");
+  const [facebookWanita, setFacebookWanita] = useState("https://www.facebook.com/");
+  const [twitterWanita, setTwitterWanita] = useState("https://twitter.com/");
 
   const [msg, setMsg] = useState("");
   const [idUndangan, setIdUndangan] = useState("");
@@ -69,55 +69,64 @@ const Mempelai = () => {
     setIdUndangan(id_undangan);
   }, [id_undangan]);
 
+
   useEffect(() => {
     const handleGetPria = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/pria/${id_undangan}`
-        );
-        setIdPria(response.data.id_pria);
-        setNamaLengkapPria(response.data.nama_lengkap);
-        setNamaPanggilanPria(response.data.nama_panggilan);
-        setNamaAyahPria(response.data.nama_ayah);
-        setNamaIbuPria(response.data.nama_ibu);
-        setInstagramPria(response.data.instagram);
-        setFacebookPria(response.data.facebook);
-        setTwitterPria(response.data.twitter);
-        setFotoPria(response.data.foto_pria);
-        setPreviewPria(response.data.url_foto);
+        const response = await axios.get(`http://localhost:5000/pria/${id_undangan}`);
+        if (response.data != null) {
+          setIdPria(response.data.id_pria);
+          setNamaLengkapPria(response.data.nama_lengkap);
+          setNamaPanggilanPria(response.data.nama_panggilan);
+          setNamaAyahPria(response.data.nama_ayah);
+          setNamaIbuPria(response.data.nama_ibu);
+          setInstagramPria(response.data.instagram);
+          setFacebookPria(response.data.facebook);
+          setTwitterPria(response.data.twitter);
+          setFotoPria(response.data.foto_pria);
+          setPreviewPria(response.data.url_foto);
+        } else {
+          setIdPria(null);
+        }
       } catch (error) {
         console.log(error);
       }
     };
     const handleGetWanita = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/wanita/${id_undangan}`
-        );
-        setIdWanita(response.data.id_wanita);
-        setNamaLengkapWanita(response.data.nama_lengkap);
-        setNamaPanggilanWanita(response.data.nama_panggilan);
-        setNamaAyahWanita(response.data.nama_ayah);
-        setNamaIbuWanita(response.data.nama_ibu);
-        setInstagramWanita(response.data.instagram);
-        setFacebookWanita(response.data.facebook);
-        setTwitterWanita(response.data.twitter);
-        setFotoWanita(response.data.foto_wanita);
-        setPreviewWanita(response.data.url_foto);
+        const response = await axios.get(`http://localhost:5000/wanita/${id_undangan}`);
+        const data = response.data;
+        if (data != null) {
+          setIdWanita(response.data.id_wanita);
+          setNamaLengkapWanita(response.data.nama_lengkap);
+          setNamaPanggilanWanita(response.data.nama_panggilan);
+          setNamaAyahWanita(response.data.nama_ayah);
+          setNamaIbuWanita(response.data.nama_ibu);
+          setInstagramWanita(response.data.instagram);
+          setFacebookWanita(response.data.facebook);
+          setTwitterWanita(response.data.twitter);
+          setFotoWanita(response.data.foto_wanita);
+          setPreviewWanita(response.data.url_foto);
+        } else {
+          setIdWanita(null);
+        }
       } catch (error) {
         console.log(error);
       }
     };
     const handleGetKutipan = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/pasangan/${id_undangan}`
-        );
-        setIdCouple(response.data.id_pasangan)
-        setJudulKutipan(response.data.judul_kutipan);
-        setIsiKutipan(response.data.isi_kutipan);
-        setFotoCover(response.data.foto_cover);
-        setPreviewCover(response.data.url_foto);
+        const response = await axios.get(`http://localhost:5000/pasangan/${id_undangan}`);
+        const data = response.data;
+        if (data != null) {
+          setIdCouple(response.data.id_pasangan)
+          setJudulKutipan(response.data.judul_kutipan);
+          setIsiKutipan(response.data.isi_kutipan);
+          setFotoCover(response.data.foto_cover);
+          setPreviewCover(response.data.url_foto);
+        } else {
+          setIdCouple(null);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -127,31 +136,60 @@ const Mempelai = () => {
     handleGetWanita();
     handleGetKutipan();
   }, [id_undangan]);
-  
+
+  const MAX_IMAGE_SIZE_MB = 10;
+
   // console.log(idCouple)
   const handleCoverChange = (e) => {
     const image = e.target.files[0];
-    setFotoCover(image);
-    setPreviewCover(URL.createObjectURL(image));
+    // Validasi ukuran gambar
+    if (image.size > MAX_IMAGE_SIZE_MB * 1024 * 1024) {
+      // Jika ukuran gambar melebihi batas yang ditentukan, berikan pesan kesalahan
+      alert(`Ukuran gambar melebihi ${MAX_IMAGE_SIZE_MB} MB`);
+    } else {
+      setFotoCover(image);
+      setPreviewCover(URL.createObjectURL(image));
+    }
   };
 
   const handlePriaChange = (e) => {
     const image = e.target.files[0];
-    setFotoPria(image);
-    setPreviewPria(URL.createObjectURL(image));
-    // console.log(image);
+    // Validasi ukuran gambar
+    if (image.size > MAX_IMAGE_SIZE_MB * 1024 * 1024) {
+      // Jika ukuran gambar melebihi batas yang ditentukan, berikan pesan kesalahan
+      alert(`Ukuran gambar melebihi ${MAX_IMAGE_SIZE_MB} MB`);
+    } else {
+      setFotoPria(image);
+      setPreviewPria(URL.createObjectURL(image));
+    }
   };
 
   const handleWanitaChange = (e) => {
     const image = e.target.files[0];
-    setFotoWanita(image);
-    setPreviewWanita(URL.createObjectURL(image));
+
+    // Validasi ukuran gambar
+    if (image.size > MAX_IMAGE_SIZE_MB * 1024 * 1024) {
+      // Jika ukuran gambar melebihi batas yang ditentukan, berikan pesan kesalahan
+      alert(`Ukuran gambar melebihi ${MAX_IMAGE_SIZE_MB} MB`);
+    } else {
+      setFotoWanita(image);
+      setPreviewWanita(URL.createObjectURL(image));
+    }
   };
 
   const handleGalleryChange = (e) => {
     const image = e.target.files[0];
-    setFotoGallery(image);
-    setPreviewGallery(URL.createObjectURL(image));
+
+    // Validasi ukuran gambar
+    if (image.size > MAX_IMAGE_SIZE_MB * 1024 * 1024) {
+      // Jika ukuran gambar melebihi batas yang ditentukan, berikan pesan kesalahan
+      alert(`Ukuran gambar melebihi ${MAX_IMAGE_SIZE_MB} MB`);
+      return;
+    } else {
+      setFotoGallery(image);
+      setPreviewGallery(URL.createObjectURL(image));
+    }
+
   };
 
   const CreateCouple = async (e) => {
@@ -168,7 +206,6 @@ const Mempelai = () => {
       const formDataCover = new FormData();
       const formDataPria = new FormData();
       const formDataWanita = new FormData();
-      const formDataGallery = new FormData();
 
       // Tambahkan data file ke FormData
 
@@ -202,59 +239,54 @@ const Mempelai = () => {
       formDataCover.append("judul_kutipan", judulKutipan);
       formDataCover.append("isi_kutipan", isiKutipan);
 
-      //form gallery
-      formDataGallery.append("foto_gallery", fotoGallery);
-      formDataGallery.append("id_undangan", idUndangan);
-
-      if (id_undangan != "") {
-        try {
+      try {
+        if (idCouple != null) {
           await axios.patch(`http://localhost:5000/couple/${idCouple}`, formDataCover, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
           });
-          await axios.patch(`http://localhost:5000/datapria/${idPria}`, formDataPria, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          });
-          await axios.patch(`http://localhost:5000/datawanita/${idWanita}`, formDataWanita, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          });
-          alert("Data Berhasil Ditambah");
-        } catch (error) {
-          if (error.response) {
-            console.log(error.response.data);
-            setMsg(error.response.data.msg);
-          }
-        }
-      }else {
-        try {
+        } else {
           await axios.post(`http://localhost:5000/couple`, formDataCover, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
           });
+        };
+        if (idPria != null) {
+          await axios.patch(`http://localhost:5000/datapria/${idPria}`, formDataPria, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+        } else {
           await axios.post(`http://localhost:5000/datapria`, formDataPria, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
           });
+        };
+        if (idWanita != null) {
+          await axios.patch(`http://localhost:5000/datawanita/${idWanita}`, formDataWanita, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+        } else {
           await axios.post(`http://localhost:5000/datawanita`, formDataWanita, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
           });
-          alert("Data Berhasil Ditambah");
-          navigate(`/edit/2${id_undangan}`);
-        } catch (error) {
-          if (error.response) {
-            console.log(error.response.data);
-            setMsg(error.response.data.msg);
-          }
+        };
+        alert("Data Berhasil Ditambah");
+        navigate(`/edit/3/${id_undangan}`);
+      } catch (error) {
+        if (error.response) {
+          console.log(error.response.data);
+          setMsg(error.response.data.msg);
         }
+        navigate(`/edit/3/${id_undangan}`);
       }
     }
   };
@@ -266,8 +298,9 @@ const Mempelai = () => {
     } else {
       const formDataGallery = new FormData();
 
-      // Tambahkan data file ke FormData
+      //form gallery
       formDataGallery.append("foto_gallery", fotoGallery);
+      formDataGallery.append("id_undangan", idUndangan);
 
       try {
         await axios.post("http://localhost:5000/gallery", formDataGallery, {
@@ -288,7 +321,7 @@ const Mempelai = () => {
   };
 
   const fetchGallery = async () => {
-    const response = await axios.get("http://localhost:5000/gallery");
+    const response = await axios.get(`http://localhost:5000/galeri/${id_undangan}`);
     return response.data;
   };
 
@@ -304,294 +337,297 @@ const Mempelai = () => {
   }, []);
 
   return (
+
     <div className="mempelai">
       <EditData id={2} />
-      <form onSubmit={CreateCouple}>
-        <div className="mempelai-form">
-          <h1>Data Pasangan</h1>
-          <div className="mempelai-form-cover">
-            <h2>foto cover berdua</h2>
-            <div className="mempelai-form-cover-upload">
-              <div className="mempelai-form-cover-upload-bg">
-                <h3>upload foto cover</h3>
-                <p>JPG, GIF or PNG. Max size of 800K</p>
-              </div>
-              <input
-                type="file"
-                accept="image/*"
-                name="fotoCover"
-                onChange={handleCoverChange}
-              />
-              <div className="mempelai-form-cover-upload-preview">
+        <form onSubmit={CreateCouple}>
+          <div className="mempelai-form">
+            <h1>Data Pasangan</h1>
+            <div className="mempelai-form-cover">
+              <h2>foto cover berdua</h2>
+              <div className="mempelai-form-cover-upload">
+                <input
+                  type="file"
+                  accept="image/x-png, image/jpeg"
+                  name="fotoCover"
+                  onChange={handleCoverChange}
+                />
+                <div className="mempelai-form-cover-upload-bg">
+                  <h3>upload foto cover</h3>
+                  <p>JPG or PNG. Max size of 10 MB</p>
+                </div>
                 {previewCover && (
-                  <div>
-                    <img src={previewCover} className="preview-image" />
+                  <div className="mempelai-form-cover-upload-preview">
+                    <div>
+                      <img src={previewCover} className="preview-image" />
+                    </div>
                   </div>
                 )}
               </div>
             </div>
-          </div>
-          <div className="mempelai-form-keluarga">
-            <h2>mempelai pria</h2>
-            <div className="mempelai-form-keluarga-upload">
-              <div className="mempelai-form-keluarga-upload-bg">
-                <h3>upload foto pria</h3>
-                <p>JPG, GIF or PNG. Max size of 800K</p>
-              </div>
-              <input
-                type="file"
-                accept="image/*"
-                name="fotoPria"
-                onChange={handlePriaChange}
-              />
-              {previewPria && (
-                <div className="mempelai-form-keluarga-upload-preview">
-                  <img src={previewPria} className="preview-image" />
+            <div className="mempelai-form-keluarga">
+              <h2>mempelai pria</h2>
+              <div className="mempelai-form-keluarga-upload">
+                <input
+                  type="file"
+                  accept="image/x-png, image/jpeg"
+                  name="fotoPria"
+                  onChange={handlePriaChange}
+                />
+                <div className="mempelai-form-keluarga-upload-bg">
+                  <h3>upload foto pria</h3>
+                  <p>JPG or PNG. Max size of 10 MB</p>
                 </div>
-              )}
-            </div>
-            <div className="mempelai-form-keluarga-data">
-              <div className="mempelai-form-keluarga-data-pribadi">
-                <p>Nama panggilan pria</p>
-                <input
-                  type="text"
-                  required
-                  placeholder="Hanan"
-                  value={namaPanggilanPria}
-                  onChange={(e) => setNamaPanggilanPria(e.target.value)}
-                />
-              </div>
-              <div className="mempelai-form-keluarga-data-pribadi">
-                <p>Nama lengkap pria</p>
-                <input
-                  type="text"
-                  required
-                  placeholder="Hanan Ataki S.Kom"
-                  value={namaLengkapPria}
-                  onChange={(e) => setNamaLengkapPria(e.target.value)}
-                />
-              </div>
-              <div className="mempelai-form-keluarga-data-pribadi">
-                <p>Nama Ayah</p>
-                <input
-                  type="text"
-                  required
-                  placeholder="Bambang Rusdi"
-                  value={namaAyahPria}
-                  onChange={(e) => setNamaAyahPria(e.target.value)}
-                />
-              </div>
-              <div className="mempelai-form-keluarga-data-pribadi">
-                <p>Nama Ibu</p>
-                <input
-                  type="text"
-                  required
-                  placeholder="Yuni Ningsih"
-                  value={namaIbuPria}
-                  onChange={(e) => setNamaIbuPria(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="mempelai-form-keluarga-sosmed">
-              <p>Sosial Media</p>
-              <div className="mempelai-form-keluarga-sosmed-link">
-                <BsFacebook className="icon" />
-                <input
-                  type="url"
-                  value={facebookPria}
-                  onChange={(e) => setFacebookPria(e.target.value)}
-                />
-              </div>
-              <div className="mempelai-form-keluarga-sosmed-link">
-                <BsInstagram className="icon" />
-                <input
-                  type="url"
-                  value={instagramPria}
-                  onChange={(e) => setInstagramPria(e.target.value)}
-                />
-              </div>
-              <div className="mempelai-form-keluarga-sosmed-link">
-                <BsTwitter className="icon" />
-                <input
-                  type="url"
-                  value={twitterPria}
-                  onChange={(e) => setTwitterPria(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="mempelai-form-keluarga">
-            <h2>mempelai wanita</h2>
-            <div className="mempelai-form-keluarga-upload">
-              <div className="mempelai-form-keluarga-upload-bg">
-                <h3>upload foto wanita</h3>
-                <p>JPG, GIF or PNG. Max size of 800K</p>
-              </div>
-              <input
-                type="file"
-                accept="image/*"
-                name="fotoWanita"
-                onChange={handleWanitaChange}
-              />
-              {previewWanita && (
-                <div className="mempelai-form-keluarga-upload-preview">
-                  <img src={previewWanita} className="preview-image" />
-                </div>
-              )}
-            </div>
-            <div className="mempelai-form-keluarga-data">
-              <div className="mempelai-form-keluarga-data-pribadi">
-                <p>Nama panggilan wanita</p>
-                <input
-                  type="text"
-                  required
-                  placeholder="Hanan"
-                  value={namaPanggilanWanita}
-                  onChange={(e) => setNamaPanggilanWanita(e.target.value)}
-                />
-              </div>
-              <div className="mempelai-form-keluarga-data-pribadi">
-                <p>Nama lengkap wanita</p>
-                <input
-                  type="text"
-                  required
-                  placeholder="Hanan Ataki S.Kom"
-                  value={namaLengkapWanita}
-                  onChange={(e) => setNamaLengkapWanita(e.target.value)}
-                />
-              </div>
-              <div className="mempelai-form-keluarga-data-pribadi">
-                <p>Nama Ayah</p>
-                <input
-                  type="text"
-                  required
-                  placeholder="Bambang Rusdi"
-                  value={namaAyahWanita}
-                  onChange={(e) => setNamaAyahWanita(e.target.value)}
-                />
-              </div>
-              <div className="mempelai-form-keluarga-data-pribadi">
-                <p>Nama Ibu</p>
-                <input
-                  type="text"
-                  required
-                  placeholder="Yuni Ningsih"
-                  value={namaIbuWanita}
-                  onChange={(e) => setNamaIbuWanita(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="mempelai-form-keluarga-sosmed">
-              <p>Sosial Media</p>
-              <div className="mempelai-form-keluarga-sosmed-link">
-                <BsFacebook className="icon" />
-                <input
-                  type="url"
-                  value={facebookWanita}
-                  onChange={(e) => setFacebookWanita(e.target.value)}
-                />
-              </div>
-              <div className="mempelai-form-keluarga-sosmed-link">
-                <BsInstagram className="icon" />
-                <input
-                  type="url"
-                  value={instagramWanita}
-                  onChange={(e) => setInstagramWanita(e.target.value)}
-                />
-              </div>
-              <div className="mempelai-form-keluarga-sosmed-link">
-                <BsTwitter className="icon" />
-                <input
-                  type="url"
-                  value={twitterWanita}
-                  onChange={(e) => setTwitterWanita(e.target.value)}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mempelai-kutipan">
-          <h1>kutipan</h1>
-          <div className="mempelai-kutipan-main">
-            <input
-              type="text"
-              required
-              value={judulKutipan}
-              onChange={(e) => setJudulKutipan(e.target.value)}
-            />
-            <textarea
-              value={isiKutipan}
-              onChange={(e) => setIsiKutipan(e.target.value)}
-            ></textarea>
-          </div>
-        </div>
-        <div className="mempelai-next">
-          <button className="mempelai-next-button" type="submit">
-            Save
-          </button>
-        </div>
-      </form>
-      <div className="mempelai-gallery">
-        <h1>Gallery Pasangan</h1>
-        <div className="mempelai-gallery-main">
-          <h2>foto pasangan</h2>
-          <form onSubmit={CreateGallery}>
-            <div className="mempelai-gallery-main-upload">
-              <div className="mempelai-gallery-main-upload-bg">
-                <h3>upload foto Gallery</h3>
-                <p>JPG, GIF or PNG. Max size of 800K</p>
-              </div>
-              <input
-                type="file"
-                accept="image/*"
-                name="fotoCover"
-                onChange={handleGalleryChange}
-              />
-            </div>
-            <div className="mempelai-form-keluarga-preview">
-              {previewGallery && (
-                <div>
-                  <img src={previewGallery} className="preview-image" />
-                </div>
-              )}
-            </div>
-            <div className="mempelai-next">
-              <button className="mempelai-next-button" type="submit">
-                Save
-              </button>
-            </div>
-          </form>
-          <div className="mempelai-gallery-main-list">
-            {data &&
-              data.map((data, index) => (
-                <div className="mempelai-gallery-main-list-action">
-                  <p>{index + 1}</p>
-                  <div key={data.id_gallery} className="table-body-contain">
-                    <img
-                      src={data.url_foto}
-                      alt=""
-                      className="table-body-contain-img"
-                    />
+                {previewPria && (
+                  <div className="mempelai-form-keluarga-upload-preview">
+                    <img src={previewPria} className="preview-image" />
                   </div>
-                  <div className="mempelai-gallery-main-list-action-btn">
-                    <button className="edit">Ganti</button>
-                    <button
-                      className="delete"
-                      onClick={() => deleteGallery(data.id_gallery)}
-                    >
-                      Hapus
-                    </button>
-                  </div>
+                )}
+              </div>
+              <div className="mempelai-form-keluarga-data">
+                <div className="mempelai-form-keluarga-data-pribadi">
+                  <p>Nama panggilan pria</p>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Hanan"
+                    value={namaPanggilanPria}
+                    onChange={(e) => setNamaPanggilanPria(e.target.value)}
+                  />
                 </div>
-              ))}
+                <div className="mempelai-form-keluarga-data-pribadi">
+                  <p>Nama lengkap pria</p>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Hanan Ataki S.Kom"
+                    value={namaLengkapPria}
+                    onChange={(e) => setNamaLengkapPria(e.target.value)}
+                  />
+                </div>
+                <div className="mempelai-form-keluarga-data-pribadi">
+                  <p>Nama Ayah</p>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Bambang Rusdi"
+                    value={namaAyahPria}
+                    onChange={(e) => setNamaAyahPria(e.target.value)}
+                  />
+                </div>
+                <div className="mempelai-form-keluarga-data-pribadi">
+                  <p>Nama Ibu</p>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Yuni Ningsih"
+                    value={namaIbuPria}
+                    onChange={(e) => setNamaIbuPria(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="mempelai-form-keluarga-sosmed">
+                <p>Sosial Media</p>
+                <div className="mempelai-form-keluarga-sosmed-link">
+                  <BsFacebook className="icon" />
+                  <input
+                    type="url"
+                    value={facebookPria}
+                    onChange={(e) => setFacebookPria(e.target.value)}
+                  />
+                </div>
+                <div className="mempelai-form-keluarga-sosmed-link">
+                  <BsInstagram className="icon" />
+                  <input
+                    type="url"
+                    value={instagramPria}
+                    onChange={(e) => setInstagramPria(e.target.value)}
+                  />
+                </div>
+                <div className="mempelai-form-keluarga-sosmed-link">
+                  <BsTwitter className="icon" />
+                  <input
+                    type="url"
+                    value={twitterPria}
+                    onChange={(e) => setTwitterPria(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="mempelai-form-keluarga">
+              <h2>mempelai wanita</h2>
+              <div className="mempelai-form-keluarga-upload">
+                <input
+                  type="file"
+                  accept="image/x-png, image/jpeg"
+                  name="fotoWanita"
+                  onChange={handleWanitaChange}
+                />
+                <div className="mempelai-form-keluarga-upload-bg">
+                  <h3>upload foto wanita</h3>
+                  <p>JPG or PNG. Max size of 10 MB</p>
+                </div>
+                {previewWanita && (
+                  <div className="mempelai-form-keluarga-upload-preview">
+                    <img src={previewWanita} className="preview-image" />
+                  </div>
+                )}
+              </div>
+              <div className="mempelai-form-keluarga-data">
+                <div className="mempelai-form-keluarga-data-pribadi">
+                  <p>Nama panggilan wanita</p>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Hanan"
+                    value={namaPanggilanWanita}
+                    onChange={(e) => setNamaPanggilanWanita(e.target.value)}
+                  />
+                </div>
+                <div className="mempelai-form-keluarga-data-pribadi">
+                  <p>Nama lengkap wanita</p>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Hanan Ataki S.Kom"
+                    value={namaLengkapWanita}
+                    onChange={(e) => setNamaLengkapWanita(e.target.value)}
+                  />
+                </div>
+                <div className="mempelai-form-keluarga-data-pribadi">
+                  <p>Nama Ayah</p>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Bambang Rusdi"
+                    value={namaAyahWanita}
+                    onChange={(e) => setNamaAyahWanita(e.target.value)}
+                  />
+                </div>
+                <div className="mempelai-form-keluarga-data-pribadi">
+                  <p>Nama Ibu</p>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Yuni Ningsih"
+                    value={namaIbuWanita}
+                    onChange={(e) => setNamaIbuWanita(e.target.value)}
+                  />
+                </div>
+              </div>
+              <div className="mempelai-form-keluarga-sosmed">
+                <p>Sosial Media</p>
+                <div className="mempelai-form-keluarga-sosmed-link">
+                  <BsFacebook className="icon" />
+                  <input
+                    type="url"
+                    value={facebookWanita}
+                    onChange={(e) => setFacebookWanita(e.target.value)}
+                  />
+                </div>
+                <div className="mempelai-form-keluarga-sosmed-link">
+                  <BsInstagram className="icon" />
+                  <input
+                    type="url"
+                    value={instagramWanita}
+                    onChange={(e) => setInstagramWanita(e.target.value)}
+                  />
+                </div>
+                <div className="mempelai-form-keluarga-sosmed-link">
+                  <BsTwitter className="icon" />
+                  <input
+                    type="url"
+                    value={twitterWanita}
+                    onChange={(e) => setTwitterWanita(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mempelai-kutipan">
+            <h1>kutipan</h1>
+            <div className="mempelai-kutipan-main">
+              <input
+                type="text"
+                required
+                value={judulKutipan}
+                placeholder="Judul Kutipan"
+                onChange={(e) => setJudulKutipan(e.target.value)}
+              />
+              <textarea
+                value={isiKutipan}
+                placeholder="Isi Kutipan"
+                onChange={(e) => setIsiKutipan(e.target.value)}
+              ></textarea>
+            </div>
+          </div>
+          <div className="mempelai-next">
+            <button className="mempelai-next-button" type="submit">
+              Next
+            </button>
+          </div>
+        </form>
+        <div className="mempelai-gallery">
+          <h1>Gallery Pasangan</h1>
+          <div className="mempelai-gallery-main">
+            <h2>foto pasangan</h2>
+            <form onSubmit={CreateGallery}>
+              <div className="mempelai-form-keluarga-upload">
+                <input
+                  type="file"
+                  accept="image/x-png, image/jpeg"
+                  name="fotoCover"
+                  onChange={handleGalleryChange}
+                />
+                <div className="mempelai-form-keluarga-upload-bg">
+                  <h3>upload foto Gallery</h3>
+                  <p>JPG or PNG. Max size of 10 MB</p>
+                </div>
+                {previewGallery && (
+                  <div>
+                    <div className="mempelai-form-keluarga-upload-preview">
+                      <img src={previewGallery} className="preview-image" />
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="mempelai-save">
+                <button className="mempelai-save-button" type="submit">
+                  Save
+                </button>
+              </div>
+            </form>
+            <div className="mempelai-gallery-main-list">
+              {data &&
+                data.map((data, index) => (
+                  <div className="mempelai-gallery-main-list-action">
+                    <p>{index + 1}</p>
+                    <div key={data.id_gallery} className="table-body-contain">
+                      <img
+                        src={data.url_foto}
+                        alt=""
+                        className="table-body-contain-img"
+                      />
+                    </div>
+                    <div className="mempelai-gallery-main-list-action-btn">
+                      <button className="edit">Ganti</button>
+                      <button
+                        className="delete"
+                        onClick={() => deleteGallery(data.id_gallery)}
+                      >
+                        Hapus
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="mempelai-next">
-        <button className="mempelai-next-button" type="submit">
+        {/* <div className="mempelai-next">
+        <Link to={`/edit/3/${id_undangan}`} className="mempelai-next-button">
           Next
-        </button>
-      </div>
+        </Link>
+      </div> */}
     </div>
   );
 };
