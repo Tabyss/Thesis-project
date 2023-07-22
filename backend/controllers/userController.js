@@ -35,6 +35,34 @@ export const createUser = async (req, res) => {
     // Jika tidak ada nilai role yang dikirim, set default sebagai "user"
     const userRole = role || "user";
 
+    // Menghitung jumlah form yang kosong
+    let emptyFields = 0;
+    if (!username) emptyFields++;
+    if (!email) emptyFields++;
+    if (!password) emptyFields++;
+    if (!no_telp) emptyFields++;
+    
+    // Validasi form jika masih ada yang kosong
+    if (emptyFields > 1) {
+      return res.status(400).json({ msg: "Silahkan Isi Semua Form Terlebih Dahulu" });
+    } else if (!username) {
+      return res.status(400).json({ msg: "Silahkan Masukkan Username Terlebih Dahulu" });
+    } else if (!email) {
+      return res.status(400).json({ msg: "Silahkan Masukkan Email Terlebih Dahulu" });
+    } else if (!password) {
+      return res.status(400).json({ msg: "Silahkan Masukkan Password Terlebih Dahulu" });
+    } else if (!no_telp) {
+      return res.status(400).json({ msg: "Silahkan Masukkan No Telepon Terlebih Dahulu" });
+    }
+
+    const checkName = await prisma.user.findFirst({
+      where: { username },
+    });
+
+    if(checkName) {
+      return res.status(400).json({ msg: "Username Sudah Digunakan" });
+    }
+
     // Cek apakah email sudah terdaftar di database
     const checkEmail = await prisma.user.findUnique({
       where: { email },
@@ -42,8 +70,17 @@ export const createUser = async (req, res) => {
 
     // Jika email sudah terdaftar, kirimkan respons bahwa email sudah digunakan
     if (checkEmail) {
-      return res.status(400).json({ msg: "Email sudah digunakan." });
+      return res.status(400).json({ msg: "Email Sudah Digunakan" });
     }
+
+    const checkPhone = await prisma.user.findFirst({
+      where: { no_telp },
+    });
+
+    if(checkPhone) {
+      return res.status(400).json({ msg: "Nomor Telepon Sudah Digunakan" });
+    }
+
 
     // Hash password menggunakan Argon2
     const passwordHash = await argon2.hash(password);
