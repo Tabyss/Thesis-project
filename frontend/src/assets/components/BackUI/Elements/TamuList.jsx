@@ -8,25 +8,31 @@ import HashGenerator from "../Handler/HashGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { getMe } from "../Handler/authSlicer";
 
-function AddTamu({ tamu, invite, onTamuAdded }) {
+function AddTamu({ tamu, invite }) {
   const [name, setName] = useState("");
   const [telp, setTelp] = useState("+62");
   const [alamat, setAlamat] = useState("");
   const [idTamu, setIdTamu] = useState("");
-  const [qrcode, setQrcode] = useState(`${invite}-${tamu}`);
+  const [qrcode, setQrcode] = useState("");
 
   const addTamu = async (e) => {
     e.preventDefault();
+    
+    const newIdTamu = HashGenerator(15);
+
     await axios.post("http://localhost:5000/tamu", {
-      id_tamu: tamu,
+      id_tamu: newIdTamu,
       nama_tamu: name,
       no_telp: parseInt(telp),
       alamat: alamat,
-      qrcode: qrcode, // id_undangan + id_tamu
+      qrcode: `${invite}-${newIdTamu}`, // id_undangan + id_tamu
       id_undangan: invite,
     });
     form.reset();
-    setIdTamu(HashGenerator(15));
+    setIdTamu(newIdTamu);
+    setName("");
+    setTelp("+62");
+    setAlamat("");
   };
 
   return (
@@ -63,7 +69,7 @@ function AddTamu({ tamu, invite, onTamuAdded }) {
             required
           ></input>
         </div>
-        <input type="submit" className="submit"></input>
+        <input type="submit" className="submit" placeholder="Submit" value="Submit"></input>
       </form>
     </>
   );
@@ -104,8 +110,7 @@ function TamuList() {
       const response = await axios.get(`http://localhost:5000/tema/${id_undangan}`);
       setTheme(response.data);
       if (!response.data) {
-        navigate(`/dashboard/${user.id}`);
-        return alert("Silahkan Buat Undangan Terlebih Dahulu");
+        setTheme("0");
       }
     }
 
@@ -148,7 +153,7 @@ function TamuList() {
         </Link>
         <h2>List Tamu</h2>
         <button onClick={handleAdd} className="add">
-          <BsPlus /><p>Add</p>
+          <BsPlus /><p>add</p>
         </button>
         <Link to={`/scan/${id_undangan}`} className="scanner">
           <BsQrCodeScan />
