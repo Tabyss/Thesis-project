@@ -12,13 +12,13 @@ export const Login = async (req, res) => {
 
   // Validasi apakah email dan password ada di permintaan
   if (!email && !password) {
-    return res.status(400).json({ msg: 'Email dan Password harus diisi!' });
+    return res.status(400).json({ msg: 'Silahkan Masukkan Email dan Password Terlebih Dahulu' });
   }
   if (!email) {
-    return res.status(400).json({ msg: 'Email harus diisi!' });
+    return res.status(400).json({ msg: 'Silahkan Masukkan Email Terlebih Dahulu' });
   }
   if (!password) {
-    return res.status(400).json({ msg: 'Password harus diisi!' });
+    return res.status(400).json({ msg: 'Silahkan Masukkan Password Terlebih Dahulu' });
   }
 
   // Cari pengguna berdasarkan email
