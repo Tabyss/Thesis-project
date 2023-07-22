@@ -19,6 +19,7 @@ function SignIn() {
   );
 
   useEffect(() => {
+
     if(user || isSuccess){
       navigate(`/dashboard/${user.id}`);
     }
@@ -45,8 +46,8 @@ function SignIn() {
           </div>
           <form onSubmit={Auth} className="signin-content-value">
             {isError && <p>{message}</p>}
-            <input type="email" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <div className="signin-content-value-button">
               <button type="submit">
                 {isLoading ? "Loading..." : "Login"}</button>
