@@ -7,21 +7,33 @@ import "./landing.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../../BackUI/Handler/authSlicer";
 
+<<<<<<< HEAD
 export function Navbar({ opt }) {
   const [click, setClick] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+=======
+export function Navbar() {
+  const [click, setClick] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state => state.auth));
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
 
   const logout = () => {
     dispatch(LogOut());
     dispatch(reset());
     navigate("/");
 <<<<<<< HEAD
+<<<<<<< HEAD
   };
 =======
   }
 >>>>>>> 2dbbf24 (Fixing)
+=======
+  }
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
 
   // if (!user) {
   //     return null; // atau tampilkan pesan loading
@@ -128,7 +140,10 @@ export function Navbar({ opt }) {
               </div>  
             </>
           )}
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         </div>
       )}
     </div>

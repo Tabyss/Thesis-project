@@ -11,6 +11,7 @@ export const Login = async (req, res) => {
   const { email, password } = req.body;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     const passwordMatch = await argon2.verify(user.password, req.body.password);
 <<<<<<< HEAD
     if (!passwordMatch) return res.status(400).json({msg: "Wrong Username/Password"});
@@ -24,6 +25,8 @@ export const Login = async (req, res) => {
     const role =user.role;
     res.status(200).json({id, username, email, role})
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   // Validasi apakah email dan password ada di permintaan
   if (!email && !password) {
     return res.status(400).json({ msg: 'Silahkan Masukkan Email dan Password Terlebih Dahulu' });
@@ -51,7 +54,10 @@ export const Login = async (req, res) => {
   const username = user.username;
   const role = user.role;
   res.status(200).json({ id, username, email, role });
+<<<<<<< HEAD
 >>>>>>> 10eae1f (Login Validation, fix idtamu tamulist)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
 };
 
 export const Me = async (req, res) => {

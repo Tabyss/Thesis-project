@@ -72,6 +72,7 @@ function Tema() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     const TemaUndangan = document.getElementById("temaUndangan").value;
     const PrimaryFont = document.getElementById("fontPrimary").value;
     const SecondaryFont = document.getElementById("fontSecondary").value;
@@ -101,6 +102,9 @@ function Tema() {
 =======
     if (idTema != null) {
 >>>>>>> bbeccfe (Fix tema, database)
+=======
+    if (idTema != null) {
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
       try {
         const response = await axios.patch(`http://localhost:5000/theme/${idTema}`, {
           tema_undangan: formTheme.tema,
@@ -127,6 +131,7 @@ function Tema() {
         return response.data
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       } catch (error) {}
 >>>>>>> 8005205 (fix bug)
 =======
@@ -137,6 +142,11 @@ function Tema() {
         console.log(error)
       }
 >>>>>>> 2dbbf24 (Fixing)
+=======
+      } catch (error) {
+        console.log(error)
+      }
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
     }
     if (!buttonClicked) {
       alert("Harap Pilih Backsound");
@@ -164,9 +174,12 @@ function Tema() {
     } else {
       setActiveTrack(track);
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 83e91cb (Connect Backend to Frontend)
 =======
 >>>>>>> bb43b2c (add login middleware, connect frontend)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
     }
     setButtonClicked(true);
   };
@@ -229,10 +242,14 @@ function Tema() {
           </div>
           <div className="theme-contain-font-input">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <p>secondary font</p>
 =======
             <p>Secondary Font</p>
 >>>>>>> 2dbbf24 (Fixing)
+=======
+            <p>Secondary Font</p>
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
             <div className="theme-contain-font-input-choose">
               <select
                 className=""
@@ -297,9 +314,12 @@ function Tema() {
       </div>
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 83e91cb (Connect Backend to Frontend)
 =======
 >>>>>>> bb43b2c (add login middleware, connect frontend)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   );
 }
 

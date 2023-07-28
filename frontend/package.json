@@ -22,9 +22,12 @@
     "react-router-dom": "^6.13.0",
     "react-to-print": "^2.14.13",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "redux": "^4.2.1",
 =======
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
     "sass": "^1.58.3",
     "swiper": "^9.1.0",
     "swr": "^2.1.5"

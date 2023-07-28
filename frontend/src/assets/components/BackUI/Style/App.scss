@@ -40,6 +40,7 @@
         .tumb-icon {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           padding: 10px;
           color: white;
           border-radius: 20px;
@@ -98,11 +99,43 @@
         button {
           border: none;
           border-radius: 20px;
+=======
+          &-1 {
+            padding: 10px;
+            color: var(--color-4);
+            border-radius: 20px;
+            background-color: var(--color-6);
+          }
+          &-2 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-4);
+            border-radius: 20px;
+          }
+          &-3 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-2);
+            border-radius: 20px;
+          }
+          &-4 {
+            font-size: 40px;
+            padding: 10px;
+            color: white;
+          }
+        }
+        button {
+          border: none;
+          border-radius: 20px;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
           background-color: var(--color-1);
           width: 40px;
           height: 40px;
           cursor: pointer;
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         }
       }
       &:hover {
@@ -170,6 +203,7 @@
 .create {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   padding: 3%;
   display: flex;
   justify-content: center;
@@ -188,6 +222,13 @@
   flex-wrap: wrap;
   gap: 15%;
 >>>>>>> 2dbbf24 (Fixing)
+=======
+  padding: 5vh 2% 2%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15%;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   &-contain {
     display: flex;
     gap: 5vw;
@@ -298,15 +339,21 @@
         }
         .inputan {
 <<<<<<< HEAD
+<<<<<<< HEAD
           width: 450px;
           @include input(--color-3, 10px);
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
           width: 60%;
           @include input(--color-3, 10px);
           @media screen and (max-width: 768px) {
             width: 100%;
           }
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         }
       }
 
@@ -314,9 +361,13 @@
         margin: 40px 40px 80px;
         display: flex;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         flex-wrap: wrap;
 >>>>>>> 2dbbf24 (Fixing)
+=======
+        flex-wrap: wrap;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         column-gap: 20px;
         h4 {
           color: var(--color-2);
@@ -326,9 +377,13 @@
         .inputan {
           @include input(--color-3, 10px);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
           width: 100%;
 >>>>>>> 2dbbf24 (Fixing)
+=======
+          width: 100%;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         }
       }
     }
@@ -810,7 +865,10 @@
         justify-content: space-between;
         margin: 30px 0 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         width: 100%;
         gap: 50px;
         cursor: pointer;
@@ -879,7 +937,10 @@
         position: relative;
         justify-content: space-between;
         margin: 30px 0 0;
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         width: 100%;
         gap: 50px;
         cursor: pointer;
@@ -891,6 +952,7 @@
           height: 120px;
           width: 100%;
           border-radius: 10px;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
           gap: 5px;
@@ -954,6 +1016,9 @@
           height: 120px;
           width: 100%;
           border-radius: 10px;
+=======
+          gap: 5px;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
           border: 2px dashed var(--color-4);
           h3 {
             font-weight: 600;
@@ -962,8 +1027,8 @@
             color: var(--color-4);
           }
           p {
-            font-size: 0.8rem;
-            font-weight: 100;
+            font-size: .9rem;
+            font-weight: 400;
             color: var(--color-4);
           }
         }
@@ -977,9 +1042,12 @@
           opacity: 0;
           cursor: pointer;
         }
+<<<<<<< HEAD
 =======
         }
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         &-preview {
           display: flex;
           justify-content: center;
@@ -990,7 +1058,10 @@
             object-fit: cover;
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         }
         @media screen and (max-width: 530px) {
           display: block;
@@ -1001,7 +1072,10 @@
           &-preview {
             margin-top: 30px;
           }
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         }
       }
       &-data {
@@ -1554,12 +1628,15 @@
 .view-tamu {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   width: 100vw;
   height: 100vh;
 =======
   padding-top: 5%;
 >>>>>>> 8547a02 (add handle update)
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   height: 100vh;
   &.theme-1 {
     position: relative;
@@ -1609,7 +1686,10 @@
       z-index: 0;
     }
   }
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   &-menu {
     display: flex;
     gap: 10px;
@@ -1772,6 +1852,7 @@
                 min-width: 80px;
                 margin: 3px;
               }
+<<<<<<< HEAD
             }
           }
           .undangan{
@@ -1788,6 +1869,8 @@
               border: 1px solid var(--color-1);
               background-color: var(--color-1);
               color: var(--color-6);
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
             }
           }
         }

@@ -52,7 +52,11 @@ function SignUp() {
           <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
           <input type="text" placeholder="Phone Number" value={noTelp} onChange={(e) => setNoTelp(e.target.value)} />
           <div className="signup-content-value-button">
+<<<<<<< HEAD
             <button>Sign Up</button>
+=======
+            <button>Signup</button>
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
           </div>
         </form>
         <div className="signup-content-regis">

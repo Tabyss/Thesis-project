@@ -6,7 +6,10 @@ import { BsPlus, BsQrCodeScan, BsArrowLeft } from "react-icons/bs";
 import HashGenerator from "../Handler/HashGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { getMe } from "../Handler/authSlicer";
+<<<<<<< HEAD
 import { Navbar } from "../../Layout/Landing/Landing";
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
 
 function AddTamu({ tamu, invite }) {
   const [name, setName] = useState("");
@@ -119,15 +122,19 @@ function TamuList() {
   }, [id, id_undangan]);
 
   const fetch = async () => {
+<<<<<<< HEAD
     const response = await axios.get(
       `http://localhost:5000/guest/${id_undangan}`
     );
+=======
+    const response = await axios.get(`http://localhost:5000/guest/${id_undangan}`);
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
     setId(response.data[0].id_undangan);
     return response.data;
   };
 
-  const { data } = useSWR("tamu", fetch, { refreshInterval: 100 });
-  if (!data) return <h2>Loading...</h2>;
+  const { data } = useSWR("guest", fetch, { refreshInterval: 100 });
+  // if (!data) return <h2>Loading...</h2>;
 
   const deleteTamu = async (tamuId) => {
     await axios.delete(`http://localhost:5000/tamu/${tamuId}`);
@@ -148,6 +155,7 @@ function TamuList() {
   };
 
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
     <>
     <Navbar/>
@@ -217,6 +225,8 @@ function TamuList() {
           </table>
         </div>
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
     <div className={`view-tamu theme-${theme.tema_undangan}`}>
       <div className="view-tamu-menu">
         <Link to={`/dashboard/${idUser}`} className="back">

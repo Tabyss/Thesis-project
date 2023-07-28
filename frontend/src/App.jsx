@@ -3,7 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import "./Index.scss";
 import Index from "./assets/components/Index";
 import SignIn from "./assets/components/Middle/SignIn";
+<<<<<<< HEAD
 import SignUp from "./assets/components/Middle/SignUp";
+=======
+import SignUp from "./assets/components/middle/SignUp";
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
 import Dashboard from "./assets/components/BackUI/Elements/Dashboard";
 import Inlink from "./assets/components/BackUI/Inlink";
 import Undangan from "./assets/components/Template/Undangan";

@@ -66,7 +66,11 @@ function CreateUndangan() {
         url_undangan: url,
         id_user: user.id
       });
+<<<<<<< HEAD
       navigate(`/dashboard`);
+=======
+      navigate(`/dashboard/${user.id}`);
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -250,7 +254,10 @@ function CreateUndangan() {
                 </li>
               ))}
             </ul> */}
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
           </div>
           <div className="create-contain-payment-pay">
             <div className="create-contain-payment-pay-item">

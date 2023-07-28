@@ -25,9 +25,13 @@ const Mempelai = () => {
 
   //pria
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [idPria, setIdPria] = useState("");
 =======
 >>>>>>> 8547a02 (add handle update)
+=======
+  const [idPria, setIdPria] = useState("");
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   const [fotoPria, setFotoPria] = useState("");
   const [namaLengkapPria, setNamaLengkapPria] = useState("");
   const [namaPanggilanPria, setNamaPanggilanPria] = useState("");
@@ -39,9 +43,13 @@ const Mempelai = () => {
 
   //wanita
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [idWanita, setIdWanita] = useState("");
 =======
 >>>>>>> 8547a02 (add handle update)
+=======
+  const [idWanita, setIdWanita] = useState("");
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   const [fotoWanita, setFotoWanita] = useState("");
   const [namaLengkapWanita, setNamaLengkapWanita] = useState("");
   const [namaPanggilanWanita, setNamaPanggilanWanita] = useState("");
@@ -80,6 +88,7 @@ const Mempelai = () => {
     const handleGetPria = async () => {
       try {
 <<<<<<< HEAD
+<<<<<<< HEAD
         const response = await axios.get(
           `http://localhost:5000/pria/${id_undangan}`
         );
@@ -100,6 +109,8 @@ const Mempelai = () => {
 =======
 >>>>>>> 8547a02 (add handle update)
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         const response = await axios.get(`http://localhost:5000/pria/${id_undangan}`);
         if (response.data != null) {
           setIdPria(response.data.id_pria);
@@ -115,13 +126,17 @@ const Mempelai = () => {
         } else {
           setIdPria(null);
         }
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
       } catch (error) {
         console.log(error);
       }
     };
     const handleGetWanita = async () => {
       try {
+<<<<<<< HEAD
 <<<<<<< HEAD
         const response = await axios.get(
           `http://localhost:5000/wanita/${id_undangan}`
@@ -143,6 +158,8 @@ const Mempelai = () => {
 =======
 >>>>>>> 8547a02 (add handle update)
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         const response = await axios.get(`http://localhost:5000/wanita/${id_undangan}`);
         const data = response.data;
         if (data != null) {
@@ -159,13 +176,17 @@ const Mempelai = () => {
         } else {
           setIdWanita(null);
         }
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
       } catch (error) {
         console.log(error);
       }
     };
     const handleGetKutipan = async () => {
       try {
+<<<<<<< HEAD
 <<<<<<< HEAD
         const response = await axios.get(
           `http://localhost:5000/pasangan/${id_undangan}`
@@ -179,6 +200,8 @@ const Mempelai = () => {
 =======
 >>>>>>> 8547a02 (add handle update)
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         const response = await axios.get(`http://localhost:5000/pasangan/${id_undangan}`);
         const data = response.data;
         if (data != null) {
@@ -190,7 +213,10 @@ const Mempelai = () => {
         } else {
           setIdCouple(null);
         }
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
       } catch (error) {
         console.log(error);
       }
@@ -200,6 +226,7 @@ const Mempelai = () => {
     handleGetWanita();
     handleGetKutipan();
   }, [id_undangan]);
+<<<<<<< HEAD
 <<<<<<< HEAD
   
 <<<<<<< HEAD
@@ -212,6 +239,12 @@ const Mempelai = () => {
 =======
   console.log(idCouple)
 >>>>>>> 8547a02 (add handle update)
+=======
+
+  const MAX_IMAGE_SIZE_MB = 10;
+
+  // console.log(idCouple)
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   const handleCoverChange = (e) => {
     const image = e.target.files[0];
     // Validasi ukuran gambar
@@ -320,6 +353,7 @@ const Mempelai = () => {
           });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           await axios.patch(`http://localhost:5000/datapria/${idPria}`, formDataPria, {
 =======
           await axios.patch(`http://localhost:5000/pria/${id_undangan}`, formDataPria, {
@@ -349,6 +383,9 @@ const Mempelai = () => {
 =======
         } else {
 >>>>>>> 2dbbf24 (Fixing)
+=======
+        } else {
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
           await axios.post(`http://localhost:5000/couple`, formDataCover, {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -381,6 +418,7 @@ const Mempelai = () => {
             },
           });
 <<<<<<< HEAD
+<<<<<<< HEAD
           alert("Data Berhasil Ditambah");
 <<<<<<< HEAD
           navigate(`/edit/2${id_undangan}`);
@@ -392,6 +430,8 @@ const Mempelai = () => {
             setMsg(error.response.data.msg);
           }
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         };
         alert("Data Berhasil Ditambah");
         navigate(`/edit/3/${id_undangan}`);
@@ -399,7 +439,10 @@ const Mempelai = () => {
         if (error.response) {
           console.log(error.response.data);
           setMsg(error.response.data.msg);
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         }
         navigate(`/edit/3/${id_undangan}`);
       }
@@ -456,6 +499,7 @@ const Mempelai = () => {
     <div className="mempelai">
       <EditData id={2} />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <form onSubmit={CreateCouple}>
 <<<<<<< HEAD
 >>>>>>> 83e91cb (Connect Backend to Frontend)
@@ -478,6 +522,8 @@ const Mempelai = () => {
               />
               <div className="mempelai-form-cover-upload-preview">
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
         <form onSubmit={CreateCouple}>
           <div className="mempelai-form">
             <h1>Data Pasangan</h1>
@@ -494,7 +540,10 @@ const Mempelai = () => {
                   <h3>upload foto cover</h3>
                   <p>JPG or PNG. Max size of 10 MB</p>
                 </div>
+<<<<<<< HEAD
 >>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
                 {previewCover && (
                   <div className="mempelai-form-cover-upload-preview">
                     <div>
@@ -772,7 +821,11 @@ const Mempelai = () => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default Mempelai;
 =======
 export default Mempelai;
 >>>>>>> 8547a02 (add handle update)
+=======
+export default Mempelai;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1

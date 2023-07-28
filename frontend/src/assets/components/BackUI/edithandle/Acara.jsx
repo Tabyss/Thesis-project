@@ -45,6 +45,7 @@ function PopUp({ idAcara }) {
   console.log(formAcara);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     e.preventDefault();
     await axios.post("http://localhost:5000/event", {
       nama_acara: namaAcara,
@@ -62,6 +63,8 @@ function PopUp({ idAcara }) {
 =======
 >>>>>>> bb43b2c (add login middleware, connect frontend)
 =======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   const handleChange = (e) => {
     let data = { ...formAcara };
     data[e.target.name] = e.target.value;
@@ -167,8 +170,13 @@ function PopUp({ idAcara }) {
               name="selesai"
               onChange={handleChange}
 <<<<<<< HEAD
+<<<<<<< HEAD
               placeholder="12.00 WIB"
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
               value={formAcara.selesai}
+              placeholder="12.00 WIB"
+              required
             />
 =======
             <input type="text" placeholder="09.00 WIB" value={jamMulai} onChange={(e) => setJamMulai(e.target.value)} />
@@ -210,8 +218,13 @@ function PopUp({ idAcara }) {
             name="link"
             onChange={handleChange}
 <<<<<<< HEAD
+<<<<<<< HEAD
             placeholder="https://maps/"
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
             value={formAcara.link}
+            placeholder="https://maps/"
+            required
           />
 =======
           <input type="text" placeholder="Jl. terus aja lah" value={alamat} onChange={(e) => setAlamat(e.target.value)} />
@@ -325,12 +338,16 @@ function Acara() {
                     </td>
                   </tr>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 </>
               ))}
 >>>>>>> 83e91cb (Connect Backend to Frontend)
 =======
                 ))}
 >>>>>>> bb43b2c (add login middleware, connect frontend)
+=======
+                ))}
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
             </tbody>
           </table>
         </div>
