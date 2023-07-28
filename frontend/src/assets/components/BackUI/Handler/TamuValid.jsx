@@ -20,7 +20,10 @@ export default function TamuValid({ status, name }) {
         <div className="popup-contain">
           <BsFillCheckCircleFill className="popup-contain-check" />
           <h1>Selamat Datang</h1>
+<<<<<<< HEAD
           <h2>{name}</h2>
+=======
+>>>>>>> f31f7f6 (change validation)
         </div>
       </div>
     );
