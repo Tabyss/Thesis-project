@@ -35,6 +35,7 @@ export const createUser = async (req, res) => {
     // Jika tidak ada nilai role yang dikirim, set default sebagai "user"
     const userRole = role || "user";
 
+<<<<<<< HEAD
     // Menghitung jumlah form yang kosong
     let emptyFields = 0;
     if (!username) emptyFields++;
@@ -63,6 +64,8 @@ export const createUser = async (req, res) => {
       return res.status(400).json({ msg: "Username Sudah Digunakan" });
     }
 
+=======
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
     // Cek apakah email sudah terdaftar di database
     const checkEmail = await prisma.user.findUnique({
       where: { email },
@@ -70,6 +73,7 @@ export const createUser = async (req, res) => {
 
     // Jika email sudah terdaftar, kirimkan respons bahwa email sudah digunakan
     if (checkEmail) {
+<<<<<<< HEAD
       return res.status(400).json({ msg: "Email Sudah Digunakan" });
     }
 
@@ -82,6 +86,11 @@ export const createUser = async (req, res) => {
     }
 
 
+=======
+      return res.status(400).json({ msg: "Email sudah digunakan." });
+    }
+
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
     // Hash password menggunakan Argon2
     const passwordHash = await argon2.hash(password);
 

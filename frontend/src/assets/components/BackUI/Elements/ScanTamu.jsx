@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
+=======
+import React, { useEffect, useState } from "react";
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
 import useSWR, { useSWRConfig } from "swr";
 import { QrReader } from "react-qr-reader";
 import { GetHour } from "../Handler/DateConvert";
@@ -78,14 +82,24 @@ function DaftarTamu() {
 function ScanTamu() {
   const [id, setId] = useState("");
   const [status, setStatus] = useState(false);
+<<<<<<< HEAD
   const [showPopup, setShowPopup] = useState(false);
+=======
+  const [showPopup, setShowPopup] = useState(true);
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   const [wrongPopup, setWrongPopup] = useState(false);
   const [theme, setTheme] = useState("");
   const [getId, setGetId] = useState({});
   const { id_undangan } = useParams();
+<<<<<<< HEAD
   const [scanning, setScanning] = useState(true);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
+=======
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   const handleRefresh = () => {
     window.location.reload();
   };
@@ -128,7 +142,11 @@ function ScanTamu() {
       null;
     }
   };
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   useEffect(
     () => {
       editTamu();
@@ -138,7 +156,11 @@ function ScanTamu() {
           setWrongPopup(false);
           getGuest();
           setId("");
+<<<<<<< HEAD
         }, 3000); // Ganti nilai 3000 dengan durasi yang diinginkan dalam milidetik (misalnya 3000 untuk 3 detik)
+=======
+        }, 30000); // Ganti nilai 3000 dengan durasi yang diinginkan dalam milidetik (misalnya 3000 untuk 3 detik)
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         return () => clearTimeout(timer);
       }
     },
@@ -167,7 +189,11 @@ function ScanTamu() {
   const handleVideoError = (event) => {
     console.error('Error while loading the video:', event.target.error);
   };
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   useEffect(() => {
     if (isVideoLoaded) {
       const videoElement = document.getElementById("scan-qr-video");
@@ -195,7 +221,11 @@ function ScanTamu() {
             wrongPopup ? (
               <Wrong />
             ) : (
+<<<<<<< HEAD
               <TamuValid status={getId?.status} name={getId?.nama_tamu} />
+=======
+              <TamuValid status={getId.status} name={getId.nama_tamu} />
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             )
           ) : null}
           <QrReader

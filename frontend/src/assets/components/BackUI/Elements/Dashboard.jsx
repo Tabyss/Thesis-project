@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 // import pp from "../../../img/pp-1.png";
 import { BsPlusCircle, BsFillBarChartFill } from "react-icons/bs";
+<<<<<<< HEAD
 import { MdEdit } from "react-icons/md";
+=======
+<<<<<<< HEAD
+import { MdDelete, MdEdit } from "react-icons/md";
+=======
+import { MdEdit } from "react-icons/md";
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
 import { FaRegEye } from "react-icons/fa";
 import { AiFillDelete } from "react-icons/ai";
 import "../Style/App.scss";
@@ -79,6 +87,23 @@ function Dashboard() {
     };
   });
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  // const handleDelete = async (id) => {
+  //   try {
+  //     const response = await axios.delete(
+  //       `http://localhost:5000/event/${id_acara}`
+  //     );
+  //     return response.data;
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   }
+  // };
+
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   return (
     <>
       <Navbar />
@@ -96,12 +121,30 @@ function Dashboard() {
                 <Link to={`/edit/4/${inviteItem.id}`}>
                   <BsFillBarChartFill className="tumb-icon-3" />
                 </Link>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+                <Link to={`/edit/4/${inviteItem.id}`}>
+                  <MdDelete className="tumb-icon-4" />
+                </Link>
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
                 {user && user.role === "admin" && (
                   // Menampilkan tombol Delete hanya jika user adalah admin
                   <button onClick={() => handleDelete(inviteItem.id)}>
                     <AiFillDelete className="tumb-icon-4" />
                   </button>
                 )}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
               </div>
               <img src={inviteItem.url_foto} />
             </div>
@@ -127,4 +170,12 @@ function Dashboard() {
   );
 }
 
+<<<<<<< HEAD
 export default Dashboard;
+=======
+<<<<<<< HEAD
+export default Dashboard;
+=======
+export default Dashboard;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234

@@ -1,5 +1,5 @@
 import React from "react";
-import { BsFillCheckCircleFill } from "react-icons/bs";
+import { BsFillCheckCircleFill, BsFillXCircleFill } from "react-icons/bs";
 
 export default function TamuValid({ status, name }) {
   function Already() {
@@ -20,7 +20,17 @@ export default function TamuValid({ status, name }) {
         <div className="popup-contain">
           <BsFillCheckCircleFill className="popup-contain-check" />
           <h1>Selamat Datang</h1>
+<<<<<<< HEAD
           <h2>{name}</h2>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+          <h2>{name}</h2>
+=======
+>>>>>>> f31f7f6 (change validation)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         </div>
       </div>
     );
@@ -33,8 +43,13 @@ export default function TamuValid({ status, name }) {
 export function Wrong() {
   return (
     <div className="popup">
+<<<<<<< HEAD
       <div className="popup-contain">
         <BsFillCheckCircleFill className="popup-contain-check" />
+=======
+      <div className="popup-contain-wrong">
+        <BsFillXCircleFill className="popup-contain-wrong-icon" />
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         <h1>Maaf</h1>
         <h2>Anda Tidak Terdaftar</h2>
       </div>

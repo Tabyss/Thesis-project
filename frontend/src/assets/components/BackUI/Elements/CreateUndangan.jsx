@@ -66,7 +66,15 @@ function CreateUndangan() {
         url_undangan: url,
         id_user: user.id
       });
+<<<<<<< HEAD
       navigate(`/dashboard/${user.id}`);
+=======
+<<<<<<< HEAD
+      navigate(`/dashboard`);
+=======
+      navigate(`/dashboard/${user.id}`);
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data.msg);
@@ -75,6 +83,39 @@ function CreateUndangan() {
   };
 
   return (
+<<<<<<< HEAD
+    <>
+      <Navbar />
+      <div className="create">
+        <form onSubmit={Create} className="create-contain">
+          <p>{msg}</p>
+          <div className="create-contain-form">
+            <h1>1. pilih paket undangan</h1>
+            <h5>Silahkan pilih paket sesuai fitur yang ada</h5>
+            <div className="create-contain-form-card">
+              {tawaran.map((pack, i) => (
+                <div className="create-contain-form-card-option" key={i}>
+                  <input
+                    className="radio-button"
+                    type="radio"
+                    name="package"
+                    value={pack.id}
+                    id={pack.num}
+                    onClick={handlePay}
+                  />
+                  <div className="radio-value">
+                    <h2>{pack.title}</h2>
+                    <div className="radio-disc">
+                      <p>Rp {pack.awal}</p>
+                      <h4>Diskon {pack.disc}</h4>
+                    </div>
+                    <h3>{pack.akhir}</h3>
+                    <div className="radio-fitur">
+                      {pack.fitur?.map((fitur) => (
+                        <li>{fitur}</li>
+                      ))}
+                    </div>
+=======
     <div className="create">
       <form onSubmit={Create} className="create-contain">
         <div className="create-contain-form">
@@ -105,6 +146,7 @@ function CreateUndangan() {
                     {pack.fitur?.map((fitur) => (
                       <li>{fitur}</li>
                     ))}
+>>>>>>> 2dbbf24 (Fixing)
                   </div>
                 </div>
               </div>
@@ -160,6 +202,44 @@ function CreateUndangan() {
               />
             </div>
           </div>
+<<<<<<< HEAD
+          <div className="create-contain-payment">
+            {/* <div className="create-contain-payment-item">
+              <ul className="create-contain-payment-item-btn">
+                {Payline.map((line, index) => (
+                  <li
+                    key={line.id}
+                    onClick={handleLine}
+                    id={line.id}
+                    className={getId == line.id ? "active" : null}
+                  >
+                    <p onClick={handleLine} id={line.id}>
+                      {index + 1}
+                    </p>
+                    {line.path}
+                  </li>
+                ))}
+              </ul>
+            </div> */}
+            <div className="create-contain-payment-pay">
+              <div className="create-contain-payment-pay-item">
+                <p>Paket Bronze</p>
+                <p>Rp {harga}</p>
+              </div>
+              <div className="create-contain-payment-pay-item">
+                <p>discount</p>
+                <p>Rp {disc}</p>
+              </div>
+              <span className="create-contain-payment-pay-line"></span>
+              <div className="create-contain-payment-pay-total">
+                <p>Total</p>
+                <h2>Rp {harga - disc}</h2>
+              </div>
+              <button className="create-contain-payment-pay-button">
+                Buat Undangan
+              </button>
+            </div>
+=======
         </div>
         <div className="create-contain-payment">
           <div className="create-contain-payment-item">
@@ -178,6 +258,13 @@ function CreateUndangan() {
                 </li>
               ))}
             </ul> */}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
           </div>
           <div className="create-contain-payment-pay">
             <div className="create-contain-payment-pay-item">

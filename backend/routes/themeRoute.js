@@ -6,7 +6,11 @@ import {
     createTheme,
     updateTheme,
     deleteTheme,
+<<<<<<< HEAD
     getThemeByIdUndangan,
+=======
+    getThemeByIdUndangan
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
 } from "../controllers/themeController.js";
 
 const router = express.Router();

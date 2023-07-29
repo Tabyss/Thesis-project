@@ -7,17 +7,45 @@ import "./landing.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut, reset } from "../../BackUI/Handler/authSlicer";
 
+<<<<<<< HEAD
 export function Navbar() {
   const [click, setClick] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state => state.auth));
+=======
+<<<<<<< HEAD
+export function Navbar({ opt }) {
+  const [click, setClick] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
+=======
+export function Navbar() {
+  const [click, setClick] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state => state.auth));
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
 
   const logout = () => {
     dispatch(LogOut());
     dispatch(reset());
     navigate("/");
+<<<<<<< HEAD
   }
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  };
+=======
+  }
+>>>>>>> 2dbbf24 (Fixing)
+=======
+  }
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
 
   // if (!user) {
   //     return null; // atau tampilkan pesan loading
@@ -43,6 +71,51 @@ export function Navbar() {
 
   return (
     <div id="navbar" className={click ? "navbar fixed" : "navbar"}>
+<<<<<<< HEAD
+      {user ? (
+        <div className="nav">
+          <img className="nav-logo" src={Content1} />
+          <div className="burger" onClick={active}>
+            <button className={click ? "burger active" : "burger"}>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+          <div className={click ? "nav-link active" : "nav-link"}>
+            <div className="nav-link-menu">
+            </div>
+            <div className="nav-link-log">
+              <li onClick={logout} className="nav-link-log-out">
+                Log Out
+              </li>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="nav">
+          <img className="nav-logo" src={Content1} />
+          <div className="burger" onClick={active}>
+            <button className={click ? "burger active" : "burger"}>
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+          <div className={click ? "nav-link active" : "nav-link"}>
+            <div className="nav-link-menu">
+              <li>fitur</li>
+              <li>tema</li>
+              <li>customers</li>
+            </div>
+            <div className="nav-link-log">
+              <NavLink to="/Sign-In" className="nav-link-log-in">
+                Sign In
+              </NavLink>
+              <NavLink to="/sign-up" className="nav-link-log-up">
+                Sign Up
+              </NavLink>
+            </div>
+          </div>
+=======
       <div className="nav">
         <img src={Content1} />
         <div className="burger" onClick={active}>
@@ -79,8 +152,15 @@ export function Navbar() {
               </div>  
             </>
           )}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         </div>
-      </div>
+      )}
     </div>
   );
 }

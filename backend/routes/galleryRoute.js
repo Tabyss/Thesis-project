@@ -7,7 +7,11 @@ import {
     createGallery,
     updateGallery,
     deleteGallery,
+<<<<<<< HEAD
     getGalleryByIdUndangan,
+=======
+    getGalleryByIdUndangan
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
 } from "../controllers/galleryController.js";
 
 const router = express.Router();

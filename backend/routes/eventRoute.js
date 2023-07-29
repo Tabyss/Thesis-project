@@ -6,7 +6,11 @@ import {
     createEvent,
     updateEvent,
     deleteEvent,
+<<<<<<< HEAD
     getEventByIdUndangan,
+=======
+    getEventByIdUndangan
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
 } from "../controllers/eventController.js";
 
 const router = express.Router();

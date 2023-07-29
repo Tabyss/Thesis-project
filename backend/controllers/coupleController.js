@@ -103,7 +103,19 @@ export const updateCouple = async (req, res) => {
         // Mencari data dari database
         const couple = await prisma.couple.findUnique({
             where: {
+<<<<<<< HEAD
                 id_pasangan: req.params.id,
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+                id_pasangan: req.params.id,
+=======
+                id_pasangan: req.params.id, //-> pakai 'number' soalnya idnya integer
+>>>>>>> 8547a02 (add handle update)
+=======
+                id_pasangan: req.params.id,
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             },
         });
 

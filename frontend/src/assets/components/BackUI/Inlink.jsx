@@ -1,8 +1,20 @@
 import { Routes, Route} from "react-router-dom"
+
 import CreateUndangan from "./Elements/CreateUndangan"
 import EditData from "./Elements/EditData"
 import TamuList from "./Elements/TamuList"
 import ScanTamu from "./Elements/ScanTamu"
+<<<<<<< HEAD
+
+=======
+import "./Style/App.scss"
+import Tema from "./edithandle/Tema"
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+import Mempelai from "./edithandle/Mempelai"
+import Insight from "./edithandle/Insight"
+import Acara from "./edithandle/Acara"
+import Tema from "./edithandle/Tema"
+
 import "./Style/App.scss"
 import Tema from "./edithandle/Tema"
 import Mempelai from "./edithandle/Mempelai"

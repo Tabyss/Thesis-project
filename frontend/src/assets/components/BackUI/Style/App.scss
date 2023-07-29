@@ -38,6 +38,7 @@
         font-size: 40px;
         gap: 20px;
         .tumb-icon {
+<<<<<<< HEAD
           &-1 {
             padding: 10px;
             color: var(--color-4);
@@ -65,10 +66,109 @@
         button {
           border: none;
           border-radius: 20px;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+          padding: 10px;
+          color: white;
+          border-radius: 20px;
+          background-color: var(--color-2);
+=======
+          &-1 {
+            padding: 10px;
+            color: var(--color-4);
+            border-radius: 20px;
+            background-color: var(--color-6);
+          }
+          &-2 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-4);
+            border-radius: 20px;
+          }
+          &-3 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-2);
+            border-radius: 20px;
+          }
+          &-4 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-1);
+            border-radius: 20px;
+          }
+>>>>>>> 8547a02 (add handle update)
+=======
+          &-1 {
+            padding: 10px;
+            color: var(--color-4);
+            border-radius: 20px;
+            background-color: var(--color-6);
+          }
+          &-2 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-4);
+            border-radius: 20px;
+          }
+          &-3 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-2);
+            border-radius: 20px;
+          }
+          &-4 {
+            font-size: 40px;
+            padding: 10px;
+            color: white;
+          }
+        }
+        button {
+          border: none;
+          border-radius: 20px;
+=======
+          &-1 {
+            padding: 10px;
+            color: var(--color-4);
+            border-radius: 20px;
+            background-color: var(--color-6);
+          }
+          &-2 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-4);
+            border-radius: 20px;
+          }
+          &-3 {
+            padding: 10px;
+            color: white;
+            background-color: var(--color-2);
+            border-radius: 20px;
+          }
+          &-4 {
+            font-size: 40px;
+            padding: 10px;
+            color: white;
+          }
+        }
+        button {
+          border: none;
+          border-radius: 20px;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
           background-color: var(--color-1);
           width: 40px;
           height: 40px;
           cursor: pointer;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         }
       }
       &:hover {
@@ -134,11 +234,42 @@
 }
 
 .create {
+<<<<<<< HEAD
   padding: 5vh 2% 2%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 15%;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+  padding: 3%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20%;
+=======
+  padding: 20vh 1% 2%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+>>>>>>> 8547a02 (add handle update)
+=======
+  padding: 5vh 2% 2%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15%;
+>>>>>>> 2dbbf24 (Fixing)
+=======
+  padding: 5vh 2% 2%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15%;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   &-contain {
     display: flex;
     gap: 5vw;
@@ -248,18 +379,46 @@
           font-size: 16px;
         }
         .inputan {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+          width: 450px;
+          @include input(--color-3, 10px);
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
           width: 60%;
           @include input(--color-3, 10px);
           @media screen and (max-width: 768px) {
             width: 100%;
           }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         }
       }
 
       &-mempelai {
         margin: 40px 40px 80px;
         display: flex;
+<<<<<<< HEAD
         flex-wrap: wrap;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        flex-wrap: wrap;
+>>>>>>> 2dbbf24 (Fixing)
+=======
+        flex-wrap: wrap;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         column-gap: 20px;
         h4 {
           color: var(--color-2);
@@ -268,7 +427,18 @@
         }
         .inputan {
           @include input(--color-3, 10px);
+<<<<<<< HEAD
           width: 100%;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+          width: 100%;
+>>>>>>> 2dbbf24 (Fixing)
+=======
+          width: 100%;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         }
       }
     }
@@ -749,6 +919,14 @@
         position: relative;
         justify-content: space-between;
         margin: 30px 0 0;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         width: 100%;
         gap: 50px;
         cursor: pointer;
@@ -817,6 +995,13 @@
         position: relative;
         justify-content: space-between;
         margin: 30px 0 0;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         width: 100%;
         gap: 50px;
         cursor: pointer;
@@ -828,7 +1013,80 @@
           height: 120px;
           width: 100%;
           border-radius: 10px;
+<<<<<<< HEAD
           gap: 5px;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+          gap: 5px;
+>>>>>>> 2dbbf24 (Fixing)
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
+          border: 2px dashed var(--color-4);
+          h3 {
+            font-weight: 600;
+            font-size: 1.4rem;
+            text-transform: capitalize;
+            color: var(--color-4);
+          }
+          p {
+            font-size: .9rem;
+            font-weight: 400;
+            color: var(--color-4);
+          }
+        }
+        input {
+          position: absolute;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          cursor: pointer;
+<<<<<<< HEAD
+        }
+=======
+<<<<<<< HEAD
+        }
+        &-preview {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .preview-image {
+            width: 100%;
+            max-height: 150px;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+    &-keluarga {
+      margin: 50px 20px;
+      h2 {
+        font-family: var(--font-1);
+        font-size: 1.4rem;
+        color: var(--color-2);
+      }
+      &-upload {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        margin: 30px 0 0;
+        width: 100%;
+        gap: 50px;
+        cursor: pointer;
+        &-bg {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: 120px;
+          width: 100%;
+          border-radius: 10px;
+=======
+          gap: 5px;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
           border: 2px dashed var(--color-4);
           h3 {
             font-weight: 600;
@@ -852,6 +1110,13 @@
           opacity: 0;
           cursor: pointer;
         }
+<<<<<<< HEAD
+=======
+        }
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         &-preview {
           display: flex;
           justify-content: center;
@@ -861,6 +1126,14 @@
             max-height: 150px;
             object-fit: cover;
           }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         }
         @media screen and (max-width: 530px) {
           display: block;
@@ -871,6 +1144,13 @@
           &-preview {
             margin-top: 30px;
           }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         }
       }
       &-data {
@@ -1421,6 +1701,20 @@
 }
 
 .view-tamu {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+  width: 100vw;
+  height: 100vh;
+=======
+  padding-top: 5%;
+>>>>>>> 8547a02 (add handle update)
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   height: 100vh;
   &.theme-1 {
     position: relative;
@@ -1470,6 +1764,13 @@
       z-index: 0;
     }
   }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   &-menu {
     display: flex;
     gap: 10px;
@@ -1632,6 +1933,28 @@
                 min-width: 80px;
                 margin: 3px;
               }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            }
+          }
+          .undangan{
+            .view{
+              padding: 4px 8px;
+              border-radius: 10px 0 0 10px;
+              border: 1px solid var(--color-1);
+              background-color: var(--color-6);
+              color: var(--color-1);
+            }
+            .download{
+              padding: 4px 8px;
+              border-radius: 0 10px 10px 0;
+              border: 1px solid var(--color-1);
+              background-color: var(--color-1);
+              color: var(--color-6);
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             }
           }
         }

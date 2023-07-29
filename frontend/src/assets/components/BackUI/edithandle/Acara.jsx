@@ -44,11 +44,43 @@ function PopUp({ idAcara }) {
 
   console.log(formAcara);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    e.preventDefault();
+    await axios.post("http://localhost:5000/event", {
+      nama_acara: namaAcara,
+      tgl_acara: tglAcara,
+      jam_mulai: jamMulai,
+      jam_selesai: jamSelesai,
+      alamat: alamat,
+      link_maps: linkMaps,
+      id_undangan: idUndangan,
+    });
+    alert("Data Berhasil Ditambah");
+<<<<<<< HEAD
+    window.location.reload();
+>>>>>>> 83e91cb (Connect Backend to Frontend)
+=======
+>>>>>>> bb43b2c (add login middleware, connect frontend)
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   const handleChange = (e) => {
     let data = { ...formAcara };
     data[e.target.name] = e.target.value;
     setFormAcara(data);
+<<<<<<< HEAD
     console.log(formAcara);
+=======
+<<<<<<< HEAD
+    console.log(formAcara);
+>>>>>>> 8005205 (fix bug)
+=======
+>>>>>>> 8547a02 (add handle update)
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   };
 
   const handleSubmit = async (e) => {
@@ -104,6 +136,17 @@ function PopUp({ idAcara }) {
         </div>
         <div className="tambah-acara-form-input">
           <p>Tanggal Acara</p>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+          <input type="date" placeholder="12/12/2012" value={tglAcara} onChange={(e) => setTglAcara(e.target.value)} />
+>>>>>>> 83e91cb (Connect Backend to Frontend)
+=======
+          <input type="date" placeholder="12/12/2012" value={tglAcara} onChange={(e) => setTglAcara(e.target.value)} required />
+>>>>>>> bb43b2c (add login middleware, connect frontend)
+=======
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
           <input
             type="date"
             name="tanggal"
@@ -112,6 +155,10 @@ function PopUp({ idAcara }) {
             placeholder="12/12/2012"
             required
           />
+<<<<<<< HEAD
+=======
+>>>>>>> 8005205 (fix bug)
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         </div>
         <div className="tambah-acara-form-grup">
           <div className="tambah-acara-form-input">
@@ -127,14 +174,48 @@ function PopUp({ idAcara }) {
           </div>
           <div className="tambah-acara-form-input">
             <p>Selesai Acara</p>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8005205 (fix bug)
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             <input
               type="text"
               name="selesai"
               onChange={handleChange}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+              placeholder="12.00 WIB"
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
               value={formAcara.selesai}
               placeholder="12.00 WIB"
               required
             />
+<<<<<<< HEAD
+=======
+=======
+            <input type="text" placeholder="09.00 WIB" value={jamMulai} onChange={(e) => setJamMulai(e.target.value)} />
+          </div>
+          <div className="tambah-acara-form-input">
+            <p>Selesai Acara</p>
+            <input type="text" placeholder="12.00 WIB" value={jamSelesai} onChange={(e) => setJamSelesai(e.target.value)} />
+>>>>>>> 83e91cb (Connect Backend to Frontend)
+=======
+            <input type="text" placeholder="12.00 WIB" value={jamSelesai} onChange={(e) => setJamSelesai(e.target.value)} required />
+>>>>>>> bb43b2c (add login middleware, connect frontend)
+=======
+              value={formAcara.selesai}
+              placeholder="12.00 WIB"
+              required
+            />
+>>>>>>> 8005205 (fix bug)
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
           </div>
         </div>
         <div className="tambah-acara-form-input">
@@ -150,14 +231,48 @@ function PopUp({ idAcara }) {
         </div>
         <div className="tambah-acara-form-input">
           <p>Link Acara</p>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8005205 (fix bug)
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
           <input
             type="text"
             name="link"
             onChange={handleChange}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            placeholder="https://maps/"
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             value={formAcara.link}
             placeholder="https://maps/"
             required
           />
+<<<<<<< HEAD
+=======
+=======
+          <input type="text" placeholder="Jl. terus aja lah" value={alamat} onChange={(e) => setAlamat(e.target.value)} />
+        </div>
+        <div className="tambah-acara-form-input">
+          <p>Link Acara</p>
+          <input type="text" placeholder="https://maps/" value={linkMaps} onChange={(e) => setLinkMaps(e.target.value)} />
+>>>>>>> 83e91cb (Connect Backend to Frontend)
+=======
+          <input type="text" placeholder="https://maps/" value={linkMaps} onChange={(e) => setLinkMaps(e.target.value)} required />
+>>>>>>> bb43b2c (add login middleware, connect frontend)
+=======
+            value={formAcara.link}
+            placeholder="https://maps/"
+            required
+          />
+>>>>>>> 8005205 (fix bug)
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         </div>
         <div className="tambah-acara-form-submit">
           <input type="submit" value="tambah" />
@@ -253,7 +368,21 @@ function Acara() {
                       </button>
                     </td>
                   </tr>
+<<<<<<< HEAD
                 ))}
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+                </>
+              ))}
+>>>>>>> 83e91cb (Connect Backend to Frontend)
+=======
+                ))}
+>>>>>>> bb43b2c (add login middleware, connect frontend)
+=======
+                ))}
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             </tbody>
           </table>
         </div>

@@ -4,8 +4,23 @@
   align-items: center;
   height: 100vh;
   img {
+<<<<<<< HEAD
     margin: 40px 0 0;
     width: 200px;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    margin: 40px;
+    height: 60px;
+=======
+    margin: 40px 0 0;
+    width: 200px;
+>>>>>>> 2dbbf24 (Fixing)
+=======
+    margin: 40px 0 0;
+    width: 200px;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
     object-fit: contain;
   }
   &-content {
@@ -23,7 +38,9 @@
       justify-content: start;
       align-items: center;
       .arrowback{
-        font-size: 1.5rem;
+        margin-left: -3vw;
+        padding: 10px 10px 0 0;
+        font-size: 2rem;
         color: var(--color-2);
       }
     }
@@ -66,9 +83,13 @@
       }
     }
     &-regis{
-      margin: 1vh;
+      margin: 2vh;
       p {
         font-size: 0.8rem;
+        a{
+          text-decoration: none;
+          color: var(--color-3);
+        }
       }
     }
   }

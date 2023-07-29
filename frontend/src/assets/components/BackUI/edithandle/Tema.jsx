@@ -69,7 +69,46 @@ function Tema() {
   }, [id_undangan]);
 
   const handleSubmit = async () => {
+<<<<<<< HEAD
     if (idTema != null) {
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    const TemaUndangan = document.getElementById("temaUndangan").value;
+    const PrimaryFont = document.getElementById("fontPrimary").value;
+    const SecondaryFont = document.getElementById("fontSecondary").value;
+    const Backsound = document.getElementById("backsounds").value;
+>>>>>>> 83e91cb (Connect Backend to Frontend)
+=======
+    const TemaUndangan = formTheme.tema.toString();
+    const PrimaryFont = formTheme.font_1;
+    const SecondaryFont = formTheme.font_2;
+    const Backsound = activeTrack;
+>>>>>>> bb43b2c (add login middleware, connect frontend)
+
+    try {
+      const response = await axios.post("http://localhost:5000/theme", {
+        tema_undangan: TemaUndangan,
+        font_primary: PrimaryFont,
+        font_secondary: SecondaryFont,
+        backsound: Backsound,
+        id_undangan: idUndangan
+      });
+      console.log("Tema berhasil disimpan:", response.data);
+      navigate(`/edit/2/${id_undangan}`);
+    } catch (error) {
+      console.error("Gagal menyimpan tema:", error);
+=======
+    if (idUndangan === id_undangan) {
+=======
+    if (idTema != null) {
+>>>>>>> bbeccfe (Fix tema, database)
+=======
+    if (idTema != null) {
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
       try {
         const response = await axios.patch(`http://localhost:5000/theme/${idTema}`, {
           tema_undangan: formTheme.tema,
@@ -94,9 +133,30 @@ function Tema() {
         });
         navigate(`/edit/2/${id_undangan}`);
         return response.data
+<<<<<<< HEAD
       } catch (error) {
         console.log(error)
       }
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+      } catch (error) {}
+>>>>>>> 8005205 (fix bug)
+=======
+      } catch (error) { }
+>>>>>>> bbeccfe (Fix tema, database)
+=======
+      } catch (error) {
+        console.log(error)
+      }
+>>>>>>> 2dbbf24 (Fixing)
+=======
+      } catch (error) {
+        console.log(error)
+      }
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
     }
     if (!buttonClicked) {
       alert("Harap Pilih Backsound");
@@ -123,6 +183,16 @@ function Tema() {
       setActiveTrack(null);
     } else {
       setActiveTrack(track);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 83e91cb (Connect Backend to Frontend)
+=======
+>>>>>>> bb43b2c (add login middleware, connect frontend)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
     }
     setButtonClicked(true);
   };
@@ -184,7 +254,19 @@ function Tema() {
             </div>
           </div>
           <div className="theme-contain-font-input">
+<<<<<<< HEAD
             <p>Secondary Font</p>
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <p>secondary font</p>
+=======
+            <p>Secondary Font</p>
+>>>>>>> 2dbbf24 (Fixing)
+=======
+            <p>Secondary Font</p>
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             <div className="theme-contain-font-input-choose">
               <select
                 className=""
@@ -248,6 +330,13 @@ function Tema() {
         </button>
       </div>
     </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 83e91cb (Connect Backend to Frontend)
+=======
+>>>>>>> bb43b2c (add login middleware, connect frontend)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   );
 }
 

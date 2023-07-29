@@ -24,7 +24,18 @@ const Mempelai = () => {
   const [isiKutipan, setIsiKutipan] = useState("");
 
   //pria
+<<<<<<< HEAD
   const [idPria, setIdPria] = useState("");
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  const [idPria, setIdPria] = useState("");
+=======
+>>>>>>> 8547a02 (add handle update)
+=======
+  const [idPria, setIdPria] = useState("");
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   const [fotoPria, setFotoPria] = useState("");
   const [namaLengkapPria, setNamaLengkapPria] = useState("");
   const [namaPanggilanPria, setNamaPanggilanPria] = useState("");
@@ -35,7 +46,18 @@ const Mempelai = () => {
   const [twitterPria, setTwitterPria] = useState("https://twitter.com/");
 
   //wanita
+<<<<<<< HEAD
   const [idWanita, setIdWanita] = useState("");
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  const [idWanita, setIdWanita] = useState("");
+=======
+>>>>>>> 8547a02 (add handle update)
+=======
+  const [idWanita, setIdWanita] = useState("");
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   const [fotoWanita, setFotoWanita] = useState("");
   const [namaLengkapWanita, setNamaLengkapWanita] = useState("");
   const [namaPanggilanWanita, setNamaPanggilanWanita] = useState("");
@@ -73,6 +95,33 @@ const Mempelai = () => {
   useEffect(() => {
     const handleGetPria = async () => {
       try {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        const response = await axios.get(
+          `http://localhost:5000/pria/${id_undangan}`
+        );
+<<<<<<< HEAD
+        setIdPria(response.data.id_pria);
+=======
+>>>>>>> 8547a02 (add handle update)
+        setNamaLengkapPria(response.data.nama_lengkap);
+        setNamaPanggilanPria(response.data.nama_panggilan);
+        setNamaAyahPria(response.data.nama_ayah);
+        setNamaIbuPria(response.data.nama_ibu);
+        setInstagramPria(response.data.instagram);
+        setFacebookPria(response.data.facebook);
+        setTwitterPria(response.data.twitter);
+<<<<<<< HEAD
+        setFotoPria(response.data.foto_pria);
+        setPreviewPria(response.data.url_foto);
+=======
+>>>>>>> 8547a02 (add handle update)
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         const response = await axios.get(`http://localhost:5000/pria/${id_undangan}`);
         if (response.data != null) {
           setIdPria(response.data.id_pria);
@@ -88,12 +137,46 @@ const Mempelai = () => {
         } else {
           setIdPria(null);
         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
       } catch (error) {
         console.log(error);
       }
     };
     const handleGetWanita = async () => {
       try {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        const response = await axios.get(
+          `http://localhost:5000/wanita/${id_undangan}`
+        );
+<<<<<<< HEAD
+        setIdWanita(response.data.id_wanita);
+=======
+>>>>>>> 8547a02 (add handle update)
+        setNamaLengkapWanita(response.data.nama_lengkap);
+        setNamaPanggilanWanita(response.data.nama_panggilan);
+        setNamaAyahWanita(response.data.nama_ayah);
+        setNamaIbuWanita(response.data.nama_ibu);
+        setInstagramWanita(response.data.instagram);
+        setFacebookWanita(response.data.facebook);
+        setTwitterWanita(response.data.twitter);
+<<<<<<< HEAD
+        setFotoWanita(response.data.foto_wanita);
+        setPreviewWanita(response.data.url_foto);
+=======
+>>>>>>> 8547a02 (add handle update)
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         const response = await axios.get(`http://localhost:5000/wanita/${id_undangan}`);
         const data = response.data;
         if (data != null) {
@@ -110,12 +193,38 @@ const Mempelai = () => {
         } else {
           setIdWanita(null);
         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
       } catch (error) {
         console.log(error);
       }
     };
     const handleGetKutipan = async () => {
       try {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        const response = await axios.get(
+          `http://localhost:5000/pasangan/${id_undangan}`
+        );
+        setIdCouple(response.data.id_pasangan)
+        setJudulKutipan(response.data.judul_kutipan);
+        setIsiKutipan(response.data.isi_kutipan);
+<<<<<<< HEAD
+        setFotoCover(response.data.foto_cover);
+        setPreviewCover(response.data.url_foto);
+=======
+>>>>>>> 8547a02 (add handle update)
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         const response = await axios.get(`http://localhost:5000/pasangan/${id_undangan}`);
         const data = response.data;
         if (data != null) {
@@ -127,6 +236,13 @@ const Mempelai = () => {
         } else {
           setIdCouple(null);
         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
       } catch (error) {
         console.log(error);
       }
@@ -136,10 +252,31 @@ const Mempelai = () => {
     handleGetWanita();
     handleGetKutipan();
   }, [id_undangan]);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  
+<<<<<<< HEAD
+=======
+
+  const MAX_IMAGE_SIZE_MB = 10;
+
+>>>>>>> 2dbbf24 (Fixing)
+  // console.log(idCouple)
+=======
+  console.log(idCouple)
+>>>>>>> 8547a02 (add handle update)
+=======
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
 
   const MAX_IMAGE_SIZE_MB = 10;
 
   // console.log(idCouple)
+<<<<<<< HEAD
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   const handleCoverChange = (e) => {
     const image = e.target.files[0];
     // Validasi ukuran gambar
@@ -246,7 +383,45 @@ const Mempelai = () => {
               "Content-Type": "multipart/form-data",
             },
           });
+<<<<<<< HEAD
         } else {
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+          await axios.patch(`http://localhost:5000/datapria/${idPria}`, formDataPria, {
+=======
+          await axios.patch(`http://localhost:5000/pria/${id_undangan}`, formDataPria, {
+>>>>>>> 8547a02 (add handle update)
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+<<<<<<< HEAD
+          await axios.patch(`http://localhost:5000/datawanita/${idWanita}`, formDataWanita, {
+=======
+          await axios.patch(`http://localhost:5000/wanita/${id_undangan}`, formDataWanita, {
+>>>>>>> 8547a02 (add handle update)
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
+          alert("Data Berhasil Ditambah");
+        } catch (error) {
+          if (error.response) {
+            console.log(error.response.data);
+            setMsg(error.response.data.msg);
+          }
+        }
+      }else {
+        try {
+=======
+        } else {
+>>>>>>> 2dbbf24 (Fixing)
+=======
+        } else {
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
           await axios.post(`http://localhost:5000/couple`, formDataCover, {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -278,6 +453,24 @@ const Mempelai = () => {
               "Content-Type": "multipart/form-data",
             },
           });
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+          alert("Data Berhasil Ditambah");
+<<<<<<< HEAD
+          navigate(`/edit/2${id_undangan}`);
+=======
+>>>>>>> 8547a02 (add handle update)
+        } catch (error) {
+          if (error.response) {
+            console.log(error.response.data);
+            setMsg(error.response.data.msg);
+          }
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         };
         alert("Data Berhasil Ditambah");
         navigate(`/edit/3/${id_undangan}`);
@@ -285,6 +478,13 @@ const Mempelai = () => {
         if (error.response) {
           console.log(error.response.data);
           setMsg(error.response.data.msg);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         }
         navigate(`/edit/3/${id_undangan}`);
       }
@@ -340,6 +540,35 @@ const Mempelai = () => {
 
     <div className="mempelai">
       <EditData id={2} />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <form onSubmit={CreateCouple}>
+<<<<<<< HEAD
+>>>>>>> 83e91cb (Connect Backend to Frontend)
+=======
+>>>>>>> bb43b2c (add login middleware, connect frontend)
+        <div className="mempelai-form">
+          <h1>Data Pasangan</h1>
+          <div className="mempelai-form-cover">
+            <h2>foto cover berdua</h2>
+            <div className="mempelai-form-cover-upload">
+              <div className="mempelai-form-cover-upload-bg">
+                <h3>upload foto cover</h3>
+                <p>JPG, GIF or PNG. Max size of 800K</p>
+              </div>
+              <input
+                type="file"
+                accept="image/*"
+                name="fotoCover"
+                onChange={handleCoverChange}
+              />
+              <div className="mempelai-form-cover-upload-preview">
+=======
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
         <form onSubmit={CreateCouple}>
           <div className="mempelai-form">
             <h1>Data Pasangan</h1>
@@ -356,6 +585,13 @@ const Mempelai = () => {
                   <h3>upload foto cover</h3>
                   <p>JPG or PNG. Max size of 10 MB</p>
                 </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 2dbbf24 (Fixing)
+=======
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
                 {previewCover && (
                   <div className="mempelai-form-cover-upload-preview">
                     <div>
@@ -632,4 +868,16 @@ const Mempelai = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Mempelai;
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+export default Mempelai;
+=======
+export default Mempelai;
+>>>>>>> 8547a02 (add handle update)
+=======
+export default Mempelai;
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234

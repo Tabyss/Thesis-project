@@ -69,12 +69,20 @@
           justify-content: center;
           background-color: white;
           &-check {
+<<<<<<< HEAD
             color: var(--c-1);
+=======
+            color: var(--color-4);
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             font-size: 5rem;
             margin: 15px;
           }
           h1 {
+<<<<<<< HEAD
             color: var(--c-1);
+=======
+            color: var(--color-4);
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             text-align: center;
           }
           h2 {
@@ -223,12 +231,40 @@
           justify-content: center;
           background-color: white;
           &-check {
+<<<<<<< HEAD
             color: var(--c-1);
+=======
+            color: var(--color-4);
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             font-size: 5rem;
             margin: 15px;
           }
           h1 {
+<<<<<<< HEAD
             color: var(--c-1);
+=======
+            color: var(--color-4);
+            text-align: center;
+          }
+          h2 {
+            margin: 10px 0;
+          }
+        }
+        &-contain-wrong{
+          padding: 5vh 5vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: white;
+          &-icon{
+            color: var(--color-3);
+            font-size: 5rem;
+            margin: 15px;
+          }
+          h1 {
+            color: var(--color-3);
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             text-align: center;
           }
           h2 {
@@ -306,6 +342,7 @@
       }
     }
   }
+<<<<<<< HEAD
 }
 
 // .scan {
@@ -369,3 +406,6 @@
 //     }
 //   }
 // }
+=======
+}
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234

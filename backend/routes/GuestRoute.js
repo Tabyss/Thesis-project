@@ -7,7 +7,11 @@ import {
   updateGuest,
   deleteGuest,
   getGuestByIdTamu,
+<<<<<<< HEAD
   getGuestByIdUndangan,
+=======
+  getGuestByIdUndangan
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
 } from "../controllers/guestController.js";
 
 const router = express.Router();

@@ -7,7 +7,11 @@ import {
     createDataPria,
     updateDataPria,
     deleteDataPria,
+<<<<<<< HEAD
     getDataPriaByIdUndangan,
+=======
+    getDataPriaByIdUndangan
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
 } from "../controllers/dataPriaController.js";
 
 const router = express.Router();

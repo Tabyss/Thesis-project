@@ -47,12 +47,24 @@ function SignUp() {
         </div>
         <form onSubmit={ Register } className="signup-content-value">
           <p>{msg}</p>
+<<<<<<< HEAD
           <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
           <input type="text" placeholder="Phone Number" value={noTelp} onChange={(e) => setNoTelp(e.target.value)} />
           <div className="signup-content-value-button">
+=======
+          <input type="text" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="email" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="text" placeholder="Phone Number" required value={noTelp} onChange={(e) => setNoTelp(e.target.value)} />
+          <div className="signup-content-value-button">
+<<<<<<< HEAD
+            <button>Sign Up</button>
+=======
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
             <button>Signup</button>
+>>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
           </div>
         </form>
         <div className="signup-content-regis">

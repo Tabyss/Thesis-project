@@ -107,6 +107,26 @@ export const getGuestByIdTamu = async (req, res) => {
     res.status(200).json({ guest });
   } catch (error) {
     res.status(500).json({ error: "Failed to create guest" });
+<<<<<<< HEAD
+=======
+  }
+};
+
+
+export const getGuestByIdUndangan = async (req, res) => {
+  const { id_undangan } = req.params;
+
+  try {
+    const guests = await prisma.guest.findMany({
+      where: {
+        id_undangan: id_undangan,
+      },
+    });
+
+    res.status(200).json(guests);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+>>>>>>> 2fe6780bb9efafc04648ce0af0ce595f736c3234
   }
 };
 
