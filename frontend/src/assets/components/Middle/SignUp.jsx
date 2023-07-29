@@ -47,10 +47,10 @@ function SignUp() {
         </div>
         <form onSubmit={ Register } className="signup-content-value">
           <p>{msg}</p>
-          <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <input type="text" placeholder="Phone Number" value={noTelp} onChange={(e) => setNoTelp(e.target.value)} />
+          <input type="text" placeholder="Username" required value={username} onChange={(e) => setUsername(e.target.value)} />
+          <input type="email" placeholder="Email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" placeholder="Password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+          <input type="text" placeholder="Phone Number" required value={noTelp} onChange={(e) => setNoTelp(e.target.value)} />
           <div className="signup-content-value-button">
 <<<<<<< HEAD
             <button>Sign Up</button>

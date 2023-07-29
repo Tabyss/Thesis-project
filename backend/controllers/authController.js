@@ -29,13 +29,13 @@ export const Login = async (req, res) => {
 >>>>>>> f31f7f66cae67366c464fcd6efeba7a71bc527f1
   // Validasi apakah email dan password ada di permintaan
   if (!email && !password) {
-    return res.status(400).json({ msg: 'Silahkan Masukkan Email dan Password Terlebih Dahulu' });
+    return res.status(400).json({ msg: 'Email dan Password harus diisi!' });
   }
   if (!email) {
-    return res.status(400).json({ msg: 'Silahkan Masukkan Email Terlebih Dahulu' });
+    return res.status(400).json({ msg: 'Email harus diisi!' });
   }
   if (!password) {
-    return res.status(400).json({ msg: 'Silahkan Masukkan Password Terlebih Dahulu' });
+    return res.status(400).json({ msg: 'Password harus diisi!' });
   }
 
   // Cari pengguna berdasarkan email
