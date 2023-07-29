@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 import argon2 from 'argon2';
 import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
@@ -7,34 +6,28 @@ dotenv.config();
 
 const prisma = new PrismaClient();
 
-export const authMiddleware = async (req, res, next) => {
-
-  // Periksa apakah header Authorization ada
-  const token = req.headers.authorization?.split(' ')[1];
-  if (!token) {
-    return res.status(401).json({ message: 'Tidak ada token. Akses ditolak.' });
+export const verifyUser = async (req, res, next) => {
+  if (!req.session.userId) {
+    return res.status(401).json({ msg: "Mohon login ke akun anda!" });
   }
-
-  // Verifikasi dan decode token
-  try {
-    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-
-    // Tambahkan objek user dan role ke req untuk digunakan di route selanjutnya
-    req.userId = decoded.id;
-    req.role = decoded.role;
-
-    // Lanjutkan eksekusi middleware selanjutnya
-    next();
-  } catch (error) {
-    return res.status(401).json({ message: 'Invalid token' });
-  }
-};
-
-export const adminMiddleware = (req, res, next) => {
-  console.log(req.role);
-  if (req.role !== 'admin') {
-    return res.status(403).json({ message: 'Access denied' });
-  }
-
+  const user = await prisma.user.findFirst({
+    where: {
+      id: req.session.userId
+    }
+  });
+  if (!user) return res.status(404).json({ msg: "Email Tidak Ditemukan" });
+  req.userId = user.id;
+  req.role = user.role;
   next();
 };
+
+export const adminOnly = async (req, res, next) => {
+  const user = await prisma.user.findFirst({
+    where: {
+      id: req.session.userId
+    }
+  });
+  if (!user) return res.status(404).json({ msg: "User Tidak Ditemukan" });
+  if (user.role !== "admin") return res.status(403).json({ msg: "Tidak Mempunyai Akses" });
+  next();
+}

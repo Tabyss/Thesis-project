@@ -26,6 +26,7 @@ export const tawaran = [
       awal: "Rp 20.000",
       disc: "100%",
       akhir: "Rp 90.000",
+      num: 90000,
       fitur: [
         "Unlimited Acara",
         "Amplop Digital",
@@ -45,7 +46,8 @@ export const tawaran = [
       title: "silver",
       awal: "Rp 20.000",
       disc: "100%",
-      akhir: "Rp 90.000",
+      akhir: "Rp 70.000",
+      num: 70000,
       fitur: [
         "Unlimited Acara",
         "Amplop Digital",
@@ -65,7 +67,8 @@ export const tawaran = [
       title: "gold",
       awal: "Rp 20.000",
       disc: "100%",
-      akhir: "Rp 90.000",
+      akhir: "Rp 40.000",
+      num: 40000,
       fitur: [
         "Unlimited Acara",
         "Amplop Digital",

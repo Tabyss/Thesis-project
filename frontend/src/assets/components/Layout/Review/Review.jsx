@@ -7,7 +7,7 @@ import Profile from "../../../img/profile.png"
 
 function Review() {
     return (
-        <div className="review">
+        <div className="review" id="review">
             <div className="container">
                 <div className="review-content">
                     <h1 className="review-title">APA KATA PELANGGAN</h1>

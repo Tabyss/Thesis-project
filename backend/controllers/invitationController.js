@@ -14,7 +14,26 @@ export const getInvitationById = async (req, res) => {
   try {
     const invite = await prisma.invitation.findUnique({
       where: {
-        id: Number(req.params.id),
+        id: req.params.id,
+      },
+      include: {
+        tamu: true,
+        acara: true,
+        pasangan: true,
+        tema: true
+      },
+    });
+    res.status(200).json(invite);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};
+
+export const getInvitationByUrl = async (req, res) => {
+  try {
+    const invite = await prisma.invitation.findFirst({
+      where: {
+        url_undangan: req.params.id,
       },
       include: {
         tamu: true,
@@ -30,8 +49,7 @@ export const getInvitationById = async (req, res) => {
 };
 
 export const createInvitation = async (req, res) => {
-  const { nama_pria, nama_wanita, tgl_nikah, url_undangan } = req.body;
-  // const userId = req.user.id; // Mendapatkan ID pengguna dari informasi pengguna yang masuk
+  const { nama_pria, nama_wanita, tgl_nikah, url_undangan, id_user } = req.body;
   
   try {
     const invite = await prisma.invitation.create({
@@ -40,7 +58,7 @@ export const createInvitation = async (req, res) => {
         nama_wanita: nama_wanita,
         tgl_nikah: tgl_nikah,
         url_undangan: url_undangan,
-        // user: { connect: { id: userId } }, // Menghubungkan Invitation dengan pengguna berdasarkan ID pengguna
+        user: { connect: { id: id_user } }, // Menghubungkan Invitation dengan pengguna berdasarkan ID pengguna
       },
     });
     
@@ -73,7 +91,7 @@ export const deleteInvitation = async (req, res) => {
   try {
     const invite = await prisma.invitation.delete({
       where: {
-        id: Number(req.params.id),
+        id: req.params.id,
       },
     });
     res.status(201).json(invite);
@@ -82,3 +100,16 @@ export const deleteInvitation = async (req, res) => {
   }
 };
 
+export const getInvitationByIdUser = async (req, res) => {
+  const id_user = parseInt(req.params.id_user);
+  try {
+    const invite = await prisma.invitation.findMany({
+      where: {
+        id_user: id_user,
+      },
+    });
+    res.status(200).json(invite);
+  } catch (error) {
+    res.status(500).json({ msg: error.message });
+  }
+};

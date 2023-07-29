@@ -1,7 +1,7 @@
 import React from "react";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
-function TamuValid({ status, name }) {
+export default function TamuValid({ status, name }) {
   function Already() {
     return (
       <div className="popup">
@@ -20,33 +20,24 @@ function TamuValid({ status, name }) {
         <div className="popup-contain">
           <BsFillCheckCircleFill className="popup-contain-check" />
           <h1>Selamat Datang</h1>
-          <p>kepada</p>
           <h2>{name}</h2>
         </div>
       </div>
     );
   }
 
-  function Wrong() {
-    return (
-      <div className="popup">
-        <div className="popup-contain">
-          <BsFillCheckCircleFill className="popup-contain-check" />
-          <h1>Maaf</h1>
-          <h2>Anda Tidak Terdaftar</h2>
-        </div>
-      </div>
-    );
-  }
-
   // Menambahkan kondisi untuk menangani situasi ketika data salah atau tidak termasuk
-  if (status === true) {
-    return <Already />;
-  } else if (status === false) {
-    return <Done />;
-  } else {
-    return <Wrong />;
-  }
+  return status ? <Already /> : <Done />;
 }
 
-export default TamuValid;
+export function Wrong() {
+  return (
+    <div className="popup">
+      <div className="popup-contain">
+        <BsFillCheckCircleFill className="popup-contain-check" />
+        <h1>Maaf</h1>
+        <h2>Anda Tidak Terdaftar</h2>
+      </div>
+    </div>
+  );
+}

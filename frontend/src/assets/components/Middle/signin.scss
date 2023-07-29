@@ -4,7 +4,8 @@
   align-items: center;
   height: 100vh;
   img {
-    margin: 0 0 40px;
+    margin: 40px 0 0;
+    width: 200px;
     object-fit: contain;
   }
   &-content {
@@ -34,6 +35,9 @@
       gap: 10px;
       background-color: white;
       box-shadow: 0px 30px 60px rgba(126, 181, 166, 0.5);
+      p {
+        color: red;
+      }
       input {
         padding: 12px 70px 12px 12px;
         font-size: 1rem;
@@ -57,6 +61,7 @@
           border-radius: 10px;
           color: white;
           background-color: var(--color-4);
+          cursor: pointer;
         }
       }
     }

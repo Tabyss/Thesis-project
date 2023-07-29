@@ -35,6 +35,53 @@ export const createUser = async (req, res) => {
     // Jika tidak ada nilai role yang dikirim, set default sebagai "user"
     const userRole = role || "user";
 
+    // Menghitung jumlah form yang kosong
+    let emptyFields = 0;
+    if (!username) emptyFields++;
+    if (!email) emptyFields++;
+    if (!password) emptyFields++;
+    if (!no_telp) emptyFields++;
+    
+    // Validasi form jika masih ada yang kosong
+    if (emptyFields > 1) {
+      return res.status(400).json({ msg: "Silahkan Isi Semua Form Terlebih Dahulu" });
+    } else if (!username) {
+      return res.status(400).json({ msg: "Silahkan Masukkan Username Terlebih Dahulu" });
+    } else if (!email) {
+      return res.status(400).json({ msg: "Silahkan Masukkan Email Terlebih Dahulu" });
+    } else if (!password) {
+      return res.status(400).json({ msg: "Silahkan Masukkan Password Terlebih Dahulu" });
+    } else if (!no_telp) {
+      return res.status(400).json({ msg: "Silahkan Masukkan No Telepon Terlebih Dahulu" });
+    }
+
+    const checkName = await prisma.user.findFirst({
+      where: { username },
+    });
+
+    if(checkName) {
+      return res.status(400).json({ msg: "Username Sudah Digunakan" });
+    }
+
+    // Cek apakah email sudah terdaftar di database
+    const checkEmail = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    // Jika email sudah terdaftar, kirimkan respons bahwa email sudah digunakan
+    if (checkEmail) {
+      return res.status(400).json({ msg: "Email Sudah Digunakan" });
+    }
+
+    const checkPhone = await prisma.user.findFirst({
+      where: { no_telp },
+    });
+
+    if(checkPhone) {
+      return res.status(400).json({ msg: "Nomor Telepon Sudah Digunakan" });
+    }
+
+
     // Hash password menggunakan Argon2
     const passwordHash = await argon2.hash(password);
 
@@ -49,7 +96,7 @@ export const createUser = async (req, res) => {
       },
     });
 
-    res.status(201).json({ message: "Registrasi Berhasil", user });
+    res.status(201).json({ msg: "Registrasi Berhasil", user });
   } catch (error) {
     res.status(500).json({ msg: error.message });
   }
@@ -58,13 +105,14 @@ export const createUser = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     const { username, email, password, no_telp, role } = req.body;
-    
+
     // Jika tidak ada nilai role yang dikirim, set default sebagai "user"
     const userRole = role || "user";
 
     // Hash password menggunakan Argon2
     const passwordHash = await argon2.hash(password);
-    const user = await prisma.user.update({
+
+    const updateUser = await prisma.user.update({
       where: {
         id: Number(req.params.id),
       },
@@ -76,9 +124,9 @@ export const updateUser = async (req, res) => {
         role: userRole,
       },
     });
-    res.status(201).json({message: "User Berhasil Diupdate", user});
+    res.status(201).json({ msg: "User Berhasil Diupdate", updateUser });
   } catch (error) {
-    res.status(500).json({message: "Terjadi Kesalahan Saat Mengupdate User", error})
+    res.status(500).json({ msg: "Terjadi Kesalahan Saat Mengupdate User", error })
   }
 }
 
@@ -89,8 +137,9 @@ export const deleteUser = async (req, res) => {
         id: Number(req.params.id),
       },
     });
-    res.status(201).json({message: "User Berhasil Dihapus" ,user });
+
+    res.status(201).json({ msg: "User Berhasil Dihapus", user });
   } catch (error) {
-    res.status(500).json({ message: "Terjadi Kesalahan Saat Menghapus User", error });
+    res.status(500).json({ msg: "Terjadi Kesalahan Saat Menghapus User", error });
   }
 };

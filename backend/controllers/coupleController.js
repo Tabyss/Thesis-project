@@ -32,7 +32,7 @@ export const upload = multer({
     storage, 
     fileFilter, 
     limits: {
-        fileSize: 8 * 1024 * 1024, // 8 MB
+        fileSize: 10 * 1024 * 1024, // 10 MB
     },
 });
 
@@ -72,12 +72,15 @@ export const createCouple = async (req, res) => {
     }
 
     try {
+        const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
+
         const couple = await prisma.couple.create({
             data: {
                 foto_cover: `images/${req.file.filename}`,
+                url_foto: imageUrl,
                 judul_kutipan: judul_kutipan,
                 isi_kutipan: isi_kutipan,
-                invite: { connect: { id: id_undangan } },
+                id_undangan: id_undangan,
             },
         });
         res.status(201).json(couple);
@@ -89,6 +92,7 @@ export const createCouple = async (req, res) => {
 export const updateCouple = async (req, res) => {
     const { foto_cover, judul_kutipan, isi_kutipan, id_undangan } = req.body;
     try {
+        const imageUrl = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
         const newImage = req.file;
 
         // Validasi apakah gambar baru telah diterima
@@ -99,19 +103,7 @@ export const updateCouple = async (req, res) => {
         // Mencari data dari database
         const couple = await prisma.couple.findUnique({
             where: {
-                id_pasangan: Number(req.params.id), //-> pakai 'number' soalnya idnya integer
-            },
-        });
-
-        const updateCouple = await prisma.couple.update({
-            where: {
-                id_pasangan: Number(req.params.id), //-> pakai 'number' soalnya idnya integer
-            },
-            data: {
-                foto_cover: `images/${req.file.filename}`,
-                judul_kutipan: judul_kutipan,
-                isi_kutipan: isi_kutipan,
-                id_undangan: id_undangan,
+                id_pasangan: req.params.id,
             },
         });
 
@@ -124,16 +116,18 @@ export const updateCouple = async (req, res) => {
 
         const updatedCouple = await prisma.couple.update({
             where: {
-                id_pasangan: Number(req.params.id), //-> pakai 'number' soalnya idnya integer
+                id_pasangan: req.params.id,
             },
             data: {
                 foto_cover: `images/${req.file.filename}`,
-                kutipan: kutipan,
-                id_undangan: id_undangan,
+                url_foto: imageUrl,
+                judul_kutipan: judul_kutipan,
+                isi_kutipan: isi_kutipan,
+                invite: { connect: { id: id_undangan } },
             },
         });
 
-        res.status(201).json(couple);
+        res.status(201).json(updatedCouple);
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }
@@ -151,6 +145,22 @@ export const deleteCouple = async (req, res) => {
         fs.unlinkSync(filepath);
 
         res.status(201).json(couple);
+    } catch (error) {
+        res.status(500).json({ msg: error.message });
+    }
+};
+
+export const getCoupleByIdUndangan = async (req, res) => {
+    const { id_undangan } = req.params;
+
+    try {
+        const couple = await prisma.couple.findFirst({
+            where: {
+                id_undangan: id_undangan,
+            },
+        });
+
+        res.status(200).json(couple);
     } catch (error) {
         res.status(500).json({ msg: error.message });
     }

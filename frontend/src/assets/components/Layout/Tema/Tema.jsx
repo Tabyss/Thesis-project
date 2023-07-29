@@ -23,7 +23,7 @@ function Tema() {
     };
 
     return (
-        <div className="tema">
+        <div className="tema" id="tema">
             <div className="container">
                 <div className="tema-content">
                     <h1 className="tema-title small">PILIH TEMA</h1>

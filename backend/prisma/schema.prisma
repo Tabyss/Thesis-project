@@ -16,9 +16,7 @@ model User {
   email         String  @unique
   no_telp       String
   password      String
-  foto_profile  String?
   role          String
-  refresh_token String?
   invite        Invitation[]
 }
 
@@ -29,24 +27,27 @@ model Invitation {
   tgl_nikah     String
   url_undangan  String
   id_user       Int?
-  user          User?   @relation(fields: [id_user], references: [id])
+  user          User?   @relation(fields: [id_user], references: [id], onDelete: SetNull)
   tamu          Guest[]
   acara         Event[]
   pasangan      Couple[]
   tema          Theme[]
+  dataPria      Data_Pria[]
+  dataWanita    Data_Wanita[]
+  gallery       Gallery[]
 }
 
 model Guest {
-  id_tamu     String      @id @default(uuid())
-  nama_tamu   String
-  alamat      String
-  status      Boolean     @default(false)
-  no_telp     Int
-  qrcode      String?
-  w_hadir     DateTime    @default(now())
-  updateAt    DateTime    @updatedAt
-  id_undangan String?
-  invite      Invitation? @relation(fields: [id_undangan], references: [id])
+  id_tamu         String      @id @default(uuid())
+  nama_tamu       String
+  alamat          String
+  status          Boolean     @default(false)
+  no_telp         Int
+  qrcode          String
+  w_hadir         DateTime    @default(now())
+  updateAt        DateTime    @updatedAt
+  id_undangan     String?
+  invite          Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Theme {
@@ -56,7 +57,7 @@ model Theme {
   font_secondary  String
   backsound       String
   id_undangan     String?
-  invite          Invitation? @relation(fields: [id_undangan], references: [id])
+  invite          Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Event {
@@ -68,19 +69,17 @@ model Event {
   alamat        String
   link_maps     String
   id_undangan   String?
-  invite        Invitation? @relation(fields: [id_undangan], references: [id])
+  invite        Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Couple {
   id_pasangan   String     @id @default(uuid())
   foto_cover    String
+  url_foto      String
   judul_kutipan String
   isi_kutipan   String
   id_undangan   String?
-  invite        Invitation? @relation(fields: [id_undangan], references: [id])
-  data_pria     Data_Pria[]
-  data_wanita   Data_Wanita[]
-  gallery       Gallery[]
+  invite        Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Data_Pria {
@@ -93,8 +92,9 @@ model Data_Pria {
   facebook        String?
   twitter         String?
   foto_pria       String
-  id_pasangan     String?
-  couple          Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
+  url_foto        String
+  id_undangan     String?
+  invite          Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Data_Wanita {
@@ -107,13 +107,15 @@ model Data_Wanita {
   facebook        String?
   twitter         String?
   foto_wanita     String
-  id_pasangan     String?
-  couple          Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
+  url_foto        String
+  id_undangan     String?
+  invite          Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
 
 model Gallery {
   id_gallery    Int     @id @default(autoincrement())
   foto          String
-  id_pasangan   String?
-  couple        Couple? @relation(fields: [id_pasangan], references: [id_pasangan])
+  url_foto      String
+  id_undangan   String?
+  invite        Invitation? @relation(fields: [id_undangan], references: [id], onDelete: Cascade)
 }
